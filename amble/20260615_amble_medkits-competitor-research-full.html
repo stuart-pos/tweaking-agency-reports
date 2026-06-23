@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Survival kits competitor research (full) — Amble | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 900px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; border: none; padding: 0; }
+        .meta-details { display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem; color: var(--color-text-light); text-align: right; }
+        .full-badge { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 8px; vertical-align: middle; }
+        h2 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        h4 { font-size: 0.95rem; font-weight: 600; color: var(--color-secondary); margin: 16px 0 8px; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 0 0 16px 20px; }
+        li { margin-bottom: 6px; }
+        a { color: var(--color-accent); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        pre.campaign-tree { background: var(--color-primary); color: #e2e8f0; padding: 20px; border-radius: var(--border-radius); font-size: 0.78rem; line-height: 1.5; overflow-x: auto; margin: 16px 0; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .serp-block { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 20px; margin: 12px 0; }
+        .serp-block h3 { margin-top: 0; }
+        .serp-block .query { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--color-accent); font-weight: 600; }
+        .numbered-list { margin: 12px 0 16px 0; padding-left: 24px; }
+        .numbered-list li { margin-bottom: 10px; }
+        .subsection { margin-top: 20px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        .report-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .back-link { display: inline-block; margin: 16px 0 0; font-size: 0.9rem; }
+        @media print {
+            body, .report-header, .report-footer, thead, pre.campaign-tree { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            h2, h3 { break-after: avoid; }
+            table { break-inside: avoid; }
+            .serp-block { break-inside: avoid; }
+        }
+        @media (max-width: 768px) { .container { padding: 0 16px; } table { font-size: 0.75rem; } }
+    </style>
+</head>
+<body>
+
+<header class="report-header">
+    <div class="container">
+        <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/logo.svg" class="report-logo" alt="Tweaking Agency logo">
+        <div>
+            <h1>Tweaking Agency</h1>
+            <div class="tagline">Google Ads That Actually Work</div>
+        </div>
+    </div>
+</header>
+
+<div class="report-meta">
+    <div class="container">
+        <h2>Amble survival kits — competitor research &amp; Google Ads strategy <span class="full-badge">Full edition</span></h2>
+        <div class="meta-details">
+            <span>Client: <strong>Amble</strong></span>
+            <span>Date: <strong>2026-06-15</strong></span>
+            <span>Scope: 8 prescription med kits on Webflow (joinamble.webflow.io/medkits/*)</span>
+            <span>Research: Live Google Search &amp; Shopping SERPs (US), competitor LP review, pricing analysis</span>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+
+<p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/index.html">← All Amble reports</a></p>
+
+<h2>Executive summary</h2>
+<p>Amble’s survival kits sit in a <strong>prescription telehealth emergency-preparedness</strong> category — not the OTC first-aid market. Your closest Google Ads competitors are <strong>Jase Medical</strong>, <strong>The Wellness Company (TWC)</strong>, <strong>OZIO</strong>, <strong>Runway Health</strong>, <strong>JetSet Meds</strong>, <strong>Wandr</strong>, <strong>ReadyMed</strong>, and <strong>Heads Up Medical</strong>. These brands dominate both <strong>Search text ads</strong> and <strong>Shopping product carousels</strong> on high-intent queries like <em>emergency antibiotic kit</em>, <em>travel emergency medical kit</em>, and <em>travel medicine kit online doctor</em>.</p>
+
+<p><strong>Key strategic implications:</strong></p>
+<ol class="numbered-list">
+    <li><strong>Do not treat Shopping as a generic “first aid kit” play.</strong> Google Shopping for these queries mixes Rx kits (Jase, TWC, OZIO) with OTC Adventure Medical / MyMedic products ($33–$250). Amble must segment campaigns by intent and use feed titles that signal <em>physician-prescribed emergency medications</em>, not bandages-and-gauze kits.</li>
+    <li><strong>Jase and TWC are the paid-search gatekeepers</strong> on preparedness and antibiotic-kit terms. Amble’s price points ($285–$945) are competitive with Jase Case ($290) and TWC Travel Kit ($275), but <strong>above</strong> travel-focused entrants (Runway à la carte, Wandr $199–$224, JetSet Weekender $195, ReadyMed $279).</li>
+    <li><strong>Scenario-specific kits are Amble’s differentiation.</strong> Most competitors sell one general antibiotic case plus small add-on SKUs (dental, UTI, cruise). Amble’s eight use-case kits (travel, viral, cold/flu, allergy/mold, radiation, field emergency, first aid + Rx) map to <strong>long-tail Search</strong> and <strong>dedicated landing pages</strong> — a structural advantage if LPs are fixed and certified for Google Rx policy.</li>
+    <li><strong>Before scaling spend:</strong> confirm <strong>Google Healthcare / prescription drug services certification</strong> (and LegitScript if applicable), fix landing page content bugs (empty “What’s included” sections, irrelevant NAD+ testimonials), and set <strong>kit-specific conversion values</strong> ($285–$945 AOV vs. current ~$200 GLP-1 default).</li>
+</ol>
+
+<h2>Amble product portfolio</h2>
+<table>
+    <thead><tr><th>Kit</th><th>LP URL</th><th>Price</th><th>Positioning</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Just in Case</strong></td><td>/medkits/just-in-case-kit</td><td>$285</td><td>General emergency readiness — 9 Rx meds (antibiotics, antivirals, anti-parasitics, antifungals, anti-nausea)</td></tr>
+        <tr><td><strong>Mayday</strong></td><td>/medkits/mayday-kit</td><td>$325</td><td>Travel emergency — infections, nausea, altitude, cough, traveler’s stomach</td></tr>
+        <tr><td><strong>Viral Ick</strong></td><td>/medkits/viral-ick-kit</td><td>$325</td><td>Viral infections — antivirals, anti-inflammatories, nebulizer</td></tr>
+        <tr><td><strong>Cold Reaper</strong></td><td>/medkits/cold-reaper-kit</td><td>$325</td><td>Cold &amp; immunity — 8 Rx for respiratory illness, fever, nausea</td></tr>
+        <tr><td><strong>Breathe Easy</strong></td><td>/medkits/breathe-easy-kit</td><td>$325</td><td>Mold &amp; allergy — asthma/allergy/inflammation Rx</td></tr>
+        <tr><td><strong>Oh Sh*t (Radiation)</strong></td><td>/medkits/oh-sht-kit</td><td>$345</td><td>Radiological emergency preparedness</td></tr>
+        <tr><td><strong>Ouch Pouch</strong></td><td>/medkits/ouch-pouch-kit</td><td>$425</td><td>First aid + Rx — broader wound/infection/anaphylaxis coverage</td></tr>
+        <tr><td><strong>Panic Pack</strong></td><td>/medkits/panic-pack-kit</td><td>$945</td><td>Flagship field emergency — broad Rx + supplies for off-grid/extended emergencies</td></tr>
+    </tbody>
+</table>
+<p><strong>Shared LP strengths:</strong> HSA/FSA eligible, 100% online intake, licensed providers, free shipping, flat transparent pricing, strong compliance/disclaimer blocks.</p>
+<p><strong>Shared LP weaknesses (fix before paid traffic):</strong></p>
+<ul>
+    <li>“What’s included” sections show <strong>“No items found”</strong> on several kits (Mayday confirmed; likely CMS/feed issue).</li>
+    <li>Testimonials reference <strong>NAD+ / weight loss</strong>, not med kits — hurts message match and trust for emergency-medicine buyers.</li>
+    <li>Primary CTA is <strong>“Get started”</strong> (intake) without price anchoring or kit comparison — competitors use <strong>“Add to cart”</strong> with clearer SKU merchandising.</li>
+</ul>
+
+<h2>Competitive landscape</h2>
+
+<h3>Tier 1 — Direct Rx kit competitors (primary Google Ads threat)</h3>
+<table>
+    <thead><tr><th>Competitor</th><th>Hero SKU</th><th>Price</th><th>Google presence</th><th>LP / offer model</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Jase Medical</strong></td><td>JaseCase (10 meds)</td><td>$289.95</td><td><strong>Dominant</strong> — top Shopping carousel + Search ads on nearly every preparedness query; also CTV (MNTN)</td><td>Shopify ecommerce, scenario SKUs (Go $130, Mission $380, Dental/UTI/Cruise $100), JasePlus membership (15% off), 4.9★ reviews</td></tr>
+        <tr><td><strong>The Wellness Company</strong></td><td>Travel Emergency Kit</td><td>$247–$275</td><td><strong>Heavy Search</strong> — “Our Med Kit Is Simply Better”, comparison tables vs others</td><td>LegitScript badge, subscription -10%, guidebook + OTC supplies bundled, 2–3 week ship</td></tr>
+        <tr><td><strong>OZIO</strong></td><td>Basic Medical Emergency Kit</td><td>$197.55</td><td><strong>Shopping ads</strong> on travel/Rx kit queries</td><td>Tiered line: Advanced $591, Pro $1,344; intake required before ship</td></tr>
+        <tr><td><strong>ReadyMed</strong></td><td>Travel Pack</td><td>$279 (sale)</td><td>Organic + affiliate; less visible in top Search ads</td><td>10 antibiotics/meds, consult included</td></tr>
+        <tr><td><strong>Heads Up Medical</strong></td><td>Adult Travel/Emergency Kit</td><td>$279.95</td><td>Organic; scenario kits $80–$299</td><td>Consult included in kit price</td></tr>
+    </tbody>
+</table>
+
+<h3>Tier 2 — Travel medicine telehealth (different funnel, overlapping keywords)</h3>
+<table>
+    <thead><tr><th>Competitor</th><th>Model</th><th>Price</th><th>Google presence</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Runway Health</strong></td><td>Build-your-kit + $30 consult</td><td>Meds $29–$129 each</td><td>Search ads: “Travel Meds, No Hassle”, destination clinic LP</td></tr>
+        <tr><td><strong>Wandr</strong></td><td>Destination-personalized kit</td><td>$199–$224/kit; à la carte from $24</td><td>Newer; physician-founded, pharmacy pickup option</td></tr>
+        <tr><td><strong>JetSet Meds</strong></td><td>Weekender / JetSet kits</td><td>$195 / $495</td><td>Organic visibility; 24/7 US physician chat</td></tr>
+        <tr><td><strong>TravelMeds2Go</strong></td><td>Consult → local pharmacy pickup</td><td>Consult-only pricing</td><td>Search ads: “No Appointment Required — 24 Hrs”</td></tr>
+        <tr><td><strong>Prepare Medical</strong></td><td>Modular kits (CAD)</td><td>Essential ~$350 USD equiv.</td><td>Organic on “prepare medical kit”; allergy/travel/virus add-ons</td></tr>
+    </tbody>
+</table>
+
+<h3>Tier 3 — OTC/adjacent (Shopping noise, not true Rx competitors)</h3>
+<table>
+    <thead><tr><th>Competitor</th><th>Price range</th><th>Role in auctions</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Adventure Medical Kits</strong></td><td>$33–$180</td><td>Owns “travel first aid kit” Shopping slots; OTC only</td></tr>
+        <tr><td><strong>MyMedic</strong></td><td>$127–$1,200</td><td>Trauma/IFAK Shopping; HSA/FSA; no Rx</td></tr>
+        <tr><td><strong>PrepEM Wild</strong></td><td>$90–$250</td><td>Physician-designed <strong>trauma</strong> kits; Shopping on some queries; OTC supplies</td></tr>
+        <tr><td><strong>Surviveware, Johnson &amp; Johnson, etc.</strong></td><td>$10–$60</td><td>Volume Shopping; wrong intent for Amble</td></tr>
+    </tbody>
+</table>
+<p><strong>Important:</strong> Tier 3 competitors inflate Shopping CPCs and attract price-sensitive clicks. Amble should <strong>exclude</strong> generic “first aid kit” and “IFAK” themes unless running a deliberate awareness campaign with strict audience filters.</p>
+
+<h2>Live Google Search findings (US, June 2026)</h2>
+
+<div class="serp-block">
+    <h3>Query: <span class="query">emergency antibiotic kit prescription</span></h3>
+    <p><strong>Sponsored Shopping (top of SERP):</strong></p>
+    <ul>
+        <li>Jase Case — “10 Essential Rx Meds… + Access to Doctors”</li>
+        <li>TWC Travel Emergency Kit — “Doctor-Prescribed Meds for Travelers”</li>
+        <li>Jase Go, Jase Mission, Jase Dental, Jase UTI</li>
+        <li>OZIO Basic / Advanced / Pro Medical Emergency Kit</li>
+        <li>TelyRx — standalone Rx products (Doxycycline, Amoxicillin) — <strong>keyword policy risk</strong> for uncertified advertisers</li>
+        <li>PrepEM Wild — physician-designed essentials (OTC trauma)</li>
+    </ul>
+    <p><strong>Sponsored Search (text):</strong></p>
+    <ul>
+        <li>TWC — “See Why Our Med Kit is Better”</li>
+        <li>Jase — “Emergency Medications”</li>
+    </ul>
+    <p><strong>Organic:</strong> jase.com, jasemedical.com, preparemedical.com, Reddit r/preppers discussions, AOA skepticism article, CDC travel health.</p>
+    <p><strong>People also search for:</strong> <em>Best emergency antibiotics kit</em>, <em>Emergency medical kit with antibiotics as seen on TV</em>, <em>Emergency antibiotics for preppers</em>, <em>Antibiotic kits online</em> — signals <strong>prepper + Fox-news-adjacent</strong> demand alongside travel.</p>
+</div>
+
+<div class="serp-block">
+    <h3>Query: <span class="query">travel emergency medical kit prescription</span></h3>
+    <p><strong>Sponsored Search:</strong></p>
+    <ul>
+        <li>TWC — “Our Med Kit: Simply Better”</li>
+        <li>Jase — “Most Trusted Antibiotic Kit — Travel &amp; Emergency Meds”</li>
+        <li>Medjet, EA+ Travel Assistance — <strong>insurance/adjacent</strong> bidders on travel medical terms (monitor for wasted spend if you bid broadly)</li>
+    </ul>
+    <p><strong>Popular products (organic Shopping module in SERP):</strong></p>
+    <ul>
+        <li>Adventure Medical Smart Travel / World Travel kits</li>
+        <li>MyMedic Portable / EDC kits</li>
+        <li>FSA Store Emergency Travel Kit Bundle</li>
+    </ul>
+    <p><strong>Takeaway:</strong> Travel queries trigger <strong>both</strong> Rx kit ads and OTC travel first-aid products. Amble <strong>Mayday</strong> should compete on Rx-specific copy; avoid unqualified “travel medical kit” without “prescription” or “doctor-prescribed” modifiers.</p>
+</div>
+
+<div class="serp-block">
+    <h3>Query: <span class="query">travel medicine kit online doctor</span></h3>
+    <p><strong>Sponsored Search:</strong></p>
+    <ul>
+        <li>TravelMeds2Go — “Get Prescription in 24 Hrs”</li>
+        <li>Runway Health — “Travel Meds, No Hassle”</li>
+        <li>TWC — med kit comparison</li>
+        <li>PlushCare — generic telehealth (broad match bleed)</li>
+    </ul>
+    <p><strong>Sponsored Shopping:</strong> Same Jase/TWC/OZIO carousel as above.</p>
+    <p><strong>Organic:</strong> runwayhealth.com, jetsetmeds.com, travelmeds2go.com, traveldoc.com, mdanywhere.com.</p>
+    <p><strong>Takeaway:</strong> This query skews <strong>consult-first</strong> (Runway, TravelMeds2Go) vs <strong>kit-first</strong> (Jase, TWC). Amble can win with hybrid messaging: <em>“Online doctor review included — kit ships free.”</em></p>
+</div>
+
+<h2>Google Shopping competitive patterns</h2>
+
+<h3>Who buys Shopping placement for Rx-adjacent kits?</h3>
+<ol>
+    <li><strong>Jase Medical</strong> — widest SKU coverage (Case, Go, Mission, Dental, UTI, Trauma)</li>
+    <li><strong>The Wellness Company</strong> — Travel + First Aid Emergency kits</li>
+    <li><strong>OZIO</strong> — Basic / Advanced / Pro tiers</li>
+    <li><strong>FSA Store</strong> — resells Adventure Medical (OTC) alongside emergency bundles</li>
+</ol>
+
+<h3>Typical Shopping titles that win impressions</h3>
+<ul>
+    <li>Lead with <strong>use case + Rx signal</strong>: “Emergency Antibiotic Kit – 10 Essential Rx Meds…”</li>
+    <li>Include <strong>physician trust</strong>: “Doctor-Prescribed”, “Physician Prescribed”</li>
+    <li>Include <strong>scope</strong>: “30+ Conditions”, “Traveler’s Diarrhea”, “UTI”, “Dental”</li>
+</ul>
+
+<h3>Price bands in Shopping carousel (Rx kits)</h3>
+<ul>
+    <li><strong>Entry:</strong> $130–$200 (Jase Go, OZIO Basic, JetSet Weekender)</li>
+    <li><strong>Core:</strong> $250–$350 (Jase Case, TWC Travel, ReadyMed, Heads Up, Amble Just in Case / Mayday)</li>
+    <li><strong>Premium:</strong> $380–$650 (Jase Mission, JaseMedic)</li>
+    <li><strong>Ultra:</strong> $945–$1,344 (Amble Panic Pack, OZIO Pro, Jase Max bundles)</li>
+</ul>
+
+<h3>Shopping strategy implication for Amble</h3>
+<ul>
+    <li>Feed <strong>8 SKUs</strong> with unique titles per scenario — do not collapse to one generic “Amble Med Kit.”</li>
+    <li>Use <strong>custom labels</strong>: <code>rx_kit</code>, <code>travel</code>, <code>viral</code>, <code>prepper</code>, <code>premium</code>.</li>
+    <li>Set <strong>aggressive negative keywords</strong> on Shopping campaigns: <em>bandage, IFAK, tourniquet, OTC, refill only</em>.</li>
+    <li>Consider <strong>Performance Max with asset groups per kit</strong> only after conversion tracking assigns correct values per SKU.</li>
+</ul>
+
+<h2>Competitor landing page teardown</h2>
+
+<h3>Jase Medical (jase.com) — benchmark</h3>
+<ul>
+    <li><strong>Merchandising:</strong> Clear SKU grid, price on card, “Add to cart” ecommerce flow</li>
+    <li><strong>Trust:</strong> 1,695+ reviews, 4.9 rating, Glenn Beck endorsement, JasePlus membership upsell</li>
+    <li><strong>Education:</strong> Medication-by-condition matrix, add-ons, PocketParamedic hotline</li>
+    <li><strong>Creative angle:</strong> Preparedness for supply chain disruption, grid-down, travel — fear + control</li>
+</ul>
+
+<h3>The Wellness Company (twc.health) — aggressive paid competitor</h3>
+<ul>
+    <li><strong>Merchandising:</strong> Comparison table (“Included in Your Kit vs Others”)</li>
+    <li><strong>Trust:</strong> LegitScript certified, 4.9 rating, phone ordering, subscription discount</li>
+    <li><strong>Offer:</strong> 15+ meds + supplies + guidebook; treats 30+ conditions</li>
+    <li><strong>Creative angle:</strong> “Simply Better” direct comparison — expect conquest pressure</li>
+</ul>
+
+<h3>Runway Health — travel consult model</h3>
+<ul>
+    <li><strong>Merchandising:</strong> À la carte meds with prices ($29–$129) + $30 consult</li>
+    <li><strong>Trust:</strong> Travel Insured partnership, destination-specific recommendations</li>
+    <li><strong>Friction:</strong> Lower upfront price but assembly burden on user</li>
+    <li><strong>Amble counter:</strong> “One kit, pre-selected by scenario — no guesswork”</li>
+</ul>
+
+<h3>OZIO — price leader on Shopping</h3>
+<ul>
+    <li><strong>Merchandising:</strong> Tiered good/better/best ($198 / $591 / $1,344)</li>
+    <li><strong>Trust:</strong> With/without kit comparison copy</li>
+    <li><strong>Amble counter:</strong> Stronger brand (100k+ members) and scenario naming vs generic “Basic/Pro”</li>
+</ul>
+
+<h2>Google Ads policy — prescription drug services</h2>
+<p>Amble med kits require compliance with <a href="https://support.google.com/adspolicy/answer/15598647">Google’s prescription drug services policy</a>:</p>
+<ul>
+    <li><strong>Certification required</strong> to promote online prescribing/dispensing in the US</li>
+    <li>Ads may run <strong>“Eligible (limited)”</strong> even when certified — restricted drug terms in copy/keywords</li>
+    <li>Landing pages must be fully functional, globally accessible, and match certification scope</li>
+    <li>Violations are <strong>egregious</strong> (account suspension risk)</li>
+</ul>
+<p><strong>Operational checklist before launch:</strong></p>
+<ol>
+    <li>Confirm Amble’s Google Ads healthcare certification status for <strong>prescription drug services</strong> (separate from GLP-1 campaigns if scope differs).</li>
+    <li>Confirm <strong>LegitScript</strong> (or equivalent) — TWC prominently displays this; it’s becoming table stakes for trust and may affect approval.</li>
+    <li>Avoid uncertified use of drug names in ad text (e.g., azithromycin, doxycycline) — use condition-based copy (“traveler’s diarrhea support”, “emergency antibiotic kit”).</li>
+    <li>Ensure LPs include required disclaimers (Amble LPs already have strong ISI/disclaimer blocks).</li>
+</ol>
+
+<h2>Recommended Google Ads strategy</h2>
+
+<h3>1. Positioning &amp; message architecture</h3>
+<p><strong>Primary value props (test in order):</strong></p>
+<ol>
+    <li><strong>Physician-prescribed emergency medications shipped to your door</strong> — matches Jase/TWC category language</li>
+    <li><strong>Scenario-specific kits</strong> — “Built for travel / viral season / mold exposure / radiation preparedness” (Amble-only)</li>
+    <li><strong>100,000+ patients + HSA/FSA eligible</strong> — trust + payment flexibility</li>
+    <li><strong>Flat price, no hidden fees, consult + shipping included</strong> — vs Runway’s consult + à la carte</li>
+</ol>
+<p><strong>Avoid:</strong></p>
+<ul>
+    <li>Competing on “best first aid kit” or “trauma kit” without Rx qualifier</li>
+    <li>Fear-mongering beyond what competitors already use (match tone, don’t exceed)</li>
+    <li>Generic “survival kit” without medical/legal context</li>
+</ul>
+
+<h3>2. Campaign structure</h3>
+<pre class="campaign-tree">Account: Amble Med Kits (separate from GLP-1 or linked with strict budget caps)
+
+├── Brand — Amble Med Kits
+│   └── joinamble med kit, amble mayday kit, amble survival kit, etc.
+
+├── NB — Core Preparedness [Search]
+│   ├── AG: Emergency Antibiotic Kit (Just in Case, Panic Pack)
+│   ├── AG: Prepper / Emergency Meds (prepper terms, supply chain angles)
+│   └── LP: Just in Case / Panic Pack
+
+├── NB — Travel [Search + Shopping]
+│   ├── AG: Travel Emergency Kit (Mayday)
+│   ├── AG: Travel Medicine Online (vs Runway/Wandr)
+│   └── LP: Mayday
+
+├── NB — Seasonal / Scenario [Search]
+│   ├── AG: Cold &amp; Flu (Cold Reaper, Viral Ick)
+│   ├── AG: Allergy &amp; Mold (Breathe Easy)
+│   ├── AG: First Aid + Rx (Ouch Pouch)
+│   └── AG: Radiation Prep (Oh Sh*t) — low volume, high intent, monitor closely
+
+├── Competitor [Search]
+│   ├── Jase Medical, Jase Case, Jase Go
+│   ├── Wellness Company / TWC travel kit
+│   ├── Runway Health, JetSet Meds, ReadyMed, OZIO
+│   └── LP: Kit comparison page (recommended build) or closest Amble SKU
+
+├── Shopping — Rx Kits Only [Standard Shopping or PMax asset group]
+│   └── 8 SKUs with scenario titles; exclude OTC match types via negatives
+
+└── Discovery/Test [PMax or Demand Gen]
+    └── Creative: scenario hooks, UGC-style preparedness, travel departure windows</pre>
+<p><strong>Budget starting point (within existing $10k/mo account or incremental):</strong></p>
+<ul>
+    <li>If med kits are <strong>new line</strong>, allocate <strong>20–30% of incremental budget</strong> for first 60 days while GLP-1 remains core — scale only when kit CPA &lt; 25–35% of kit AOV.</li>
+    <li><strong>Do not</strong> reuse GLP-1 Target CPA ($50) — kit AOV $285–$945 supports higher CPAs; model break-even separately.</li>
+</ul>
+
+<h3>3. Keyword strategy by kit</h3>
+<table>
+    <thead><tr><th>Kit</th><th>Priority keywords (phrase/exact)</th><th>Match to competitor</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Just in Case</strong></td><td>emergency antibiotic kit, emergency meds kit online, prescription emergency kit, prepper antibiotic kit</td><td>Jase Case, OZIO Basic</td></tr>
+        <tr><td><strong>Mayday</strong></td><td>travel emergency kit prescription, travel medical kit antibiotics, travel medicine kit online, cruise travel meds kit</td><td>TWC Travel, Jase Go, JetSet Weekender</td></tr>
+        <tr><td><strong>Viral Ick / Cold Reaper</strong></td><td>antiviral emergency kit, cold flu prescription kit, viral infection kit online doctor</td><td>Jase (limited direct SKU); own the niche</td></tr>
+        <tr><td><strong>Breathe Easy</strong></td><td>mold allergy medication kit, allergy asthma emergency kit prescription</td><td>Heads Up Pollen Free, Jase Seasonal Allergies</td></tr>
+        <tr><td><strong>Oh Sh*t</strong></td><td>radiation emergency kit potassium iodide prescription, nuclear preparedness meds</td><td>Very niche; Jase add-ons — low spend cap</td></tr>
+        <tr><td><strong>Ouch Pouch</strong></td><td>prescription first aid kit, emergency wound infection kit</td><td>MyMedic (OTC) — use “prescription” modifier</td></tr>
+        <tr><td><strong>Panic Pack</strong></td><td>comprehensive emergency medical kit prescription, field emergency medication kit, off grid medical kit</td><td>Jase Case Max, OZIO Pro, Prepare Medical</td></tr>
+    </tbody>
+</table>
+<p><strong>Negative keyword themes (account-level):</strong></p>
+<ul>
+    <li>OTC: bandage, gauze, tourniquet, IFAK, trauma kit (unless Ouch Pouch AG), free, DIY, homemade</li>
+    <li>Wrong intent: nursing, veterinary, dental office compliance, epic medical refill</li>
+    <li>Job seeking, wholesale, military surplus</li>
+</ul>
+
+<h3>4. Ad copy frameworks (RSA)</h3>
+<p><strong>Preparedness (Just in Case):</strong></p>
+<ul>
+    <li>H1: Emergency Antibiotic Kit Online</li>
+    <li>H2: Prescribed By a Licensed Provider</li>
+    <li>H3: 9 Rx Meds — One Flat Price</li>
+    <li>D1: HSA/FSA eligible. Free shipping. Online intake, meds shipped to your door.</li>
+    <li>D2: Be ready when care isn’t reachable. Amble Just in Case Kit from $285.</li>
+</ul>
+<p><strong>Travel (Mayday):</strong></p>
+<ul>
+    <li>H1: Travel Emergency Kit — Rx Meds</li>
+    <li>H2: Doctor Review Included | Free Ship</li>
+    <li>H3: Mayday Kit For Travel Illness</li>
+    <li>D1: Infections, nausea, altitude &amp; more. 100% online. No hidden fees.</li>
+</ul>
+<p><strong>Competitor (Jase conquest):</strong></p>
+<ul>
+    <li>H1: Prescription Emergency Med Kits</li>
+    <li>H2: Scenario-Specific — Not One-Size-Fits-All</li>
+    <li>H3: Travel, Viral, Allergy &amp; More</li>
+    <li>D1: Amble kits from $285. HSA/FSA eligible. Licensed providers. Get started online.</li>
+</ul>
+<p><strong>Policy-safe rule:</strong> Lead with <em>conditions and kit names</em>, not drug generic names.</p>
+
+<h3>5. Landing page &amp; CRO priorities (pre-spend)</h3>
+<table>
+    <thead><tr><th>Priority</th><th>Issue</th><th>Recommendation</th></tr></thead>
+    <tbody>
+        <tr><td>P0</td><td>Empty “What’s included”</td><td>Fix Webflow CMS so each kit lists medications/supplies — competitors win on transparency</td></tr>
+        <tr><td>P0</td><td>NAD+ testimonials on med kit LPs</td><td>Replace with med-kit-specific social proof or clinician trust badges</td></tr>
+        <tr><td>P1</td><td>No kit comparison / selector</td><td>Add “Which kit is right for me?” quiz or comparison table vs buying wrong SKU</td></tr>
+        <tr><td>P1</td><td>“Get started” only CTA</td><td>Test “See what’s included” + price anchor above fold (Jase/TWC pattern)</td></tr>
+        <tr><td>P2</td><td>Mayday vs Just in Case overlap</td><td>Clarify differentiation in copy — travel-specific vs general preparedness</td></tr>
+        <tr><td>P2</td><td>Comparison page for competitor traffic</td><td>TWC-style “why Amble” without naming unapproved claims</td></tr>
+    </tbody>
+</table>
+
+<h3>6. Shopping feed requirements</h3>
+<p>For each of the 8 kits, feed should include:</p>
+<ul>
+    <li><strong>Title:</strong> <code>{Kit Name} | Prescription Emergency Med Kit | {Primary use case} | Amble</code></li>
+    <li><strong>Description:</strong> Condition coverage, provider review, HSA/FSA, ship time — no drug claims that violate policy</li>
+    <li><strong>Price:</strong> Match LP exactly ($285–$945)</li>
+    <li><strong>Link:</strong> Kit-specific Webflow URL (already exists)</li>
+    <li><strong>Google product category:</strong> Health &amp; Beauty &gt; Health Care &gt; Medicine &amp; Drugs (verify with feed auditor)</li>
+    <li><strong>Custom label 0:</strong> Margin tier</li>
+    <li><strong>Custom label 1:</strong> Use case (travel / viral / prepper / premium)</li>
+</ul>
+<p><strong>Competitive pricing note:</strong> Amble <strong>Just in Case ($285)</strong> is parity with <strong>Jase Case ($290)</strong> — Shopping battles will come down to reviews, ship time, and title relevance. <strong>OZIO Basic ($198)</strong> undercuts; counter with trust (100k patients) and scenario breadth, not race-to-bottom.</p>
+
+<h3>7. Measurement &amp; economics</h3>
+<table>
+    <thead><tr><th>Metric</th><th>GLP-1 (current)</th><th>Med kits (recommended)</th></tr></thead>
+    <tbody>
+        <tr><td>AOV</td><td>~$200</td><td>$285–$945 (use dynamic values)</td></tr>
+        <tr><td>Primary conversion</td><td>Purchase</td><td>Purchase (post-intake checkout)</td></tr>
+        <tr><td>Micro-conversions</td><td>Begin checkout</td><td>Intake started, intake completed</td></tr>
+        <tr><td>Target CPA</td><td>$50</td><td><strong>15–25% of kit AOV</strong> initially ($43–$236 depending on SKU)</td></tr>
+        <tr><td>LTV</td><td>$7,500 subscription</td><td>Replenishment + cross-sell GLP-1/other Amble lines</td></tr>
+    </tbody>
+</table>
+<p><strong>Attribution:</strong> 14-day lag likely applies to telehealth intake → approval → purchase. Exclude last 14 days from optimization decisions (align with existing <code>business.md</code> lag setting).</p>
+<p><strong>Cross-sell:</strong> Med kit buyers are high-trust telehealth adopters — build audiences for GLP-1 remarketing separately (privacy/compliance permitting).</p>
+
+<h2>Kit launch priority matrix</h2>
+<table>
+    <thead><tr><th>Priority</th><th>Kit</th><th>Rationale</th></tr></thead>
+    <tbody>
+        <tr><td><strong>1 — Launch first</strong></td><td>Just in Case</td><td>Direct Jase Case competitor; highest search volume in category</td></tr>
+        <tr><td><strong>2</strong></td><td>Mayday</td><td>Strong travel query overlap; TWC/Jase Go competition but clear LP</td></tr>
+        <tr><td><strong>3</strong></td><td>Cold Reaper / Viral Ick</td><td>Seasonal demand Q4–Q1; less direct SKU competition</td></tr>
+        <tr><td><strong>4</strong></td><td>Ouch Pouch</td><td>Differentiated Rx + first aid; avoid OTC Shopping collision with negatives</td></tr>
+        <tr><td><strong>5</strong></td><td>Breathe Easy</td><td>Niche but identifiable allergy/mold audience</td></tr>
+        <tr><td><strong>6</strong></td><td>Panic Pack</td><td>High AOV justifies high CPA; smaller volume — use for prepper/high-intent</td></tr>
+        <tr><td><strong>7 — Test carefully</strong></td><td>Oh Sh*t (Radiation)</td><td>Very niche; geopolitical news spikes; policy/scrutiny sensitivity</td></tr>
+    </tbody>
+</table>
+
+<h2>Competitive response playbook</h2>
+<table>
+    <thead><tr><th>If competitor…</th><th>Amble response</th></tr></thead>
+    <tbody>
+        <tr><td>Jase pushes JasePlus 15% discount</td><td>Highlight Amble flat pricing + HSA/FSA; test bundled replenishment offer</td></tr>
+        <tr><td>TWC runs “Simply Better” comparison ads</td><td>Publish factual kit comparison LP; bid competitor brand on Search</td></tr>
+        <tr><td>Runway/Wandr capture “online travel doctor”</td><td>Mayday ads stress <em>kit included</em> vs assemble-yourself à la carte</td></tr>
+        <tr><td>OTC brands inflate Shopping CPCs</td><td>Separate Shopping campaign; strict negatives; consider Search-only for launch</td></tr>
+        <tr><td>Policy disapprovals on drug terms</td><td>Pivot to condition-based copy; verify certification scope</td></tr>
+    </tbody>
+</table>
+
+<h2>Summary: how to market these on Google</h2>
+<ol class="numbered-list">
+    <li><strong>Treat this as a new product line</strong> with its own campaign shell, conversion values, and CPA targets — not an extension of GLP-1 bidding.</li>
+    <li><strong>Lead with Search + Shopping on Rx-intent keywords</strong> where Jase and TWC already prove demand; use eight scenario LPs as the message-match weapon.</li>
+    <li><strong>Fix LP content bugs and testimonials</strong> before spending — you will lose to Jase/TWC on trust if medication lists are empty.</li>
+    <li><strong>Confirm healthcare certification</strong> and build Shopping feed with scenario-specific titles.</li>
+    <li><strong>Launch Just in Case + Mayday first</strong>, expand to seasonal kits, conquest Jase/TWC/Runway on brand and comparison terms.</li>
+    <li><strong>Exclude OTC first-aid intent</strong> from kit campaigns to protect CPA.</li>
+    <li><strong>Model unit economics per SKU</strong> — Panic Pack at $945 can absorb $150+ CPA; Just in Case needs tighter efficiency.</li>
+</ol>
+
+<h2>Sources &amp; SERP captures</h2>
+<ul>
+    <li>Live Google Search US: <code>emergency antibiotic kit prescription</code>, <code>travel emergency medical kit prescription</code>, <code>travel medicine kit online doctor</code> (2026-06-15)</li>
+    <li>Competitor sites: jase.com, twc.health, runwayhealth.com, jetsetmeds.com, ozio.com, travelwithwandr.com, readymedhealthcare.com, headsupmedical.com, preparemedical.com</li>
+    <li>Amble kit LPs: joinamble.webflow.io/medkits/*</li>
+    <li>Google policy: <a href="https://support.google.com/adspolicy/answer/15598647">Prescription drug services</a></li>
+</ul>
+
+</main>
+
+<footer class="report-footer">
+    <div class="container">
+        <div>
+            <span class="company-name">Tweaking Agency</span><br>
+            Google Ads That Actually Work
+        </div>
+        <div>
+            <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a><br>
+            <a href="https://tweaking.agency">tweaking.agency</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

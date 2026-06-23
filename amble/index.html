@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Amble — audit reports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #1a1a2e; --bg: #f8f9fa; --border: #e0e0e0; --text: #333; --muted: #666; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        header { margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+        .logo { width: 48px; height: 48px; }
+        h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 4px; }
+        .sub { color: var(--muted); font-size: 0.95rem; }
+        ul { list-style: none; }
+        li { background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; }
+        a { display: block; padding: 16px 20px; text-decoration: none; color: inherit; }
+        a:hover { background: #fafafa; }
+        .title { font-weight: 600; color: var(--primary); }
+        .meta { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+        .score { display: inline-block; background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 8px; }
+        footer { margin-top: 40px; font-size: 0.8rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/logo.svg" alt="Tweaking Agency" class="logo">
+            <div>
+                <h1>Amble</h1>
+                <p class="sub">Audit reports — Tweaking Agency</p>
+            </div>
+        </header>
+
+        <ul>
+            <li>
+                <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260622_amble_medkits-influencer-outreach.html">
+                    <span class="title">Med kits — influencer &amp; podcast outreach</span>
+                    <div class="meta">2026-06-22 · 45 targets · rows 32–76 · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260622_amble_medkits-influencer-outreach-list.pdf">List PDF</a> · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260622_amble_medkits-influencer-outreach.html#csv-download-btn">CSV</a> · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260622_amble_medkits-influencer-outreach.pdf">Full report PDF</a></div>
+                </a>
+            </li>
+            <li>
+                <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260615_amble_medkits-competitor-research-full.html">
+                    <span class="title">Survival kits — competitor research (full edition)</span>
+                    <div class="meta">2026-06-15 · 100% match to source markdown · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260615_amble_medkits-competitor-research-full.pdf">PDF</a></div>
+                </a>
+            </li>
+            <li>
+                <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260615_amble_medkits-competitor-research.html">
+                    <span class="title">Survival kits — competitor research (client summary)</span>
+                    <div class="meta">2026-06-15 · Condensed branded version · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260615_amble_medkits-competitor-research.pdf">PDF</a></div>
+                </a>
+            </li>
+            <li>
+                <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260612_amble_tracking-audit.html">
+                    <span class="title">Tracking audit</span>
+                    <span class="score">58% Needs Attention</span>
+                    <div class="meta">2026-06-12 · sGTM outage investigation · abc.joinamble.com</div>
+                </a>
+            </li>
+        </ul>
+
+        <footer>
+            Reports are not indexed by search engines. Share the <strong>HTML report</strong> for one-click CSV download, or run <code>npm run deploy</code> in <code>clients/amble</code> to publish a public CSV URL via Vercel.
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Survival kits competitor research — Amble | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 900px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; border: none; padding: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        h4 { font-size: 1rem; font-weight: 600; color: var(--color-secondary); margin: 16px 0 8px; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 0 0 16px 20px; }
+        li { margin-bottom: 6px; }
+        a { color: var(--color-accent); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .exec-read { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 24px; margin: 16px 0; }
+        .exec-read p { font-size: 1rem; line-height: 1.7; margin: 0 0 12px; }
+        .exec-read p:last-child { margin-bottom: 0; }
+        .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0; }
+        .highlight-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); background: var(--color-bg); }
+        .highlight-card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-light); margin-bottom: 6px; }
+        .highlight-card .value { font-size: 1.5rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .highlight-card .sub { font-size: 0.85rem; color: var(--color-text-light); margin-top: 4px; }
+        .issue-card { border-left: 4px solid var(--color-danger); background: #fef2f2; padding: 16px 20px; border-radius: 0 var(--border-radius) var(--border-radius) 0; margin: 12px 0; }
+        .issue-card.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .issue-card.info { border-left-color: var(--color-info); background: #eff6ff; }
+        .issue-card .issue-id { font-weight: 700; font-size: 0.85rem; color: var(--color-danger); }
+        .issue-card.warning .issue-id { color: #b45309; }
+        .issue-card.info .issue-id { color: #1d4ed8; }
+        .issue-card .issue-title { font-weight: 600; margin-top: 4px; }
+        .issue-card .issue-impact { font-size: 0.9rem; color: var(--color-text-light); margin-top: 4px; }
+        .status-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; }
+        .status-pill.dominant { background: #fee2e2; color: #991b1b; }
+        .status-pill.heavy { background: #fef3c7; color: #92400e; }
+        .status-pill.organic { background: #f1f5f9; color: #64748b; }
+        .status-pill.p0 { background: #fee2e2; color: #991b1b; }
+        .status-pill.p1 { background: #fef3c7; color: #92400e; }
+        .status-pill.p2 { background: #dbeafe; color: #1e40af; }
+        .priority-1 { background: #dcfce7; font-weight: 700; }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .recommendations ol { margin-bottom: 0; }
+        .recommendations li { padding: 6px 0; line-height: 1.5; }
+        pre.campaign-tree { background: var(--color-primary); color: #e2e8f0; padding: 20px; border-radius: var(--border-radius); font-size: 0.8rem; line-height: 1.5; overflow-x: auto; margin: 16px 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        .serp-block { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 20px; margin: 12px 0; }
+        .serp-block .query { font-family: ui-monospace, monospace; font-size: 0.85rem; color: var(--color-accent); font-weight: 600; margin-bottom: 8px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        .report-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .back-link { display: inline-block; margin: 16px 0 0; font-size: 0.9rem; }
+        @media print { body, .report-header, .report-footer, .issue-card, thead, pre.campaign-tree { -webkit-print-color-adjust: exact; print-color-adjust: exact; } table, .issue-card, .serp-block { break-inside: avoid; } }
+        @media (max-width: 768px) { .container { padding: 0 16px; } table { font-size: 0.78rem; } th, td { padding: 8px; } }
+    </style>
+</head>
+<body>
+
+<header class="report-header">
+    <div class="container">
+        <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/logo.svg" class="report-logo" alt="Tweaking Agency logo">
+        <div>
+            <h1>Tweaking Agency</h1>
+            <div class="tagline">Google Ads That Actually Work</div>
+        </div>
+    </div>
+</header>
+
+<div class="report-meta">
+    <div class="container">
+        <h2>Survival kits — competitor research &amp; Google Ads strategy</h2>
+        <div class="meta-details">
+            <span>Client: <strong>Amble</strong></span>
+            <span>Date: <strong>2026-06-15</strong></span>
+            <span>Vertical: <strong>Telehealth Rx kits</strong></span>
+            <span>Scope: <strong>8 med kits</strong></span>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+
+<p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/index.html">← All Amble reports</a></p>
+
+<div class="highlight-grid">
+    <div class="highlight-card">
+        <div class="label">Amble kit range</div>
+        <div class="value">$285–$945</div>
+        <div class="sub">8 scenario-specific SKUs</div>
+    </div>
+    <div class="highlight-card">
+        <div class="label">Primary paid rivals</div>
+        <div class="value">Jase + TWC</div>
+        <div class="sub">Own Search &amp; Shopping carousels</div>
+    </div>
+    <div class="highlight-card">
+        <div class="label">Launch first</div>
+        <div class="value">Just in Case</div>
+        <div class="sub">Then Mayday travel kit</div>
+    </div>
+    <div class="highlight-card">
+        <div class="label">Target CPA (kits)</div>
+        <div class="value">15–25%</div>
+        <div class="sub">Of kit AOV — not GLP-1 $50</div>
+    </div>
+</div>
+
+<h2>Executive summary</h2>
+<div class="exec-read">
+    <p>Amble’s survival kits compete in the <strong>prescription telehealth emergency-preparedness</strong> category — not OTC first aid. Closest Google Ads competitors are <strong>Jase Medical</strong>, <strong>The Wellness Company (TWC)</strong>, <strong>OZIO</strong>, <strong>Runway Health</strong>, <strong>JetSet Meds</strong>, <strong>Wandr</strong>, <strong>ReadyMed</strong>, and <strong>Heads Up Medical</strong>. These brands dominate Search text ads and Shopping product carousels on queries like <em>emergency antibiotic kit</em>, <em>travel emergency medical kit</em>, and <em>travel medicine kit online doctor</em>.</p>
+    <p><strong>Do not treat Shopping as generic first aid.</strong> The carousel mixes Rx kits with Adventure Medical and MyMedic OTC products ($33–$250). Segment by intent and use feed titles that signal physician-prescribed emergency medications.</p>
+    <p><strong>Jase and TWC are the paid-search gatekeepers.</strong> Amble pricing is competitive with Jase Case ($290) and TWC Travel ($275) but above travel entrants (Runway à la carte, Wandr $199–$224, JetSet Weekender $195).</p>
+    <p><strong>Scenario-specific kits are Amble’s edge.</strong> Eight use-case LPs map to long-tail Search — if LPs are fixed and Google Rx certification is confirmed. Before scaling: fix empty “What’s included” sections, replace NAD+ testimonials, and set kit-specific conversion values ($285–$945 AOV).</p>
+</div>
+
+<h2>Amble product portfolio</h2>
+<table>
+    <thead><tr><th>Kit</th><th>Price</th><th>Positioning</th><th>LP path</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Just in Case</strong></td><td>$285</td><td>General emergency — 9 Rx meds</td><td>/medkits/just-in-case-kit</td></tr>
+        <tr><td><strong>Mayday</strong></td><td>$325</td><td>Travel emergency</td><td>/medkits/mayday-kit</td></tr>
+        <tr><td><strong>Viral Ick</strong></td><td>$325</td><td>Viral infections + nebulizer</td><td>/medkits/viral-ick-kit</td></tr>
+        <tr><td><strong>Cold Reaper</strong></td><td>$325</td><td>Cold &amp; immunity</td><td>/medkits/cold-reaper-kit</td></tr>
+        <tr><td><strong>Breathe Easy</strong></td><td>$325</td><td>Mold &amp; allergy</td><td>/medkits/breathe-easy-kit</td></tr>
+        <tr><td><strong>Oh Sh*t</strong></td><td>$345</td><td>Radiation preparedness</td><td>/medkits/oh-sht-kit</td></tr>
+        <tr><td><strong>Ouch Pouch</strong></td><td>$425</td><td>First aid + Rx</td><td>/medkits/ouch-pouch-kit</td></tr>
+        <tr><td><strong>Panic Pack</strong></td><td>$945</td><td>Flagship field emergency</td><td>/medkits/panic-pack-kit</td></tr>
+    </tbody>
+</table>
+
+<h3>LP strengths &amp; weaknesses</h3>
+<p><strong>Strengths:</strong> HSA/FSA eligible, 100% online intake, licensed providers, free shipping, flat pricing, strong compliance blocks.</p>
+
+<div class="issue-card">
+    <div class="issue-id">P0 — Block paid scale</div>
+    <div class="issue-title">“What’s included” shows “No items found” on several kits</div>
+    <div class="issue-impact">Jase and TWC win on medication transparency. Fix Webflow CMS before driving traffic.</div>
+</div>
+<div class="issue-card">
+    <div class="issue-id">P0 — Message match</div>
+    <div class="issue-title">Testimonials reference NAD+ / weight loss, not med kits</div>
+    <div class="issue-impact">Undermines trust for emergency-medicine buyers arriving from Search or Shopping.</div>
+</div>
+<div class="issue-card warning">
+    <div class="issue-id">P1 — CRO</div>
+    <div class="issue-title">“Get started” CTA without price anchor or kit comparison</div>
+    <div class="issue-impact">Competitors use “Add to cart” with visible SKU pricing. Test price-above-fold and kit selector.</div>
+</div>
+
+<h2>Competitive landscape</h2>
+
+<h3>Tier 1 — Direct Rx kit competitors</h3>
+<table>
+    <thead><tr><th>Competitor</th><th>Hero SKU</th><th>Price</th><th>Google presence</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Jase Medical</strong></td><td>JaseCase</td><td>$289.95</td><td><span class="status-pill dominant">Dominant</span> Shopping + Search; CTV</td></tr>
+        <tr><td><strong>The Wellness Company</strong></td><td>Travel Emergency Kit</td><td>$247–$275</td><td><span class="status-pill heavy">Heavy Search</span> comparison ads</td></tr>
+        <tr><td><strong>OZIO</strong></td><td>Basic Emergency Kit</td><td>$197.55</td><td><span class="status-pill heavy">Shopping</span> tiered line to $1,344</td></tr>
+        <tr><td><strong>ReadyMed</strong></td><td>Travel Pack</td><td>$279</td><td><span class="status-pill organic">Organic / affiliate</span></td></tr>
+        <tr><td><strong>Heads Up Medical</strong></td><td>Adult Travel Kit</td><td>$279.95</td><td><span class="status-pill organic">Organic</span> scenario kits $80–$299</td></tr>
+    </tbody>
+</table>
+
+<h3>Tier 2 — Travel telehealth (overlapping keywords)</h3>
+<table>
+    <thead><tr><th>Competitor</th><th>Model</th><th>Price</th><th>Google presence</th></tr></thead>
+    <tbody>
+        <tr><td>Runway Health</td><td>Build-your-kit + $30 consult</td><td>Meds $29–$129</td><td>“Travel Meds, No Hassle”</td></tr>
+        <tr><td>Wandr</td><td>Destination-personalized kit</td><td>$199–$224</td><td>Physician-founded; pharmacy pickup</td></tr>
+        <tr><td>JetSet Meds</td><td>Weekender / JetSet</td><td>$195 / $495</td><td>Organic; 24/7 physician chat</td></tr>
+        <tr><td>TravelMeds2Go</td><td>Consult → pharmacy pickup</td><td>Consult fee</td><td>“Prescription in 24 Hrs”</td></tr>
+        <tr><td>Prepare Medical</td><td>Modular kits</td><td>~$350 USD</td><td>Organic “prepare medical kit”</td></tr>
+    </tbody>
+</table>
+
+<h3>Tier 3 — OTC noise (exclude from Rx campaigns)</h3>
+<p>Adventure Medical Kits ($33–$180), MyMedic ($127–$1,200), PrepEM Wild ($90–$250), Surviveware/J&amp;J ($10–$60) inflate Shopping CPCs and attract wrong intent. Use aggressive negatives unless running deliberate awareness with strict filters.</p>
+
+<h2>Live Google Search findings (US, June 2026)</h2>
+
+<div class="serp-block">
+    <div class="query">emergency antibiotic kit prescription</div>
+    <p><strong>Shopping:</strong> Jase Case, TWC Travel Kit, Jase Go/Mission/Dental/UTI, OZIO tiers, TelyRx standalone Rx, PrepEM Wild.</p>
+    <p><strong>Search:</strong> TWC “See Why Our Med Kit is Better”; Jase “Emergency Medications”.</p>
+    <p><strong>Signal:</strong> Prepper + Fox-news-adjacent demand in “People also search for.”</p>
+</div>
+
+<div class="serp-block">
+    <div class="query">travel emergency medical kit prescription</div>
+    <p><strong>Search:</strong> TWC, Jase, plus Medjet/EA+ insurance bidders (watch for broad-match waste).</p>
+    <p><strong>Shopping module:</strong> Adventure Medical, MyMedic, FSA Store OTC bundles mixed with Rx.</p>
+    <p><strong>Action:</strong> Mayday ads must use “prescription” / “doctor-prescribed” modifiers.</p>
+</div>
+
+<div class="serp-block">
+    <div class="query">travel medicine kit online doctor</div>
+    <p><strong>Search:</strong> TravelMeds2Go, Runway Health, TWC, PlushCare bleed.</p>
+    <p><strong>Amble angle:</strong> “Online doctor review included — kit ships free” (kit-first vs consult-first).</p>
+</div>
+
+<h2>Google Shopping patterns</h2>
+<h3>Winning title patterns</h3>
+<ul>
+    <li>Use case + Rx signal: “Emergency Antibiotic Kit – 10 Essential Rx Meds…”</li>
+    <li>Physician trust: “Doctor-Prescribed”, “Physician Prescribed”</li>
+    <li>Scope: “30+ Conditions”, “Traveler’s Diarrhea”, “UTI”, “Dental”</li>
+</ul>
+
+<h3>Price bands (Rx kits in carousel)</h3>
+<table>
+    <thead><tr><th>Tier</th><th>Range</th><th>Examples</th></tr></thead>
+    <tbody>
+        <tr><td>Entry</td><td>$130–$200</td><td>Jase Go, OZIO Basic, JetSet Weekender</td></tr>
+        <tr><td>Core</td><td>$250–$350</td><td>Jase Case, TWC, Amble Just in Case / Mayday</td></tr>
+        <tr><td>Premium</td><td>$380–$650</td><td>Jase Mission, JaseMedic</td></tr>
+        <tr><td>Ultra</td><td>$945–$1,344</td><td>Amble Panic Pack, OZIO Pro</td></tr>
+    </tbody>
+</table>
+
+<h2>Competitor landing page teardown</h2>
+<table>
+    <thead><tr><th>Competitor</th><th>Merchandising</th><th>Trust</th><th>Amble counter</th></tr></thead>
+    <tbody>
+        <tr><td><strong>Jase</strong></td><td>SKU grid, Add to cart</td><td>1,695+ reviews, 4.9★, JasePlus</td><td>8 scenario kits vs one general case</td></tr>
+        <tr><td><strong>TWC</strong></td><td>Comparison tables vs others</td><td>LegitScript, subscription -10%</td><td>Build factual comparison LP; conquest brand</td></tr>
+        <tr><td><strong>Runway</strong></td><td>À la carte $29–$129 + consult</td><td>Travel Insured partnership</td><td>“One kit, pre-selected — no guesswork”</td></tr>
+        <tr><td><strong>OZIO</strong></td><td>Good/better/best tiers</td><td>With/without kit copy</td><td>100k+ patients + scenario naming</td></tr>
+    </tbody>
+</table>
+
+<h2>Google Ads policy</h2>
+<div class="issue-card info">
+    <div class="issue-id">Certification required</div>
+    <div class="issue-title">Prescription drug services policy applies to all med kit campaigns</div>
+    <div class="issue-impact">Confirm Google healthcare certification scope. Avoid drug generic names in ad copy — use condition-based language. Violations are egregious (suspension risk). <a href="https://support.google.com/adspolicy/answer/15598647">Policy reference</a></div>
+</div>
+<ol>
+    <li>Confirm certification for prescription drug services (separate from GLP-1 if needed).</li>
+    <li>Confirm LegitScript or equivalent (TWC displays prominently).</li>
+    <li>Use condition-based copy, not azithromycin/doxycycline in headlines.</li>
+    <li>LP disclaimers are strong — maintain on all kit pages.</li>
+</ol>
+
+<h2>Recommended campaign structure</h2>
+<pre class="campaign-tree">Account: Amble Med Kits (separate shell or strict budget cap vs GLP-1)
+
+├── Brand — Amble Med Kits
+├── NB — Core Preparedness [Search] → Just in Case, Panic Pack
+├── NB — Travel [Search + Shopping] → Mayday
+├── NB — Seasonal / Scenario [Search] → Cold Reaper, Viral Ick, Breathe Easy, Ouch Pouch, Oh Sh*t
+├── Competitor [Search] → Jase, TWC, Runway, OZIO, JetSet, ReadyMed
+├── Shopping — Rx Kits Only → 8 SKUs, OTC negatives
+└── Discovery/Test [PMax or Demand Gen] → scenario creative, travel windows</pre>
+
+<p><strong>Budget:</strong> Allocate 20–30% of incremental budget for first 60 days. Scale when kit CPA &lt; 25–35% of kit AOV. Do not reuse GLP-1 Target CPA ($50).</p>
+
+<h2>Keyword strategy by kit</h2>
+<table>
+    <thead><tr><th>Kit</th><th>Priority keywords</th><th>Competitor match</th></tr></thead>
+    <tbody>
+        <tr><td>Just in Case</td><td>emergency antibiotic kit, prescription emergency kit, prepper antibiotic kit</td><td>Jase Case, OZIO Basic</td></tr>
+        <tr><td>Mayday</td><td>travel emergency kit prescription, travel medical kit antibiotics</td><td>TWC, Jase Go, JetSet</td></tr>
+        <tr><td>Viral Ick / Cold Reaper</td><td>antiviral emergency kit, cold flu prescription kit</td><td>Own the niche</td></tr>
+        <tr><td>Breathe Easy</td><td>mold allergy medication kit, allergy asthma emergency kit</td><td>Heads Up Pollen Free</td></tr>
+        <tr><td>Oh Sh*t</td><td>radiation emergency kit, nuclear preparedness meds</td><td>Low volume — tight cap</td></tr>
+        <tr><td>Ouch Pouch</td><td>prescription first aid kit, emergency wound infection kit</td><td>MyMedic (add “prescription”)</td></tr>
+        <tr><td>Panic Pack</td><td>comprehensive emergency medical kit prescription, off grid medical kit</td><td>Jase Max, OZIO Pro</td></tr>
+    </tbody>
+</table>
+
+<p><strong>Account-level negatives:</strong> bandage, gauze, tourniquet, IFAK, trauma kit (except Ouch Pouch AG), DIY, nursing, veterinary, wholesale, military surplus.</p>
+
+<h2>Ad copy frameworks (RSA)</h2>
+<table>
+    <thead><tr><th>Campaign</th><th>Headlines</th><th>Descriptions</th></tr></thead>
+    <tbody>
+        <tr>
+            <td>Just in Case</td>
+            <td>Emergency Antibiotic Kit Online · Prescribed By a Licensed Provider · 9 Rx Meds — One Flat Price</td>
+            <td>HSA/FSA eligible. Free shipping. Online intake, meds shipped to your door. · From $285.</td>
+        </tr>
+        <tr>
+            <td>Mayday</td>
+            <td>Travel Emergency Kit — Rx Meds · Doctor Review Included · Mayday Kit For Travel Illness</td>
+            <td>Infections, nausea, altitude &amp; more. 100% online. No hidden fees.</td>
+        </tr>
+        <tr>
+            <td>Competitor</td>
+            <td>Prescription Emergency Med Kits · Scenario-Specific Kits · Travel, Viral, Allergy &amp; More</td>
+            <td>Amble kits from $285. HSA/FSA eligible. Licensed providers. Get started online.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>LP &amp; CRO priorities</h2>
+<table>
+    <thead><tr><th>Priority</th><th>Issue</th><th>Recommendation</th></tr></thead>
+    <tbody>
+        <tr><td><span class="status-pill p0">P0</span></td><td>Empty “What’s included”</td><td>Fix Webflow CMS — list all meds/supplies</td></tr>
+        <tr><td><span class="status-pill p0">P0</span></td><td>NAD+ testimonials</td><td>Med-kit social proof or clinician badges</td></tr>
+        <tr><td><span class="status-pill p1">P1</span></td><td>No kit comparison</td><td>“Which kit is right for me?” quiz or table</td></tr>
+        <tr><td><span class="status-pill p1">P1</span></td><td>Weak CTA</td><td>Price anchor + “See what’s included”</td></tr>
+        <tr><td><span class="status-pill p2">P2</span></td><td>Kit overlap</td><td>Clarify Mayday vs Just in Case positioning</td></tr>
+        <tr><td><span class="status-pill p2">P2</span></td><td>Competitor traffic</td><td>TWC-style comparison page</td></tr>
+    </tbody>
+</table>
+
+<h2>Measurement &amp; economics</h2>
+<table>
+    <thead><tr><th>Metric</th><th>GLP-1 (current)</th><th>Med kits (recommended)</th></tr></thead>
+    <tbody>
+        <tr><td>AOV</td><td>~$200</td><td>$285–$945 (dynamic values per SKU)</td></tr>
+        <tr><td>Target CPA</td><td>$50</td><td>15–25% of kit AOV ($43–$236)</td></tr>
+        <tr><td>Micro-conversions</td><td>Begin checkout</td><td>Intake started, intake completed</td></tr>
+        <tr><td>Conversion lag</td><td>14 days</td><td>Same — exclude recent data from bid decisions</td></tr>
+    </tbody>
+</table>
+
+<h2>Kit launch priority</h2>
+<table>
+    <thead><tr><th>Priority</th><th>Kit</th><th>Rationale</th></tr></thead>
+    <tbody>
+        <tr class="priority-1"><td>1</td><td>Just in Case</td><td>Direct Jase Case competitor; highest category volume</td></tr>
+        <tr class="priority-1"><td>2</td><td>Mayday</td><td>Travel query overlap; clear LP</td></tr>
+        <tr><td>3</td><td>Cold Reaper / Viral Ick</td><td>Seasonal Q4–Q1; less SKU competition</td></tr>
+        <tr><td>4</td><td>Ouch Pouch</td><td>Rx + first aid; strict Shopping negatives</td></tr>
+        <tr><td>5</td><td>Breathe Easy</td><td>Allergy/mold niche</td></tr>
+        <tr><td>6</td><td>Panic Pack</td><td>High AOV; prepper/high-intent</td></tr>
+        <tr><td>7</td><td>Oh Sh*t</td><td>Niche; policy sensitivity — test carefully</td></tr>
+    </tbody>
+</table>
+
+<h2>How to market on Google — action list</h2>
+<div class="recommendations">
+    <ol>
+        <li>Treat med kits as a <strong>new product line</strong> with separate conversion values and CPA targets.</li>
+        <li>Lead with Search + Shopping on Rx-intent keywords; use eight scenario LPs for message match.</li>
+        <li>Fix LP content bugs and testimonials before scaling spend.</li>
+        <li>Confirm healthcare certification; build Shopping feed with scenario-specific titles.</li>
+        <li>Launch <strong>Just in Case + Mayday</strong> first; expand seasonal; conquest Jase/TWC/Runway.</li>
+        <li>Exclude OTC first-aid intent from kit campaigns.</li>
+        <li>Model unit economics per SKU — Panic Pack can absorb $150+ CPA; Just in Case needs tighter efficiency.</li>
+    </ol>
+</div>
+
+<h2>Sources</h2>
+<ul>
+    <li>Live Google Search US, 2026-06-15: emergency antibiotic kit prescription, travel emergency medical kit prescription, travel medicine kit online doctor</li>
+    <li>Competitors: jase.com, twc.health, runwayhealth.com, jetsetmeds.com, ozio.com, travelwithwandr.com, readymedhealthcare.com, headsupmedical.com, preparemedical.com</li>
+    <li>Amble LPs: joinamble.webflow.io/medkits/*</li>
+</ul>
+
+</main>
+
+<footer class="report-footer">
+    <div class="container">
+        <div>
+            <span class="company-name">Tweaking Agency</span><br>
+            Google Ads That Actually Work
+        </div>
+        <div>
+            <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a><br>
+            <a href="https://tweaking.agency">tweaking.agency</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

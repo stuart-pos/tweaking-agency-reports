@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gimme Care — audit reports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #1a1a2e; --bg: #f8f9fa; --border: #e0e0e0; --text: #333; --muted: #666; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .wrap { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        header { margin-bottom: 32px; }
+        h1 { font-size: 1.5rem; color: var(--primary); margin-bottom: 4px; }
+        .sub { color: var(--muted); font-size: 0.95rem; }
+        ul { list-style: none; }
+        li { background: #fff; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; }
+        a { display: block; padding: 16px 20px; text-decoration: none; color: inherit; }
+        a:hover { background: #fafafa; }
+        .title { font-weight: 600; color: var(--primary); }
+        .meta { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+        .score { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; margin-left: 8px; }
+        footer { margin-top: 40px; font-size: 0.8rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+<style>
+#pw-gate{position:fixed;inset:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,system-ui,sans-serif}
+#pw-box{background:#fff;border-radius:12px;padding:40px 32px;width:320px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#pw-box h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:8px}
+#pw-box p{font-size:.85rem;color:#666;margin-bottom:20px}
+#pw-input{width:100%;padding:10px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px}
+#pw-input:focus{border-color:#1a1a2e}
+#pw-btn{width:100%;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+#pw-btn:hover{background:#16213e}
+#pw-err{color:#ef4444;font-size:.8rem;margin-top:8px;display:none}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Gimme Care Reports</h2>
+    <p>Enter the password to access this report.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Continue</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='gc_report_auth',PWD='tweaking26!';
+  function unlock(){document.getElementById('pw-gate').style.display='none';}
+  if(sessionStorage.getItem(KEY)===PWD){unlock();return;}
+  document.getElementById('pw-btn').addEventListener('click',check);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  function check(){
+    var v=document.getElementById('pw-input').value;
+    if(v===PWD){sessionStorage.setItem(KEY,PWD);unlock();}
+    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
+  }
+})();
+</script>
+    <div class="wrap">
+        <header>
+            <h1>Gimme Care</h1>
+            <p class="sub">Audit reports — internal use</p>
+        </header>
+
+        <ul>
+            <li>
+                <a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260527_gimme_lp-audit.html">
+                    <span class="title">Landing page &amp; intake audit</span>
+                    <span class="score">85% Good</span>
+                    <div class="meta">2026-05-27 · LPs + intake walkthrough to checkout</div>
+                </a>
+            </li>
+        </ul>
+
+        <footer>
+            Reports are not indexed by search engines. Share links only with intended recipients.
+        </footer>
+    </div>
+</body>
+</html>

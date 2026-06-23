@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Audit — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --color-skip: #94a3b8;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 900px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); }
+        .meta-details span { white-space: nowrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        .score-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--border-radius); font-weight: 700; font-size: 1.1rem; }
+        .score-badge.excellent { background: #dcfce7; color: #166534; }
+        .score-badge.good { background: #dbeafe; color: #1e40af; }
+        .score-badge.needs-attention { background: #fef3c7; color: #92400e; }
+        .score-badge.critical { background: #fee2e2; color: #991b1b; }
+        .overall-score { text-align: center; padding: 32px; margin: 24px 0; background: var(--color-bg-alt); border-radius: var(--border-radius); border: 1px solid var(--color-border); }
+        .overall-score .score-value { font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .overall-score .score-grade { font-size: 1.1rem; color: var(--color-text-light); margin-top: 4px; }
+        .progress-bar { width: 100%; height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden; }
+        .progress-bar .fill { height: 100%; border-radius: 4px; }
+        .progress-bar .fill.excellent { background: var(--color-success); }
+        .progress-bar .fill.good { background: var(--color-info); }
+        .progress-bar .fill.needs-attention { background: var(--color-warning); }
+        .progress-bar .fill.critical { background: var(--color-danger); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .status-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+        .status-pill.pass { background: #dcfce7; color: #166534; }
+        .status-pill.warn { background: #fef3c7; color: #92400e; }
+        .status-pill.fail { background: #fee2e2; color: #991b1b; }
+        .status-pill.skip { background: #f1f5f9; color: #64748b; }
+        .issue-card { border-left: 4px solid var(--color-danger); background: #fef2f2; padding: 16px 20px; border-radius: 0 var(--border-radius) var(--border-radius) 0; margin: 12px 0; }
+        .issue-card.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .issue-card .issue-id { font-weight: 700; color: var(--color-danger); font-size: 0.85rem; }
+        .issue-card.warning .issue-id { color: var(--color-warning); }
+        .issue-card .issue-title { font-weight: 600; color: var(--color-text); margin-top: 4px; }
+        .issue-card .issue-impact { font-size: 0.9rem; color: var(--color-text-light); margin-top: 4px; }
+        .module-section { margin: 24px 0; padding: 24px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--border-radius); }
+        .module-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .module-header h3 { margin: 0; font-size: 1.1rem; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .module-name { font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .module-score { font-size: 1.6rem; font-weight: 800; font-family: var(--font-heading); }
+        .score-card .module-grade { font-size: 0.8rem; margin-top: 4px; }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .recommendations ol { padding-left: 20px; }
+        .recommendations li { padding: 8px 0; line-height: 1.5; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        .report-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, .score-badge, .status-pill, .issue-card, .score-card, thead, .overall-score { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .container { max-width: 100%; padding: 0 16px; }
+            .module-section { break-inside: avoid; }
+            h2, h3 { break-after: avoid; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .report-header .container { flex-direction: column; text-align: center; }
+            .report-meta .container { flex-direction: column; }
+            .meta-details { flex-wrap: wrap; gap: 8px; }
+            .scores-grid { grid-template-columns: 1fr 1fr; }
+            .overall-score .score-value { font-size: 2.5rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/file:///Users/stuartposternak_mini/Desktop/AI agent week - PPC Mastery/my-brand/logo.svg" class="report-logo" alt="Tweaking Agency logo">
+            <div>
+                <h1>Tweaking Agency</h1>
+                <div class="tagline">Google Ads That Actually Work</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>Tracking audit</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-06-09</strong></span>
+                <span>Vertical: <strong>Ecommerce — GLP-1</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- Overall score -->
+        <div class="overall-score">
+            <div class="score-value">84%</div>
+            <div class="score-grade">Advanced — solid foundation with identified gaps</div>
+            <div style="max-width: 300px; margin: 12px auto 0;">
+                <div class="progress-bar">
+                    <div class="fill good" style="width: 84%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive read -->
+        <h2>Executive read</h2>
+        <div style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 24px; margin: 16px 0;">
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">84% Advanced means the core conversion signal is real and Smart Bidding can operate on it. The setup is more sophisticated than average — a server-side GTM container on <code>abc.gimme.care</code> handles the primary Google Ads firing, and two separate conversion actions cleanly separate new customers (primary, bidding signal) from all purchases (secondary, revenue reporting). That architecture is correct.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">Three things need attention. The most important: <strong>both browser and server containers are actively firing Google Ads conversion tags with identical conversion labels</strong> — <code>gads__purchase</code> in the browser fires the same label (<code>Z80BCMPQo6wbEJGPq9BB</code>) as <code>gads - purchase</code> on the server, and same pattern for the first-time purchase tag. Google Ads deduplicates using the <code>order_id</code> / <code>oid=</code> parameter. If transaction IDs are being passed in both layers, deduplication is handling it and you are fine. If not, every purchase is counting twice — once from the browser hit, once from the server hit. This is the single highest-priority item to verify. Check via GTM Preview mode or the Google Ads Tag Diagnostics page for duplicate conversion requests on the same order ID. Second: <strong>cart data is disabled</strong> (<code>enableProductReporting: false</code>) on both server-side purchase tags. Gimme runs Shopping and has a Merchant Center account — turning on cart data enables product-level ROAS reporting and is a straightforward GTM change. Third: <strong>the <code>cookie consent - gimme care</code> tag is paused</strong> in the browser container. If Consent Mode is not active, Google cannot model conversions from users who deny cookies — this is recoverable lost signal. Unpause and verify via Chrome DevTools.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">What is NOT a problem: "Purchase (GTM)" is not a legacy or redundant pixel — it intentionally tracks all purchases (new + existing customers) as a secondary reporting action, while the primary "First Time Purchase (GTM) - SST" tracks new customers only. That is a clean and deliberate setup. The <code>url_parameters__capture_and_store</code> and <code>url_parameters__decorate_links</code> tags being paused is expected — they were replaced by <code>utm_carry</code>. OCT diagnostics (D36-D41) are skipped by design — ecommerce tracks onsite, not CRM imports.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0;">A fresh LP audit (2026-05-27, 13 days, 85% Good) at <code>context/analysis/lp-audit.md</code> flagged the intake consent banner on step 1 as inconsistent across entry paths (INT-01). This is directly connected to the paused consent tag finding above — if Consent Mode is not firing correctly, the LP audit's CVR data for the intake funnel is partly a tracking artefact, not purely page quality. Fix Consent Mode before drawing conclusions from intake CVR numbers. Re-run only if you want fresher data.</p>
+        </div>
+
+        <!-- Module scores -->
+        <h2>Module scores</h2>
+        <div class="scores-grid">
+            <div class="score-card">
+                <div class="module-name">Completeness</div>
+                <div class="module-score" style="color: var(--color-info);">87.5%</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Good — 70/80</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 87.5%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Tag health — API</div>
+                <div class="module-score" style="color: var(--color-success);">100%</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Excellent — 40/40</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill excellent" style="width: 100%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Attribution</div>
+                <div class="module-score" style="color: var(--color-info);">80%</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Good — 20/25</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 80%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Hygiene</div>
+                <div class="module-score" style="color: var(--color-success);">90%</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Excellent — 18/20</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill excellent" style="width: 90%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Advanced</div>
+                <div class="module-score" style="color: var(--color-info);">75%</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Good — 3/4</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 75%;"></div></div></div>
+            </div>
+            <div class="score-card" style="opacity: 0.6;">
+                <div class="module-name">Consent + DevTools</div>
+                <div class="module-score" style="color: var(--color-text-light);">—</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Pending</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill" style="width: 0%; background: var(--color-skip);"></div></div></div>
+            </div>
+        </div>
+
+        <!-- Critical issues -->
+        <h2>Critical issues</h2>
+        <p style="color: var(--color-success); font-weight: 600;">No critical issues found. All FAIL diagnostics are in pending DevTools modules.</p>
+        <div class="issue-card warning">
+            <div class="issue-id">D46 — Advanced</div>
+            <div class="issue-title">Cart data disabled on server-side purchase tags</div>
+            <div class="issue-impact">Product-level ROAS not available in Shopping. Affects feed-level bidding optimisation.</div>
+            <div style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 4px;"><strong>Fix:</strong> In GTM server container, open <code>gads - purchase</code> and <code>gads - first time purchase</code>. Set <code>enableProductReporting: true</code> and pass an <code>items</code> array from the dataLayer.</div>
+        </div>
+        <div class="issue-card warning">
+            <div class="issue-id">D25 — Consent</div>
+            <div class="issue-title">Cookie consent tag is PAUSED — Consent Mode v2 likely inactive</div>
+            <div class="issue-impact">Google cannot model conversions from users who decline cookies. Recoverable lost signal. Also connected to LP audit INT-01 finding.</div>
+            <div style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 4px;"><strong>Fix:</strong> Unpause <code>cookie consent - gimme care</code> in browser container, publish, then verify <code>gcs=</code> appears in Google Ads network requests via Chrome DevTools.</div>
+        </div>
+
+        <!-- Completeness module -->
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Completeness (D01–D07)</h3>
+                <span class="score-badge good">87.5% — Good</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 55px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 60px;">Tier</th>
+                        <th style="width: 70px;">Status</th>
+                        <th style="width: 60px;">Points</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D01</strong></td>
+                        <td>Coverage</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>15/15</td>
+                        <td>"First Time Purchase (GTM) - SST" — PURCHASE, ENABLED, 38,307 lifetime conversions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D02</strong></td>
+                        <td>Primary / secondary</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>15/15</td>
+                        <td>One PURCHASE primary (new customers); all purchases + funnel events correctly secondary</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D03</strong></td>
+                        <td>Duplicate detection</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>10/10</td>
+                        <td>"Purchase (GTM)" = all purchases; "First Time Purchase (GTM) - SST" = new customers only — intentionally different events, not duplicates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D04</strong></td>
+                        <td>Naming consistency</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td>3/5</td>
+                        <td>"checkout - first time" breaks the "(Source)" suffix convention used by all other actions; lowercase, no source tag</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D05</strong></td>
+                        <td>Goal category</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>10/10</td>
+                        <td>All categories semantically correct: PURCHASE, SIGNUP, ADD_TO_CART, BEGIN_CHECKOUT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D06</strong></td>
+                        <td>Counting method</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td>8/15</td>
+                        <td>Primary correctly MANY_PER_CLICK. "Purchase (GTM)" and "Purchase (Posthog)" both ONE_PER_CLICK — wrong for ecommerce purchase events even as secondary reporting actions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D07</strong></td>
+                        <td>Account defaults</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>10/10</td>
+                        <td>Single PURCHASE primary account-wide; all 17 campaigns use account-default goals (CUSTOMER level); no campaign overrides</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tag Health module -->
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Tag health (D08–D17)</h3>
+                <span class="score-badge excellent">100% — Excellent (API tier)</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 55px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 80px;">Tier</th>
+                        <th style="width: 70px;">Status</th>
+                        <th style="width: 60px;">Points</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D08</strong></td>
+                        <td>Action status</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>15/15</td>
+                        <td>All 7 conversion actions ENABLED including primary</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D09</strong></td>
+                        <td>Volume zero-check</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>15/15</td>
+                        <td>1,045 primary convs last 7 days (Jun 2–8); no zero-conversion days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D10</strong></td>
+                        <td>Volume anomaly</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>10/10</td>
+                        <td>Prior 7d: 1,178 convs; Last 7d: 1,045 — 11.3% decline, well under 30% threshold. Jun 6–8 dip consistent with 8-day conversion lag</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D11</strong></td>
+                        <td>Google Tag presence</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>—</td>
+                        <td>Run <code>/tracking-audit tag-health --url=https://gimme.care/lp/semaglutide</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>D12</strong></td>
+                        <td>Conversion Linker</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>—</td>
+                        <td>Conversion linker tag is ACTIVE in both containers — verify cookies set on landing page</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D13</strong></td>
+                        <td>Tag firing</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>—</td>
+                        <td><strong>Priority:</strong> verify browser + server are deduplicating via order_id (see Priority 1 in Recommendations)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D14</strong></td>
+                        <td>Transaction ID</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>—</td>
+                        <td>Critical for SST deduplication verification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D15</strong></td>
+                        <td>Dynamic value</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>—</td>
+                        <td><code>{{value}}</code> variable used — verify it resolves dynamically at purchase</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D16</strong></td>
+                        <td>Currency</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>—</td>
+                        <td><code>{{currency}}</code> variable used — verify resolves to "USD"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D17</strong></td>
+                        <td>Backend cross-check</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">Manual</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>—</td>
+                        <td>Compare Posthog/backend 30-day order count to Google Ads 38,307 primary convs</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Consent module -->
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Consent (D25–D29)</h3>
+                <span class="score-badge needs-attention">Partially Pending</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 55px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 100px;">Tier</th>
+                        <th style="width: 70px;">Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D25</strong></td>
+                        <td>CM v2 active</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">GTM + DevTools</span></td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td><code>cookie consent - gimme care</code> tag is <strong>PAUSED</strong> in browser container. Consent Mode likely not active — unpause and verify <code>gcs=</code> in network requests</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D26</strong></td>
+                        <td>Conversion modeling</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td><code>metrics.conversions</code> field not in current pull — re-pull needed to compare observed vs modeled</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D27</strong></td>
+                        <td>Modeling uplift</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>Depends on D26</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D28</strong></td>
+                        <td>CMP functionality</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">DevTools</span></td>
+                        <td><span class="status-pill skip">PENDING</span></td>
+                        <td>Run Chrome DevTools check on site URL to verify consent banner interaction</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D29</strong></td>
+                        <td>Consent denial rate</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">Manual</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>Requires CMP dashboard data</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Attribution module -->
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Attribution (D30–D35)</h3>
+                <span class="score-badge good">80% — Good</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 55px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 70px;">Tier</th>
+                        <th style="width: 70px;">Status</th>
+                        <th style="width: 60px;">Points</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D30</strong></td>
+                        <td>Attribution model</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>5/5</td>
+                        <td>All 7 actions use GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D31</strong></td>
+                        <td>Click-through window</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td>5/10</td>
+                        <td>Primary shows <strong>30 days</strong> in API; business.md documents <strong>90 days</strong> — discrepancy. 30 days covers 8-day lag (3.75×) so no bidding harm, but documentation needs correcting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D32</strong></td>
+                        <td>View-through window</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>5/5</td>
+                        <td>1-day VTC on primary — correct; Search + Shopping only account</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D33</strong></td>
+                        <td>Engaged-view window</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>—</td>
+                        <td>No Video/YouTube campaigns active</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D34</strong></td>
+                        <td>Over-attribution ratio</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">Manual</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>—</td>
+                        <td>Backend data not provided; pull 30-day order count from Posthog/backend</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D35</strong></td>
+                        <td>Conversion lag awareness</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>5/5</td>
+                        <td>8-day lag explicitly documented in business.md and coded into <code>config/ads-context.config.json</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- OCT -->
+        <div class="module-section" style="opacity: 0.7;">
+            <div class="module-header">
+                <h3>OCT (D36–D41)</h3>
+                <span class="score-badge" style="background: #f1f5f9; color: #64748b;">Skipped — Ecommerce</span>
+            </div>
+            <p style="color: var(--color-text-light); margin: 0;">Onsite purchases tracked via GACT pixel (SST). OCT not applicable. The Posthog UPLOAD_CLICKS actions are funnel analytics imports, not CRM-stage OCT. All D36–D41 skipped by design.</p>
+        </div>
+
+        <!-- Hygiene module -->
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Hygiene (D42–D45)</h3>
+                <span class="score-badge excellent">90% — Excellent</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 55px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 70px;">Tier</th>
+                        <th style="width: 70px;">Status</th>
+                        <th style="width: 60px;">Points</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D42</strong></td>
+                        <td>Conversion adjustments</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>—</td>
+                        <td>No adjustment actions configured. At ~$4M/month consider setting up for subscription cancellations/refunds</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D43</strong></td>
+                        <td>Data exclusions</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>—</td>
+                        <td>D10 PASS — no volume anomalies, check not triggered</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D44</strong></td>
+                        <td>Deprecated actions</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>5/5</td>
+                        <td>"Purchase (GTM)" is intentionally active (all purchases reporting action). No deprecated actions found</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D45</strong></td>
+                        <td>GA4 import duplication</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>15/15</td>
+                        <td>No GA4-import + GACT pairs both set to primary. No double-counting risk from GA4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Advanced module -->
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Advanced (D46–D50)</h3>
+                <span class="score-badge good">75% — Good</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 55px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 70px;">Tier</th>
+                        <th style="width: 70px;">Status</th>
+                        <th style="width: 60px;">Points</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D46</strong></td>
+                        <td>Cart data tracking</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">GTM</span></td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>0/5</td>
+                        <td><code>enableProductReporting: false</code> on both server-side purchase tags. Cart-level items/SKU/price NOT sent to Google Ads. Affects Shopping product-level ROAS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D47</strong></td>
+                        <td>New customer tracking</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>2/2</td>
+                        <td>New customer tracking implemented via dedicated conversion action ("First Time Purchase (GTM) - SST") — not a parameter, a separate event. Clean approach</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D48</strong></td>
+                        <td>Custom variables</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">Manual</span></td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>—</td>
+                        <td>Not assessed — check Google Ads › Goals › Conversions › Settings for custom variable configuration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D49</strong></td>
+                        <td>Cross-device assessment</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">API</span></td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>2/2</td>
+                        <td>~4,700+ monthly primary convs — well above 500 threshold for reliable cross-device modelling</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D50</strong></td>
+                        <td>Maturity score</td>
+                        <td><span style="font-size: 0.8rem; color: var(--color-text-light);">—</span></td>
+                        <td><span class="score-badge good" style="font-size: 0.8rem; padding: 2px 10px;">84%</span></td>
+                        <td>—</td>
+                        <td>Advanced — solid foundation with identified gaps in cart data and consent</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Manual checks required -->
+        <h2>Manual checks required</h2>
+        <div class="recommendations">
+            <p style="color: var(--color-text-light); margin-bottom: 12px;">The following checks require manual verification and could not be automated:</p>
+            <table style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th style="width: 160px;">Check</th>
+                        <th>Instructions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>D13 — Deduplication</strong></td>
+                        <td>GTM Preview: complete a test purchase, verify <code>order_id</code> present in both browser and server conversion hits with identical values</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D17 — Backend cross-check</strong></td>
+                        <td>Pull 30-day order count from Posthog or order platform. Compare to Google Ads primary convs (38,307 lifetime)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D25 — Consent Mode</strong></td>
+                        <td>Unpause consent tag, then run Chrome DevTools on <code>https://gimme.care/lp/semaglutide</code> — look for <code>gcs=</code> and <code>gcd=</code> in Google Ads network requests</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D34 — Over-attribution</strong></td>
+                        <td>Same data as D17. Calculate: Google Ads 30d convs ÷ backend 30d orders — ratio &gt;2.0 suggests double-counting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D46 — Cart data</strong></td>
+                        <td>After enabling <code>enableProductReporting: true</code>, verify <code>items</code> array present in dataLayer purchase event</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D48 — Custom variables</strong></td>
+                        <td>Check Google Ads › Goals › Conversions › Settings for any custom variable configuration</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Recommendations -->
+        <h2>Recommendations</h2>
+        <div class="recommendations">
+            <ol>
+                <li style="padding: 12px 0; border-bottom: 1px solid var(--color-border);"><strong>Priority 1 — Verify browser + server deduplication (highest risk).</strong> Both <code>gads__purchase</code> (browser) and <code>gads - purchase</code> (server) fire the same conversion label <code>Z80BCMPQo6wbEJGPq9BB</code>. Open GTM Preview mode, complete a test purchase, and check whether both a browser-side and server-side conversion hit fire. Verify whether both include the same <code>order_id</code>. If no <code>order_id</code> is present in one or both, you are double-counting. Fix: either disable the browser-side Google Ads tags and let SST handle exclusively, or ensure <code>order_id</code> is passed in the browser tags for deduplication.</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid var(--color-border);"><strong>Priority 2 — Unpause the consent tag and verify Consent Mode v2.</strong> The <code>cookie consent - gimme care</code> tag is PAUSED in the browser container. Unpause it, publish, then run Chrome DevTools on the landing page to verify <code>gcs=</code> and <code>gcd=</code> parameters appear in Google Ads network requests. Also directly connected to the LP audit's intake consent banner finding (INT-01) — fix this before drawing conclusions from intake CVR numbers.</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid var(--color-border);"><strong>Priority 3 — Enable cart data on purchase tags.</strong> In the server container (abc.gimme.care), open both <code>gads - purchase</code> and <code>gads - first time purchase</code> tags and set <code>enableProductReporting: true</code>. Also pass an <code>items</code> array from the dataLayer. This enables product-level ROAS reporting in Shopping.</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid var(--color-border);"><strong>Priority 4 — Fix counting method on secondary purchase actions (D06).</strong> "Purchase (GTM)" and "Purchase (Posthog)" both use ONE_PER_CLICK. For ecommerce purchase events these should be MANY_PER_CLICK so repeat buyers are counted correctly in those reporting columns. Change in Google Ads › Goals › Conversions › [action] › Settings › Count.</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid var(--color-border);"><strong>Priority 5 — Fix click-through window documentation (D31).</strong> business.md says 90 days; API shows 30 days. Check Google Ads › Goals › Conversions › First Time Purchase (GTM) - SST › Settings to confirm the actual setting, then update business.md to match.</li>
+                <li style="padding: 12px 0;"><strong>Priority 6 — Rename "checkout - first time" (D04).</strong> Rename to "Checkout — First Time (GTM)" to match the naming convention used by all other actions. Minor but keeps reporting clean.</li>
+            </ol>
+        </div>
+
+        <!-- Data freshness -->
+        <h2>Data freshness</h2>
+        <div class="module-section">
+            <table style="margin: 0;">
+                <thead>
+                    <tr>
+                        <th>Data source</th>
+                        <th style="width: 140px;">Pulled</th>
+                        <th style="width: 100px;">Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>conversions-audit.csv</td><td>2026-06-09</td><td>0 days</td></tr>
+                    <tr><td>conversions-daily.csv</td><td>2026-06-09</td><td>0 days</td></tr>
+                    <tr><td>conversions-attribution.csv</td><td>2026-06-09</td><td>0 days</td></tr>
+                    <tr><td>conversion-goal-config.csv</td><td>2026-06-09</td><td>0 days</td></tr>
+                    <tr><td>GTM browser container (GTM-WD9BGSN6)</td><td>2026-06-09</td><td>0 days</td></tr>
+                    <tr><td>GTM server container (GTM-WSSJTC7X)</td><td>2026-06-09</td><td>0 days</td></tr>
+                    <tr><td>business.md</td><td>2026-05-27</td><td>13 days</td></tr>
+                    <tr><td>lp-audit.md (peer — 85% Good)</td><td>2026-05-27</td><td>13 days — Fresh (≤14d window)</td></tr>
+                    <tr><td>search-term-audit.md (peer — 51% Needs Attention)</td><td>2026-05-27</td><td>13 days — Stale (&gt;7d window)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <div>
+                <span class="company-name">Tweaking Agency</span>
+                &nbsp;— Google Ads That Actually Work
+            </div>
+            <div>
+                <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a>
+                &nbsp;·&nbsp;
+                <a href="https://tweaking.agency">tweaking.agency</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

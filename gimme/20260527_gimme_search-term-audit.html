@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Term Audit — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --color-skip: #94a3b8;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 900px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); }
+        .meta-details span { white-space: nowrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        .score-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: var(--border-radius); font-weight: 700; font-size: 1rem; }
+        .score-badge.excellent { background: #dcfce7; color: #166534; }
+        .score-badge.good { background: #dbeafe; color: #1e40af; }
+        .score-badge.needs-attention { background: #fef3c7; color: #92400e; }
+        .score-badge.critical { background: #fee2e2; color: #991b1b; }
+        .overall-score { text-align: center; padding: 32px; margin: 24px 0; background: var(--color-bg-alt); border-radius: var(--border-radius); border: 1px solid var(--color-border); }
+        .overall-score .score-value { font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .overall-score .score-grade { font-size: 1.1rem; color: var(--color-text-light); margin-top: 4px; }
+        .progress-bar { width: 100%; height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden; }
+        .progress-bar .fill { height: 100%; border-radius: 4px; }
+        .progress-bar .fill.excellent { background: var(--color-success); }
+        .progress-bar .fill.good { background: var(--color-info); }
+        .progress-bar .fill.needs-attention { background: var(--color-warning); }
+        .progress-bar .fill.critical { background: var(--color-danger); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .status-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
+        .status-pill.pass { background: #dcfce7; color: #166534; }
+        .status-pill.warn { background: #fef3c7; color: #92400e; }
+        .status-pill.fail { background: #fee2e2; color: #991b1b; }
+        .status-pill.skip { background: #f1f5f9; color: #64748b; }
+        .module-section { margin: 24px 0; padding: 24px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--border-radius); }
+        .module-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .module-header h3 { margin: 0; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .module-name { font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .module-score { font-size: 1.6rem; font-weight: 800; font-family: var(--font-heading); }
+        .score-card .module-grade { font-size: 0.8rem; margin-top: 4px; }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        .report-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .layer-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; }
+        .layer-badge.active { background: #fef3c7; color: #92400e; }
+        .layer-badge.clear { background: #dcfce7; color: #166534; }
+        .h-tag { display: inline-block; padding: 1px 8px; background: var(--color-primary); color: #fff; border-radius: 10px; font-size: 0.75rem; font-weight: 600; margin-left: 4px; }
+        .blocking-tag { display: inline-block; padding: 1px 8px; background: var(--color-danger); color: #fff; border-radius: 10px; font-size: 0.75rem; font-weight: 600; margin-left: 4px; }
+        code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; font-family: monospace; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, .score-badge, .status-pill, .score-card, thead, .overall-score { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .container { max-width: 100%; padding: 0 16px; }
+            .module-section { break-inside: avoid; }
+            h2, h3 { break-after: avoid; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .report-header .container { flex-direction: column; text-align: center; }
+            .report-meta .container { flex-direction: column; }
+            .meta-details { flex-wrap: wrap; gap: 8px; }
+            .scores-grid { grid-template-columns: 1fr 1fr; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/file:///Users/stuartposternak_mini/Desktop/AI agent week - PPC Mastery/my-brand/logo.svg" class="report-logo" alt="Tweaking Agency logo">
+            <div>
+                <h1>Tweaking Agency</h1>
+                <div class="tagline">Google Ads That Actually Work</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>Search term audit</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-05-27</strong></span>
+                <span>Vertical: <strong>Ecommerce — GLP-1</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- Overall score -->
+        <div class="overall-score">
+            <div class="score-value">51%</div>
+            <div class="score-grade">Needs attention — roughly half of search-term governance is working</div>
+            <div style="max-width: 300px; margin: 12px auto 0;">
+                <div class="progress-bar">
+                    <div class="fill needs-attention" style="width: 51%;"></div>
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px;">
+                60d main · 120d n-grams · 8d lag · 451,183 terms (Period A) · 406,598 (Period B)
+            </div>
+        </div>
+
+        <!-- Executive read -->
+        <h2>Executive read</h2>
+        <div style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 24px; margin: 16px 0;">
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;"><strong>51/100 means roughly half your search-term governance is working, but more than a quarter of evaluated spend (~$1.15M of ~$4.2M) is on queries that never converted in-window — and the biggest dollar risk is not "bad keywords" but core product terms that convert at CPA well above target.</strong> That pattern matches your business note that account CPA is climbing without a confirmed root cause.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;"><strong>Do these three things this week, in order:</strong></p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">First, <strong>do not run a broad negation sweep on core GLP-1 terms</strong> (<code>compounded tirzepatide</code>, <code>glp 1</code>, <code>cheapest tirzepatide</code>, <code>zepbound</code>, etc.). <strong>489 of 638 "underperforming" terms are core-relevant</strong> (~$785k spend flagged) — these are conversion/LP/intake problems, not traffic-quality problems. Route to <code>/lp-auditor</code> and <code>/offer-auditor</code> and validate intake CVR before blaming search terms.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">Second, <strong>negate competitor and navigational waste that is clearly off-brand</strong> — top zero-conversion examples include <code>coreagerx</code>, <code>yucca health</code>, <code>hims tirzepatide</code>, <code>weightrx</code>, and competitor/review n-grams (<code>trimrx</code>, <code>slimdownrx</code>, <code>com reviews</code>). <strong>~$1.15M non-converting spend (27.4% of term spend)</strong> — a large share is safe structural cleanup after human review.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">Third, <strong>attach <code>Search_Brand</code> to your shared negative lists</strong> (only active campaign missing shared-list linkage).</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0 0 12px;">What is NOT a problem: zero negative conflicts (ST-D08), zero repeated negative consolidation debt (ST-D09/D10), zero legacy <code>+modified +broad</code> negatives (ST-D11), no close-variant drift (Module 4 clean), no active PMax search-term leakage. <code>Search_Tirzepatide_Semaglutide</code> and <code>Shopping_GLP-1_Subs</code> already have campaign-level negatives.</p>
+            <p style="font-size: 1rem; line-height: 1.7; margin: 0;">No fresh peer audit reports existed in context at time of audit — upstream tracking and LP checks were flagged as needed (tracking audit subsequently completed 2026-06-09 at 84%). Score trend: baseline run — no prior score in log.</p>
+        </div>
+
+        <!-- Diagnosis -->
+        <h2>Diagnosis</h2>
+        <div style="background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 24px; margin: 16px 0;">
+            <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 0;"><strong>The problem is at the Business + Conversion layer first, Traffic cleanup second.</strong> Core-intent queries are spending heavily and converting below the effective CPA ceiling (~$458 at 1.5× $305 campaign inline target), which explains climbing account CPA better than "we need more negatives." Competitor/navigational queries are real waste (~27% non-converting spend share) but are smaller than core-term inefficiency. Start with intake/LP and ad group tCPA alignment ($650 in account vs $450 strategic target), then run a scoped negation cycle on non-core competitor terms.</p>
+        </div>
+
+        <!-- Evidence ladder -->
+        <h2>Evidence ladder</h2>
+
+        <div style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1rem;">Measurement layer</h3>
+                <span class="layer-badge active">ACTIVE</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                No <code>tracking-audit.md</code> on file at audit time — cannot rule out attribution lag or conversion undercount
+                <span class="h-tag">→ H1 (unverified)</span>
+                <span class="blocking-tag">BLOCKING</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                Primary conversion: First Time Purchase (GTM) - SST; 8-day analysis lag applied
+                <span class="h-tag">→ H1</span>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1rem;">Business layer</h3>
+                <span class="layer-badge active">ACTIVE</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                Account CPA ~$409 vs $400 target; NB ad group tCPA $650 vs $450 strategic goal (changelog May 22)
+                <span class="h-tag">→ H2</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                Business.md: intake form CVR suspected bottleneck, root cause not identified
+                <span class="h-tag">→ H2</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                489/638 underperforming terms are core product language
+                <span class="h-tag">→ H2</span>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1rem;">Traffic layer</h3>
+                <span class="layer-badge active">ACTIVE</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                27.4% of term spend ($1.15M) on zero-conversion queries
+                <span class="h-tag">→ H3</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                Top non-converters: competitor/navigational (<code>coreagerx</code>, <code>hims tirzepatide</code>, <code>yucca health</code>, <code>weightrx</code>)
+                <span class="h-tag">→ H3</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                27 non-converting n-grams + 93 inefficient n-grams (non-core: <code>trimrx</code>, <code>slimdownrx</code>, <code>com reviews</code>, Spanish <code>para</code>/<code>de</code>)
+                <span class="h-tag">→ H3</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                <code>Search_Brand</code> not linked to shared negative lists
+                <span class="h-tag">→ H3</span>
+            </div>
+            <div style="border-left: 3px solid var(--color-border); padding: 8px 16px; margin: 8px 0; font-size: 0.9rem; line-height: 1.6;">
+                2,879 promotion candidates; keyword coverage ratio 40%
+                <span class="h-tag">→ H3</span>
+            </div>
+        </div>
+
+        <!-- Module scores -->
+        <h2>Module scores</h2>
+        <div class="scores-grid">
+            <div class="score-card">
+                <div class="module-name">Search term quality</div>
+                <div class="module-score" style="color: var(--color-danger);">5/25</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Critical — 20%</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill critical" style="width: 20%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Negative coverage</div>
+                <div class="module-score" style="color: var(--color-info);">19/25</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Good — 76%</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 76%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">N-grams</div>
+                <div class="module-score" style="color: var(--color-warning);">10/20</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Needs attention — 50%</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill needs-attention" style="width: 50%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Close variants</div>
+                <div class="module-score" style="color: var(--color-success);">15/15</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Excellent — 100%</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill excellent" style="width: 100%;"></div></div></div>
+            </div>
+            <div class="score-card">
+                <div class="module-name">Promotion &amp; PMax</div>
+                <div class="module-score" style="color: var(--color-danger);">0/11</div>
+                <div class="module-grade" style="color: var(--color-text-light);">Critical — 0%</div>
+                <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill critical" style="width: 0%;"></div></div></div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <h2>Actions</h2>
+
+        <!-- Investigate first -->
+        <div style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span style="font-size: 1.2rem;">&#128269;</span>
+                <h3 style="margin: 0; color: var(--color-danger);">Investigate first</h3>
+                <span style="font-size: 0.8rem; color: var(--color-text-light);">— blocking, do not negate core terms yet</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hypothesis</th>
+                        <th style="width: 200px;">Skill</th>
+                        <th>What this unblocks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Conversion / intake bottleneck — business.md flags climbing CPA with unconfirmed constraint</td>
+                        <td><code>/lp-auditor</code> on intake funnels</td>
+                        <td>Confirms whether core GLP-1 term underperformance is a LP/intake problem before any negation</td>
+                    </tr>
+                    <tr>
+                        <td>Tracking confidence — no recent tracking audit on file (at time of this report)</td>
+                        <td><code>/tracking-specialist</code></td>
+                        <td>Validates conversion signal before large negation cycles (tracking audit completed 2026-06-09 at 84%)</td>
+                    </tr>
+                    <tr>
+                        <td>Target alignment — ad group tCPA $650 vs $450 strategic target; recent increases in changelog</td>
+                        <td><code>/strategy-specialist</code></td>
+                        <td>Ensures underperformance flags are based on the right CPA ceiling before acting on them</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Structural fix needed -->
+        <div style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span style="font-size: 1.2rem;">&#128295;</span>
+                <h3 style="margin: 0; color: var(--color-warning);">Structural fix needed</h3>
+                <span style="font-size: 0.8rem; color: var(--color-text-light);">— route upstream, never negate</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Issue</th>
+                        <th style="width: 80px;">Terms</th>
+                        <th style="width: 100px;">Flagged spend</th>
+                        <th>Routes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>489 core-relevant underperforming terms — e.g. <code>compounded tirzepatide</code> ($60k, CPA ~$470), <code>glp 1</code> ($33k, CPA ~$624), <code>cheapest tirzepatide</code>, <code>zepbound</code>. Root cause: LP, offer, pricing presentation, intake UX — not traffic quality</td>
+                        <td>489</td>
+                        <td>~$785k</td>
+                        <td><code>/lp-auditor</code>, <code>/offer-auditor</code> — do NOT negate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Act now -->
+        <div style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span style="font-size: 1.2rem;">&#9989;</span>
+                <h3 style="margin: 0; color: var(--color-success);">Act now</h3>
+                <span style="font-size: 0.8rem; color: var(--color-text-light);">— safe regardless of cascade state</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">#</th>
+                        <th>Action</th>
+                        <th style="width: 80px;">Terms</th>
+                        <th style="width: 220px;">Optimizer command</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Review then negate competitor / navigational non-converters (<code>coreagerx</code>, <code>hims tirzepatide</code>, <code>yucca health</code>, <code>mochi health</code>, <code>brello</code>)</td>
+                        <td>Review list</td>
+                        <td><code>/search-term-optimizer negate</code></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Review then negate 27 non-converting n-grams — non-core only (<code>weightrx</code>, <code>com reviews</code>, <code>slimdownrx</code>, <code>trimrx tirzepatide</code>); exclude <code>fda approved</code> / <code>zepbound tirzepatide</code> if core-intent</td>
+                        <td>27</td>
+                        <td><code>/search-term-optimizer ngrams</code></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Review then negate 93 inefficient n-grams — confirmed off-brand patterns (<code>yucca</code>, <code>slimdownrx</code>, <code>trimrx tirzepatide</code>)</td>
+                        <td>93</td>
+                        <td><code>/search-term-optimizer ngrams</code></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Link <code>Search_Brand</code> campaign to shared negative lists (<code>Search Term Exclusions</code> + n-gram lists)</td>
+                        <td>1 campaign</td>
+                        <td><code>/search-term-optimizer</code> list hygiene</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Audit 2,260 safe-list conflicts — shared list vs protected terms</td>
+                        <td>2,260</td>
+                        <td><code>/search-term-optimizer</code> list hygiene</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Promote 2,879 high-performing search terms to keywords — after upstream cascade is clear; respect match-type setup; watch 168 cross-campaign duplicates</td>
+                        <td>2,879</td>
+                        <td><code>/search-term-optimizer promote</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Do NOT negate -->
+        <div style="margin-bottom: 24px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span style="font-size: 1.2rem;">&#9888;&#65039;</span>
+                <h3 style="margin: 0; color: var(--color-warning);">Do NOT negate</h3>
+                <span style="font-size: 0.8rem; color: var(--color-text-light);">— relevant / profitable, must stay</span>
+            </div>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.7;">
+                <li><strong>Core GLP-1 and treatment terms</strong> (<code>semaglutide</code>, <code>tirzepatide</code>, <code>glp</code>, <code>zepbound</code>, <code>mounjaro</code>, <code>compounded *</code>, <code>cheapest *</code> when on-brand) — fix the conversion path first, the traffic is legitimate</li>
+                <li><strong>Terms flagged only because campaign inline tCPA ($305) is below actual ad group targets ($650)</strong> — reconcile bidding targets before using flags as negation justification; these terms may be performing correctly against the true target</li>
+            </ul>
+        </div>
+
+        <!-- Module detail sections -->
+        <h2>Module details</h2>
+
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Module 1 — Search term quality</h3>
+                <span class="score-badge critical">5/25 — Critical</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 80px;">Verdict</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ST-D01</strong></td>
+                        <td>Irrelevant spend %</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>27.4% of $4.20M ($1.15M non-converting spend)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D02</strong></td>
+                        <td>Non-converting terms</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>26,854 terms, $1.15M spend</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D03</strong></td>
+                        <td>Underperforming</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>638 terms (489 core-relevant — see Structural fix needed)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D04</strong></td>
+                        <td>Foreign language</td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td>Spanish clusters in n-grams (<code>para</code>, <code>de</code>, <code>inyecciones</code>)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D05</strong></td>
+                        <td>Trending terms</td>
+                        <td><span class="status-pill skip">INFO</span></td>
+                        <td>23,209 emerging terms identified — monitor for promotion candidates</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Module 2 — Negative keyword coverage</h3>
+                <span class="score-badge good">19/25 — Good</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 80px;">Verdict</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ST-D06</strong></td>
+                        <td>Campaigns without negatives</td>
+                        <td><span class="status-pill pass">PASS*</span></td>
+                        <td>0 active spend campaigns missing negatives (*6 paused/legacy also show gaps — ignore unless reactivated)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D07</strong></td>
+                        <td>Campaigns without shared lists</td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td><code>Search_Brand</code> active campaign not linked to shared negative lists; 6 paused also unlinked</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D08</strong></td>
+                        <td>Negative conflicts</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>0 conflicts found</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D09</strong></td>
+                        <td>Repeated ad-group negatives</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>0 repeated negatives found</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D10</strong></td>
+                        <td>Repeated campaign negatives</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>0 repeated negatives found</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D11</strong></td>
+                        <td>Legacy +modified +broad</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>0 legacy BMM negatives</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D12</strong></td>
+                        <td>Catalog completeness</td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td>Competitor/review/discount patterns under-covered relative to spend on those query types</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Module 3 — N-gram analysis</h3>
+                <span class="score-badge needs-attention">10/20 — Needs attention</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 80px;">Verdict</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ST-D13</strong></td>
+                        <td>Non-converting n-grams</td>
+                        <td><span class="status-pill warn">WARN</span></td>
+                        <td>27 n-grams identified</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D14</strong></td>
+                        <td>Inefficient n-grams</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>93 n-grams above CPA threshold</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D15</strong></td>
+                        <td>Shared list staleness</td>
+                        <td><span class="status-pill skip">INFO</span></td>
+                        <td>Manual review recommended to confirm lists reflect current n-gram findings</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D16</strong></td>
+                        <td>Volume concentration</td>
+                        <td><span class="status-pill skip">INFO</span></td>
+                        <td>Prioritise competitor/review n-grams first by spend volume</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Module 4 — Close variant monitoring</h3>
+                <span class="score-badge excellent">15/15 — Excellent</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 80px;">Verdict</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ST-D17</strong></td>
+                        <td>Performance drift</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>0 close-variant drift candidates</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D18</strong></td>
+                        <td>Spend share</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>0 high-spend unintended variants</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D19</strong></td>
+                        <td>Unintended expansion</td>
+                        <td><span class="status-pill pass">PASS</span></td>
+                        <td>No expansion flags detected</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="module-section">
+            <div class="module-header">
+                <h3>Module 5 — Promotion &amp; PMax</h3>
+                <span class="score-badge critical">0/11 — Critical</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 12px;">ST-D25/D26 skipped — no PMax search term data available. Module scored out of 11.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">ID</th>
+                        <th>Diagnostic</th>
+                        <th style="width: 80px;">Verdict</th>
+                        <th>Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ST-D20</strong></td>
+                        <td>High performers not keywords</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>2,879 converting search terms not yet promoted to keywords</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D21</strong></td>
+                        <td>Duplicates across campaigns</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>168 terms appearing in multiple campaigns — may split budget or cannicalise</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D22</strong></td>
+                        <td>Coverage ratio</td>
+                        <td><span class="status-pill fail">FAIL</span></td>
+                        <td>40% of converting terms are already keywords — 60% promotion gap</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D25</strong></td>
+                        <td>PMax brand query %</td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>No PMax search term data available</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST-D26</strong></td>
+                        <td>PMax / Search overlap</td>
+                        <td><span class="status-pill skip">SKIP</span></td>
+                        <td>No PMax search term data available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Next recommended action -->
+        <h2>Next recommended action</h2>
+        <div style="background: var(--color-bg-alt); border-left: 4px solid var(--color-primary); padding: 16px 20px; margin: 16px 0; font-size: 0.95rem; line-height: 1.6;">
+            Confirm intake CVR root cause via <code>/lp-auditor</code> before running any negation cycles — 489 core-relevant underperforming terms (~$785k flagged spend) are a conversion problem, not a traffic problem. Safe actions (competitor negation, shared list linkage) can run in parallel on non-core terms using <code>/search-term-optimizer negate</code> and <code>/search-term-optimizer ngrams</code>.
+        </div>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <div>
+                <span class="company-name">Tweaking Agency</span>
+                &nbsp;— Google Ads That Actually Work
+            </div>
+            <div>
+                <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a>
+                &nbsp;·&nbsp;
+                <a href="https://tweaking.agency">tweaking.agency</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

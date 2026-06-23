@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing page audit — Gimme Care | PPCOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --color-skip: #94a3b8;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 900px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; border: none; padding: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        .score-badge { display: inline-flex; align-items: center; padding: 8px 16px; border-radius: var(--border-radius); font-weight: 700; font-size: 1.1rem; }
+        .score-badge.excellent { background: #dcfce7; color: #166534; }
+        .score-badge.good { background: #dbeafe; color: #1e40af; }
+        .score-badge.needs-attention { background: #fef3c7; color: #92400e; }
+        .overall-score { text-align: center; padding: 32px; margin: 24px 0; background: var(--color-bg-alt); border-radius: var(--border-radius); border: 1px solid var(--color-border); }
+        .overall-score .score-value { font-size: 3rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .overall-score .score-grade { font-size: 1.1rem; color: var(--color-text-light); margin-top: 4px; }
+        .progress-bar { width: 100%; height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden; }
+        .progress-bar .fill { height: 100%; border-radius: 4px; }
+        .progress-bar .fill.excellent { background: var(--color-success); }
+        .progress-bar .fill.good { background: var(--color-info); }
+        .progress-bar .fill.needs-attention { background: var(--color-warning); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .status-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+        .status-pill.pass { background: #dcfce7; color: #166534; }
+        .status-pill.warn { background: #fef3c7; color: #92400e; }
+        .status-pill.fail { background: #fee2e2; color: #991b1b; }
+        .status-pill.skip { background: #f1f5f9; color: #64748b; }
+        .status-pill.high { background: #fee2e2; color: #991b1b; }
+        .status-pill.medium { background: #fef3c7; color: #92400e; }
+        .status-pill.low { background: #dbeafe; color: #1e40af; }
+        .issue-card { border-left: 4px solid var(--color-danger); background: #fef2f2; padding: 16px 20px; border-radius: 0 var(--border-radius) var(--border-radius) 0; margin: 12px 0; }
+        .issue-card.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .issue-card .issue-id { font-weight: 700; color: var(--color-danger); font-size: 0.85rem; }
+        .issue-card.warning .issue-id { color: #b45309; }
+        .issue-card .issue-title { font-weight: 600; margin-top: 4px; }
+        .issue-card .issue-impact { font-size: 0.9rem; color: var(--color-text-light); margin-top: 4px; }
+        .module-section { margin: 24px 0; padding: 24px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--border-radius); }
+        .module-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+        .module-header h3 { margin: 0; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .module-name { font-size: 0.85rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .module-score { font-size: 2rem; font-weight: 800; font-family: var(--font-heading); }
+        .score-card .module-grade { font-size: 0.85rem; margin-top: 4px; }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .exec-read { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 24px; margin: 16px 0; }
+        .exec-read p { font-size: 1rem; line-height: 1.7; margin: 0 0 12px; }
+        .exec-read p:last-child { margin-bottom: 0; }
+        .flow-step { font-family: ui-monospace, monospace; font-size: 0.85rem; }
+        .funnel-note { font-size: 0.85rem; color: var(--color-text-light); font-style: italic; margin: 8px 0 16px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        @media print { body, .report-header, .report-footer, .score-badge, .status-pill, .issue-card, .score-card, thead, .overall-score { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .module-section, .issue-card, table { break-inside: avoid; } }
+        @media (max-width: 768px) { .container { padding: 0 16px; } .scores-grid { grid-template-columns: 1fr 1fr; } .overall-score .score-value { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+<style>
+#pw-gate{position:fixed;inset:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,system-ui,sans-serif}
+#pw-box{background:#fff;border-radius:12px;padding:40px 32px;width:320px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#pw-box h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:8px}
+#pw-box p{font-size:.85rem;color:#666;margin-bottom:20px}
+#pw-input{width:100%;padding:10px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px}
+#pw-input:focus{border-color:#1a1a2e}
+#pw-btn{width:100%;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+#pw-btn:hover{background:#16213e}
+#pw-err{color:#ef4444;font-size:.8rem;margin-top:8px;display:none}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Gimme Care Reports</h2>
+    <p>Enter the password to access this report.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Continue</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='gc_report_auth',PWD='tweaking26!';
+  function unlock(){document.getElementById('pw-gate').style.display='none';}
+  if(sessionStorage.getItem(KEY)===PWD){unlock();return;}
+  document.getElementById('pw-btn').addEventListener('click',check);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  function check(){
+    var v=document.getElementById('pw-input').value;
+    if(v===PWD){sessionStorage.setItem(KEY,PWD);unlock();}
+    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
+  }
+})();
+</script>
+
+<header class="report-header">
+    <div class="container">
+        <div>
+            <h1>PPCOS</h1>
+            <div class="tagline">Google Ads workspace reports</div>
+        </div>
+    </div>
+</header>
+
+<div class="report-meta">
+    <div class="container">
+        <h2>Landing page audit</h2>
+        <div class="meta-details">
+            <span>Client: <strong>Gimme Care</strong></span>
+            <span>Date: <strong>2026-05-27</strong></span>
+            <span>Vertical: <strong>Ecommerce</strong></span>
+            <span>Mode: <strong>Page-quality + intake funnel</strong></span>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+
+<div class="overall-score">
+    <div class="score-value">85%</div>
+    <div class="score-grade">Good — full funnel (LPs 79% + intake 94%)</div>
+    <div style="max-width: 300px; margin: 12px auto 0;">
+        <div class="progress-bar"><div class="fill good" style="width: 85%"></div></div>
+    </div>
+    <div style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 12px; line-height: 1.5;">
+        URL(s): gimme.care/lp/semaglutide, /lp/tirzepatide, /lp/shop-glp-1-gip-v2, /lp/shop-glp-1-gip-3-v2<br>
+        Intake: intake.gimme.care/wl/intro → /wl/checkout
+    </div>
+</div>
+
+<h2>Executive read</h2>
+<div class="exec-read">
+    <p><strong>85% Good means the funnel converts on rails from LP click through intake to checkout — but the plan step is where semaglutide traffic becomes tirzepatide revenue, and checkout price ($199/mo) can diverge from Search ad promises ($163/mo effective on 3-month).</strong> A full naive-patient walkthrough (300 lb, 5'5", no GLP-1 history, no meds/allergies) completed all 10 intake steps to <code>/wl/checkout</code> with test contact data. Flow is clean: one question per screen, progress bar, back navigation. Payment iframe (Hyperswitch) loads on checkout; purchase not submitted (no test card).</p>
+    <p><strong>Do these three things this week, in order:</strong> First, instrument and optimize the plan step (<code>/wl/plan</code>) — default selection was Tirzepatide $199/mo for a naive patient with no sema LP context. This confirms cross-sell happens in intake, not just LP nav. Second, align checkout/plan pricing with ad promise — Search ads cite $163/mo tirzepatide (3-month effective); checkout showed $199/mo 1-month plan pre-selected. Third, LP polish unchanged: generic CTAs, H1 semantics, Shopping FAQ. Keep dual-product LP nav (intentional cross-sell per business.md).</p>
+    <p><strong>What is NOT a problem:</strong> Full intake path works to checkout (LP-D22 PASS). Quarterly $130 on semaglutide-c LP table. Technical/CWV. One-field-per-screen intake UX. No dedicated side-effects step required — plan FAQs cover inclusion; naive patient path had no blockers.</p>
+    <p><strong>Fresh peer (2026-05-27 ST audit, 51/100):</strong> Fix intake/LP before bulk negations on core GLP-1 terms. <strong>Score trend:</strong> 69% → 79% → 85% (+16 from baseline) with intake walkthrough + LP D11/D14 revisions.</p>
+</div>
+
+<h2>Module scores</h2>
+<p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 8px;">Marketing LPs (4 URLs)</p>
+<div class="scores-grid">
+    <div class="score-card">
+        <div class="module-name">Structural</div>
+        <div class="module-score" style="color: #92400e;">64%</div>
+        <div class="module-grade">Needs attention</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill needs-attention" style="width: 64%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">6 passed · 4 warned · 1 failed · 0 skipped</div>
+    </div>
+    <div class="score-card">
+        <div class="module-name">Message match</div>
+        <div class="module-score" style="color: #1e40af;">80%</div>
+        <div class="module-grade">Good</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 80%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">2 passed · 1 warned · 0 failed · 1 skipped</div>
+    </div>
+    <div class="score-card">
+        <div class="module-name">Technical</div>
+        <div class="module-score" style="color: #166534;">100%</div>
+        <div class="module-grade">Excellent</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill excellent" style="width: 100%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">6 passed · 0 warned · 0 failed · 2 skipped</div>
+    </div>
+    <div class="score-card">
+        <div class="module-name">Marketing LPs overall</div>
+        <div class="module-score" style="color: #1e40af;">79%</div>
+        <div class="module-grade">Good</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 79%"></div></div></div>
+    </div>
+</div>
+
+<p style="font-size: 0.9rem; color: var(--color-text-light); margin: 24px 0 8px;">Medical intake — intake.gimme.care/wl/intro</p>
+<div class="scores-grid">
+    <div class="score-card">
+        <div class="module-name">Intake structural</div>
+        <div class="module-score" style="color: #92400e;">69%</div>
+        <div class="module-grade">Needs attention</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill needs-attention" style="width: 69%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">3 passed · 3 warned · 0 failed · 6 skipped</div>
+    </div>
+    <div class="score-card">
+        <div class="module-name">Intake technical</div>
+        <div class="module-score" style="color: #166534;">96%</div>
+        <div class="module-grade">Excellent</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill excellent" style="width: 96%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">7 passed · 0 warned · 0 failed · 1 skipped</div>
+    </div>
+    <div class="score-card">
+        <div class="module-name">Intake overall</div>
+        <div class="module-score" style="color: #166534;">94%</div>
+        <div class="module-grade">Excellent</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill excellent" style="width: 94%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">11 passed · 2 warned · 0 failed · 7 skipped</div>
+    </div>
+    <div class="score-card">
+        <div class="module-name">Full funnel</div>
+        <div class="module-score" style="color: #1e40af;">85%</div>
+        <div class="module-grade">Good</div>
+        <div style="margin-top: 8px;"><div class="progress-bar"><div class="fill good" style="width: 85%"></div></div></div>
+        <div style="font-size: 0.8rem; color: var(--color-text-light); margin-top: 8px;">70% LPs + 30% intake</div>
+    </div>
+</div>
+
+<h2>Intake walkthrough — 10 steps to checkout</h2>
+<p class="funnel-note">Persona: 300 lbs · 5'5" · no prior GLP-1 · no meds/allergies · test.intake.audit@example.com · payment not submitted</p>
+<table>
+    <thead><tr><th>#</th><th>URL</th><th>Screen</th><th>Naive-patient action</th></tr></thead>
+    <tbody>
+        <tr><td>1</td><td class="flow-step">/wl/intro</td><td>Weight loss goal</td><td>Losing 51+ lbs</td></tr>
+        <tr><td>2</td><td class="flow-step">/wl/bmi</td><td>BMI (300 lb, 5'5")</td><td>BMI 49.9 — eligible</td></tr>
+        <tr><td>3</td><td class="flow-step">/wl/personal-info</td><td>DOB + sex</td><td>03/15/1988, Female</td></tr>
+        <tr><td>4</td><td class="flow-step">/wl/medication-history</td><td>Meds + allergies</td><td>No / No</td></tr>
+        <tr><td>5</td><td class="flow-step">/wl/contraindications</td><td>Medical history</td><td>None apply</td></tr>
+        <tr><td>6</td><td class="flow-step">/wl/glp-history</td><td>Prior GLP-1</td><td><strong>No</strong> (naive)</td></tr>
+        <tr><td>7</td><td class="flow-step">/wl/eligibility</td><td>Contact capture</td><td>Test Patient + email/phone</td></tr>
+        <tr><td>8</td><td class="flow-step">/wl/plan</td><td>Product + billing</td><td><strong>Tirzepatide $199/mo</strong> default (Monthly tab)</td></tr>
+        <tr><td>9</td><td class="flow-step">/wl/shipping</td><td>Address</td><td>Google Places autocomplete</td></tr>
+        <tr><td>10</td><td class="flow-step">/wl/checkout</td><td>Payment</td><td><strong>$199 due today</strong>; Hyperswitch iframe</td></tr>
+    </tbody>
+</table>
+
+<h2>Priority fixes</h2>
+<div class="issue-card">
+    <div class="issue-id">INT-06 · Intake /wl/plan</div>
+    <div class="issue-title">Default Tirzepatide $199/mo for naive patient — cross-sell confirmation</div>
+    <div class="issue-impact">Fix: Default by entry LP/UTM; push 3-month tab</div>
+</div>
+<div class="issue-card">
+    <div class="issue-id">INT-07 · Intake checkout</div>
+    <div class="issue-title">$199 today vs ad $163/mo (3-month effective)</div>
+    <div class="issue-impact">Fix: Pre-select 3-month or match LP table</div>
+</div>
+<div class="issue-card warning">
+    <div class="issue-id">INT-01 · Intake</div>
+    <div class="issue-title">Privacy banner on step 1; multiple LP entry URLs</div>
+    <div class="issue-impact">Fix: Consolidate entry + single consent</div>
+</div>
+<div class="issue-card warning">
+    <div class="issue-id">LP-D04 · LPs</div>
+    <div class="issue-title">Generic "Get started" CTAs</div>
+    <div class="issue-impact">Fix: Plan-specific CTA copy</div>
+</div>
+<div class="issue-card warning">
+    <div class="issue-id">LP-D02 · LPs</div>
+    <div class="issue-title">No H1; hero is product label</div>
+    <div class="issue-impact">Fix: Outcome-led H1</div>
+</div>
+<div class="issue-card warning">
+    <div class="issue-id">LP-D13 · LPs</div>
+    <div class="issue-title">Headline $/mo vs hero product name</div>
+    <div class="issue-impact">Fix: Hero echo of plan price</div>
+</div>
+<div class="issue-card warning">
+    <div class="issue-id">LP-D08 · Shopping LPs</div>
+    <div class="issue-title">No FAQ block</div>
+    <div class="issue-impact">Fix: Add objection handling</div>
+</div>
+
+<div class="module-section">
+    <div class="module-header">
+        <h3>Structural — marketing LPs</h3>
+        <span class="score-badge needs-attention">64% — Needs attention</span>
+    </div>
+    <table>
+        <thead><tr><th style="width:70px">ID</th><th>Diagnostic</th><th style="width:70px">Status</th><th style="width:70px">Points</th><th>Details</th></tr></thead>
+        <tbody>
+            <tr><td><strong>LP-D01</strong></td><td>Offer section completeness</td><td><span class="status-pill warn">WARN</span></td><td>5/10</td><td>Search LPs strong; Shopping thin</td></tr>
+            <tr><td><strong>LP-D02</strong></td><td>Hero 5-second test</td><td><span class="status-pill warn">WARN</span></td><td>5/10</td><td>No H1; H2 product labels</td></tr>
+            <tr><td><strong>LP-D03</strong></td><td>Above-fold CTA presence</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>Get started / BUY NOW visible</td></tr>
+            <tr><td><strong>LP-D04</strong></td><td>CTA button quality</td><td><span class="status-pill fail">FAIL</span></td><td>0/5</td><td>Generic "Get started" throughout</td></tr>
+            <tr><td><strong>LP-D05</strong></td><td>Benefits section quality</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>How it works, program benefits</td></tr>
+            <tr><td><strong>LP-D06</strong></td><td>Trust/authority section</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>LegitScript, disclaimers, Trustpilot</td></tr>
+            <tr><td><strong>LP-D07</strong></td><td>Social proof quality</td><td><span class="status-pill warn">WARN</span></td><td>3/5</td><td>Named member quotes; partial detail</td></tr>
+            <tr><td><strong>LP-D08</strong></td><td>Objection handling</td><td><span class="status-pill warn">WARN</span></td><td>3/5</td><td>FAQ on Search; missing on shop-glp-1-gip-v2</td></tr>
+            <tr><td><strong>LP-D09</strong></td><td>Guarantee presence</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>Progress Promise on semaglutide-c</td></tr>
+            <tr><td><strong>LP-D10</strong></td><td>CTA repetition</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>Multiple CTAs through page</td></tr>
+            <tr><td><strong>LP-D11</strong></td><td>One-page-one-goal</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>Dual GLP-1 nav intentional for cross-sell</td></tr>
+            <tr><td><strong>LP-D12</strong></td><td>Section hierarchy</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>Hero → pricing → how it works → proof → FAQ</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="module-section">
+    <div class="module-header">
+        <h3>Message match — marketing LPs</h3>
+        <span class="score-badge good">80% — Good</span>
+    </div>
+    <table>
+        <thead><tr><th style="width:70px">ID</th><th>Diagnostic</th><th style="width:70px">Status</th><th style="width:70px">Points</th><th>Details</th></tr></thead>
+        <tbody>
+            <tr><td><strong>LP-D13</strong></td><td>Ad-to-LP headline match</td><td><span class="status-pill warn">WARN</span></td><td>5/10</td><td>RSAs lead with $130/$163/mo; hero product-first</td></tr>
+            <tr><td><strong>LP-D14</strong></td><td>Ad-to-LP offer match</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>Quarterly BEST VALUE $130 on semaglutide-c</td></tr>
+            <tr><td><strong>LP-D15</strong></td><td>Keyword-to-LP relevance</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>semaglutide/tirzepatide/GLP-1 in content</td></tr>
+            <tr><td><strong>LP-D16</strong></td><td>Visual consistency</td><td><span class="status-pill skip">SKIP</span></td><td>—/10</td><td>Search-only</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="module-section">
+    <div class="module-header">
+        <h3>Technical — marketing LPs</h3>
+        <span class="score-badge excellent">100% — Excellent</span>
+    </div>
+    <table>
+        <thead><tr><th style="width:70px">ID</th><th>Diagnostic</th><th style="width:70px">Status</th><th style="width:70px">Points</th><th>Details</th></tr></thead>
+        <tbody>
+            <tr><td><strong>LP-D17</strong></td><td>Page load speed</td><td><span class="status-pill pass">PASS</span></td><td>15/15</td><td>CrUX LCP 1.79s Shopping</td></tr>
+            <tr><td><strong>LP-D18</strong></td><td>Core Web Vitals</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>Field + lab CLS/INP good</td></tr>
+            <tr><td><strong>LP-D19</strong></td><td>Mobile responsiveness</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>375px: no overflow; CTAs tappable</td></tr>
+            <tr><td><strong>LP-D20</strong></td><td>Mobile vs desktop CVR gap</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>Mobile CVR 81% of desktop</td></tr>
+            <tr><td><strong>LP-D21</strong></td><td>Form field count</td><td><span class="status-pill skip">SKIP</span></td><td>—/5</td><td>Click-through to intake</td></tr>
+            <tr><td><strong>LP-D22</strong></td><td>Form functionality</td><td><span class="status-pill skip">SKIP</span></td><td>—/15</td><td>Forms on intake subdomain</td></tr>
+            <tr><td><strong>LP-D23</strong></td><td>SSL/HTTPS</td><td><span class="status-pill pass">PASS</span></td><td>3/3</td><td>All HTTPS</td></tr>
+            <tr><td><strong>LP-D24</strong></td><td>Image optimization</td><td><span class="status-pill pass">PASS</span></td><td>3/3</td><td>AVIF CDN</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="module-section">
+    <div class="module-header">
+        <h3>Intake funnel — intake.gimme.care</h3>
+        <span class="score-badge excellent">94% — Excellent</span>
+    </div>
+    <table>
+        <thead><tr><th style="width:70px">ID</th><th>Diagnostic</th><th style="width:70px">Status</th><th style="width:70px">Points</th><th>Details</th></tr></thead>
+        <tbody>
+            <tr><td><strong>LP-D01</strong></td><td>Offer / value clarity</td><td><span class="status-pill warn">WARN</span></td><td>5/10</td><td>Step 1 goal question only — no trust strip</td></tr>
+            <tr><td><strong>LP-D02</strong></td><td>Hero / headline clarity</td><td><span class="status-pill warn">WARN</span></td><td>5/10</td><td>H5 headings; no H1</td></tr>
+            <tr><td><strong>LP-D03</strong></td><td>Above-fold action</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>Buttons visible mobile 375px</td></tr>
+            <tr><td><strong>LP-D04</strong></td><td>CTA / option quality</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>Descriptive per-step labels</td></tr>
+            <tr><td><strong>LP-D06</strong></td><td>Trust signals</td><td><span class="status-pill warn">WARN</span></td><td>3/5</td><td>Logo + progress; checkout trust copy</td></tr>
+            <tr><td><strong>LP-D12</strong></td><td>Flow hierarchy</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>10-step progress; back nav</td></tr>
+            <tr><td><strong>LP-D17</strong></td><td>Page load speed</td><td><span class="status-pill pass">PASS</span></td><td>15/15</td><td>Lab LCP ~900ms on intro</td></tr>
+            <tr><td><strong>LP-D18</strong></td><td>Core Web Vitals</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>CLS 0.00</td></tr>
+            <tr><td><strong>LP-D19</strong></td><td>Mobile responsiveness</td><td><span class="status-pill pass">PASS</span></td><td>10/10</td><td>No horizontal scroll</td></tr>
+            <tr><td><strong>LP-D20</strong></td><td>Mobile vs desktop CVR</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>Account ratio 81%</td></tr>
+            <tr><td><strong>LP-D21</strong></td><td>Form field count</td><td><span class="status-pill pass">PASS</span></td><td>5/5</td><td>One decision per screen</td></tr>
+            <tr><td><strong>LP-D22</strong></td><td>Form functionality</td><td><span class="status-pill pass">PASS</span></td><td>15/15</td><td><strong>Full path to checkout validated</strong></td></tr>
+            <tr><td><strong>LP-D23</strong></td><td>SSL/HTTPS</td><td><span class="status-pill pass">PASS</span></td><td>3/3</td><td>HTTPS</td></tr>
+            <tr><td><strong>LP-D24</strong></td><td>Image optimization</td><td><span class="status-pill pass">PASS</span></td><td>3/3</td><td>Lightweight</td></tr>
+        </tbody>
+    </table>
+
+    <h3 style="margin-top: 24px;">Intake-specific findings</h3>
+    <table>
+        <thead><tr><th>ID</th><th>Finding</th><th style="width:90px">Severity</th></tr></thead>
+        <tbody>
+            <tr><td>INT-01</td><td>Privacy banner on step 1; multiple LP entry URLs</td><td><span class="status-pill medium">Medium</span></td></tr>
+            <tr><td>INT-03</td><td>beforeunload dialog on navigation</td><td><span class="status-pill medium">Medium</span></td></tr>
+            <tr><td>INT-04</td><td>Intro variant: weight goal first (not GLP-1 familiarity screen)</td><td><span class="status-pill low">Low</span></td></tr>
+            <tr><td>INT-05</td><td>Cross-sell in intake: plan defaults Tirzepatide</td><td><span class="status-pill low">Info</span></td></tr>
+            <tr><td>INT-06</td><td>Plan step: Monthly $199 pre-selected vs 3-month Save $108 tab</td><td><span class="status-pill high">High</span></td></tr>
+            <tr><td>INT-07</td><td>Checkout $199 vs Search ad $163/mo effective (3-month)</td><td><span class="status-pill high">High</span></td></tr>
+            <tr><td>INT-08</td><td>Payment iframe async load — Complete checkout disabled until ready</td><td><span class="status-pill low">Low</span></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h2>Recommendations</h2>
+<div class="recommendations">
+    <table>
+        <thead><tr><th>Action</th><th>Why</th><th style="width:80px">Priority</th></tr></thead>
+        <tbody>
+            <tr><td><strong>/lp-optimize intake path</strong></td><td>INT-01, INT-03: consent friction, entry URL consolidation</td><td><span class="status-pill high">High</span></td></tr>
+            <tr><td><strong>/lp-optimize elements</strong></td><td>LP-D04, D02, D08: CTAs, H1, Shopping FAQ</td><td><span class="status-pill high">High</span></td></tr>
+            <tr><td><strong>Review search-term-audit</strong></td><td>Intake/LP before bulk negations on core GLP-1 terms</td><td><span class="status-pill high">High</span></td></tr>
+            <tr><td><strong>/lp-optimize message-match</strong></td><td>LP-D13: hero price/plan labeling</td><td><span class="status-pill medium">Medium</span></td></tr>
+            <tr><td><strong>/tracking-specialist</strong></td><td>Intake step events + product on purchase for cross-sell %</td><td><span class="status-pill medium">Medium</span></td></tr>
+            <tr><td><strong>/lp-optimize monitor</strong></td><td>After intake + LP fixes</td><td><span class="status-pill low">Low</span></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<p style="font-size: 0.85rem; color: var(--color-text-light); margin-top: 32px;">Source: context/analysis/lp-audit.md · Data refreshed 2026-05-27</p>
+
+</main>
+
+<footer class="report-footer">
+    <div class="container">
+        <div>
+            <span class="company-name">PPCOS</span>
+            <span style="opacity: 0.7;"> · Google Ads workspace reports</span>
+        </div>
+        <div style="opacity: 0.7;">Generated 2026-05-27</div>
+    </div>
+</footer>
+
+</body>
+</html>
