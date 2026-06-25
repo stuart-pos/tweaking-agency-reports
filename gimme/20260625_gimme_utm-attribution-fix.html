@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM attribution fix — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 900px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 140px; height: auto; object-fit: contain; flex-shrink: 0; background: #fff; border-radius: 8px; padding: 8px 12px; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; border: none; padding: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); }
+        .meta-details span { white-space: nowrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 0 0 12px 0; padding-left: 22px; }
+        li { margin-bottom: 6px; }
+        code { background: #f1f5f9; color: #be123c; padding: 1px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85em; word-break: break-word; }
+        .code-block { background: var(--color-primary); color: #e6e6e6; border-radius: var(--border-radius); padding: 16px 20px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; line-height: 1.65; overflow-x: auto; white-space: pre; margin: 14px 0; }
+        .code-block .c { color: #94a3b8; }
+        .code-block .g { color: #4ade80; }
+        .code-block .r { color: #fb7185; }
+        .callout { border-left: 4px solid var(--color-accent); background: #fff5f7; padding: 20px 24px; border-radius: 0 var(--border-radius) var(--border-radius) 0; margin: 20px 0; }
+        .callout h3 { margin-top: 0; }
+        .callout.info { border-left-color: var(--color-info); background: #eff6ff; }
+        .callout.good { border-left-color: var(--color-success); background: #f0fdf4; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .status-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+        .status-pill.ok { background: #dcfce7; color: #166534; }
+        .status-pill.bad { background: #fee2e2; color: #991b1b; }
+        .issue-card { border-left: 4px solid var(--color-danger); background: #fef2f2; padding: 16px 20px; border-radius: 0 var(--border-radius) var(--border-radius) 0; margin: 12px 0; }
+        .issue-card .issue-id { font-weight: 700; color: var(--color-danger); font-size: 0.85rem; }
+        .issue-card .issue-title { font-weight: 600; color: var(--color-text); margin-top: 4px; }
+        .steps { counter-reset: step; list-style: none; padding-left: 0; margin: 16px 0; }
+        .steps > li { counter-increment: step; position: relative; padding: 16px 20px 16px 60px; background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); margin-bottom: 12px; }
+        .steps > li::before { content: counter(step); position: absolute; left: 16px; top: 16px; width: 30px; height: 30px; background: var(--color-primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem; font-family: var(--font-heading); }
+        .steps > li .step-title { font-weight: 700; color: var(--color-primary); display: block; margin-bottom: 4px; }
+        .flow { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 20px 24px; margin: 16px 0; }
+        .flow ol { padding-left: 20px; }
+        .flow li { padding: 4px 0; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        .report-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, .callout, .issue-card, .steps > li, thead, .code-block { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .container { max-width: 100%; padding: 0 16px; }
+            .callout, .issue-card, .steps > li, table, .flow { break-inside: avoid; }
+            h2, h3 { break-after: avoid; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .report-header .container { flex-direction: column; text-align: center; }
+            .report-meta .container { flex-direction: column; align-items: flex-start; }
+            .meta-details { flex-wrap: wrap; gap: 8px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCAxODAgNDQiPgogIDxyZWN0IHdpZHRoPSI0NCIgaGVpZ2h0PSI0NCIgcng9IjgiIGZpbGw9IiNlOTQ1NjAiLz4KICA8dGV4dCB4PSIyMiIgeT0iMzAiIGZvbnQtZmFtaWx5PSJJbnRlciwgc3lzdGVtLXVpLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIyIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UPC90ZXh0PgogIDx0ZXh0IHg9IjU4IiB5PSIyOCIgZm9udC1mYW1pbHk9IkludGVyLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxYTFhMmUiPlR3ZWFraW5nPC90ZXh0PgogIDx0ZXh0IHg9IjU4IiB5PSI0MiIgZm9udC1mYW1pbHk9IkludGVyLCBzeXN0ZW0tdWksIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZvbnQtd2VpZ2h0PSI0MDAiIGZpbGw9IiM2NjY2NjYiIGxldHRlci1zcGFjaW5nPSIyIj5BR0VOQ1k8L3RleHQ+Cjwvc3ZnPgo=" class="report-logo" alt="Tweaking Agency logo">
+            <div>
+                <h1>Tweaking Agency</h1>
+                <div class="tagline">Google Ads That Actually Work</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>UTM attribution fix — engineering handoff</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-06-25</strong></span>
+                <span>Area: <strong>LP &rarr; intake link decoration</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <!-- TL;DR -->
+        <div class="callout">
+            <h3>TL;DR for the frontend dev</h3>
+            <p style="margin-bottom: 8px;"><strong>Google click IDs carry fine (~99%). The five <code>utm_*</code> params do not — they are dropped on ~98% of paid sessions between the landing page and intake.</strong></p>
+            <p style="margin-bottom: 8px;">Root cause: the CTA link-decoration script that fills the placeholder slot in the intake URL only injects <code>gclid</code>, <code>gbraid</code>, and <code>promo</code> from the first-party <code>att_*</code> cookies. It never injects <code>utm_*</code> — even though those values are sitting in cookies (<code>att_utm_source</code>, <code>att_utm_medium</code>, etc.) at click time.</p>
+            <p style="margin: 0;">Fix: add the <code>att_utm_*</code> cookie values to the param list the decorator already builds, build the query string with <code>URLSearchParams</code> (so empty values are skipped), and apply it to both CTA URL structures. Estimated effort: ~1 hour. <strong>No changes to the intake app and no changes to click-ID / Conversion Linker logic are required.</strong></p>
+        </div>
+
+        <!-- Business impact -->
+        <h2>The problem (business impact)</h2>
+        <p>When someone clicks a Google ad and lands on a Gimme LP, the URL carries both the Google click ID (<code>gclid</code>) and the campaign UTMs (<code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>utm_term</code>, <code>utm_content</code>). When they click a CTA into the intake flow, the <code>gclid</code> survives but the UTMs are stripped off the URL.</p>
+        <p>The consequence: on the intake side we can see <em>that</em> a paid click happened, but not <em>which campaign, ad group, keyword, or creative</em> drove it. Any UTM-based reporting (PostHog funnels segmented by campaign/term/content, and any downstream analytics) is effectively blind for the vast majority of paid intake sessions. This weakens campaign- and keyword-level CVR/CPA analysis and makes it harder to attribute intake conversions back to spend.</p>
+
+        <h3>Measured leak (PostHog, last 7 days — paid LP &rarr; intake sessions)</h3>
+        <table>
+            <thead>
+                <tr><th>Landing page</th><th>Sessions</th><th>Kept <code>gclid</code></th><th>Kept <code>utm_source</code></th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>/lp/tirzepatide</code></td><td>2,421</td><td><span class="status-pill ok">99.0%</span></td><td><span class="status-pill bad">2.4%</span></td></tr>
+                <tr><td><code>/lp/shop-glp-1-gip-3-v2</code></td><td>276</td><td><span class="status-pill ok">99.3%</span></td><td><span class="status-pill bad">1.1%</span></td></tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.9rem; color: var(--color-text-light);">100% of these LP pageviews had <code>utm_source</code> present on the landing page itself, yet ~98% lose it before the intake pageview. The loss is systemic across both LP structures.</p>
+
+        <!-- Root cause -->
+        <h2>How this is happening (technical root cause)</h2>
+        <div class="flow">
+            <ol>
+                <li>Ad click &rarr; LP loads with e.g. <code>?gclid=...&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=...&amp;utm_term=...&amp;utm_content=...</code></li>
+                <li>On load, the site's attribution JS writes first-party cookies on <code>.gimme.care</code>: <code>att_gclid</code>, <code>att_gbraid</code>, <code>att_utm_source</code>, <code>att_utm_medium</code>, <code>att_utm_campaign</code>, <code>att_utm_term</code>, <code>att_utm_content</code>, <code>att_promo</code>, <code>att_promo-source</code>. <strong>All of these are confirmed present at click time, including every UTM.</strong></li>
+                <li>The CTA <code>&lt;a&gt;</code> tags are static with an <strong>empty placeholder slot</strong> in the query string:
+                    <ul style="margin-top: 6px;">
+                        <li><code>/lp/shop-glp-1-gip-3-v2</code> &rarr; <code>get.gimme.care/start-online-visit/wl-rd-tirz?promo=GimmeS20OFF&amp;promo-source=coupon&amp;&amp;</code> (note the trailing <code>&amp;&amp;</code>)</li>
+                        <li><code>/lp/tirzepatide</code> &rarr; <code>intake.gimme.care/wl?&amp;</code> and <code>intake.gimme.care/?&amp;</code></li>
+                    </ul>
+                </li>
+                <li>On click, the decorator reads the <code>att_*</code> cookies and fills the placeholder, then navigates (tirzepatide LP goes direct to intake; shop-glp LP hops through <code>get.gimme.care</code> which redirects to <code>intake.gimme.care</code>).</li>
+                <li><strong>The bug:</strong> the decorator only writes <code>gclid</code>, <code>gbraid</code>, and <code>promo</code>/<code>promo-source</code> into the slot. It never writes <code>utm_*</code>. So intake receives the click IDs but no UTMs.</li>
+            </ol>
+        </div>
+
+        <div class="issue-card">
+            <div class="issue-id">Root cause</div>
+            <div class="issue-title">The link-decoration builder injects click IDs + promo but omits all <code>utm_*</code> keys</div>
+            <div style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 6px;">The UTM data is available in the <code>att_utm_*</code> cookies the whole time — the builder simply does not include those keys in the query string it constructs for the outbound intake link.</div>
+        </div>
+
+        <h3>This also explains the <code>&amp;=&amp;=undefined</code> URLs</h3>
+        <p>The empty placeholder slots (<code>&amp;&amp;</code> / <code>?&amp;</code>) are what render as <code>&amp;=&amp;=undefined</code> when the builder tries to fill a value that is missing or <code>undefined</code> (e.g. cold first click before cookies are written, or non-Google traffic). Building the query string properly (step 3 below) removes this malformed-URL artifact at the same time.</p>
+
+        <!-- Evidence -->
+        <h2>How we proved it</h2>
+        <table>
+            <thead>
+                <tr><th style="width: 60px;">Test</th><th>What we did</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>Navigated <strong>directly</strong> to an intake URL with UTMs manually in it: <code>intake.gimme.care/wl/intro?utm_source=google&amp;utm_medium=cpc&amp;...</code></td>
+                    <td>Intake <strong>preserved every UTM</strong> (and appended <code>promo</code> from cookies). &rarr; Intake does <strong>not</strong> strip UTMs.</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>Loaded the LP from a simulated ad click and inspected cookies + CTA href at click time.</td>
+                    <td><code>att_utm_source=google</code>, <code>att_utm_medium=cpc</code>, <code>att_utm_campaign</code>, <code>att_utm_term</code>, <code>att_utm_content</code> all present — yet CTA href was still the empty <code>intake.gimme.care/wl?&amp;</code>. &rarr; Data available, builder ignores it.</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>Manually injected the <code>att_utm_*</code> cookie values into the CTA href and clicked through.</td>
+                    <td>Landed on <code>intake.gimme.care/wl/intro?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=...&amp;utm_term=...&amp;utm_content=...&amp;gclid=...&amp;gbraid=...</code> — <strong>all 5 UTMs carried end-to-end.</strong> &rarr; Injection works; the only gap is the builder's param list.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- The fix -->
+        <h2>The fix — steps for the frontend dev</h2>
+        <ol class="steps">
+            <li>
+                <span class="step-title">Locate the link-decoration logic</span>
+                Find the code that fills the placeholder slot (<code>&amp;&amp;</code> / <code>?&amp;</code>) on CTA click. It is the same script that already reads the <code>att_*</code> cookies and injects <code>gclid</code>/<code>gbraid</code>/<code>promo</code> into the outbound link to <code>get.gimme.care</code> / <code>intake.gimme.care</code> (the site's attribution / param-builder script).
+            </li>
+            <li>
+                <span class="step-title">Add the UTM keys to the param list it injects</span>
+                Map each <code>att_*</code> cookie to its query param:
+                <div class="code-block"><span class="c">// add to the existing cookie&rarr;param mapping</span>
+att_utm_source   &rarr; utm_source
+att_utm_medium   &rarr; utm_medium
+att_utm_campaign &rarr; utm_campaign
+att_utm_term     &rarr; utm_term
+att_utm_content  &rarr; utm_content
+<span class="c">// (also forward gad_source if it is being captured)</span></div>
+            </li>
+            <li>
+                <span class="step-title">Build the query string with <code>URLSearchParams</code> and skip empty values</span>
+                Only append a key when its cookie value is present and non-empty. Never emit empty <code>utm_source=</code> or the <code>&amp;=&amp;</code> / <code>=undefined</code> placeholders. This also fixes the existing malformed-URL artifact.
+                <div class="code-block"><span class="c">// illustrative — match to your existing builder</span>
+<span class="r">function</span> buildIntakeUrl(base) {
+  <span class="r">const</span> get = k =&gt; { <span class="r">const</span> m = document.cookie.match(<span class="g">'(?:^|; )' + k + '=([^;]*)'</span>); <span class="r">return</span> m ? decodeURIComponent(m[1]) : <span class="g">''</span>; };
+  <span class="r">const</span> map = {
+    utm_source: <span class="g">'att_utm_source'</span>, utm_medium: <span class="g">'att_utm_medium'</span>,
+    utm_campaign: <span class="g">'att_utm_campaign'</span>, utm_term: <span class="g">'att_utm_term'</span>,
+    utm_content: <span class="g">'att_utm_content'</span>, gclid: <span class="g">'att_gclid'</span>,
+    gbraid: <span class="g">'att_gbraid'</span>, promo: <span class="g">'att_promo'</span>, <span class="g">'promo-source'</span>: <span class="g">'att_promo-source'</span>,
+  };
+  <span class="r">const</span> p = <span class="r">new</span> URLSearchParams();
+  <span class="r">for</span> (<span class="r">const</span> [param, cookie] <span class="r">of</span> Object.entries(map)) {
+    <span class="r">const</span> v = get(cookie);
+    <span class="r">if</span> (v) p.set(param, v);   <span class="c">// only set when present &rarr; no empty/undefined keys</span>
+  }
+  <span class="r">const</span> qs = p.toString();
+  <span class="r">return</span> qs ? base + <span class="g">'?'</span> + qs : base;
+}</div>
+            </li>
+            <li>
+                <span class="step-title">Apply to BOTH CTA URL structures and the redirect hop</span>
+                Use the builder for the direct <code>intake.gimme.care</code> links (tirzepatide LP) <em>and</em> the <code>get.gimme.care</code> links (shop-glp LP). Critically, the <code>get.gimme.care</code> &rarr; <code>intake.gimme.care</code> redirect must <strong>forward the UTMs onward too</strong>, not just <code>gclid</code>/<code>gbraid</code> — otherwise they are dropped at the hop.
+            </li>
+            <li>
+                <span class="step-title">Remove the empty placeholder slots from the static hrefs</span>
+                Once the builder constructs the full query string dynamically, delete the hard-coded empty <code>&amp;&amp;</code> / <code>?&amp;</code> from the CTA hrefs in Webflow (or wherever the CTAs are authored). Those empty slots are what render as <code>&amp;=&amp;=undefined</code> when cookies are missing.
+            </li>
+        </ol>
+
+        <!-- Acceptance criteria -->
+        <h2>Acceptance criteria (QA before sign-off)</h2>
+        <ul>
+            <li>Load a LP with <code>?gclid=TEST&amp;utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=foo&amp;utm_term=bar&amp;utm_content=baz</code>, click <strong>each</strong> CTA, and confirm the final intake URL contains all of: <code>gclid</code>, <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>utm_term</code>, <code>utm_content</code>.</li>
+            <li>Confirm <strong>no</strong> <code>&amp;=&amp;</code>, no <code>=undefined</code>, and no empty <code>utm_source=</code> appear in any intake URL.</li>
+            <li>Load a LP with <strong>no</strong> UTM params (e.g. direct/organic) and confirm the CTAs do not emit empty UTM keys.</li>
+            <li>Verify on both <code>/lp/tirzepatide</code> (direct-to-intake) and <code>/lp/shop-glp-1-gip-3-v2</code> (via <code>get.gimme.care</code>).</li>
+            <li>After deploy, re-check PostHog: <code>utm_source</code> on intake for Google paid LP&rarr;intake sessions should climb from ~2% toward ~99% (matching <code>gclid</code>).</li>
+        </ul>
+
+        <!-- Scope guardrails -->
+        <div class="callout good">
+            <h3>What NOT to change (scope guardrails)</h3>
+            <ul style="margin-bottom: 0;">
+                <li><strong>Do not touch the intake app.</strong> It already preserves whatever query params it is handed — verified directly (Test 1).</li>
+                <li><strong>Do not touch the Conversion Linker / <code>gclid</code> handling.</strong> Click-ID carry is already ~99% and working correctly.</li>
+                <li>This is purely a change to the <strong>LP / redirect link-decoration param list</strong> — adding the UTM keys the builder already has access to.</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <div>
+                <span class="company-name">Tweaking Agency</span> &middot; Google Ads That Actually Work
+            </div>
+            <div>
+                <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a> &middot;
+                <a href="https://tweaking.agency">tweaking.agency</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
