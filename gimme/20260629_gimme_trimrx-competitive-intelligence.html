@@ -252,6 +252,46 @@
 
         <p><strong>Overall network verdict:</strong> <span class="conf-high">High · 85%</span> that TrimRx uses multiple third-party Google Ads accounts. <span class="conf-med-high">Medium-high · 75%</span> that structure is affiliate/performance marketing (not one agency with sub-accounts).</p>
 
+        <h3>Destination URLs by advertiser</h3>
+        <p><strong>Yes — all three accounts send traffic into the TrimRx domain ecosystem.</strong> Display URLs below were read from Google ad creative preview images (DataForSEO <code>preview_image</code> field, pulled 2026-06-29). Final click URLs may include tracking parameters not visible without Transparency Center sign-in.</p>
+
+        <table>
+            <thead>
+                <tr><th>Advertiser</th><th>Display URLs in ads</th><th>Verified destination</th><th>Method</th><th>Confidence</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>S-Class Media Pty Ltd</strong></td>
+                    <td><code>www.trimrx.com/</code><br><code>www.trimrx.com/discount</code></td>
+                    <td><a href="https://trimrx.com/discount">trimrx.com/discount</a> (HTTP 200)</td>
+                    <td>Ad preview image from Transparency creative</td>
+                    <td><span class="conf-high">High · 90%</span></td>
+                </tr>
+                <tr>
+                    <td><strong>MetaFit Pharma Solutions LLC</strong></td>
+                    <td><code>www.trimrx.com/</code><br><code>www.trimrx.com/glp1/weight-loss</code></td>
+                    <td>Homepage + GLP-1 quiz LP<br><small>Sitelinks: Affordable GLP-1, Tirzepatide Weight Loss, GLP-1 Care</small></td>
+                    <td>Ad preview image + RSA sitelinks visible in creative</td>
+                    <td><span class="conf-high">High · 90%</span></td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Ads Mavericks LLC</strong></td>
+                    <td><code>start.trimrx.com</code></td>
+                    <td><a href="https://start.trimrx.com/intake/trimrx/glp1/height_weight">start.trimrx.com/intake/trimrx/glp1/height_weight</a><br><small>Ad branded "GLP-1 USA" — not TrimRx corporate name</small></td>
+                    <td>Ad preview image + HTTP redirect check</td>
+                    <td><span class="conf-high">High · 88%</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Additional TrimRx landing pages (public ecosystem)</h3>
+        <p>These URLs exist on TrimRx's public web properties but are not yet mapped to a specific advertiser account:</p>
+        <ul style="margin: 0 0 20px 20px;">
+            <li><a href="https://offers.trimrx.com/">offers.trimrx.com</a> — affiliate-style offer pages (<code>/offer-v2</code>, <code>/offer-v24-quiz</code>)</li>
+            <li><a href="https://trimrx.com/glp1/offer-v3">trimrx.com/glp1/offer-v3</a></li>
+            <li><a href="https://trimrx.com/semaglutide">trimrx.com/semaglutide</a>, <a href="https://trimrx.com/tirzepatide">/tirzepatide</a>, <a href="https://trimrx.com/intake">/intake</a>, <a href="https://trimrx.com/start">/start</a></li>
+        </ul>
+
         <h3>What would increase confidence</h3>
         <ul style="margin: 0 0 20px 20px;">
             <li>Manual review of each Transparency Center advertiser profile (ad volume over time)</li>
