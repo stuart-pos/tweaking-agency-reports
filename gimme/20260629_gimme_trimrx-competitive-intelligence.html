@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrimRx Competitive Intelligence — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 960px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        .callout { background: var(--color-bg-alt); border-left: 4px solid var(--color-accent); padding: 20px 24px; margin: 20px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.danger { border-left-color: var(--color-danger); background: #fef2f2; }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .callout.success { border-left-color: var(--color-success); background: #f0fdf4; }
+        .verdict-badge { display: inline-block; padding: 6px 14px; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; background: #fee2e2; color: #991b1b; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .highlight-row { background: #fef3c7 !important; font-weight: 600; }
+        .danger-cell { color: var(--color-danger); font-weight: 600; }
+        .success-cell { color: var(--color-success); font-weight: 600; }
+        .chart-img { width: 100%; border: 1px solid var(--color-border); border-radius: var(--border-radius); margin: 16px 0; }
+        .chart-caption { font-size: 0.85rem; color: var(--color-text-light); text-align: center; margin-top: -8px; margin-bottom: 20px; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .label { font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .value { font-size: 1.8rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .score-card .sub { font-size: 0.8rem; color: var(--color-text-light); margin-top: 4px; }
+        .score-card.danger .value { color: var(--color-danger); }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .recommendations ol { padding-left: 20px; }
+        .recommendations li { margin-bottom: 12px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, thead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+            <div>
+                <h1>Tweaking Agency</h1>
+                <div class="tagline">Google Ads That Actually Work</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>TrimRx competitive intelligence</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-06-29</strong></span>
+                <span>Account: <strong>7957170099</strong></span>
+                <span>Period: <strong>90 days weekly</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <div class="scores-grid">
+            <div class="score-card danger">
+                <div class="label">TrimRx IS (Jun 8)</div>
+                <div class="value">29.3%</div>
+                <div class="sub">Auction Insights · legacy NB campaign</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">Gimme IS (Jun 8)</div>
+                <div class="value">11.7%</div>
+                <div class="sub">Same auction · 2.5× behind TrimRx</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Advertiser accounts</div>
+                <div class="value">3</div>
+                <div class="sub">Affiliate network · all verified</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">NB V2 rank-lost IS</div>
+                <div class="value">65.8%</div>
+                <div class="sub">Week of Jun 15 · restarted campaign</div>
+            </div>
+        </div>
+
+        <h2>Executive summary</h2>
+        <div class="callout danger">
+            <p><strong>TrimRx is not a single Google Ads account — it is a 3-advertiser affiliate network</strong> (MetaFit Pharma Solutions LLC, S-Class Media Pty Ltd, Ads Mavericks LLC) all pointing at <code>trimrx.com</code>. Confirmed Auction Insights show TrimRx climbing from near-zero to <strong>29.31% impression share</strong> by June 8 while Gimme fell to <strong>11.67%</strong> in the same NB Search auction.</p>
+            <p style="margin-bottom:0">The May 2026 ramp aligns with S-Class Media launching 4 new creatives (May 9–20) — the same period TrimRx's Auction Insights line inflects upward from the week of April 13. Gimme's restarted <code>Search_Tirzepatide_Semaglutide_V2</code> is spending $861k/week but capturing only 21.7% IS with 65.8% rank-lost. <span class="verdict-badge">Verdict: Hybrid affiliate network</span></p>
+        </div>
+
+        <h2>Confirmed Auction Insights — legacy NB campaign</h2>
+        <p>Source: Google Ads UI · Campaign <code>Search_Tirzepatide_Semaglutide</code> (paused) · Feb 1 – Jun 10, 2026 · Weekly frequency. Auction Insights cannot be pulled via API.</p>
+
+        <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/auction-insights-search-tirzepatide-semaglutide.png" alt="Auction Insights chart showing TrimRx impression share ramp from 0% to 29% while Gimme falls to 11.7%" class="chart-img">
+        <p class="chart-caption">Search Auction Insights — weekly impression share by display URL domain. TrimRx (olive green) ramps from ~0% starting mid-April to 29.31% by June 8.</p>
+
+        <h3>Week of June 8, 2026 — competitor impression share</h3>
+        <table>
+            <thead>
+                <tr><th>Domain</th><th>Search IS</th><th>vs Gimme</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>ro.co</td><td>48.76%</td><td>+37.1pp</td><td>Market leader</td></tr>
+                <tr><td>forhers.com</td><td>37.57%</td><td>+25.9pp</td><td>Strong upward trend from late April</td></tr>
+                <tr class="highlight-row"><td><strong>trimrx.com</strong></td><td><strong>29.31%</strong></td><td class="danger-cell"><strong>+17.6pp</strong></td><td>Aggressive ramp since Apr 13</td></tr>
+                <tr><td>lilly.com</td><td>23.62%</td><td>+12.0pp</td><td>Pharma brand presence</td></tr>
+                <tr><td>forbes.com</td><td>16.66%</td><td>+5.0pp</td><td>Content/affiliate</td></tr>
+                <tr class="highlight-row"><td><strong>You (Gimme)</strong></td><td><strong>11.67%</strong></td><td>—</td><td>Peaked ~25% late March, declining</td></tr>
+                <tr><td>webmd.com</td><td>11.49%</td><td>-0.2pp</td><td>Content publisher</td></tr>
+                <tr><td>medvi.org</td><td>&lt;10%</td><td>—</td><td>Dropped to zero end of period</td></tr>
+            </tbody>
+        </table>
+
+        <h3>TrimRx ramp timeline</h3>
+        <table>
+            <thead><tr><th>Phase</th><th>Period</th><th>TrimRx behavior</th></tr></thead>
+            <tbody>
+                <tr><td>Dormant</td><td>Jan 26 – Apr 6</td><td>Near 0% — not in auction</td></tr>
+                <tr class="highlight-row"><td>Inflection</td><td><strong>Week of Apr 13</strong></td><td>First visible presence; steady climb begins</td></tr>
+                <tr><td>Aggressive ramp</td><td>Apr 13 – Jun 8</td><td>0% → 29.31% linear growth</td></tr>
+                <tr><td>Gimme decline</td><td>Mar – Jun</td><td>Gimme peaked ~25% (late Mar), fell to 11.67%</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Gimme weekly impression share — API data</h2>
+        <p>Source: Google Ads API · 90-day pull with 8-day conversion lag · Impression-weighted weekly rollup.</p>
+
+        <h3>Search_Tirzepatide_Semaglutide_V2 (current NB — restarted mid-June)</h3>
+        <table>
+            <thead><tr><th>Week</th><th>IS %</th><th>Rank-lost %</th><th>Budget-lost %</th><th>Impressions</th><th>Cost</th></tr></thead>
+            <tbody>
+                <tr><td>Jun 8–14 (W24)</td><td>24.73</td><td class="danger-cell">75.27</td><td>0.00</td><td>578,877</td><td>$610,848</td></tr>
+                <tr><td>Jun 15–21 (W25)</td><td>21.73</td><td class="danger-cell">65.82</td><td>12.45</td><td>865,356</td><td>$860,796</td></tr>
+            </tbody>
+        </table>
+        <div class="callout warning">
+            <p style="margin:0">Rank-lost IS dominates (66–75%). Spending $611k–$861k/week but capturing only ~22–25% IS. Competitors including TrimRx are outbidding Gimme on rank. Budget constraint emerging in W25 (12.5%).</p>
+        </div>
+
+        <h3>Shopping_GLP-1_Subs — IS declining</h3>
+        <table>
+            <thead><tr><th>Week</th><th>IS %</th><th>Rank-lost %</th><th>Budget-lost %</th><th>Trend</th></tr></thead>
+            <tbody>
+                <tr><td>Apr 20 (W17)</td><td class="success-cell">52.06</td><td>7.71</td><td>40.23</td><td>Peak IS</td></tr>
+                <tr><td>Apr 27 (W18)</td><td>48.37</td><td class="danger-cell">49.65</td><td>1.98</td><td>Rank pressure spike</td></tr>
+                <tr><td>May 18 (W21)</td><td class="danger-cell">29.16</td><td>8.92</td><td class="danger-cell">61.92</td><td>Budget constraint</td></tr>
+                <tr><td>Jun 1 (W23)</td><td>30.89</td><td>15.05</td><td>54.07</td><td>Budget + rank</td></tr>
+                <tr><td>Jun 15 (W25)</td><td>43.82</td><td>0.00</td><td class="danger-cell">56.18</td><td>Budget-only loss</td></tr>
+            </tbody>
+        </table>
+        <p>IS declined <strong>11.2pp over 30 days</strong> (44.6% → 33.4%). Estimated <strong>589 conversion loss</strong> ($217k value) from IS decline.</p>
+
+        <h3>Search_Brand — healthy baseline</h3>
+        <p>Brand IS stable at <strong>76–85%</strong> across all weeks. The competitive battle is on NB Search and Shopping, not brand defense.</p>
+
+        <h2>TrimRx account structure — affiliate network analysis</h2>
+        <p>Source: Google Ads Transparency Center via DataForSEO · US market · 11 creatives returned.</p>
+
+        <table>
+            <thead>
+                <tr><th>Advertiser</th><th>Verified</th><th>Creatives</th><th>First shown</th><th>Last shown</th><th>Role</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>MetaFit Pharma Solutions LLC</strong><br><code>AR03145052045162053633</code></td><td>Yes</td><td>5</td><td>2025-06-27</td><td>2026-06-28</td><td>Long-running core buyer</td></tr>
+                <tr class="highlight-row"><td><strong>S-Class Media Pty Ltd</strong><br><code>AR15103560497078730753</code></td><td>Yes</td><td>4</td><td>2026-05-09</td><td>2026-06-29</td><td><strong>May 2026 ramp — matches Auction Insights inflection</strong></td></tr>
+                <tr><td><strong>Ads Mavericks LLC</strong><br><code>AR07314605978291273729</code></td><td>Yes</td><td>3</td><td>2026-05-30</td><td>2026-06-02</td><td>Brief 3-day image ad burst</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <p><strong>Not a single account.</strong> Three distinct verified Google Ads advertiser IDs — a media agency (S-Class, Australia), a pharma LLC (MetaFit), and an ads agency (Ads Mavericks) — all running ads to <code>trimrx.com</code>. This is consistent with an affiliate/performance marketing network, not a single TrimRx corporate Ads account scaling bids.</p>
+            <p style="margin-bottom:0">The May 2026 acceleration was driven primarily by <strong>S-Class Media Pty Ltd</strong> (4 new text creatives, May 9–20), layered on MetaFit's established presence since June 2025.</p>
+        </div>
+
+        <h2>Gimme TrimRx brand conquest</h2>
+        <table>
+            <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+            <tbody>
+                <tr><td>TrimRx-related query rows</td><td>809</td></tr>
+                <tr><td>Total spend</td><td>$9,241</td></tr>
+                <tr><td>Clicks</td><td>393</td></tr>
+                <tr><td>Conversions</td><td>8.8</td></tr>
+                <tr class="highlight-row"><td>CPA</td><td class="danger-cell"><strong>$1,050</strong> (target: $400)</td></tr>
+            </tbody>
+        </table>
+        <p>TrimRx brand conquest captures demand but at <strong>2.6× target CPA</strong>. Only <code>trimrx login</code> converts efficiently (2.5 conv). Most review/pricing/cost queries spend without return.</p>
+
+        <h2>Recommendations</h2>
+        <div class="recommendations">
+            <h3 style="margin-top:0">Immediate (this week)</h3>
+            <ol>
+                <li><strong>Do not chase TrimRx brand conquest harder</strong> — $1,050 CPA is not viable. Pause or cap <code>trimrx reviews</code>, <code>trimrx cost</code>, <code>trimrx pricing</code> unless LP/offer changes improve CVR.</li>
+                <li><strong>Diagnose NB V2 rank loss</strong> — 66–75% rank-lost IS means TrimRx, ro.co, and forhers are outranking Gimme. Run Quality Score audit on flagged keywords before raising bids.</li>
+                <li><strong>Address Shopping budget constraint</strong> — 56% budget-lost IS in W25. Review shared budget allocation vs NB Search V2 ($861k/week).</li>
+            </ol>
+            <h3>Medium-term (2–4 weeks)</h3>
+            <ol start="4">
+                <li><strong>Counter TrimRx's S-Class Media ramp</strong> with QS/LP improvements (cheaper IS recovery) rather than pure bid increases.</li>
+                <li><strong>Monitor Transparency monthly</strong> for new advertiser IDs — a 4th account signals another affiliate wave.</li>
+                <li><strong>Export Auction Insights weekly from UI</strong> for the new V2 campaign — API cannot pull competitor-named IS.</li>
+            </ol>
+            <h3>Strategic context</h3>
+            <ol start="7">
+                <li><strong>TrimRx is not the only threat</strong> — ro.co (48.76%) and forhers.com (37.57%) dominate above TrimRx. A TrimRx-only response misses the larger picture.</li>
+                <li><strong>Campaign restart reset learning</strong> — V2 relaunch means Smart Bidding is re-learning. Expect 2–3 weeks of rank volatility before stabilizing.</li>
+            </ol>
+        </div>
+
+        <h2>Data sources and limitations</h2>
+        <table>
+            <thead><tr><th>Data</th><th>Source</th><th>Limitation</th></tr></thead>
+            <tbody>
+                <tr><td>Gimme weekly IS</td><td>Google Ads API (automated)</td><td>Own-account metrics only</td></tr>
+                <tr><td>Auction Insights (legacy)</td><td>Google Ads UI screenshot</td><td>Cannot be API-pulled; paused campaign</td></tr>
+                <tr><td>TrimRx advertiser structure</td><td>DataForSEO → Transparency Center</td><td>Snapshot; 11 creatives</td></tr>
+                <tr><td>Search term conquest</td><td>Google Ads API</td><td>45-day window</td></tr>
+                <tr><td>TrimRx IS on V2 campaign</td><td>Not yet available</td><td>Requires manual Auction Insights export</td></tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <span class="company-name">Tweaking Agency</span>
+            <span>stuart@tweaking.agency · tweaking.agency</span>
+        </div>
+    </footer>
+
+</body>
+</html>
