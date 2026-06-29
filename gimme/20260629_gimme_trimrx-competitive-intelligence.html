@@ -44,6 +44,9 @@
         .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
         .callout.success { border-left-color: var(--color-success); background: #f0fdf4; }
         .verdict-badge { display: inline-block; padding: 6px 14px; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; background: #fee2e2; color: #991b1b; }
+        .conf-high { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background: #dcfce7; color: #166534; }
+        .conf-med-high { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background: #dbeafe; color: #1e40af; }
+        .conf-medium { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background: #fef3c7; color: #92400e; }
         table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
         thead { background: var(--color-primary); color: #ffffff; }
         th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -130,7 +133,7 @@
         <h2>Executive summary</h2>
         <div class="callout danger">
             <p><strong>TrimRx is not a single Google Ads account — it is a 3-advertiser affiliate network</strong> (MetaFit Pharma Solutions LLC, S-Class Media Pty Ltd, Ads Mavericks LLC) all pointing at <code>trimrx.com</code>. Confirmed Auction Insights show TrimRx climbing from near-zero to <strong>29.31% impression share</strong> by June 8 while Gimme fell to <strong>11.67%</strong> in the same NB Search auction.</p>
-            <p style="margin-bottom:0">The May 2026 ramp aligns with S-Class Media launching 4 new creatives (May 9–20) — the same period TrimRx's Auction Insights line inflects upward from the week of April 13. Gimme's restarted <code>Search_Tirzepatide_Semaglutide_V2</code> is spending $861k/week but capturing only 21.7% IS with 65.8% rank-lost. <span class="verdict-badge">Verdict: Hybrid affiliate network</span></p>
+            <p style="margin-bottom:0">The May 2026 ramp aligns with S-Class Media launching 4 new creatives (May 9–20) — the same period TrimRx's Auction Insights line inflects upward from the week of April 13. Gimme's restarted <code>Search_Tirzepatide_Semaglutide_V2</code> is spending $861k/week but capturing only 21.7% IS with 65.8% rank-lost. <span class="verdict-badge">Verdict: Hybrid affiliate network</span> Confidence varies by advertiser — see discovery method table below.</p>
         </div>
 
         <h2>Confirmed Auction Insights — legacy NB campaign</h2>
@@ -199,7 +202,7 @@
         <p>Brand IS stable at <strong>76–85%</strong> across all weeks. The competitive battle is on NB Search and Shopping, not brand defense.</p>
 
         <h2>TrimRx account structure — affiliate network analysis</h2>
-        <p>Source: Google Ads Transparency Center via DataForSEO · US market · 11 creatives returned.</p>
+        <p>Source: Google Ads Transparency Center via DataForSEO · US market (location 2840) · 11 creatives returned · Pulled 2026-06-29</p>
 
         <table>
             <thead>
@@ -211,6 +214,51 @@
                 <tr><td><strong>Ads Mavericks LLC</strong><br><code>AR07314605978291273729</code></td><td>Yes</td><td>3</td><td>2026-05-30</td><td>2026-06-02</td><td>Brief 3-day image ad burst</td></tr>
             </tbody>
         </table>
+
+        <h3>Discovery method &amp; confidence (per advertiser)</h3>
+        <div class="callout">
+            <p><strong>What we can prove:</strong> Google Ads Transparency shows which verified accounts are running ads that land on <code>trimrx.com</code>. <strong>What we cannot prove from this data alone:</strong> whether TrimRx HQ directly employs each buyer, signed an affiliate contract, or controls their budgets.</p>
+            <p style="margin-bottom:0"><strong>Primary method (all three):</strong> DataForSEO <code>ads_search/live/advanced</code> API — domain target <code>trimrx.com</code>, US location 2840, depth 100. Returns <code>advertiser_id</code>, <code>advertiser_name</code>, Google verified status, creative dates, and Transparency Center URLs.</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr><th>Advertiser</th><th>How we found it</th><th>Evidence</th><th>Confidence</th><th>Caveats</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>MetaFit Pharma Solutions LLC</strong></td>
+                    <td>DataForSEO Transparency pull for <code>trimrx.com</code></td>
+                    <td>5 creatives; verified; continuous Jun 2025 – Jun 2026; 2 text ads still active at pull</td>
+                    <td><span class="conf-high">High · 90%</span></td>
+                    <td>Generic pharma LLC name — third-party buyer, not TrimRx corporate account. No spend volume data.</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>S-Class Media Pty Ltd</strong></td>
+                    <td>Transparency pull + timing cross-check vs Auction Insights screenshot</td>
+                    <td>4 text creatives launched May 9–20; still active Jun 29; ramp matches TrimRx IS 0% → 29%</td>
+                    <td><span class="conf-high">High · 85%</span> runs ads<br><span class="conf-med-high">Med-high · 75%</span> drives ramp</td>
+                    <td>Australian media-buyer pattern fits affiliate model. Timing correlation strong but not spend-attributed.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ads Mavericks LLC</strong></td>
+                    <td>DataForSEO Transparency pull for <code>trimrx.com</code></td>
+                    <td>3 image creatives; verified; active only May 30 – Jun 2 (3-day window)</td>
+                    <td><span class="conf-medium">Medium · 65%</span></td>
+                    <td>Confirmed brief flight only — likely test burst, not sustained scale. May be immaterial to overall pressure.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Overall network verdict:</strong> <span class="conf-high">High · 85%</span> that TrimRx uses multiple third-party Google Ads accounts. <span class="conf-med-high">Medium-high · 75%</span> that structure is affiliate/performance marketing (not one agency with sub-accounts).</p>
+
+        <h3>What would increase confidence</h3>
+        <ul style="margin: 0 0 20px 20px;">
+            <li>Manual review of each Transparency Center advertiser profile (ad volume over time)</li>
+            <li>Auction Insights on the current V2 campaign (confirms domain IS; does not name advertiser accounts)</li>
+            <li>Landing-page redirect / affiliate tracking param analysis</li>
+            <li>Second Transparency pull in 30 days (detects new advertiser IDs)</li>
+        </ul>
 
         <div class="callout">
             <p><strong>Not a single account.</strong> Three distinct verified Google Ads advertiser IDs — a media agency (S-Class, Australia), a pharma LLC (MetaFit), and an ads agency (Ads Mavericks) — all running ads to <code>trimrx.com</code>. This is consistent with an affiliate/performance marketing network, not a single TrimRx corporate Ads account scaling bids.</p>
