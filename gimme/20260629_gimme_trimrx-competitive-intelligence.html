@@ -138,7 +138,7 @@
         <h2>Confirmed Auction Insights — legacy NB campaign</h2>
         <p>Source: Google Ads UI · Campaign <code>Search_Tirzepatide_Semaglutide</code> (paused) · Feb 1 – Jun 10, 2026 · Weekly frequency. Auction Insights cannot be pulled via API.</p>
 
-        <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/auction-insights-search-tirzepatide-semaglutide.png" alt="Auction Insights chart showing TrimRx impression share ramp from 0% to 29% while Gimme falls to 11.7%" class="chart-img">
+        <img src="auction-insights-search-tirzepatide-semaglutide.png" alt="Auction Insights chart showing TrimRx impression share ramp from 0% to 29% while Gimme falls to 11.7%" class="chart-img">
         <p class="chart-caption">Search Auction Insights — weekly impression share by display URL domain. TrimRx (olive green) ramps from ~0% starting mid-April to 29.31% by June 8.</p>
 
         <h3>Week of June 8, 2026 — competitor impression share</h3>
@@ -304,6 +304,126 @@
             <p style="margin-bottom:0">The May 2026 acceleration was driven primarily by <strong>S-Class Media Pty Ltd</strong> (4 new text creatives, May 9–20), layered on MetaFit's established presence since June 2025.</p>
         </div>
 
+        <h2>Live funnel architecture by affiliate</h2>
+        <p><strong>Source:</strong> Puppeteer live scrape 2026-06-29 with simulated Google Ads click params. Full notes: <code>context/competitor-ads/trimrx-funnel-teardown.md</code></p>
+
+        <table>
+            <thead>
+                <tr><th>Path</th><th>Buyer</th><th>Step map</th><th>Email gate</th><th>Price before contact</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>trimrx.com/discount</code></td>
+                    <td>S-Class Media</td>
+                    <td>Ad → Everflow SPA → quiz/intake</td>
+                    <td><span class="conf-medium">Partial</span> — SPA blank without affiliate chain</td>
+                    <td>Unknown (meta: from $179/mo)</td>
+                </tr>
+                <tr>
+                    <td><code>trimrx.com/glp1/weight-loss</code></td>
+                    <td>MetaFit Pharma</td>
+                    <td>Ad → quiz LP</td>
+                    <td>N/A — <strong>404</strong> in live scrape</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td><code>start.trimrx.com/intake/.../height_weight</code></td>
+                    <td>Ads Mavericks</td>
+                    <td>Ad → BMI intake → Health → Details → Eligibility</td>
+                    <td><span class="conf-high">No</span></td>
+                    <td><span class="conf-high">No</span></td>
+                </tr>
+                <tr>
+                    <td><code>offers.trimrx.com/offer-v24-quiz</code></td>
+                    <td>Affiliate offers</td>
+                    <td>Ad → promo LP → 4-step quiz → intake (<code>discount=join120</code>)</td>
+                    <td><span class="conf-high">No</span></td>
+                    <td><span class="conf-high">Yes</span> — $174/mo hero</td>
+                </tr>
+                <tr>
+                    <td><code>trimrx.com/quiz</code></td>
+                    <td>Multiple</td>
+                    <td>Redirects to <code>start.trimrx.com</code> BMI intake</td>
+                    <td><span class="conf-high">No</span></td>
+                    <td><span class="conf-high">No</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout warning">
+            <p><strong>Email-gate validation (S-Class /discount):</strong> User-reported email lock on discount traffic is <strong>plausible</strong> given Everflow affiliate SPA architecture, but <strong>not reproduced</strong> in cold automated scrape — the page renders blank without live affiliate <code>affid</code> params. Accessible TrimRx paths (offers, intake, homepage) show <strong>price upfront</strong> and quiz/intake-first design.</p>
+        </div>
+
+        <h3>Funnel specialization</h3>
+        <table>
+            <thead><tr><th>Buyer</th><th>Optimization</th><th>Email capture</th><th>Price anchoring</th></tr></thead>
+            <tbody>
+                <tr><td>S-Class Media</td><td>Discount / goal-based pricing</td><td>Unknown (affiliate SPA)</td><td>Meta: from $179/mo</td></tr>
+                <tr><td>MetaFit Pharma</td><td>Quiz / assessment</td><td>No (path 404)</td><td>Via quiz flow</td></tr>
+                <tr><td>Ads Mavericks</td><td>Speed-to-intake</td><td>No</td><td>Deferred to intake</td></tr>
+                <tr><td>Offers subdomain</td><td>Promo + inline quiz</td><td>No</td><td>Upfront ($174–$179)</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Why TrimRx's affiliate network scaled</h2>
+        <table>
+            <thead><tr><th>#</th><th>Driver</th><th>Evidence</th><th>Strength</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>Distributed auction presence</td><td>3 verified buyers = more simultaneous tests, more IS</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>2</td><td>Funnel specialization by buyer</td><td>Discount / quiz / direct-intake / promo paths per account</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>3</td><td>Lead capture before price reveal</td><td>Possible on /discount SPA; not confirmed on accessible paths</td><td><span class="conf-medium">Low–partial</span></td></tr>
+                <tr><td>4</td><td>Aggressive rank buying</td><td>TrimRx IS 0% → 29.31%; Gimme rank-lost IS 66–90%</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>5</td><td>Creative/message diversification</td><td>Quiz, discount, "GLP-1 USA", promo vs Gimme price-led RSAs</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>6</td><td>Externalized media buying risk</td><td>Affiliates may accept worse unit economics short-term</td><td><span class="conf-medium">Inference</span></td></tr>
+                <tr><td>7</td><td>Timing vs Gimme CVR decline</td><td>Ramp Apr 13; Gimme CPA $274 → $743 Feb–Jun</td><td><span class="conf-high">High</span></td></tr>
+            </tbody>
+        </table>
+
+        <h2>TrimRx overall media strategy</h2>
+        <table>
+            <thead><tr><th>Layer</th><th>TrimRx</th><th>Gimme today</th><th>Gap</th></tr></thead>
+            <tbody>
+                <tr><td>Distribution</td><td>Multi-account affiliate network</td><td>Single in-house account</td><td class="danger-cell">High</td></tr>
+                <tr><td>Acquisition</td><td>Search-heavy; quiz/discount/promo angles</td><td>Search NB + Shopping; price-led</td><td>Medium</td></tr>
+                <tr><td>Capture</td><td>Possible email gate on affiliate SPA</td><td>No email gate on paid LPs</td><td>Medium</td></tr>
+                <tr><td>Conversion</td><td>Quiz-first + direct-intake in parallel</td><td>LP-first; intake test in progress</td><td>Medium</td></tr>
+                <tr><td>Retention</td><td>Everflow + dual GTM + FigPii</td><td>PostHog + GTM</td><td>Unknown</td></tr>
+                <tr><td>Measurement</td><td>Per-affiliate independent optimization</td><td>Unified Smart Bidding</td><td>Structural</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Gimme leverage matrix</h2>
+        <h3>Easiest high-leverage (do first)</h3>
+        <table>
+            <thead><tr><th>Rank</th><th>Initiative</th><th>Why</th><th>Effort</th><th>Owner</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td>1</td><td>Launch direct-to-intake RSA test</td><td>Mirrors TrimRx quiz-first path (CSV ready)</td><td>Low</td><td>PPC</td></tr>
+                <tr><td>2</td><td>Test soft email capture LP</td><td>Gate personalized quote, not core offer</td><td>Low–Med</td><td>Dev + PPC</td></tr>
+                <tr><td>3</td><td>Keep AI Max OFF; prune auto assets</td><td>Stops irrelevant query matching</td><td>Low</td><td>PPC</td></tr>
+                <tr><td>4</td><td>Negative informational/competitor terms</td><td>Cut BMI calculator / competitor waste</td><td>Low</td><td>PPC</td></tr>
+                <tr><td>5</td><td>Stabilize V2 Smart Bidding</td><td>Restores auction entry (66–75% rank-lost)</td><td>Low</td><td>PPC</td></tr>
+                <tr><td>6</td><td>Export weekly Auction Insights on V2</td><td>Track TrimRx IS on restarted campaign</td><td>Low</td><td>PPC</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Highest leverage even if hard</h3>
+        <table>
+            <thead><tr><th>Rank</th><th>Initiative</th><th>Why</th><th>Effort</th><th>Risk</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>Dedicated quiz/discount LP system</td><td>Match TrimRx multi-funnel architecture</td><td>High (~4d dev)</td><td>Dev lead time</td></tr>
+                <tr><td>2</td><td>Email capture + nurture before intake</td><td>CRM/retargeting loop</td><td>High</td><td>Compliance + dev</td></tr>
+                <tr><td>3</td><td>Separate campaigns per funnel type</td><td>Parallel testing without polluting tCPA</td><td>Med</td><td>Account complexity</td></tr>
+                <tr><td>4</td><td>Quality Score / LP experience push</td><td>Cheaper IS recovery vs bid increases</td><td>Med</td><td>Dev + CRO</td></tr>
+                <tr><td>5</td><td>Performance-partner buying model</td><td>Structural match to TrimRx scale</td><td>Very High</td><td>Legal/policy/budget</td></tr>
+                <tr><td>6</td><td>Fix intake → checkout CVR</td><td>CPA math even with competitive pricing</td><td>Med</td><td>Dev + product</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout">
+            <p><strong>Do not copy:</strong> Multi-account evasion, misleading "GLP-1 USA" branding, hard email walls that hurt QS/trust in healthcare.</p>
+            <p style="margin-bottom:0"><strong>Do copy:</strong> Parallel funnel testing, price anchoring on offer pages, <code>gclid</code> preservation through intake (Gimme already confirmed via cookies).</p>
+        </div>
+
         <h2>Gimme TrimRx brand conquest</h2>
         <table>
             <thead><tr><th>Metric</th><th>Value</th></tr></thead>
@@ -347,6 +467,7 @@
                 <tr><td>TrimRx advertiser structure</td><td>DataForSEO → Transparency Center</td><td>Snapshot; 11 creatives</td></tr>
                 <tr><td>Search term conquest</td><td>Google Ads API</td><td>45-day window</td></tr>
                 <tr><td>TrimRx IS on V2 campaign</td><td>Not yet available</td><td>Requires manual Auction Insights export</td></tr>
+                <tr><td>Live funnel teardown</td><td>Puppeteer scrape 2026-06-29</td><td>/discount requires affiliate chain; email gate partial</td></tr>
             </tbody>
         </table>
 
