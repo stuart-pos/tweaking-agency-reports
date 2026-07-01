@@ -316,7 +316,7 @@
                     <td><code>trimrx.com/discount</code></td>
                     <td>S-Class Media</td>
                     <td>Ad → Everflow SPA → quiz/intake</td>
-                    <td><span class="conf-medium">Partial</span> — SPA blank without affiliate chain</td>
+                    <td><span class="conf-medium">Affiliate ID</span> — Everflow, not email</td>
                     <td>Unknown (meta: from $179/mo)</td>
                 </tr>
                 <tr>
@@ -351,7 +351,26 @@
         </table>
 
         <div class="callout warning">
-            <p><strong>Email-gate validation (S-Class /discount):</strong> User-reported email lock on discount traffic is <strong>plausible</strong> given Everflow affiliate SPA architecture, but <strong>not reproduced</strong> in cold automated scrape — the page renders blank without live affiliate <code>affid</code> params. Accessible TrimRx paths (offers, intake, homepage) show <strong>price upfront</strong> and quiz/intake-first design.</p>
+            <p><strong>Affiliate ID vs email on S-Class <code>/discount</code>:</strong> Tested 2026-07-01. Adding <code>affid=40&amp;oid=1</code> triggers Everflow and sets <code>_ef_transaction_id</code> — that is <strong>affiliate attribution tracking</strong>, not a user email form. <strong>No email input appeared</strong> on any <code>/discount</code> variant. The page stays blank because the React SPA does not hydrate without a full S-Class redirect chain (not because email is required).</p>
+            <p style="margin-bottom:0">Working TrimRx paths (<code>/promo</code>, <code>/get</code>, <code>offers.*</code>, <code>start.trimrx.com</code>) render full content and pricing <strong>without email</strong>. Email capture exists only as an optional homepage newsletter. User-reported email gating may apply to post-quiz <code>/results-a/b/c</code> pages we could not reach without a live ad click.</p>
+        </div>
+
+        <h3>Why TrimRx direct-to-intake works vs Gimme</h3>
+        <p>TrimRx direct intake (<code>start.trimrx.com</code>) is <strong>one buyer's path</strong> (Ads Mavericks), not their whole strategy. Volume runs through <code>offers.trimrx.com</code> (price upfront → quiz → intake).</p>
+        <table>
+            <thead><tr><th>Factor</th><th>TrimRx</th><th>Gimme</th></tr></thead>
+            <tbody>
+                <tr><td>First intake step</td><td>BMI height/weight (clinical action)</td><td>Weight goal question (1 of 9)</td></tr>
+                <tr><td>Intake host</td><td>Dedicated <code>start.trimrx.com</code></td><td><code>intake.gimme.care/wl</code></td></tr>
+                <tr><td>Ad → landing match</td><td>"$179" in ad; price deferred in intake</td><td class="danger-cell">"$163/$130" in RSA; checkout defaults $199</td></tr>
+                <tr><td>Price before intake</td><td><code>offers.*</code> shows $174/mo + quiz first</td><td>Direct intake skips LP that anchored Feb–Apr success</td></tr>
+                <tr><td>Test isolation</td><td>Separate affiliate account per funnel</td><td>Single account — pollutes main tCPA</td></tr>
+                <tr><td>Auction context</td><td>Gaining IS (Apr–Jun ramp)</td><td>66–90% rank-lost IS (Jun 2026)</td></tr>
+            </tbody>
+        </table>
+        <div class="callout">
+            <p><strong>Why Gimme direct intake hasn't worked:</strong> Price-forward RSAs clash with $199 checkout default; LP removed from path (LP-first worked Feb–Apr); intake → checkout CVR fell 9pp Mar–May; test launched during rank collapse.</p>
+            <p style="margin-bottom:0"><strong>Better models from TrimRx:</strong> (1) promo LP with upfront price + short quiz → intake (<code>offers.*</code> pattern), or (2) clinical-first RSAs without price in headlines until 3-month plan is pre-selected.</p>
         </div>
 
         <h3>Funnel specialization</h3>
@@ -371,7 +390,7 @@
             <tbody>
                 <tr><td>1</td><td>Distributed auction presence</td><td>3 verified buyers = more simultaneous tests, more IS</td><td><span class="conf-high">High</span></td></tr>
                 <tr><td>2</td><td>Funnel specialization by buyer</td><td>Discount / quiz / direct-intake / promo paths per account</td><td><span class="conf-high">High</span></td></tr>
-                <tr><td>3</td><td>Lead capture before price reveal</td><td>Possible on /discount SPA; not confirmed on accessible paths</td><td><span class="conf-medium">Low–partial</span></td></tr>
+                <tr><td>3</td><td>Lead capture before price reveal</td><td>Affiliate attribution on /discount (not email)</td><td><span class="conf-medium">Low</span></td></tr>
                 <tr><td>4</td><td>Aggressive rank buying</td><td>TrimRx IS 0% → 29.31%; Gimme rank-lost IS 66–90%</td><td><span class="conf-high">High</span></td></tr>
                 <tr><td>5</td><td>Creative/message diversification</td><td>Quiz, discount, "GLP-1 USA", promo vs Gimme price-led RSAs</td><td><span class="conf-high">High</span></td></tr>
                 <tr><td>6</td><td>Externalized media buying risk</td><td>Affiliates may accept worse unit economics short-term</td><td><span class="conf-medium">Inference</span></td></tr>
