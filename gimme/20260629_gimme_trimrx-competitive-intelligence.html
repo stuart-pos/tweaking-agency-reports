@@ -283,11 +283,34 @@
             </tbody>
         </table>
 
+        <h3>Comparison-site arbitrage funnel (not S-Class)</h3>
+        <p>Discovered 2026-07-01. Separate affiliate publisher — <strong>not</strong> one of the three Google Ads Transparency accounts.</p>
+        <table>
+            <thead><tr><th>Step</th><th>URL</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>1. Comparison LP</td>
+                    <td><a href="https://bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html">bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html</a></td>
+                    <td>TrimRx ranked #1; fabricated scores (“9.9 Outstanding”, “31,481 User Votes”) — not Trustpilot</td>
+                </tr>
+                <tr>
+                    <td>2. TrimRx promo LP</td>
+                    <td><a href="https://trimrx.com/glp1/offer-v4-winter-4">trimrx.com/glp1/offer-v4-winter-4</a></td>
+                    <td>Loads <strong>without affiliate ID</strong>; with redirect: <code>affid=375</code>, <code>discount=SPRING140</code></td>
+                </tr>
+                <tr>
+                    <td>3. Intake</td>
+                    <td><code>start.trimrx.com/intake/trimrx?discount=join120</code></td>
+                    <td>BMI-first; no email gate</td>
+                </tr>
+            </tbody>
+        </table>
+
         <h3>Additional TrimRx landing pages (public ecosystem)</h3>
-        <p>These URLs exist on TrimRx's public web properties but are not yet mapped to a specific advertiser account:</p>
+        <p>These URLs exist on TrimRx's public web properties but are not yet mapped to a specific Google Ads advertiser account:</p>
         <ul style="margin: 0 0 20px 20px;">
             <li><a href="https://offers.trimrx.com/">offers.trimrx.com</a> — affiliate-style offer pages (<code>/offer-v2</code>, <code>/offer-v24-quiz</code>)</li>
-            <li><a href="https://trimrx.com/glp1/offer-v3">trimrx.com/glp1/offer-v3</a></li>
+            <li><a href="https://trimrx.com/glp1/offer-v3">trimrx.com/glp1/offer-v3</a>, <a href="https://trimrx.com/glp1/offer-v4-winter-4">trimrx.com/glp1/offer-v4-winter-4</a></li>
             <li><a href="https://trimrx.com/semaglutide">trimrx.com/semaglutide</a>, <a href="https://trimrx.com/tirzepatide">/tirzepatide</a>, <a href="https://trimrx.com/intake">/intake</a>, <a href="https://trimrx.com/start">/start</a></li>
         </ul>
 
@@ -340,6 +363,13 @@
                     <td><span class="conf-high">No</span></td>
                     <td><span class="conf-high">Yes</span> — $174/mo hero</td>
                 </tr>
+                <tr class="highlight-row">
+                    <td><a href="https://bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html">bestweightloss.io</a> → <a href="https://trimrx.com/glp1/offer-v4-winter-4">offer-v4-winter-4</a></td>
+                    <td>Comparison publisher (<code>affid=375</code>)</td>
+                    <td>Listicle → redirect → promo LP → intake</td>
+                    <td><span class="conf-high">No</span></td>
+                    <td><span class="conf-high">Yes</span> — from $149/mo</td>
+                </tr>
                 <tr>
                     <td><code>trimrx.com/quiz</code></td>
                     <td>Multiple</td>
@@ -351,7 +381,7 @@
         </table>
 
         <div class="callout warning">
-            <p><strong>Affiliate ID vs email on S-Class <code>/discount</code>:</strong> Tested 2026-07-01. Adding <code>affid=40&amp;oid=1</code> triggers Everflow and sets <code>_ef_transaction_id</code> — that is <strong>affiliate attribution tracking</strong>, not a user email form. <strong>No email input appeared</strong> on any <code>/discount</code> variant. The page stays blank because the React SPA does not hydrate without a full S-Class redirect chain (not because email is required).</p>
+            <p><strong>Affiliate ID vs email on S-Class <code>/discount</code>:</strong> Fake <code>affid</code> values (14 tested) register Everflow tracking but <strong>do not unlock</strong> the SPA. <strong>No email input</strong> observed. Separate path: <a href="https://trimrx.com/glp1/offer-v4-winter-4">offer-v4-winter-4</a> loads <strong>without any affiliate ID</strong>.</p>
             <p style="margin-bottom:0">Working TrimRx paths (<code>/promo</code>, <code>/get</code>, <code>offers.*</code>, <code>start.trimrx.com</code>) render full content and pricing <strong>without email</strong>. Email capture exists only as an optional homepage newsletter. User-reported email gating may apply to post-quiz <code>/results-a/b/c</code> pages we could not reach without a live ad click.</p>
         </div>
 
