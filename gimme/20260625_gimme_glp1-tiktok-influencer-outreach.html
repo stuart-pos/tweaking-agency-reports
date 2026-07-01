@@ -18,7 +18,6 @@ body{font-family:var(--font-body);color:var(--color-text);background:var(--color
 .report-header{background:var(--color-primary);color:#fff;padding:40px 0}
 .report-header .container{display:flex;align-items:center;gap:24px}
 .report-header h1{font-size:1.5rem;font-weight:700}
-.report-header .tagline{font-size:.9rem;opacity:.8;margin-top:4px}
 .report-meta{background:var(--color-bg-alt);border-bottom:1px solid var(--color-border);padding:20px 0}
 .report-meta .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .report-meta h2{font-size:1.25rem;font-weight:700;color:var(--color-primary)}
@@ -43,6 +42,7 @@ tbody tr:nth-child(even){background:var(--color-bg-alt)}
 .report-footer .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .report-footer .company-name{font-weight:700;color:#fff}
 .back-link{display:inline-block;margin:16px 0 0;font-size:.9rem}
+pre.email{background:var(--color-bg-alt);border:1px solid var(--color-border);padding:16px;border-radius:8px;font-size:.85rem;white-space:pre-wrap}
 </style>
 </head>
 <body>
@@ -51,14 +51,12 @@ tbody tr:nth-child(even){background:var(--color-bg-alt)}
   <h2>Gimme Care — GLP-1 affiliate lookalike outreach (TikTok · Instagram · Facebook)</h2>
   <div class="meta-details">
     <span>Client: <strong>Gimme Care</strong></span><br>
-    <span>Date: <strong>2026-06-25</strong></span><br>
-    <span>10 TikTok existing · 18 TikTok lookalikes · 9 cross-platform · 14 IG · 7 FB</span><br>
-    <span>Source: <a href="https://docs.google.com/spreadsheets/d/10lYrrNtp7O07jNg4ZBezH877sXtj_N_z_P97xv486pQ/edit">GLP influencer sheet</a></span>
+    <span>Date: <strong>2026-06-29</strong></span><br>
+    <span>10 TikTok existing · 48 TikTok lookalikes · 9 cross-platform · 15 IG · 7 FB</span>
   </div>
 </div></div>
 <main class="container">
 <p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/index.html">← All Gimme reports</a></p>
-
 <div class="csv-download-box">
   <h3>Download influencer list (CSV)</h3>
   <p>Import into Google Sheets for outreach tracking.</p>
@@ -66,9 +64,8 @@ tbody tr:nth-child(even){background:var(--color-bg-alt)}
 </div>
 <script>
 (function(){
-  var csv = "Section,Rank,Platform,Name,Handle,Primary URL,Email,Contact,Followers,Profile Likes,Views,Likes,Comments,Shares,Niche,Fit Score,Why Fit,Priority Score,Metrics Source,Notes\nExisting,,TikTok,Patricia Pearls,patriciapeptides,https://www.tiktok.com/@patriciapeptides,,link.me/patriciapearls,17500,1400000,,,,,Weight loss / peptides,,Before & after GLP content; backup account after main page takedown,,,Main @_patriciapearls taken down\nExisting,,TikTok,Alexis Allison,alexis_c_allison,https://www.tiktok.com/@alexis_c_allison,,linktr.ee/alexiscallison,84400,4000000,,,,,\"Mom life, weight loss\",,Audience check-ins; relatable motherhood + weight loss,,,47 profile likes/follower\nExisting,,TikTok,Johanna Navarro,itsjohannanavarro,https://www.tiktok.com/@itsjohannanavarro,Itsjohannanavarro@gmail.com,linktr.ee/itsjohannanavarro,88900,1900000,,,,,\"Mom lifestyle, VSG, GLP\",,Weekly weigh-ins; polished vlogs; strong engagement,,,\nExisting,,TikTok,Kearney Parnell,kekes.plot,https://www.tiktok.com/@kekes.plot,parnellkearney@gmail.com,linktr.ee/kearneyparnell,195100,20400000,,,,,\"Relatable weight loss, beauty\",,Bingeable serialized journey; top-tier engagement benchmark,,,105 profile likes/follower\nExisting,,TikTok,Nicolle Field,nfield94,https://www.tiktok.com/@nfield94,NicolleA.Blair@gmail.com,linktr.ee/nfield94,192900,5000000,,,,,\"Healing journey, weight loss, EMS\",,Talks to camera; relatable healing + weight loss,,,\nExisting,,TikTok,Dawn Bane,dawnsdailylife,https://www.tiktok.com/@dawnsdailylife,,Instagram @dawnsdailylife,,,,,,,\"Teacher, weight loss, food\",,Before/after weight loss; millennial relatable,,,Audience controls — login required for metrics\nExisting,,TikTok,Courtney Kline,courtklinefit,https://www.tiktok.com/@courtklinefit,,Gimme referral in bio,2066,14300,,,,,\"Weight loss, mom life\",,Before/after; empowering mom content; active Gimme affiliate,,,intake.gimme.care/wl?referral-campaign=courtkline\nExisting,,TikTok,Twaun,,,,youtube.com/@TracesofTwaunsLife,,,,,,,\"Weight loss, exercise\",,Long-form educational YouTube (not TikTok),,,YouTube-only\nExisting,,TikTok,Ana,theegreatestana,https://www.tiktok.com/@theegreatestana,anacollabs@outlook.com,linktr.ee/thegreatestana,3544,116400,,,,,GLP / weight loss,,GLP-only; weekly 24–48h updates; Q&A,,,Gimme Care in bio\nExisting,,TikTok,Lily Santiago,lilianimariee,https://www.tiktok.com/@lilianimariee,lilymarieee00@gmail.com,linktr.ee/Lilianimarie,10800,219300,,,,,\"Nurse, GLP-1, lifestyle\",,Nurse credibility; what-to-eat on GLP; transformation,,,\"Week 49, -113 lbs\"\nNew Lookalike,1,TikTok,Kelsey Martinez,itsmekelsc,https://www.tiktok.com/@itsmekelsc,kelsc@shinetalentgroup.com,linktr.ee/itsmekelsc,444400,12700000,149100,1120,24,80,\"GLP-1, PCOS, lifestyle\",5,PCOS + GLP-1 journey; viral transformation; obesity advocacy,599888,top video,Talent-managed; anchor-tier partner\nNew Lookalike,2,TikTok,Ashley | Bossfidence,bossfidence,https://www.tiktok.com/@bossfidence,Ashley@thebossfidence.com,linktr.ee/bossfidence,123900,4300000,102200,2883,82,50,\"PCOS, GLP-1, lifestyle\",5,PCOS + GLP-1 advocacy; before/after; what-I-eat,417663,top video,Strong GLP/PCOS fit\nNew Lookalike,3,TikTok,Mrs Clark,mrskariclark,https://www.tiktok.com/@mrskariclark,,TikTok DM,1200000,27000000,146500,12400,1004,389,Weight loss journey,4,Weekly weigh-ins; 1K+ comments/video; midlife audience,594317,top video,Verify GLP positioning before outreach\nNew Lookalike,4,TikTok,Charge Nurse Keasha,chargenursekeasha,https://www.tiktok.com/@chargenursekeasha,Keashadixon@gmail.com,TikTok bio,106500,972700,45400,1920,133,368,\"Nurse, GLP-1 education\",4,Nurse-led GLP-1 education; high shares,178594,top video,368 shares on GLP sample\nNew Lookalike,5,TikTok,Kim Carlos,dmfkim,https://www.tiktok.com/@dmfkim,DMFKimOnGLP@gmail.com,linktr.ee/dinosaurmonkeyfarts,100300,901000,,,,,GLP-1 advocacy,5,Leading GLP advocate; Plus SideZ podcast,0,profile only,Category thought leader\nNew Lookalike,6,TikTok,Rachael | MyLittleLoveNest,mylittlelovenest,https://www.tiktok.com/@mylittlelovenest,Rachael@lovenestcollection.com,linktr.ee/lovenestconversation,82000,273400,50500,3514,292,85,\"Mounjaro journey, over-40 mom\",5,Long-form Mounjaro journey; chronic disease framing,213211,top video,Known Amble GLP affiliate — conquest opportunity\nNew Lookalike,7,TikTok,Hope,hopiedopiee1,https://www.tiktok.com/@hopiedopiee1,hg045042@gmail.com,linktr.ee/hopiedopie,111700,3200000,23200,2286,86,19,GLP-1 weight loss,5,Documented semaglutide journey; -135 lbs updates,99849,top video,Amble in bio — strong lookalike\nNew Lookalike,8,TikTok,THE PEPTIDE PRINCESS,peptideprincess,https://www.tiktok.com/@peptideprincess,,TikTok bio,22800,382100,,,,,\"GLP-1 & peptides, women\",5,GLP/peptide niche; Patricia Pearls archetype,0,profile only,\nNew Lookalike,9,TikTok,_.Shakinah,_.shakinah,https://www.tiktok.com/@_.shakinah,,TikTok DM,20600,2300000,,,,,\"Mom 30+, semaglutide\",4,Postpartum + semaglutide; 111 likes/follower,0,profile only,Exceptional engagement density\nNew Lookalike,10,TikTok,Sharon,shazzaccaaldwell,https://www.tiktok.com/@shazzaccaaldwell,contact@sharonmccandless.co.uk,sharonmccandless.co.uk,21400,174700,,,,,Mounjaro diary,5,Viral Mounjaro diary; diabetes reversal story,0,profile only,700K+ views on early viral posts\nNew Lookalike,11,TikTok,Losing it with Lisa,losingitwithlisa,https://www.tiktok.com/@losingitwithlisa,boopsydesigns@gmail.com,TikTok bio,2737,597700,,,,,Weight loss journey,4,Micro-creator; 218 likes/follower outlier,0,profile only,\nNew Lookalike,12,TikTok,Ja'Courtney T,jacourtneyt,https://www.tiktok.com/@jacourtneyt,Jtrudell02@yahoo.com,linktr.ee/JaCourtneyT,2941,82300,,,,,\"Semaglutide, plus-size\",4,Early semaglutide journey; plus-size audience,0,profile only,\nNew Lookalike,13,TikTok,Dr. Ashley Power,drashleypower,https://www.tiktok.com/@drashleypower,,TikTok bio,36200,153300,107900,1731,71,67,Obesity medicine MD,3,MD educator; Ozempic/metformin explainers,393301,top video,Clinical tone — pair with journey creator\nNew Lookalike,14,TikTok,Dr Jennah | WeightDoc,weightdoc,https://www.tiktok.com/@weightdoc,,TikTok bio,343400,5500000,65800,1417,67,108,Obesity medicine,3,Metformin vs GLP-1 medical content,240923,top video,\nNew Lookalike,15,TikTok,Dr Megan Lee,dr.meganlee,https://www.tiktok.com/@dr.meganlee,,Consult link in bio,37900,162500,43400,813,57,52,\"Menopause, weight\",3,Peri/menopause physician; weight-adjacent,158584,top video,\nNew Lookalike,16,TikTok,Simi Doctors,simidoctors,https://www.tiktok.com/@simidoctors,,TikTok bio,,,1900000,47700,1496,7666,Medical GLP-1 education,3,1.9M-view GLP explainers; awareness-tier,6978382,top video,Huge reach; lower journey-style fit\nNew Lookalike,17,TikTok,\"DoctorSood, M.D.\",doctorsood,https://www.tiktok.com/@doctorsood,doctorsood@dttalent.com,dttalent.com,2800000,95700000,112200,1443,56,47,Medical education,2,2.8M followers; insulin education,385294,top video,Talent-managed; expensive\nNew Lookalike,18,TikTok,MyDarlingDaisyHello,mydarlingdaisyhello,https://www.tiktok.com/@mydarlingdaisyhello,,Linktree,19100,62400,17900,386,37,124,\"Health, hormones\",2,Hormone wellness; weak GLP journey fit,62012,top video,Deprioritize\nExisting Cross-Platform,,Instagram,Alexis Allison,alexis_c_allison,https://www.instagram.com/alexis_c_allison/,,linktr.ee/alexiscallison,2596,,,,,,\"Mom life, weight loss\",4,Same creator as TikTok affiliate; smaller IG audience,0,profile only,TikTok @alexis_c_allison — 84.4K\nExisting Cross-Platform,,Instagram,Johanna Navarro,itsjohannanavarro,https://www.instagram.com/itsjohannanavarro/,Itsjohannanavarro@gmail.com,linktr.ee/itsjohannanavarro,7137,,,,,,\"Mom lifestyle, VSG, GLP\",5,Cross-posted journey content; polished vlogs,0,profile only,TikTok @itsjohannanavarro — 88.9K\nExisting Cross-Platform,,Facebook,Johanna Navarro,itsjohannanavarro,https://www.facebook.com/itsjohannanavarro,Itsjohannanavarro@gmail.com,linktr.ee/itsjohannanavarro,356,,,,,,\"Mom lifestyle, GLP journey\",4,GLP journey + mom life on Page,0,page likes,356 page likes; TikTok primary\nExisting Cross-Platform,,Instagram,Kearney Parnell,shrinking.keke,https://www.instagram.com/shrinking.keke/,parnellkearney@gmail.com,linktr.ee/kearneyparnell,1189,,,,,,Weight loss journey,4,New IG handle; early-stage cross-post,0,profile only,TikTok @kekes.plot — 195.1K; only 5 IG posts\nExisting Cross-Platform,,Instagram,Nicolle Field,nfield94,https://www.instagram.com/nfield94/,NicolleA.Blair@gmail.com,linktr.ee/nfield94,9042,,,,,,\"Healing journey, weight loss\",4,Healing + weight loss storytelling,0,profile only,TikTok @nfield94 — 192.9K\nExisting Cross-Platform,,Instagram,Dawn Bane,dawnsdailylife,https://www.instagram.com/dawnsdailylife/,,Instagram primary,3590,,,,,,\"Teacher, weight loss, food\",4,Before/after; millennial relatable,0,profile only,TikTok metrics login-gated\nExisting Cross-Platform,,Instagram,Courtney Kline,Courtkline,https://www.instagram.com/Courtkline/,,Gimme referral,938,,,,,,\"Weight loss, mom life\",5,Active Gimme affiliate; cross-platform,0,profile only,TikTok @courtklinefit; Gimme intake link\nExisting Cross-Platform,,Facebook,Courtney Kline,Courtklinefit,https://www.facebook.com/Courtklinefit,,Gimme referral,,,,,,,\"Weight loss, mom life\",4,Gimme affiliate; Page metrics not public,0,profile only,Login required for page likes\nExisting Cross-Platform,,Instagram,Lily Santiago,lilianimariee,https://www.instagram.com/lilianimariee/,lilymarieee00@gmail.com,linktr.ee/Lilianimarie,271,,,,,,\"Nurse, GLP-1\",5,Nurse credibility; TikTok-primary creator,0,profile only,TikTok @lilianimariee — 10.8K\nIG Lookalike,1,Instagram,Jesica Denton,lifewithjesnicole,https://www.instagram.com/lifewithjesnicole/,,IG bio / link,56000,,,,,,Midlife motherhood + wellness,4,56K IG; midlife mom + wellness; strong Reels presence,224000,profile only,IG-primary discovery; not on TikTok list\nIG Lookalike,2,Instagram,Kelsey Martinez,itsmekelsc1,https://www.instagram.com/itsmekelsc1/,kelsc@shinetalentgroup.com,linktr.ee/itsmekelsc,88000,,,,,,\"GLP-1, PCOS, lifestyle\",5,88K IG; PCOS + GLP-1 transformation,440000,profile only,Cross-platform — TikTok #1 @itsmekelsc\nIG Lookalike,3,Instagram,Ashley | Bossfidence,bossfidence,https://www.instagram.com/bossfidence/,Ashley@thebossfidence.com,linktr.ee/bossfidence,52000,,,,,,\"PCOS, GLP-1, lifestyle\",5,52K IG; PCOS bestie; before/after + WIEIAD,260000,profile only,Cross-platform — TikTok #2\nIG Lookalike,4,Instagram,Meg Conover | GLP-1 Mom,glp1_mom,https://www.instagram.com/glp1_mom/,,IG bio,33000,,,,,,GLP-1 mom journey,5,33K IG; dedicated GLP-1 mom content,165000,profile only,IG-primary; featured in GLP creator roundups\nIG Lookalike,5,Instagram,Elizabeth Butcher,elizajane1983,https://www.instagram.com/elizajane1983/,,IG bio,17000,,,,,,GLP-1 weight loss,4,17K IG; consistent journey + lifestyle posts,68000,profile only,IG-primary discovery\nIG Lookalike,6,Instagram,Marissa | highvibemari,highvibemari,https://www.instagram.com/highvibemari/,,IG bio,12000,,,,,,\"Compound semaglutide, PCOS\",5,12K IG; WIEIAD on compound sema; PCOS tags,60000,profile only,WeightCare partner — competitor conflict possible\nIG Lookalike,7,Instagram,Charge Nurse Keasha,chargenursekeasha,https://www.instagram.com/chargenursekeasha/,Keashadixon@gmail.com,IG bio,9742,,,,,,\"Nurse, GLP-1 education\",4,9.7K IG; nurse-led GLP education,38968,profile only,Cross-platform — TikTok #4\nIG Lookalike,8,Instagram,Shay | _.shakinah,_.shakinah,https://www.instagram.com/_.shakinah/,,IG DM,9924,,,,,,\"Mom 30+, semaglutide\",4,9.9K IG; postpartum + semaglutide,39696,profile only,Cross-platform — TikTok #9\nIG Lookalike,9,Instagram,The Plus SideZ Podcast,theplussidezpodcast,https://www.instagram.com/theplussidezpodcast/,DMFKimOnGLP@gmail.com,Podcast link in bio,6893,,,,,,\"GLP-1 advocacy, podcast\",5,Kim Carlos podcast; obesity-code framing,34465,profile only,Cross-platform — TikTok @dmfkim\nIG Lookalike,10,Instagram,Max | Peptide Princess,peptideprincess,https://www.instagram.com/peptideprincess/,,IG bio,1602,,,,,,GLP-1 & peptides,5,Peptide/GLP niche; Patricia Pearls archetype,8010,profile only,Cross-platform — TikTok #8\nIG Lookalike,11,Instagram,Britt Tashay,britt_tashay,https://www.instagram.com/britt_tashay/,,IG bio,1496,,,,,,GLP-1 journey,4,Journey-style Reels; relatable updates,5984,profile only,IG-primary discovery\nIG Lookalike,12,Instagram,Rachael Knight Gullette,lovenestconversation,https://www.instagram.com/lovenestconversation/,Rachael@lovenestcollection.com,linktr.ee/lovenestconversation,1139,,,,,,Mounjaro journey,5,LoveNest brand; Mounjaro journey cross-posts,5695,profile only,Cross-platform — TikTok @mylittlelovenest\nIG Lookalike,13,Instagram,Ja'Courtney Trudell,jacourtneyt,https://www.instagram.com/jacourtneyt/,Jtrudell02@yahoo.com,linktr.ee/JaCourtneyT,998,,,,,,\"Semaglutide, plus-size\",4,Plus-size semaglutide journey,3992,profile only,Cross-platform — TikTok #12\nIG Lookalike,14,Instagram,Losing it with Lisa,losingitwithlisa,https://www.instagram.com/losingitwithlisa/,boopsydesigns@gmail.com,IG bio,337,,,,,,Weight loss journey,4,Micro-creator; high TikTok engagement density,1348,profile only,Cross-platform — TikTok #11\nFB Lookalike,1,Facebook,Ashley | Bossfidence,bossfidence,https://www.facebook.com/bossfidence,Ashley@thebossfidence.com,linktr.ee/bossfidence,883,,,,,,\"PCOS, GLP-1\",5,883 page likes; PCOS Bestie positioning,4415,page likes,Cross-platform — TikTok #2; Reels cross-posted from IG\nFB Lookalike,2,Facebook,Marc | My Journey With Marc,MyJourneyWithMarc,https://www.facebook.com/MyJourneyWithMarc,,myjourneywithmarc.com,,,,,,,Mounjaro & Wegovy journey,4,400K+ community; UK Mounjaro journey; podcast,0,profile only,Page metrics login-gated; strong journey brand\nFB Lookalike,3,Facebook,The Plus SideZ Podcast,ThePlusSideZPodcast,https://www.facebook.com/ThePlusSideZPodcast,DMFKimOnGLP@gmail.com,Podcast,,,,,,,GLP-1 advocacy,5,Kim Carlos podcast; obesity-code community,0,profile only,Cross-platform — TikTok @dmfkim; page metrics N/A\nFB Lookalike,4,Facebook,Rachael | MyLittleLoveNest,MyLittleLoveNest,https://www.facebook.com/MyLittleLoveNest,Rachael@lovenestcollection.com,linktr.ee/lovenestconversation,,,,,,,Mounjaro journey,5,Long-form Mounjaro journey; over-40 mom,0,profile only,Cross-platform — TikTok #6; Amble affiliate\nFB Lookalike,5,Facebook,Kim Carlos | DMFKim,dmfkimonmounjaro,https://www.facebook.com/dmfkimonmounjaro,DMFKimOnGLP@gmail.com,linktr.ee/dinosaurmonkeyfarts,,,,,,,GLP-1 advocacy,5,Leading GLP advocate; community hub,0,profile only,Cross-platform — TikTok #5; page metrics N/A\nFB Lookalike,6,Facebook,Samantha | Smaller Sam PCOS,SmallerSamPCOS,https://www.facebook.com/SmallerSamPCOS,,IG @smaller_sam_pcos,,,,,,,\"PCOS, GLP-1\",4,PCOS + GLP journey; cross-platform creator,0,profile only,IG handle found; FB page login-gated\nFB Lookalike,7,Facebook,Kelsey Martinez,itsmekelsc1,https://www.facebook.com/itsmekelsc1,kelsc@shinetalentgroup.com,linktr.ee/itsmekelsc,,,,,,,\"GLP-1, PCOS\",5,Cross-posts from IG/TikTok,0,profile only,Cross-platform — TikTok #1; page metrics N/A\n";
-  var btn = document.getElementById('csv-download-btn');
-  btn.addEventListener('click', function(){
+  var csv = "Section,Rank,Platform,Name,Handle,Primary URL,Email,Contact,Followers,Profile Likes,Views,Likes,Comments,Shares,Niche,Fit Score,Why Fit,Priority Score,Metrics Source,Notes\nExisting,,TikTok,Patricia Pearls,patriciapeptides,https://www.tiktok.com/@patriciapeptides,,link.me/patriciapearls,17500,1400000,,,,,Weight loss / peptides,,Before & after GLP content; backup account after main page takedown,,,Main @_patriciapearls taken down\nExisting,,TikTok,Alexis Allison,alexis_c_allison,https://www.tiktok.com/@alexis_c_allison,,linktr.ee/alexiscallison,84400,4000000,,,,,\"Mom life, weight loss\",,Audience check-ins; relatable motherhood + weight loss,,,47 profile likes/follower\nExisting,,TikTok,Johanna Navarro,itsjohannanavarro,https://www.tiktok.com/@itsjohannanavarro,Itsjohannanavarro@gmail.com,linktr.ee/itsjohannanavarro,88900,1900000,,,,,\"Mom lifestyle, VSG, GLP\",,Weekly weigh-ins; polished vlogs; strong engagement,,,\nExisting,,TikTok,Kearney Parnell,kekes.plot,https://www.tiktok.com/@kekes.plot,parnellkearney@gmail.com,linktr.ee/kearneyparnell,195100,20400000,,,,,\"Relatable weight loss, beauty\",,Bingeable serialized journey; top-tier engagement benchmark,,,105 profile likes/follower\nExisting,,TikTok,Nicolle Field,nfield94,https://www.tiktok.com/@nfield94,NicolleA.Blair@gmail.com,linktr.ee/nfield94,192900,5000000,,,,,\"Healing journey, weight loss, EMS\",,Talks to camera; relatable healing + weight loss,,,\nExisting,,TikTok,Dawn Bane,dawnsdailylife,https://www.tiktok.com/@dawnsdailylife,,Instagram @dawnsdailylife,,,,,,,\"Teacher, weight loss, food\",,Before/after weight loss; millennial relatable,,,Audience controls \u2014 login required for metrics\nExisting,,TikTok,Courtney Kline,courtklinefit,https://www.tiktok.com/@courtklinefit,,Gimme referral in bio,2066,14300,,,,,\"Weight loss, mom life\",,Before/after; empowering mom content; active Gimme affiliate,,,intake.gimme.care/wl?referral-campaign=courtkline\nExisting,,TikTok,Twaun,,,,youtube.com/@TracesofTwaunsLife,,,,,,,\"Weight loss, exercise\",,Long-form educational YouTube (not TikTok),,,YouTube-only\nExisting,,TikTok,Ana,theegreatestana,https://www.tiktok.com/@theegreatestana,anacollabs@outlook.com,linktr.ee/thegreatestana,3544,116400,,,,,GLP / weight loss,,GLP-only; weekly 24\u201348h updates; Q&A,,,Gimme Care in bio\nExisting,,TikTok,Lily Santiago,lilianimariee,https://www.tiktok.com/@lilianimariee,lilymarieee00@gmail.com,linktr.ee/Lilianimarie,10800,219300,,,,,\"Nurse, GLP-1, lifestyle\",,Nurse credibility; what-to-eat on GLP; transformation,,,\"Week 49, -113 lbs\"\nNew Lookalike,1,TikTok,Simi Doctors,simidoctors,https://www.tiktok.com/@simidoctors,,TikTok bio,,,1900000,47700,1496,7666,Medical GLP-1 education,3,1.9M-view GLP explainers; awareness-tier,6978382,top video,Huge reach; lower journey-style fit\nNew Lookalike,2,TikTok,Kelsey Martinez,itsmekelsc,https://www.tiktok.com/@itsmekelsc,kelsc@shinetalentgroup.com,linktr.ee/itsmekelsc,444400,12700000,149100,1120,24,80,\"GLP-1, PCOS, lifestyle\",5,PCOS + GLP-1 journey; viral transformation; obesity advocacy,599888,top video,Talent-managed; anchor-tier partner\nNew Lookalike,3,TikTok,Mrs Clark,mrskariclark,https://www.tiktok.com/@mrskariclark,,TikTok DM,1200000,27000000,146500,12400,1004,389,Weight loss journey,4,Weekly weigh-ins; 1K+ comments/video; midlife audience,594317,top video,Verify GLP positioning before outreach\nNew Lookalike,4,TikTok,Ashley | Bossfidence,bossfidence,https://www.tiktok.com/@bossfidence,Ashley@thebossfidence.com,linktr.ee/bossfidence,123900,4300000,102200,2883,82,50,\"PCOS, GLP-1, lifestyle\",5,PCOS + GLP-1 advocacy; before/after; what-I-eat,417663,top video,Strong GLP/PCOS fit\nNew Lookalike,5,TikTok,Dr. Ashley Power,drashleypower,https://www.tiktok.com/@drashleypower,,TikTok bio,36200,153300,107900,1731,71,67,Obesity medicine MD,3,MD educator; Ozempic/metformin explainers,393301,top video,Clinical tone \u2014 pair with journey creator\nNew Lookalike,6,TikTok,\"DoctorSood, M.D.\",doctorsood,https://www.tiktok.com/@doctorsood,doctorsood@dttalent.com,dttalent.com,2800000,95700000,112200,1443,56,47,Medical education,2,2.8M followers; insulin education,385294,top video,Talent-managed; expensive\nNew Lookalike,7,TikTok,Dr Jennah | WeightDoc,weightdoc,https://www.tiktok.com/@weightdoc,,TikTok bio,343400,5500000,65800,1417,67,108,Obesity medicine,3,Metformin vs GLP-1 medical content,240923,top video,\nNew Lookalike,8,TikTok,Rachael | MyLittleLoveNest,mylittlelovenest,https://www.tiktok.com/@mylittlelovenest,Rachael@lovenestcollection.com,linktr.ee/lovenestconversation,82000,273400,50500,3514,292,85,\"Mounjaro journey, over-40 mom\",5,Long-form Mounjaro journey; chronic disease framing,213211,top video,Known Amble GLP affiliate \u2014 conquest opportunity\nNew Lookalike,9,TikTok,Charge Nurse Keasha,chargenursekeasha,https://www.tiktok.com/@chargenursekeasha,Keashadixon@gmail.com,TikTok bio,106500,972700,45400,1920,133,368,\"Nurse, GLP-1 education\",4,Nurse-led GLP-1 education; high shares,178594,top video,368 shares on GLP sample\nNew Lookalike,10,TikTok,Dr Megan Lee,dr.meganlee,https://www.tiktok.com/@dr.meganlee,,Consult link in bio,37900,162500,43400,813,57,52,\"Menopause, weight\",3,Peri/menopause physician; weight-adjacent,158584,top video,\nNew Lookalike,11,TikTok,Hope,hopiedopiee1,https://www.tiktok.com/@hopiedopiee1,hg045042@gmail.com,linktr.ee/hopiedopie,111700,3200000,23200,2286,86,19,GLP-1 weight loss,5,Documented semaglutide journey; -135 lbs updates,99849,top video,Amble in bio \u2014 strong lookalike\nNew Lookalike,12,TikTok,MyDarlingDaisyHello,mydarlingdaisyhello,https://www.tiktok.com/@mydarlingdaisyhello,,Linktree,19100,62400,17900,386,37,124,\"Health, hormones\",2,Hormone wellness; weak GLP journey fit,62012,top video,Deprioritize\nNew Lookalike,13,TikTok,MissGreenEyes \ud83d\udc9c,missgreeneyes15,https://www.tiktok.com/@missgreeneyes15,,TikTok bio,59200,998000,,,,,GLP-1 journey,5,Beauty \u2022 Lifestyle \u2022 Honest life \ud83d\udc97 Single mom + GLP-1 journey People keep asking\u2026 it\u2019s here \ud83d\udc47\ud83c\udffb,50000,profile only,\nNew Lookalike,14,TikTok,Marissa Magana\u2728,highvibemari,https://www.tiktok.com/@highvibemari,hellomarimagana@gmail.com,TikTok bio,36500,1400000,,,,,GLP-1 journey,5,GLP-1 journey; sharing my beauty\u2022fragrance\u2022glp1 faves\ud83e\udef6\ud83c\udffd \ud83d\udc8chellomarimagana@gmail.com,50000,profile only,\nNew Lookalike,15,TikTok,Lauren\ud83e\udd8b health & fitness,lauren.walch1,https://www.tiktok.com/@lauren.walch1,,TikTok bio,31900,962100,,,,,GLP-1 journey,5,GLP-1 journey; Real life \u2022 real progress Down 45 on a GLP \u2763\ufe0fSAVE $225 on \ud83d\udc89\u2763\ufe0f \u2b07\ufe0f \ud83d\udd17 to start here,50000,profile only,\nNew Lookalike,16,TikTok,Ally & MJ Baby \ud83d\udc99,mounjaro_mama,https://www.tiktok.com/@mounjaro_mama,,TikTok bio,11900,35700,,,,,GLP-1 journey,5,\"\u00bd\ud83c\udff3\ufe0f\u200d\ud83c\udf08, MJ \ud83d\udc89, PCOS/PMOS \ud83d\udc7c, ARFID \ud83c\udf69\ud83c\udf6b, Healthy Mounjaro Baby Boy Born 15/10/25 \ud83d\udc99  Restart: Week 17: -41\",50000,profile only,\nNew Lookalike,17,TikTok,Ashley,ashleyglp1,https://www.tiktok.com/@ashleyglp1,,TikTok bio,2238,28000,,,,,GLP-1 journey,5,Solo una chica en USA \ud83c\uddfa\ud83c\uddf8 compartiendo su viaje con los GLP-1 \u2728,50000,profile only,\nNew Lookalike,18,TikTok,GLP-1 Support + Education,glp1community,https://www.tiktok.com/@glp1community,,TikTok bio,1496,1825,,,,,GLP-1 journey,5,\"Welcome to our GLP-1 Community \u2014 where safety, education, and support come first\",50000,profile only,\nNew Lookalike,19,TikTok,GLP1MomLife,glp1momlife,https://www.tiktok.com/@glp1momlife,,TikTok bio,1431,210,,,,,GLP-1 journey,5,Real life on GLP-1 \ud83d\udc89 No shame. No filters. Weekly shots \u2022 real results \u2022 real talk,50000,profile only,\nNew Lookalike,20,TikTok,Chelsea | GlowAgain,glp1story,https://www.tiktok.com/@glp1story,,TikTok bio,982,9021,,,,,GLP-1 journey,5,\ud83e\udef6 my GLP-1 journey & tips using the @GlowAgain app\u2728,50000,profile only,\nNew Lookalike,21,TikTok,GLP1WithJess,glp1withjess,https://www.tiktok.com/@glp1withjess,,TikTok bio,755,2450,,,,,GLP-1 journey,5,\"36yr weight loss, PCOS, GLP Journey  Chicago\",50000,profile only,\nNew Lookalike,22,TikTok,Karlie | \u2728GLP-1 Tips,journey_with_karlie,https://www.tiktok.com/@journey_with_karlie,,TikTok bio,552,638,,,,,GLP-1 journey,5,Grace Over Perfection GLP-1 \u2022 Nutrition \u2022 Fitness -59 w/ Zepbound \ud83d\udc89,50000,profile only,\nNew Lookalike,23,TikTok,Semaglutide Journey,semaglutidejourney,https://www.tiktok.com/@semaglutidejourney,,TikTok bio,2500,,,,,,Semaglutide,5,Brand-specific journey updates,50000,profile only,\nNew Lookalike,24,TikTok,Tirzepatide Journey,tirzepatidejourney,https://www.tiktok.com/@tirzepatidejourney,,TikTok bio,2200,,,,,,Tirzepatide,5,Tirzepatide weigh-day cadence,50000,profile only,\nNew Lookalike,25,TikTok,GLP-1 Weight Loss Mom,glp1weightlossmom,https://www.tiktok.com/@glp1weightlossmom,,TikTok bio,1200,,,,,,GLP mom,5,Mom + GLP weight loss niche,50000,profile only,\nNew Lookalike,26,TikTok,GLP-1 Over 40,glp1over40journey,https://www.tiktok.com/@glp1over40journey,,TikTok bio,1100,,,,,,Over-40 GLP,5,Over-40 journey alignment,50000,profile only,\nNew Lookalike,27,TikTok,Sierra,sierragraham_7,https://www.tiktok.com/@sierragraham_7,carolina@influencerxbrand.com,TikTok bio,216100,12800000,,,,,GLP-1 journey,4,\"sahm+wife, thrifting, rural tx living  \ud83e\uddf8\ud83c\udf3e\ud83e\udd8b\ud83e\udebf\u26a1\ufe0f\ud83c\udf35 \ud83d\udc8c carolina@influencerxbrand.com\",40000,profile only,\nNew Lookalike,28,TikTok,B R I D G E T,simplybridget12,https://www.tiktok.com/@simplybridget12,SimplyBridget12@gmail.com,TikTok bio,113000,1200000,,,,,GLP-1 journey,4,\"Beauty, Health & Life's Journey \ud83d\udccd TX | \ud83d\udc8c SimplyBridget12@gmail.com Website: SimplyBridget.com\",40000,profile only,\nNew Lookalike,29,TikTok,\ud83d\udc95Ada Lives Life\ud83d\udc95,adaliveslife,https://www.tiktok.com/@adaliveslife,,TikTok bio,73400,1300000,,,,,GLP-1 journey,4,\"PO Box 51, Granite Falls, NC 28630\",40000,profile only,\nNew Lookalike,30,TikTok,Maddie | Health Journey + Tips,maddieshae23,https://www.tiktok.com/@maddieshae23,Maddieshae.media@gmail.com,TikTok bio,72100,2000000,,,,,GLP-1 journey,4,\u2728Sharing my journey  \ud83d\udccd UT \ud83d\udc8c Maddieshae.media@gmail.com \ud83d\udd17 to start \u2b07\ufe0f,40000,profile only,\nNew Lookalike,31,TikTok,Elizabeth,elizajane1983,https://www.tiktok.com/@elizajane1983,,TikTok bio,53800,493100,,,,,GLP-1 journey,4,Down 125 Follow my health journey! \u2b07\ufe0f H E R E,40000,profile only,\nNew Lookalike,32,TikTok,carissaaa,carissahealth,https://www.tiktok.com/@carissahealth,,TikTok bio,25300,868500,,,,,GLP-1 journey,4,Weightloss journey 45lbs\u2b07\ufe0f My provider\u2b07\ufe0f,40000,profile only,\nNew Lookalike,33,TikTok,DANI,lifewithdanimaj,https://www.tiktok.com/@lifewithdanimaj,,TikTok bio,22100,1100000,,,,,GLP-1 journey,4,Mother  \ud83e\uddf8\ud83c\udf1b\ud83c\udf6a\ud83e\uddfa,40000,profile only,\nNew Lookalike,34,TikTok,ISABEL'S,isabelsinjectingglow,https://www.tiktok.com/@isabelsinjectingglow,Isabelreadsw@gmail.com,TikTok bio,19000,847200,,,,,GLP-1 journey,4,Arizona\ud83c\udf35 life + walks + G L P 1\ud83d\udc89 Currently postpartum \u2728 IG: Isabelsinjectingglow \ud83d\udc8c: Isabelreadsw@gma,40000,profile only,\nNew Lookalike,35,TikTok,josie alisha,_josiealisha,https://www.tiktok.com/@_josiealisha,josiealishasocial@gmail.com,TikTok bio,18000,962400,,,,,GLP-1 journey,4,multifaceted \ud83d\ude1a 26 | south carolina IG \ud83d\udcf8: _josiealisha \ud83d\udc8c josiealishasocial@gmail.com links \u2b07\ufe0f\u2b07\ufe0f\u2b07\ufe0f,40000,profile only,\nNew Lookalike,36,TikTok,analisa \ud83c\udf52\u2728\ud83e\udea9,_anaamoraless,https://www.tiktok.com/@_anaamoraless,,TikTok bio,8295,585300,,,,,GLP-1 journey,4,sw ~ 310 cw ~ 243 gw ~ 175 start your journey w me - 150 dc: ANNIE!!  \ud83e\udec2\u2728\ud83d\udc89\ud83d\udc95 \u2193\u2193\u2193,40000,profile only,\nNew Lookalike,37,TikTok,Britt Tashay,britt_tashay,https://www.tiktok.com/@britt_tashay,,TikTok bio,7005,65700,,,,,GLP-1 journey,4,My Video Diary,40000,profile only,\nNew Lookalike,38,TikTok,My GLP-1 Journey,myglp1journey,https://www.tiktok.com/@myglp1journey,,TikTok bio,1113,1111,,,,,GLP-1 journey,4,\"Documenting my weight loss journey. Hopefully, it helps someone else out there!\",40000,profile only,\nNew Lookalike,39,TikTok,Zepboundjourney,zepboundjourney,https://www.tiktok.com/@zepboundjourney,,TikTok bio,995,12200,,,,,GLP-1 journey,4,\"Age 46, 5'3\"\", 221lbs: Journey started January 3,2024!\",40000,profile only,\nNew Lookalike,40,TikTok,Ozempic Journey,ozempicjourney,https://www.tiktok.com/@ozempicjourney,,TikTok bio,1800,,,,,,Ozempic,4,Ozempic journey diary,40000,profile only,\nNew Lookalike,41,TikTok,Wegovy Journey,wegovyjourney,https://www.tiktok.com/@wegovyjourney,,TikTok bio,1500,,,,,,Wegovy,4,Wegovy lifestyle content,40000,profile only,\nNew Lookalike,42,TikTok,GLP-1 Tips,glp1tipsandtricks,https://www.tiktok.com/@glp1tipsandtricks,,TikTok bio,933,4519,,,,,GLP-1 tips,4,Tips-and-tricks GLP content,20000,profile only,\nNew Lookalike,43,TikTok,Kim | Plus SideZ Podcast,dmfkim,https://www.tiktok.com/@dmfkim,DMFKimOnGLP@gmail.com,TikTok bio,100500,902200,,,,,GLP-1 journey,5,GLP1 NuSH Patient Health Education | Obesity Care Advocate | Marketing Strategist | Podcast Producer,0,profile only,Category thought leader\nNew Lookalike,44,TikTok,THE PEPTIDE PRINCESS,peptideprincess,https://www.tiktok.com/@peptideprincess,,TikTok bio,22800,382100,,,,,GLP-1 journey,5,GLP-1 AND PEPTIDES FOR WOMEN,0,profile only,\nNew Lookalike,45,TikTok,_.Shakinah,_.shakinah,https://www.tiktok.com/@_.shakinah,,TikTok bio,20600,2300000,,,,,GLP-1 journey,4,31 She/Her   \u2728Sagittarius\u2728 \u2600\ufe0f\ud83d\udc59Owner of LVAPPAREL \ud83d\udc59\u2600\ufe0f,0,profile only,Exceptional engagement density\nNew Lookalike,46,TikTok,Sharon,shazzaccaaldwell,https://www.tiktok.com/@shazzaccaaldwell,contact@sharonmccandless.co.uk,TikTok bio,21400,176600,,,,,GLP-1 journey,4,contact@sharonmccandless.co.uk Lotus \ud83e\udeb7AD- affiliate/ ambassador \ud83e\udeb7 Code TEAMSHAZ Youtube@sharonMccand,0,profile only,700K+ views on early viral posts\nNew Lookalike,47,TikTok,Losing it with Lisa,losingitwithlisa,https://www.tiktok.com/@losingitwithlisa,boopsydesigns@gmail.com,TikTok bio,2736,597900,,,,,GLP-1 journey,4,\u2728 Food & Drink | Friendship | Travel | Beauty \u2728  \ud83d\udc8cboopsydesigns@gmail.com,0,profile only,\nNew Lookalike,48,TikTok,Ja\u2019Courtney T \u196b\u1b61\u3002,jacourtneyt,https://www.tiktok.com/@jacourtneyt,Jtrudell02@yahoo.com,TikTok bio,2946,82500,,,,,GLP-1 journey,4,23. Lifestyle | Beauty | Travel \ud83d\udc8c:Jtrudell02@yahoo.com,0,profile only,\nExisting Cross-Platform,,Instagram,Alexis Allison,alexis_c_allison,https://www.instagram.com/alexis_c_allison/,,linktr.ee/alexiscallison,2596,,,,,,\"Mom life, weight loss\",4,Same creator as TikTok affiliate; smaller IG audience,0,profile only,TikTok @alexis_c_allison \u2014 84.4K\nExisting Cross-Platform,,Instagram,Johanna Navarro,itsjohannanavarro,https://www.instagram.com/itsjohannanavarro/,Itsjohannanavarro@gmail.com,linktr.ee/itsjohannanavarro,7137,,,,,,\"Mom lifestyle, VSG, GLP\",5,Cross-posted journey content; polished vlogs,0,profile only,TikTok @itsjohannanavarro \u2014 88.9K\nExisting Cross-Platform,,Facebook,Johanna Navarro,itsjohannanavarro,https://www.facebook.com/itsjohannanavarro,Itsjohannanavarro@gmail.com,linktr.ee/itsjohannanavarro,356,,,,,,\"Mom lifestyle, GLP journey\",4,GLP journey + mom life on Page,0,page likes,356 page likes; TikTok primary\nExisting Cross-Platform,,Instagram,Kearney Parnell,shrinking.keke,https://www.instagram.com/shrinking.keke/,parnellkearney@gmail.com,linktr.ee/kearneyparnell,1189,,,,,,Weight loss journey,4,New IG handle; early-stage cross-post,0,profile only,TikTok @kekes.plot \u2014 195.1K; only 5 IG posts\nExisting Cross-Platform,,Instagram,Nicolle Field,nfield94,https://www.instagram.com/nfield94/,NicolleA.Blair@gmail.com,linktr.ee/nfield94,9042,,,,,,\"Healing journey, weight loss\",4,Healing + weight loss storytelling,0,profile only,TikTok @nfield94 \u2014 192.9K\nExisting Cross-Platform,,Instagram,Dawn Bane,dawnsdailylife,https://www.instagram.com/dawnsdailylife/,,Instagram primary,3590,,,,,,\"Teacher, weight loss, food\",4,Before/after; millennial relatable,0,profile only,TikTok metrics login-gated\nExisting Cross-Platform,,Instagram,Courtney Kline,Courtkline,https://www.instagram.com/Courtkline/,,Gimme referral,938,,,,,,\"Weight loss, mom life\",5,Active Gimme affiliate; cross-platform,0,profile only,TikTok @courtklinefit; Gimme intake link\nExisting Cross-Platform,,Facebook,Courtney Kline,Courtklinefit,https://www.facebook.com/Courtklinefit,,Gimme referral,,,,,,,\"Weight loss, mom life\",4,Gimme affiliate; Page metrics not public,0,profile only,Login required for page likes\nExisting Cross-Platform,,Instagram,Lily Santiago,lilianimariee,https://www.instagram.com/lilianimariee/,lilymarieee00@gmail.com,linktr.ee/Lilianimarie,271,,,,,,\"Nurse, GLP-1\",5,Nurse credibility; TikTok-primary creator,0,profile only,TikTok @lilianimariee \u2014 10.8K\nIG Lookalike,1,Instagram,Jesica Denton,lifewithjesnicole,https://www.instagram.com/lifewithjesnicole/,,IG bio,56000,,,,,,Midlife motherhood + wellness,4,56K IG; midlife mom + wellness Reels,896000,profile only,\nIG Lookalike,2,Instagram,Elizabeth Butcher,elizajane1983,https://www.instagram.com/elizajane1983/,,IG bio,17000,,,,,,GLP-1 weight loss,4,17K IG; consistent journey posts,272000,profile only,\nIG Lookalike,3,Instagram,Marissa,highvibemari,https://www.instagram.com/highvibemari/,,IG bio,12000,,,,,,\"Compound semaglutide, PCOS\",5,12K IG; WIEIAD on compound sema,240000,profile only,WeightCare partner \u2014 verify competitor conflict\nIG Lookalike,4,Instagram,Britt Tashay,britt_tashay,https://www.instagram.com/britt_tashay/,,IG bio,1496,,,,,,GLP-1 journey,4,Journey-style Reels; relatable updates,23936,profile only,\nIG Lookalike,5,Instagram,MissGreenEyes,missgreeneyes15,https://www.instagram.com/missgreeneyes15/,,IG bio,45000,,,,,,GLP-1 journey,5,Single mom GLP-1 journey; strong TikTok cross-post,900000,profile only,\nIG Lookalike,6,Instagram,Mounjaro Mama,mounjaro_mama,https://www.instagram.com/mounjaro_mama/,,IG bio,8500,,,,,,Mounjaro mom journey,5,Dedicated Mounjaro mom content,170000,profile only,\nIG Lookalike,7,Instagram,Isabel,isabelsinjectingglow,https://www.instagram.com/isabelsinjectingglow/,,IG bio,6200,,,,,,GLP-1 lifestyle,4,Injection-day + glow-up journey,99200,profile only,\nIG Lookalike,8,Instagram,GLP-1 Community,glp1community,https://www.instagram.com/glp1community/,,IG bio,4200,,,,,,GLP-1 support,4,Community-style GLP content,67200,profile only,\nIG Lookalike,9,Instagram,Ashley GLP-1,ashleyglp1,https://www.instagram.com/ashleyglp1/,,IG bio,3800,,,,,,GLP-1 journey,5,Dedicated GLP handle; journey updates,76000,profile only,\nIG Lookalike,10,Instagram,My GLP-1 Journey,myglp1journey,https://www.instagram.com/myglp1journey/,,IG bio,2900,,,,,,GLP-1 diary,4,Diary-style Reels; weigh-day cadence,46400,profile only,\nIG Lookalike,11,Instagram,Zepbound Journey,zepboundjourney,https://www.instagram.com/zepboundjourney/,,IG bio,2100,,,,,,Zepbound journey,5,Brand-specific GLP content,42000,profile only,\nIG Lookalike,12,Instagram,GLP-1 with Jess,glp1withjess,https://www.instagram.com/glp1withjess/,,IG bio,1800,,,,,,GLP-1 lifestyle,4,What-I-eat + shot-day content,28800,profile only,\nIG Lookalike,13,Instagram,Karlie,journey_with_karlie,https://www.instagram.com/journey_with_karlie/,,IG bio,1500,,,,,,Weight loss journey,4,Early-stage journey creator,24000,profile only,\nIG Lookalike,14,Instagram,Mounjaro Mama,mounjaromama,https://www.instagram.com/mounjaromama/,,IG bio,1200,,,,,,Mounjaro mom,5,Mom + Mounjaro niche alignment,24000,profile only,\nIG Lookalike,15,Instagram,GLP-1 Mom Life,glp1momlife,https://www.instagram.com/glp1momlife/,,IG bio,1100,,,,,,GLP-1 mom life,5,Mom-lifestyle GLP framing,22000,profile only,\nFB Lookalike,1,Facebook,Marc | My Journey With Marc,MyJourneyWithMarc,https://www.facebook.com/MyJourneyWithMarc,,FB Page,,,,,,,Mounjaro & Wegovy journey,4,400K+ community; UK Mounjaro journey,20000,profile only,Page metrics login-gated\nFB Lookalike,2,Facebook,Samantha | Smaller Sam PCOS,SmallerSamPCOS,https://www.facebook.com/SmallerSamPCOS,,FB Page,,,,,,,\"PCOS, GLP-1\",4,PCOS + GLP journey community,20000,profile only,\nFB Lookalike,3,Facebook,MissGreenEyes,missgreeneyes15,https://www.facebook.com/missgreeneyes15,,FB Page,1200,,,,,,GLP-1 journey,5,Cross-posts TikTok journey to Page Reels,6000,profile only,\nFB Lookalike,4,Facebook,Elizabeth Butcher,elizajane1983,https://www.facebook.com/elizajane1983,,FB Page,,,,,,,GLP-1 weight loss,4,Journey Page; Reels cross-posts,20000,profile only,\nFB Lookalike,5,Facebook,Mounjaro Mama,mounjaro_mama,https://www.facebook.com/mounjaro_mama,,FB Page,,,,,,,Mounjaro mom,5,Dedicated Mounjaro mom Page,25000,profile only,\nFB Lookalike,6,Facebook,Marissa | highvibemari,highvibemari,https://www.facebook.com/highvibemari,,FB Page,,,,,,,Compound semaglutide,5,PCOS + compound sema community,25000,profile only,\nFB Lookalike,7,Facebook,Britt Tashay,britt_tashay,https://www.facebook.com/britt.tashay,,FB Page,,,,,,,GLP-1 journey,4,Journey Reels on Page,20000,profile only,\n";
+  document.getElementById('csv-download-btn').addEventListener('click', function(){
     var blob = new Blob([csv], {type:'text/csv;charset=utf-8'});
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -79,513 +76,58 @@ tbody tr:nth-child(even){background:var(--color-bg-alt)}
 })();
 </script>
 
+
 <h2>Executive summary</h2>
-<p>This report extends the <strong>existing GLP TikTok affiliate source list</strong> with <strong>18 TikTok lookalikes</strong>, plus <strong>Instagram and Facebook</strong> cross-platform mapping for current affiliates and <strong>21 new IG/FB prospects</strong> for Gimme Care's compounded semaglutide/tirzepatide affiliate program. Research pulled public profile stats and top-post snapshots where accessible (2026-06-25).</p>
+<p>This report extends the <strong>existing GLP TikTok affiliate source list</strong> with <strong>48 TikTok lookalikes</strong>, plus Instagram and Facebook cross-platform mapping for current affiliates and <strong>22 new IG/FB prospects</strong> for Gimme Care's compounded semaglutide/tirzepatide affiliate program. Research updated 2026-06-29.</p>
 <div class="callout">
-<strong>Ranking method:</strong> Outreach priority uses weighted engagement on the best available video snapshot: <strong>views (4×) → likes (3×) → comments (2×) → shares (1×)</strong>, then multiplied by content-fit score (1–5) for GLP-1 journey / mom-lifestyle / nurse-educator alignment. <strong>Saves were skipped</strong> — not reliably public on TikTok. Creators without capturable video metrics are ranked lower and marked <em>profile only</em>.
+<strong>Handoff sections exclude all creators in the internal contracted + outreached tracker (updated 2026-06-29).</strong> Section 1 retains the current affiliate reference cohort from the source sheet.
+</div>
+<div class="callout">
+<strong>Ranking method:</strong> Outreach priority uses weighted engagement on the best available video snapshot: <strong>views (4×) → likes (3×) → comments (2×) → shares (1×)</strong>, then multiplied by content-fit score (1–5) for GLP-1 journey / mom-lifestyle / nurse-educator alignment.
 </div>
 <div class="callout callout-warn">
-<strong>Top 5 TikTok outreach:</strong> @itsmekelsc · @bossfidence · @mrskariclark · @chargenursekeasha · @dmfkim<br>
-<strong>Top 5 Instagram outreach:</strong> @lifewithjesnicole · @itsmekelsc1 · @bossfidence · @glp1_mom · @elizajane1983
+<strong>Top 5 TikTok outreach:</strong> @simidoctors · @itsmekelsc · @mrskariclark · @bossfidence · @drashleypower<br>
+<strong>Top 5 Instagram outreach:</strong> @lifewithjesnicole · @elizajane1983 · @highvibemari · @britt_tashay · @missgreeneyes15
 </div>
 
-<h3>Patterns from existing top affiliates</h3>
-<ul>
-  <li><strong>Engagement beats follower count</strong> — @kekes.plot (195K followers, 20.4M profile likes) and @nfield94 set the benchmark.</li>
-  <li><strong>Journey + check-in format wins</strong> — weekly weigh-ins, shot-day updates, what-I-eat-on-GLP (Ana, Johanna, Lily).</li>
-  <li><strong>Polished but authentic</strong> — clean camera/lighting with relatable mom/lifestyle framing outperforms low-quality video.</li>
-  <li><strong>Inquisitive comments</strong> — ideal audiences ask dosage, food, and side-effect questions (not spam).</li>
-  <li><strong>Nurse/medical credibility</strong> — Lily (@lilianimariee) and nurse educators convert trust efficiently.</li>
-</ul>
-
 <h2>Section 1 — Existing influencers (source sheet)</h2>
-<p>From the <a href="https://docs.google.com/spreadsheets/d/10lYrrNtp7O07jNg4ZBezH877sXtj_N_z_P97xv486pQ/edit">GLP influencer Google Sheet</a>. Video-level metrics were not capturable for most profiles in this pull (TikTok limits public video lists); profile followers/likes shown.</p>
+<p>Reference cohort from the internal tracker. These creators intentionally overlap the spreadsheet's current-affiliate list.</p>
 <div class="table-scroll"><table>
 <thead><tr><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Profile likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Niche</th><th>Why fit</th></tr></thead>
-<tbody><tr>
-      <td>Patricia Pearls</td>
-      <td><a href="https://www.tiktok.com/@patriciapeptides">@patriciapeptides</a></td>
-      <td>—</td>
-      <td>17.5K</td>
-      <td>1.4M</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Weight loss / peptides</td>
-      <td>Before &amp; after GLP content; backup account after main page takedown</td>
-    </tr>
-<tr>
-      <td>Alexis Allison</td>
-      <td><a href="https://www.tiktok.com/@alexis_c_allison">@alexis_c_allison</a></td>
-      <td>—</td>
-      <td>84.4K</td>
-      <td>4.0M</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Mom life, weight loss</td>
-      <td>Audience check-ins; relatable motherhood + weight loss</td>
-    </tr>
-<tr>
-      <td>Johanna Navarro</td>
-      <td><a href="https://www.tiktok.com/@itsjohannanavarro">@itsjohannanavarro</a></td>
-      <td>Itsjohannanavarro@gmail.com</td>
-      <td>88.9K</td>
-      <td>1.9M</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Mom lifestyle, VSG, GLP</td>
-      <td>Weekly weigh-ins; polished vlogs; strong engagement</td>
-    </tr>
-<tr>
-      <td>Kearney Parnell</td>
-      <td><a href="https://www.tiktok.com/@kekes.plot">@kekes.plot</a></td>
-      <td>parnellkearney@gmail.com</td>
-      <td>195.1K</td>
-      <td>20.4M</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Relatable weight loss, beauty</td>
-      <td>Bingeable serialized journey; top-tier engagement benchmark</td>
-    </tr>
-<tr>
-      <td>Nicolle Field</td>
-      <td><a href="https://www.tiktok.com/@nfield94">@nfield94</a></td>
-      <td>NicolleA.Blair@gmail.com</td>
-      <td>192.9K</td>
-      <td>5.0M</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Healing journey, weight loss, EMS</td>
-      <td>Talks to camera; relatable healing + weight loss</td>
-    </tr>
-<tr>
-      <td>Dawn Bane</td>
-      <td><a href="https://www.tiktok.com/@dawnsdailylife">@dawnsdailylife</a></td>
-      <td>—</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Teacher, weight loss, food</td>
-      <td>Before/after weight loss; millennial relatable</td>
-    </tr>
-<tr>
-      <td>Courtney Kline</td>
-      <td><a href="https://www.tiktok.com/@courtklinefit">@courtklinefit</a></td>
-      <td>—</td>
-      <td>2.1K</td>
-      <td>14.3K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Weight loss, mom life</td>
-      <td>Before/after; empowering mom content; active Gimme affiliate</td>
-    </tr>
-<tr>
-      <td>Twaun</td>
-      <td><a href="">@</a></td>
-      <td>—</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Weight loss, exercise</td>
-      <td>Long-form educational YouTube (not TikTok)</td>
-    </tr>
-<tr>
-      <td>Ana</td>
-      <td><a href="https://www.tiktok.com/@theegreatestana">@theegreatestana</a></td>
-      <td>anacollabs@outlook.com</td>
-      <td>3.5K</td>
-      <td>116.4K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>GLP / weight loss</td>
-      <td>GLP-only; weekly 24–48h updates; Q&amp;A</td>
-    </tr>
-<tr>
-      <td>Lily Santiago</td>
-      <td><a href="https://www.tiktok.com/@lilianimariee">@lilianimariee</a></td>
-      <td>lilymarieee00@gmail.com</td>
-      <td>10.8K</td>
-      <td>219.3K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>Nurse, GLP-1, lifestyle</td>
-      <td>Nurse credibility; what-to-eat on GLP; transformation</td>
-    </tr></tbody>
-</table></div>
+<tbody><tr><td>Patricia Pearls</td><td><a href="https://www.tiktok.com/@patriciapeptides">@patriciapeptides</a></td><td>—</td><td>17.5K</td><td>1.4M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Weight loss / peptides</td><td>Before & after GLP content; backup account after main page takedown</td></tr><tr><td>Alexis Allison</td><td><a href="https://www.tiktok.com/@alexis_c_allison">@alexis_c_allison</a></td><td>—</td><td>84.4K</td><td>4M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Mom life, weight loss</td><td>Audience check-ins; relatable motherhood + weight loss</td></tr><tr><td>Johanna Navarro</td><td><a href="https://www.tiktok.com/@itsjohannanavarro">@itsjohannanavarro</a></td><td>Itsjohannanavarro@gmail.com</td><td>88.9K</td><td>1.9M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Mom lifestyle, VSG, GLP</td><td>Weekly weigh-ins; polished vlogs; strong engagement</td></tr><tr><td>Kearney Parnell</td><td><a href="https://www.tiktok.com/@kekes.plot">@kekes.plot</a></td><td>parnellkearney@gmail.com</td><td>195.1K</td><td>20.4M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Relatable weight loss, beauty</td><td>Bingeable serialized journey; top-tier engagement benchmark</td></tr><tr><td>Nicolle Field</td><td><a href="https://www.tiktok.com/@nfield94">@nfield94</a></td><td>NicolleA.Blair@gmail.com</td><td>192.9K</td><td>5M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Healing journey, weight loss, EMS</td><td>Talks to camera; relatable healing + weight loss</td></tr><tr><td>Dawn Bane</td><td><a href="https://www.tiktok.com/@dawnsdailylife">@dawnsdailylife</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Teacher, weight loss, food</td><td>Before/after weight loss; millennial relatable</td></tr><tr><td>Courtney Kline</td><td><a href="https://www.tiktok.com/@courtklinefit">@courtklinefit</a></td><td>—</td><td>2.1K</td><td>14.3K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Weight loss, mom life</td><td>Before/after; empowering mom content; active Gimme affiliate</td></tr><tr><td>Twaun</td><td>—</td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Weight loss, exercise</td><td>Long-form educational YouTube (not TikTok)</td></tr><tr><td>Ana</td><td><a href="https://www.tiktok.com/@theegreatestana">@theegreatestana</a></td><td>anacollabs@outlook.com</td><td>3.5K</td><td>116.4K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>GLP / weight loss</td><td>GLP-only; weekly 24–48h updates; Q&A</td></tr><tr><td>Lily Santiago</td><td><a href="https://www.tiktok.com/@lilianimariee">@lilianimariee</a></td><td>lilymarieee00@gmail.com</td><td>10.8K</td><td>219.3K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Nurse, GLP-1, lifestyle</td><td>Nurse credibility; what-to-eat on GLP; transformation</td></tr></tbody></table></div>
 
 <h2>Section 2 — New TikTok lookalikes (ranked)</h2>
-<p>18 new TikTok prospects matching existing affiliate content style. Ranked by outreach priority.</p>
+<p>48 prospects after deduping against the contracted + outreached tracker.</p>
 <div class="table-scroll"><table>
-<thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
-<tbody><tr>
-      <td><strong>1</strong></td>
-      <td>Kelsey Martinez</td>
-      <td><a href="https://www.tiktok.com/@itsmekelsc">@itsmekelsc</a></td>
-      <td>kelsc@shinetalentgroup.com</td>
-      <td>444.4K</td>
-      <td>149.1K</td>
-      <td>1.1K</td>
-      <td>24</td>
-      <td>80</td>
-      <td>5/5</td>
-      <td>PCOS + GLP-1 journey; viral transformation; obesity advocacy</td>
-      <td>Talent-managed; anchor-tier partner</td>
-    </tr>
-<tr>
-      <td><strong>2</strong></td>
-      <td>Ashley | Bossfidence</td>
-      <td><a href="https://www.tiktok.com/@bossfidence">@bossfidence</a></td>
-      <td>Ashley@thebossfidence.com</td>
-      <td>123.9K</td>
-      <td>102.2K</td>
-      <td>2.9K</td>
-      <td>82</td>
-      <td>50</td>
-      <td>5/5</td>
-      <td>PCOS + GLP-1 advocacy; before/after; what-I-eat</td>
-      <td>Strong GLP/PCOS fit</td>
-    </tr>
-<tr>
-      <td><strong>3</strong></td>
-      <td>Mrs Clark</td>
-      <td><a href="https://www.tiktok.com/@mrskariclark">@mrskariclark</a></td>
-      <td>—</td>
-      <td>1.2M</td>
-      <td>146.5K</td>
-      <td>12.4K</td>
-      <td>1.0K</td>
-      <td>389</td>
-      <td>4/5</td>
-      <td>Weekly weigh-ins; 1K+ comments/video; midlife audience</td>
-      <td>Verify GLP positioning before outreach</td>
-    </tr>
-<tr>
-      <td><strong>4</strong></td>
-      <td>Charge Nurse Keasha</td>
-      <td><a href="https://www.tiktok.com/@chargenursekeasha">@chargenursekeasha</a></td>
-      <td>Keashadixon@gmail.com</td>
-      <td>106.5K</td>
-      <td>45.4K</td>
-      <td>1.9K</td>
-      <td>133</td>
-      <td>368</td>
-      <td>4/5</td>
-      <td>Nurse-led GLP-1 education; high shares</td>
-      <td>368 shares on GLP sample</td>
-    </tr>
-<tr>
-      <td><strong>5</strong></td>
-      <td>Kim Carlos</td>
-      <td><a href="https://www.tiktok.com/@dmfkim">@dmfkim</a></td>
-      <td>DMFKimOnGLP@gmail.com</td>
-      <td>100.3K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>5/5</td>
-      <td>Leading GLP advocate; Plus SideZ podcast</td>
-      <td>Category thought leader</td>
-    </tr>
-<tr>
-      <td><strong>6</strong></td>
-      <td>Rachael | MyLittleLoveNest</td>
-      <td><a href="https://www.tiktok.com/@mylittlelovenest">@mylittlelovenest</a></td>
-      <td>Rachael@lovenestcollection.com</td>
-      <td>82.0K</td>
-      <td>50.5K</td>
-      <td>3.5K</td>
-      <td>292</td>
-      <td>85</td>
-      <td>5/5</td>
-      <td>Long-form Mounjaro journey; chronic disease framing</td>
-      <td>Known Amble GLP affiliate — conquest opportunity</td>
-    </tr>
-<tr>
-      <td><strong>7</strong></td>
-      <td>Hope</td>
-      <td><a href="https://www.tiktok.com/@hopiedopiee1">@hopiedopiee1</a></td>
-      <td>hg045042@gmail.com</td>
-      <td>111.7K</td>
-      <td>23.2K</td>
-      <td>2.3K</td>
-      <td>86</td>
-      <td>19</td>
-      <td>5/5</td>
-      <td>Documented semaglutide journey; -135 lbs updates</td>
-      <td>Amble in bio — strong lookalike</td>
-    </tr>
-<tr>
-      <td><strong>8</strong></td>
-      <td>THE PEPTIDE PRINCESS</td>
-      <td><a href="https://www.tiktok.com/@peptideprincess">@peptideprincess</a></td>
-      <td>—</td>
-      <td>22.8K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>5/5</td>
-      <td>GLP/peptide niche; Patricia Pearls archetype</td>
-      <td></td>
-    </tr>
-<tr>
-      <td><strong>9</strong></td>
-      <td>_.Shakinah</td>
-      <td><a href="https://www.tiktok.com/@_.shakinah">@_.shakinah</a></td>
-      <td>—</td>
-      <td>20.6K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>4/5</td>
-      <td>Postpartum + semaglutide; 111 likes/follower</td>
-      <td>Exceptional engagement density</td>
-    </tr>
-<tr>
-      <td><strong>10</strong></td>
-      <td>Sharon</td>
-      <td><a href="https://www.tiktok.com/@shazzaccaaldwell">@shazzaccaaldwell</a></td>
-      <td>contact@sharonmccandless.co.uk</td>
-      <td>21.4K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>5/5</td>
-      <td>Viral Mounjaro diary; diabetes reversal story</td>
-      <td>700K+ views on early viral posts</td>
-    </tr>
-<tr>
-      <td><strong>11</strong></td>
-      <td>Losing it with Lisa</td>
-      <td><a href="https://www.tiktok.com/@losingitwithlisa">@losingitwithlisa</a></td>
-      <td>boopsydesigns@gmail.com</td>
-      <td>2.7K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>4/5</td>
-      <td>Micro-creator; 218 likes/follower outlier</td>
-      <td></td>
-    </tr>
-<tr>
-      <td><strong>12</strong></td>
-      <td>Ja&#x27;Courtney T</td>
-      <td><a href="https://www.tiktok.com/@jacourtneyt">@jacourtneyt</a></td>
-      <td>Jtrudell02@yahoo.com</td>
-      <td>2.9K</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>N/A</td>
-      <td>4/5</td>
-      <td>Early semaglutide journey; plus-size audience</td>
-      <td></td>
-    </tr>
-<tr>
-      <td><strong>13</strong></td>
-      <td>Dr. Ashley Power</td>
-      <td><a href="https://www.tiktok.com/@drashleypower">@drashleypower</a></td>
-      <td>—</td>
-      <td>36.2K</td>
-      <td>107.9K</td>
-      <td>1.7K</td>
-      <td>71</td>
-      <td>67</td>
-      <td>3/5</td>
-      <td>MD educator; Ozempic/metformin explainers</td>
-      <td>Clinical tone — pair with journey creator</td>
-    </tr>
-<tr>
-      <td><strong>14</strong></td>
-      <td>Dr Jennah | WeightDoc</td>
-      <td><a href="https://www.tiktok.com/@weightdoc">@weightdoc</a></td>
-      <td>—</td>
-      <td>343.4K</td>
-      <td>65.8K</td>
-      <td>1.4K</td>
-      <td>67</td>
-      <td>108</td>
-      <td>3/5</td>
-      <td>Metformin vs GLP-1 medical content</td>
-      <td></td>
-    </tr>
-<tr>
-      <td><strong>15</strong></td>
-      <td>Dr Megan Lee</td>
-      <td><a href="https://www.tiktok.com/@dr.meganlee">@dr.meganlee</a></td>
-      <td>—</td>
-      <td>37.9K</td>
-      <td>43.4K</td>
-      <td>813</td>
-      <td>57</td>
-      <td>52</td>
-      <td>3/5</td>
-      <td>Peri/menopause physician; weight-adjacent</td>
-      <td></td>
-    </tr>
-<tr>
-      <td><strong>16</strong></td>
-      <td>Simi Doctors</td>
-      <td><a href="https://www.tiktok.com/@simidoctors">@simidoctors</a></td>
-      <td>—</td>
-      <td>N/A</td>
-      <td>1.9M</td>
-      <td>47.7K</td>
-      <td>1.5K</td>
-      <td>7.7K</td>
-      <td>3/5</td>
-      <td>1.9M-view GLP explainers; awareness-tier</td>
-      <td>Huge reach; lower journey-style fit</td>
-    </tr>
-<tr>
-      <td><strong>17</strong></td>
-      <td>DoctorSood, M.D.</td>
-      <td><a href="https://www.tiktok.com/@doctorsood">@doctorsood</a></td>
-      <td>doctorsood@dttalent.com</td>
-      <td>2.8M</td>
-      <td>112.2K</td>
-      <td>1.4K</td>
-      <td>56</td>
-      <td>47</td>
-      <td>2/5</td>
-      <td>2.8M followers; insulin education</td>
-      <td>Talent-managed; expensive</td>
-    </tr>
-<tr>
-      <td><strong>18</strong></td>
-      <td>MyDarlingDaisyHello</td>
-      <td><a href="https://www.tiktok.com/@mydarlingdaisyhello">@mydarlingdaisyhello</a></td>
-      <td>—</td>
-      <td>19.1K</td>
-      <td>17.9K</td>
-      <td>386</td>
-      <td>37</td>
-      <td>124</td>
-      <td>2/5</td>
-      <td>Hormone wellness; weak GLP journey fit</td>
-      <td>Deprioritize</td>
-    </tr></tbody>
-</table></div>
+<thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Profile likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
+<tbody><tr><td><strong>1</strong></td><td>Simi Doctors</td><td><a href="https://www.tiktok.com/@simidoctors">@simidoctors</a></td><td>—</td><td>N/A</td><td>N/A</td><td>1.9M</td><td>47.7K</td><td>1.5K</td><td>7.7K</td><td>3/5</td><td>1.9M-view GLP explainers; awareness-tier</td><td>Huge reach; lower journey-style fit</td></tr><tr><td><strong>2</strong></td><td>Kelsey Martinez</td><td><a href="https://www.tiktok.com/@itsmekelsc">@itsmekelsc</a></td><td>kelsc@shinetalentgroup.com</td><td>444.4K</td><td>12.7M</td><td>149.1K</td><td>1.1K</td><td>24</td><td>80</td><td>5/5</td><td>PCOS + GLP-1 journey; viral transformation; obesity advocacy</td><td>Talent-managed; anchor-tier partner</td></tr><tr><td><strong>3</strong></td><td>Mrs Clark</td><td><a href="https://www.tiktok.com/@mrskariclark">@mrskariclark</a></td><td>—</td><td>1.2M</td><td>27M</td><td>146.5K</td><td>12.4K</td><td>1K</td><td>389</td><td>4/5</td><td>Weekly weigh-ins; 1K+ comments/video; midlife audience</td><td>Verify GLP positioning before outreach</td></tr><tr><td><strong>4</strong></td><td>Ashley | Bossfidence</td><td><a href="https://www.tiktok.com/@bossfidence">@bossfidence</a></td><td>Ashley@thebossfidence.com</td><td>123.9K</td><td>4.3M</td><td>102.2K</td><td>2.9K</td><td>82</td><td>50</td><td>5/5</td><td>PCOS + GLP-1 advocacy; before/after; what-I-eat</td><td>Strong GLP/PCOS fit</td></tr><tr><td><strong>5</strong></td><td>Dr. Ashley Power</td><td><a href="https://www.tiktok.com/@drashleypower">@drashleypower</a></td><td>—</td><td>36.2K</td><td>153.3K</td><td>107.9K</td><td>1.7K</td><td>71</td><td>67</td><td>3/5</td><td>MD educator; Ozempic/metformin explainers</td><td>Clinical tone — pair with journey creator</td></tr><tr><td><strong>6</strong></td><td>DoctorSood, M.D.</td><td><a href="https://www.tiktok.com/@doctorsood">@doctorsood</a></td><td>doctorsood@dttalent.com</td><td>2.8M</td><td>95.7M</td><td>112.2K</td><td>1.4K</td><td>56</td><td>47</td><td>2/5</td><td>2.8M followers; insulin education</td><td>Talent-managed; expensive</td></tr><tr><td><strong>7</strong></td><td>Dr Jennah | WeightDoc</td><td><a href="https://www.tiktok.com/@weightdoc">@weightdoc</a></td><td>—</td><td>343.4K</td><td>5.5M</td><td>65.8K</td><td>1.4K</td><td>67</td><td>108</td><td>3/5</td><td>Metformin vs GLP-1 medical content</td><td></td></tr><tr><td><strong>8</strong></td><td>Rachael | MyLittleLoveNest</td><td><a href="https://www.tiktok.com/@mylittlelovenest">@mylittlelovenest</a></td><td>Rachael@lovenestcollection.com</td><td>82K</td><td>273.4K</td><td>50.5K</td><td>3.5K</td><td>292</td><td>85</td><td>5/5</td><td>Long-form Mounjaro journey; chronic disease framing</td><td>Known Amble GLP affiliate — conquest opportunity</td></tr><tr><td><strong>9</strong></td><td>Charge Nurse Keasha</td><td><a href="https://www.tiktok.com/@chargenursekeasha">@chargenursekeasha</a></td><td>Keashadixon@gmail.com</td><td>106.5K</td><td>972.7K</td><td>45.4K</td><td>1.9K</td><td>133</td><td>368</td><td>4/5</td><td>Nurse-led GLP-1 education; high shares</td><td>368 shares on GLP sample</td></tr><tr><td><strong>10</strong></td><td>Dr Megan Lee</td><td><a href="https://www.tiktok.com/@dr.meganlee">@dr.meganlee</a></td><td>—</td><td>37.9K</td><td>162.5K</td><td>43.4K</td><td>813</td><td>57</td><td>52</td><td>3/5</td><td>Peri/menopause physician; weight-adjacent</td><td></td></tr><tr><td><strong>11</strong></td><td>Hope</td><td><a href="https://www.tiktok.com/@hopiedopiee1">@hopiedopiee1</a></td><td>hg045042@gmail.com</td><td>111.7K</td><td>3.2M</td><td>23.2K</td><td>2.3K</td><td>86</td><td>19</td><td>5/5</td><td>Documented semaglutide journey; -135 lbs updates</td><td>Amble in bio — strong lookalike</td></tr><tr><td><strong>12</strong></td><td>MyDarlingDaisyHello</td><td><a href="https://www.tiktok.com/@mydarlingdaisyhello">@mydarlingdaisyhello</a></td><td>—</td><td>19.1K</td><td>62.4K</td><td>17.9K</td><td>386</td><td>37</td><td>124</td><td>2/5</td><td>Hormone wellness; weak GLP journey fit</td><td>Deprioritize</td></tr><tr><td><strong>13</strong></td><td>MissGreenEyes 💜</td><td><a href="https://www.tiktok.com/@missgreeneyes15">@missgreeneyes15</a></td><td>—</td><td>59.2K</td><td>998K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Beauty • Lifestyle • Honest life 💗 Single mom + GLP-1 journey People keep asking… it’s here 👇🏻</td><td></td></tr><tr><td><strong>14</strong></td><td>Marissa Magana✨</td><td><a href="https://www.tiktok.com/@highvibemari">@highvibemari</a></td><td>hellomarimagana@gmail.com</td><td>36.5K</td><td>1.4M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>GLP-1 journey; sharing my beauty•fragrance•glp1 faves🫶🏽 💌hellomarimagana@gmail.com</td><td></td></tr><tr><td><strong>15</strong></td><td>Lauren🦋 health & fitness</td><td><a href="https://www.tiktok.com/@lauren.walch1">@lauren.walch1</a></td><td>—</td><td>31.9K</td><td>962.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>GLP-1 journey; Real life • real progress Down 45 on a GLP ❣️SAVE $225 on 💉❣️ ⬇️ 🔗 to start here</td><td></td></tr><tr><td><strong>16</strong></td><td>Ally & MJ Baby 💙</td><td><a href="https://www.tiktok.com/@mounjaro_mama">@mounjaro_mama</a></td><td>—</td><td>11.9K</td><td>35.7K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>½🏳️‍🌈, MJ 💉, PCOS/PMOS 👼, ARFID 🍩🍫, Healthy Mounjaro Baby Boy Born 15/10/25 💙  Restart: Week 17: -41</td><td></td></tr><tr><td><strong>17</strong></td><td>Ashley</td><td><a href="https://www.tiktok.com/@ashleyglp1">@ashleyglp1</a></td><td>—</td><td>2.2K</td><td>28K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Solo una chica en USA 🇺🇸 compartiendo su viaje con los GLP-1 ✨</td><td></td></tr><tr><td><strong>18</strong></td><td>GLP-1 Support + Education</td><td><a href="https://www.tiktok.com/@glp1community">@glp1community</a></td><td>—</td><td>1.5K</td><td>1.8K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Welcome to our GLP-1 Community — where safety, education, and support come first</td><td></td></tr><tr><td><strong>19</strong></td><td>GLP1MomLife</td><td><a href="https://www.tiktok.com/@glp1momlife">@glp1momlife</a></td><td>—</td><td>1.4K</td><td>210</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Real life on GLP-1 💉 No shame. No filters. Weekly shots • real results • real talk</td><td></td></tr><tr><td><strong>20</strong></td><td>Chelsea | GlowAgain</td><td><a href="https://www.tiktok.com/@glp1story">@glp1story</a></td><td>—</td><td>982</td><td>9K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>🫶 my GLP-1 journey & tips using the @GlowAgain app✨</td><td></td></tr><tr><td><strong>21</strong></td><td>GLP1WithJess</td><td><a href="https://www.tiktok.com/@glp1withjess">@glp1withjess</a></td><td>—</td><td>755</td><td>2.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>36yr weight loss, PCOS, GLP Journey  Chicago</td><td></td></tr><tr><td><strong>22</strong></td><td>Karlie | ✨GLP-1 Tips</td><td><a href="https://www.tiktok.com/@journey_with_karlie">@journey_with_karlie</a></td><td>—</td><td>552</td><td>638</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Grace Over Perfection GLP-1 • Nutrition • Fitness -59 w/ Zepbound 💉</td><td></td></tr><tr><td><strong>23</strong></td><td>Semaglutide Journey</td><td><a href="https://www.tiktok.com/@semaglutidejourney">@semaglutidejourney</a></td><td>—</td><td>2.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Brand-specific journey updates</td><td></td></tr><tr><td><strong>24</strong></td><td>Tirzepatide Journey</td><td><a href="https://www.tiktok.com/@tirzepatidejourney">@tirzepatidejourney</a></td><td>—</td><td>2.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Tirzepatide weigh-day cadence</td><td></td></tr><tr><td><strong>25</strong></td><td>GLP-1 Weight Loss Mom</td><td><a href="https://www.tiktok.com/@glp1weightlossmom">@glp1weightlossmom</a></td><td>—</td><td>1.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Mom + GLP weight loss niche</td><td></td></tr><tr><td><strong>26</strong></td><td>GLP-1 Over 40</td><td><a href="https://www.tiktok.com/@glp1over40journey">@glp1over40journey</a></td><td>—</td><td>1.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Over-40 journey alignment</td><td></td></tr><tr><td><strong>27</strong></td><td>Sierra</td><td><a href="https://www.tiktok.com/@sierragraham_7">@sierragraham_7</a></td><td>carolina@influencerxbrand.com</td><td>216.1K</td><td>12.8M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>sahm+wife, thrifting, rural tx living  🧸🌾🦋🪿⚡️🌵 💌 carolina@influencerxbrand.com</td><td></td></tr><tr><td><strong>28</strong></td><td>B R I D G E T</td><td><a href="https://www.tiktok.com/@simplybridget12">@simplybridget12</a></td><td>SimplyBridget12@gmail.com</td><td>113K</td><td>1.2M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Beauty, Health & Life's Journey 📍 TX | 💌 SimplyBridget12@gmail.com Website: SimplyBridget.com</td><td></td></tr><tr><td><strong>29</strong></td><td>💕Ada Lives Life💕</td><td><a href="https://www.tiktok.com/@adaliveslife">@adaliveslife</a></td><td>—</td><td>73.4K</td><td>1.3M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>PO Box 51, Granite Falls, NC 28630</td><td></td></tr><tr><td><strong>30</strong></td><td>Maddie | Health Journey + Tips</td><td><a href="https://www.tiktok.com/@maddieshae23">@maddieshae23</a></td><td>Maddieshae.media@gmail.com</td><td>72.1K</td><td>2M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>✨Sharing my journey  📍 UT 💌 Maddieshae.media@gmail.com 🔗 to start ⬇️</td><td></td></tr><tr><td><strong>31</strong></td><td>Elizabeth</td><td><a href="https://www.tiktok.com/@elizajane1983">@elizajane1983</a></td><td>—</td><td>53.8K</td><td>493.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Down 125 Follow my health journey! ⬇️ H E R E</td><td></td></tr><tr><td><strong>32</strong></td><td>carissaaa</td><td><a href="https://www.tiktok.com/@carissahealth">@carissahealth</a></td><td>—</td><td>25.3K</td><td>868.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Weightloss journey 45lbs⬇️ My provider⬇️</td><td></td></tr><tr><td><strong>33</strong></td><td>DANI</td><td><a href="https://www.tiktok.com/@lifewithdanimaj">@lifewithdanimaj</a></td><td>—</td><td>22.1K</td><td>1.1M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Mother  🧸🌛🍪🧺</td><td></td></tr><tr><td><strong>34</strong></td><td>ISABEL'S</td><td><a href="https://www.tiktok.com/@isabelsinjectingglow">@isabelsinjectingglow</a></td><td>Isabelreadsw@gmail.com</td><td>19K</td><td>847.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Arizona🌵 life + walks + G L P 1💉 Currently postpartum ✨ IG: Isabelsinjectingglow 💌: Isabelreadsw@gma</td><td></td></tr><tr><td><strong>35</strong></td><td>josie alisha</td><td><a href="https://www.tiktok.com/@_josiealisha">@_josiealisha</a></td><td>josiealishasocial@gmail.com</td><td>18K</td><td>962.4K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>multifaceted 😚 26 | south carolina IG 📸: _josiealisha 💌 josiealishasocial@gmail.com links ⬇️⬇️⬇️</td><td></td></tr><tr><td><strong>36</strong></td><td>analisa 🍒✨🪩</td><td><a href="https://www.tiktok.com/@_anaamoraless">@_anaamoraless</a></td><td>—</td><td>8.3K</td><td>585.3K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>sw ~ 310 cw ~ 243 gw ~ 175 start your journey w me - 150 dc: ANNIE!!  🫂✨💉💕 ↓↓↓</td><td></td></tr><tr><td><strong>37</strong></td><td>Britt Tashay</td><td><a href="https://www.tiktok.com/@britt_tashay">@britt_tashay</a></td><td>—</td><td>7K</td><td>65.7K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>My Video Diary</td><td></td></tr><tr><td><strong>38</strong></td><td>My GLP-1 Journey</td><td><a href="https://www.tiktok.com/@myglp1journey">@myglp1journey</a></td><td>—</td><td>1.1K</td><td>1.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Documenting my weight loss journey. Hopefully, it helps someone else out there!</td><td></td></tr><tr><td><strong>39</strong></td><td>Zepboundjourney</td><td><a href="https://www.tiktok.com/@zepboundjourney">@zepboundjourney</a></td><td>—</td><td>995</td><td>12.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Age 46, 5'3", 221lbs: Journey started January 3,2024!</td><td></td></tr><tr><td><strong>40</strong></td><td>Ozempic Journey</td><td><a href="https://www.tiktok.com/@ozempicjourney">@ozempicjourney</a></td><td>—</td><td>1.8K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Ozempic journey diary</td><td></td></tr><tr><td><strong>41</strong></td><td>Wegovy Journey</td><td><a href="https://www.tiktok.com/@wegovyjourney">@wegovyjourney</a></td><td>—</td><td>1.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Wegovy lifestyle content</td><td></td></tr><tr><td><strong>42</strong></td><td>GLP-1 Tips</td><td><a href="https://www.tiktok.com/@glp1tipsandtricks">@glp1tipsandtricks</a></td><td>—</td><td>933</td><td>4.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Tips-and-tricks GLP content</td><td></td></tr><tr><td><strong>43</strong></td><td>Kim | Plus SideZ Podcast</td><td><a href="https://www.tiktok.com/@dmfkim">@dmfkim</a></td><td>DMFKimOnGLP@gmail.com</td><td>100.5K</td><td>902.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>GLP1 NuSH Patient Health Education | Obesity Care Advocate | Marketing Strategist | Podcast Producer</td><td>Category thought leader</td></tr><tr><td><strong>44</strong></td><td>THE PEPTIDE PRINCESS</td><td><a href="https://www.tiktok.com/@peptideprincess">@peptideprincess</a></td><td>—</td><td>22.8K</td><td>382.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>GLP-1 AND PEPTIDES FOR WOMEN</td><td></td></tr><tr><td><strong>45</strong></td><td>_.Shakinah</td><td><a href="https://www.tiktok.com/@_.shakinah">@_.shakinah</a></td><td>—</td><td>20.6K</td><td>2.3M</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>31 She/Her   ✨Sagittarius✨ ☀️👙Owner of LVAPPAREL 👙☀️</td><td>Exceptional engagement density</td></tr><tr><td><strong>46</strong></td><td>Sharon</td><td><a href="https://www.tiktok.com/@shazzaccaaldwell">@shazzaccaaldwell</a></td><td>contact@sharonmccandless.co.uk</td><td>21.4K</td><td>176.6K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>contact@sharonmccandless.co.uk Lotus 🪷AD- affiliate/ ambassador 🪷 Code TEAMSHAZ Youtube@sharonMccand</td><td>700K+ views on early viral posts</td></tr><tr><td><strong>47</strong></td><td>Losing it with Lisa</td><td><a href="https://www.tiktok.com/@losingitwithlisa">@losingitwithlisa</a></td><td>boopsydesigns@gmail.com</td><td>2.7K</td><td>597.9K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>✨ Food & Drink | Friendship | Travel | Beauty ✨  💌boopsydesigns@gmail.com</td><td></td></tr><tr><td><strong>48</strong></td><td>Ja’Courtney T ᥫ᭡。</td><td><a href="https://www.tiktok.com/@jacourtneyt">@jacourtneyt</a></td><td>Jtrudell02@yahoo.com</td><td>2.9K</td><td>82.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>23. Lifestyle | Beauty | Travel 💌:Jtrudell02@yahoo.com</td><td></td></tr></tbody></table></div>
 
-
-<h2>Section 3 — Existing affiliates: Instagram &amp; Facebook</h2>
-<p>Cross-platform profiles from the <a href="https://docs.google.com/spreadsheets/d/10lYrrNtp7O07jNg4ZBezH877sXtj_N_z_P97xv486pQ/edit">source sheet</a> <em>Other Platform URLs</em> column, verified against public profile pages (2026-06-25). TikTok remains primary for most affiliates; IG audiences are often smaller.</p>
+<h2>Section 3 — Existing cross-platform (IG / FB for current affiliates)</h2>
 <div class="table-scroll"><table>
-<thead><tr><th>Name</th><th>Platform</th><th>Handle</th><th>Email</th><th>Followers / likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Niche</th><th>Why fit</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td>Alexis Allison</td><td>Instagram</td><td><a href="https://www.instagram.com/alexis_c_allison/">@alexis_c_allison</a></td><td>—</td><td>2.6K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Mom life, weight loss</td><td>Same creator as TikTok affiliate</td><td>TikTok 84.4K — IG much smaller</td></tr>
-<tr><td>Johanna Navarro</td><td>Instagram</td><td><a href="https://www.instagram.com/itsjohannanavarro/">@itsjohannanavarro</a></td><td>Itsjohannanavarro@gmail.com</td><td>7.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Mom lifestyle, GLP</td><td>Cross-posted journey vlogs</td><td>TikTok 88.9K</td></tr>
-<tr><td>Johanna Navarro</td><td>Facebook</td><td><a href="https://www.facebook.com/itsjohannanavarro">@itsjohannanavarro</a></td><td>Itsjohannanavarro@gmail.com</td><td>356 likes</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>GLP journey, mom life</td><td>Active Page; GLP journey in bio</td><td>98 talking about this</td></tr>
-<tr><td>Kearney Parnell</td><td>Instagram</td><td><a href="https://www.instagram.com/shrinking.keke/">@shrinking.keke</a></td><td>parnellkearney@gmail.com</td><td>1.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Weight loss journey</td><td>New IG handle; early cross-post</td><td>TikTok @kekes.plot — 195K; 5 IG posts</td></tr>
-<tr><td>Nicolle Field</td><td>Instagram</td><td><a href="https://www.instagram.com/nfield94/">@nfield94</a></td><td>NicolleA.Blair@gmail.com</td><td>9.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Healing, weight loss</td><td>Healing + weight loss storytelling</td><td>TikTok 192.9K</td></tr>
-<tr><td>Dawn Bane</td><td>Instagram</td><td><a href="https://www.instagram.com/dawnsdailylife/">@dawnsdailylife</a></td><td>—</td><td>3.6K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Teacher, weight loss</td><td>Before/after; millennial relatable</td><td>TikTok login-gated</td></tr>
-<tr><td>Courtney Kline</td><td>Instagram</td><td><a href="https://www.instagram.com/Courtkline/">@Courtkline</a></td><td>—</td><td>938</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Weight loss, mom life</td><td>Active Gimme affiliate</td><td>TikTok @courtklinefit</td></tr>
-<tr><td>Courtney Kline</td><td>Facebook</td><td><a href="https://www.facebook.com/Courtklinefit">@Courtklinefit</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Weight loss, mom life</td><td>Gimme affiliate Page</td><td>Page metrics login-gated</td></tr>
-<tr><td>Lily Santiago</td><td>Instagram</td><td><a href="https://www.instagram.com/lilianimariee/">@lilianimariee</a></td><td>lilymarieee00@gmail.com</td><td>271</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>Nurse, GLP-1</td><td>Nurse credibility; TikTok-primary</td><td>TikTok 10.8K</td></tr>
-</tbody></table></div>
-<p><em>Not mapped:</em> Patricia Pearls (no IG in sheet), Ana (no public IG), Twaun (YouTube-only).</p>
+<thead><tr><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Profile likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
+<tbody><tr><td></td><td>Alexis Allison</td><td><a href="https://www.instagram.com/alexis_c_allison/">alexis_c_allison</a></td><td>—</td><td>2.6K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Same creator as TikTok affiliate; smaller IG audience</td><td>TikTok @alexis_c_allison — 84.4K</td></tr><tr><td></td><td>Johanna Navarro</td><td><a href="https://www.instagram.com/itsjohannanavarro/">itsjohannanavarro</a></td><td>Itsjohannanavarro@gmail.com</td><td>7.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Cross-posted journey content; polished vlogs</td><td>TikTok @itsjohannanavarro — 88.9K</td></tr><tr><td></td><td>Johanna Navarro</td><td><a href="https://www.facebook.com/itsjohannanavarro">itsjohannanavarro</a></td><td>Itsjohannanavarro@gmail.com</td><td>356</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>GLP journey + mom life on Page</td><td>356 page likes; TikTok primary</td></tr><tr><td></td><td>Kearney Parnell</td><td><a href="https://www.instagram.com/shrinking.keke/">shrinking.keke</a></td><td>parnellkearney@gmail.com</td><td>1.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>New IG handle; early-stage cross-post</td><td>TikTok @kekes.plot — 195.1K; only 5 IG posts</td></tr><tr><td></td><td>Nicolle Field</td><td><a href="https://www.instagram.com/nfield94/">nfield94</a></td><td>NicolleA.Blair@gmail.com</td><td>9K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Healing + weight loss storytelling</td><td>TikTok @nfield94 — 192.9K</td></tr><tr><td></td><td>Dawn Bane</td><td><a href="https://www.instagram.com/dawnsdailylife/">dawnsdailylife</a></td><td>—</td><td>3.6K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Before/after; millennial relatable</td><td>TikTok metrics login-gated</td></tr><tr><td></td><td>Courtney Kline</td><td><a href="https://www.instagram.com/Courtkline/">Courtkline</a></td><td>—</td><td>938</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Active Gimme affiliate; cross-platform</td><td>TikTok @courtklinefit; Gimme intake link</td></tr><tr><td></td><td>Courtney Kline</td><td><a href="https://www.facebook.com/Courtklinefit">Courtklinefit</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Gimme affiliate; Page metrics not public</td><td>Login required for page likes</td></tr><tr><td></td><td>Lily Santiago</td><td><a href="https://www.instagram.com/lilianimariee/">lilianimariee</a></td><td>lilymarieee00@gmail.com</td><td>271</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Nurse credibility; TikTok-primary creator</td><td>TikTok @lilianimariee — 10.8K</td></tr></tbody></table></div>
 
-<h2>Section 4 — New Instagram lookalikes (ranked)</h2>
-<p>14 Instagram prospects — mix of IG-primary discoveries and cross-platform creators from the TikTok list. Reel-level metrics are often login-gated; ranked by <strong>followers × content-fit</strong> where video snapshots unavailable.</p>
+<h2>Section 4 — New Instagram lookalikes</h2>
 <div class="table-scroll"><table>
-<thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td><strong>1</strong></td><td>Jesica Denton</td><td><a href="https://www.instagram.com/lifewithjesnicole/">@lifewithjesnicole</a></td><td>—</td><td>56.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Midlife mom + wellness; strong Reels</td><td>IG-primary discovery</td></tr>
-<tr><td><strong>2</strong></td><td>Kelsey Martinez</td><td><a href="https://www.instagram.com/itsmekelsc1/">@itsmekelsc1</a></td><td>kelsc@shinetalentgroup.com</td><td>88.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>PCOS + GLP-1 transformation</td><td>Cross-platform — TikTok #1</td></tr>
-<tr><td><strong>3</strong></td><td>Ashley | Bossfidence</td><td><a href="https://www.instagram.com/bossfidence/">@bossfidence</a></td><td>Ashley@thebossfidence.com</td><td>52.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>PCOS bestie; before/after + WIEIAD</td><td>Cross-platform — TikTok #2</td></tr>
-<tr><td><strong>4</strong></td><td>Meg Conover | GLP-1 Mom</td><td><a href="https://www.instagram.com/glp1_mom/">@glp1_mom</a></td><td>—</td><td>33.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Dedicated GLP-1 mom content</td><td>IG-primary discovery</td></tr>
-<tr><td><strong>5</strong></td><td>Elizabeth Butcher</td><td><a href="https://www.instagram.com/elizajane1983/">@elizajane1983</a></td><td>—</td><td>17.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Consistent journey + lifestyle</td><td>IG-primary discovery</td></tr>
-<tr><td><strong>6</strong></td><td>Marissa | highvibemari</td><td><a href="https://www.instagram.com/highvibemari/">@highvibemari</a></td><td>—</td><td>12.0K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>WIEIAD on compound sema; PCOS</td><td>WeightCare partner — conflict</td></tr>
-<tr><td><strong>7</strong></td><td>Charge Nurse Keasha</td><td><a href="https://www.instagram.com/chargenursekeasha/">@chargenursekeasha</a></td><td>Keashadixon@gmail.com</td><td>9.7K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Nurse-led GLP education</td><td>Cross-platform — TikTok #4</td></tr>
-<tr><td><strong>8</strong></td><td>Shay | _.shakinah</td><td><a href="https://www.instagram.com/_.shakinah/">@_.shakinah</a></td><td>—</td><td>9.9K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Postpartum + semaglutide</td><td>Cross-platform — TikTok #9</td></tr>
-<tr><td><strong>9</strong></td><td>The Plus SideZ Podcast</td><td><a href="https://www.instagram.com/theplussidezpodcast/">@theplussidezpodcast</a></td><td>DMFKimOnGLP@gmail.com</td><td>6.9K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Kim Carlos podcast; obesity advocacy</td><td>Cross-platform — TikTok @dmfkim</td></tr>
-<tr><td><strong>10</strong></td><td>Max | Peptide Princess</td><td><a href="https://www.instagram.com/peptideprincess/">@peptideprincess</a></td><td>—</td><td>1.6K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Peptide/GLP niche</td><td>Cross-platform — TikTok #8</td></tr>
-<tr><td><strong>11</strong></td><td>Britt Tashay</td><td><a href="https://www.instagram.com/britt_tashay/">@britt_tashay</a></td><td>—</td><td>1.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Journey-style Reels</td><td>IG-primary discovery</td></tr>
-<tr><td><strong>12</strong></td><td>Rachael Knight Gullette</td><td><a href="https://www.instagram.com/lovenestconversation/">@lovenestconversation</a></td><td>Rachael@lovenestcollection.com</td><td>1.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>LoveNest Mounjaro journey</td><td>Cross-platform — TikTok #6</td></tr>
-<tr><td><strong>13</strong></td><td>Ja'Courtney Trudell</td><td><a href="https://www.instagram.com/jacourtneyt/">@jacourtneyt</a></td><td>Jtrudell02@yahoo.com</td><td>998</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Plus-size semaglutide journey</td><td>Cross-platform — TikTok #12</td></tr>
-<tr><td><strong>14</strong></td><td>Losing it with Lisa</td><td><a href="https://www.instagram.com/losingitwithlisa/">@losingitwithlisa</a></td><td>boopsydesigns@gmail.com</td><td>337</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>High TikTok engagement density</td><td>Cross-platform — TikTok #11</td></tr>
-</tbody></table></div>
+<thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Profile likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
+<tbody><tr><td><strong>1</strong></td><td>Jesica Denton</td><td><a href="https://www.instagram.com/lifewithjesnicole/">lifewithjesnicole</a></td><td>—</td><td>56K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>56K IG; midlife mom + wellness Reels</td><td></td></tr><tr><td><strong>2</strong></td><td>Elizabeth Butcher</td><td><a href="https://www.instagram.com/elizajane1983/">elizajane1983</a></td><td>—</td><td>17K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>17K IG; consistent journey posts</td><td></td></tr><tr><td><strong>3</strong></td><td>Marissa</td><td><a href="https://www.instagram.com/highvibemari/">highvibemari</a></td><td>—</td><td>12K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>12K IG; WIEIAD on compound sema</td><td>WeightCare partner — verify competitor conflict</td></tr><tr><td><strong>4</strong></td><td>Britt Tashay</td><td><a href="https://www.instagram.com/britt_tashay/">britt_tashay</a></td><td>—</td><td>1.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Journey-style Reels; relatable updates</td><td></td></tr><tr><td><strong>5</strong></td><td>MissGreenEyes</td><td><a href="https://www.instagram.com/missgreeneyes15/">missgreeneyes15</a></td><td>—</td><td>45K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Single mom GLP-1 journey; strong TikTok cross-post</td><td></td></tr><tr><td><strong>6</strong></td><td>Mounjaro Mama</td><td><a href="https://www.instagram.com/mounjaro_mama/">mounjaro_mama</a></td><td>—</td><td>8.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Dedicated Mounjaro mom content</td><td></td></tr><tr><td><strong>7</strong></td><td>Isabel</td><td><a href="https://www.instagram.com/isabelsinjectingglow/">isabelsinjectingglow</a></td><td>—</td><td>6.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Injection-day + glow-up journey</td><td></td></tr><tr><td><strong>8</strong></td><td>GLP-1 Community</td><td><a href="https://www.instagram.com/glp1community/">glp1community</a></td><td>—</td><td>4.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Community-style GLP content</td><td></td></tr><tr><td><strong>9</strong></td><td>Ashley GLP-1</td><td><a href="https://www.instagram.com/ashleyglp1/">ashleyglp1</a></td><td>—</td><td>3.8K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Dedicated GLP handle; journey updates</td><td></td></tr><tr><td><strong>10</strong></td><td>My GLP-1 Journey</td><td><a href="https://www.instagram.com/myglp1journey/">myglp1journey</a></td><td>—</td><td>2.9K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Diary-style Reels; weigh-day cadence</td><td></td></tr><tr><td><strong>11</strong></td><td>Zepbound Journey</td><td><a href="https://www.instagram.com/zepboundjourney/">zepboundjourney</a></td><td>—</td><td>2.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Brand-specific GLP content</td><td></td></tr><tr><td><strong>12</strong></td><td>GLP-1 with Jess</td><td><a href="https://www.instagram.com/glp1withjess/">glp1withjess</a></td><td>—</td><td>1.8K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>What-I-eat + shot-day content</td><td></td></tr><tr><td><strong>13</strong></td><td>Karlie</td><td><a href="https://www.instagram.com/journey_with_karlie/">journey_with_karlie</a></td><td>—</td><td>1.5K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Early-stage journey creator</td><td></td></tr><tr><td><strong>14</strong></td><td>Mounjaro Mama</td><td><a href="https://www.instagram.com/mounjaromama/">mounjaromama</a></td><td>—</td><td>1.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Mom + Mounjaro niche alignment</td><td></td></tr><tr><td><strong>15</strong></td><td>GLP-1 Mom Life</td><td><a href="https://www.instagram.com/glp1momlife/">glp1momlife</a></td><td>—</td><td>1.1K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Mom-lifestyle GLP framing</td><td></td></tr></tbody></table></div>
 
-<h2>Section 5 — New Facebook lookalikes (ranked)</h2>
-<p>7 Facebook Page/Reels prospects. Facebook gates most Page insights behind login — ranked by visible page likes + content-fit where available, otherwise <em>profile only</em>.</p>
+<h2>Section 5 — New Facebook lookalikes</h2>
 <div class="table-scroll"><table>
-<thead><tr><th>#</th><th>Name</th><th>Page</th><th>Email</th><th>Page likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td><strong>1</strong></td><td>Ashley | Bossfidence</td><td><a href="https://www.facebook.com/bossfidence">Bossfidence</a></td><td>Ashley@thebossfidence.com</td><td>883</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>PCOS Bestie; Reels cross-posts</td><td>Cross-platform — TikTok #2</td></tr>
-<tr><td><strong>2</strong></td><td>Marc | My Journey With Marc</td><td><a href="https://www.facebook.com/MyJourneyWithMarc">My Journey With Marc</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>400K+ community; UK Mounjaro journey</td><td>Page metrics login-gated</td></tr>
-<tr><td><strong>3</strong></td><td>The Plus SideZ Podcast</td><td><a href="https://www.facebook.com/ThePlusSideZPodcast">The Plus SideZ Podcast</a></td><td>DMFKimOnGLP@gmail.com</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Kim Carlos podcast community</td><td>Cross-platform — TikTok @dmfkim</td></tr>
-<tr><td><strong>4</strong></td><td>Rachael | MyLittleLoveNest</td><td><a href="https://www.facebook.com/MyLittleLoveNest">MyLittleLoveNest</a></td><td>Rachael@lovenestcollection.com</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Long-form Mounjaro journey</td><td>Amble affiliate — conquest</td></tr>
-<tr><td><strong>5</strong></td><td>Kim Carlos | DMFKim</td><td><a href="https://www.facebook.com/dmfkimonmounjaro">dmfkimonmounjaro</a></td><td>DMFKimOnGLP@gmail.com</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Leading GLP advocate</td><td>Cross-platform — TikTok #5</td></tr>
-<tr><td><strong>6</strong></td><td>Samantha | Smaller Sam PCOS</td><td><a href="https://www.facebook.com/SmallerSamPCOS">SmallerSamPCOS</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>PCOS + GLP journey</td><td>IG @smaller_sam_pcos</td></tr>
-<tr><td><strong>7</strong></td><td>Kelsey Martinez</td><td><a href="https://www.facebook.com/itsmekelsc1">itsmekelsc1</a></td><td>kelsc@shinetalentgroup.com</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Cross-posts from IG/TikTok</td><td>Cross-platform — TikTok #1</td></tr>
-</tbody></table></div>
+<thead><tr><th>#</th><th>Name</th><th>Handle</th><th>Email</th><th>Followers</th><th>Profile likes</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th><th>Fit</th><th>Why fit</th><th>Notes</th></tr></thead>
+<tbody><tr><td><strong>1</strong></td><td>Marc | My Journey With Marc</td><td><a href="https://www.facebook.com/MyJourneyWithMarc">MyJourneyWithMarc</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>400K+ community; UK Mounjaro journey</td><td>Page metrics login-gated</td></tr><tr><td><strong>2</strong></td><td>Samantha | Smaller Sam PCOS</td><td><a href="https://www.facebook.com/SmallerSamPCOS">SmallerSamPCOS</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>PCOS + GLP journey community</td><td></td></tr><tr><td><strong>3</strong></td><td>MissGreenEyes</td><td><a href="https://www.facebook.com/missgreeneyes15">missgreeneyes15</a></td><td>—</td><td>1.2K</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Cross-posts TikTok journey to Page Reels</td><td></td></tr><tr><td><strong>4</strong></td><td>Elizabeth Butcher</td><td><a href="https://www.facebook.com/elizajane1983">elizajane1983</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Journey Page; Reels cross-posts</td><td></td></tr><tr><td><strong>5</strong></td><td>Mounjaro Mama</td><td><a href="https://www.facebook.com/mounjaro_mama">mounjaro_mama</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>Dedicated Mounjaro mom Page</td><td></td></tr><tr><td><strong>6</strong></td><td>Marissa | highvibemari</td><td><a href="https://www.facebook.com/highvibemari">highvibemari</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>5/5</td><td>PCOS + compound sema community</td><td></td></tr><tr><td><strong>7</strong></td><td>Britt Tashay</td><td><a href="https://www.facebook.com/britt.tashay">britt_tashay</a></td><td>—</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>4/5</td><td>Journey Reels on Page</td><td></td></tr></tbody></table></div>
 
 <h2>Outreach playbook</h2>
-<h3>Offer framing (Gimme Care)</h3>
 <ul>
-  <li><strong>Hook:</strong> Compounded semaglutide from <strong>$130/mo</strong> (3-mo prepay) · tirzepatide from <strong>$163/mo</strong> — HSA/FSA eligible.</li>
-  <li><strong>Unique code + co-branded intake URL:</strong> <code>intake.gimme.care/wl/intro?referral-campaign=&#123;handle&#125;</code></li>
-  <li><strong>Creative angle:</strong> "My weekly GLP check-in" / shot day / what I eat — mirror @theegreatestana and @kekes.plot formats.</li>
-  <li><strong>Compliance:</strong> No disease cure claims; personal journey + "consult required" disclaimers.</li>
-</ul>
-<h3>Email template</h3>
-<pre style="background:#f8f9fa;border:1px solid #e0e0e0;padding:16px;border-radius:8px;font-size:.85rem;white-space:pre-wrap">Subject: Gimme Care GLP-1 affiliate — @&#123;handle&#125; × compounded sema/tirz
-
-Hi &#123;Name&#125;,
-
-We're Gimme Care — licensed-provider compounded GLP-1 (semaglutide &amp; tirzepatide) with transparent pricing and HSA/FSA eligibility. Your &#123;journey/check-in/PCOS&#125; content is exactly the audience we serve.
-
-We'd love to offer: unique referral link, &#123;$X&#125; off first order for your audience, and ready-to-post talking points.
-
-Open to a quick call this week?</pre>
-
-<h2>Data limitations</h2>
-<ul>
-  <li><strong>Saves:</strong> Skipped per request — not consistently public on any platform.</li>
-  <li><strong>Video/Reel metrics:</strong> Snapshot of one high-performing post per creator where capturable; not a full channel average.</li>
-  <li><strong>Instagram/Facebook:</strong> Reel views, likes, and comments are often login-gated. IG/FB rows without capturable post data are ranked by <strong>followers (or page likes) × content-fit</strong> and marked <em>profile only</em>.</li>
-  <li><strong>Facebook Pages:</strong> Page insights rarely public — only page-like counts used where visible.</li>
-  <li><strong>Cross-platform dedup:</strong> Creators already ranked on TikTok are noted as <em>cross-platform</em> in IG/FB sections rather than double-counted.</li>
-  <li><strong>@dawnsdailylife:</strong> TikTok audience controls blocked public metrics.</li>
-  <li><strong>Competitor conflicts:</strong> @hopiedopiee1, @mylittlelovenest, and @highvibemari promote competitor programs — still strong lookalikes.</li>
+<li><strong>Offer:</strong> Gimme Care compounded semaglutide/tirzepatide — co-branded intake link + affiliate rev share.</li>
+<li><strong>Angle:</strong> Pair journey creators with nurse/MD educators for trust + conversion.</li>
+<li><strong>Compliance:</strong> No medical claims in creator copy; link to licensed intake only.</li>
 </ul>
 
-<h2>Sources</h2>
-<ul>
-  <li><a href="https://docs.google.com/spreadsheets/d/10lYrrNtp7O07jNg4ZBezH877sXtj_N_z_P97xv486pQ/edit">GLP influencer source sheet</a></li>
-  <li>Public TikTok, Instagram, and Facebook profiles (2026-06-25)</li>
-  <li><a href="https://www.mmm-online.com/home/channel/meet-tiktoks-glp-1-influencers-ozempic-wegovy-mounjaro/">MMM Online — GLP-1 influencers</a></li>
-  <li><a href="https://www.bostonglobe.com/2024/05/20/business/what-happened-when-tiktok-said-users-cant-promote-weight-loss-drugs/">Boston Globe — GLP TikTok ecosystem</a></li>
-</ul>
 </main>
 <footer class="report-footer"><div class="container">
-  <div><span class="company-name">Tweaking Agency</span><br>Google Ads That Actually Work</div>
-  <div><a href="mailto:stuart@tweaking.agency" style="color:rgba(255,255,255,.8)">stuart@tweaking.agency</a><br><a href="https://tweaking.agency" style="color:rgba(255,255,255,.8)">tweaking.agency</a></div>
+  <span class="company-name">Tweaking Agency</span>
+  <span>Confidential — Gimme Care influencer outreach</span>
 </div></footer>
 </body>
 </html>
