@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gimme Care — brand impersonation scan (legal) | Tweaking Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --color-primary:#1a1a2e; --color-accent:#e94560; --color-bg:#fff; --color-bg-alt:#f8f9fa;
+  --color-text:#333; --color-text-light:#666; --color-border:#e0e0e0; --container-max:1100px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--color-text);line-height:1.55;font-size:0.9rem}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 32px}
+.report-header{background:var(--color-primary);color:#fff;padding:40px 0}
+.report-meta{background:var(--color-bg-alt);border-bottom:1px solid var(--color-border);padding:20px 0}
+.report-meta .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.report-meta h2{font-size:1.25rem;font-weight:700;color:var(--color-primary)}
+.meta-details{font-size:.9rem;color:var(--color-text-light);text-align:right}
+h2{font-size:1.35rem;font-weight:700;color:var(--color-primary);margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--color-primary)}
+h3{font-size:1.05rem;color:var(--color-primary);margin:24px 0 12px}
+p{margin-bottom:12px}
+ul,ol{margin:0 0 16px 20px} li{margin-bottom:6px}
+a{color:var(--color-accent)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.72rem}
+thead{background:var(--color-primary);color:#fff}
+th{padding:8px;text-align:left;font-size:.65rem;text-transform:uppercase;vertical-align:top}
+td{padding:8px;border-bottom:1px solid var(--color-border);vertical-align:top}
+tbody tr:nth-child(even){background:var(--color-bg-alt)}
+.table-scroll{overflow-x:auto;margin:12px 0 24px}
+.callout{background:#eff6ff;border-left:4px solid #3b82f6;padding:16px 20px;margin:16px 0;border-radius:8px}
+.callout-warn{background:#fef3c7;border-left-color:#f59e0b}
+.callout-danger{background:#fef2f2;border-left-color:#ef4444}
+.callout-green{background:#ecfdf5;border-left-color:#059669}
+pre.flow,code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:6px}
+pre.flow{padding:16px;font-size:.8rem;white-space:pre-wrap}
+code{padding:2px 6px;font-size:.82rem}
+.csv-download-box{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:8px;padding:20px 24px;margin:20px 0 28px}
+.csv-download-btn{display:inline-block;margin-top:12px;padding:12px 20px;background:#059669;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer}
+.report-footer{background:var(--color-primary);color:rgba(255,255,255,.8);padding:32px 0;margin-top:48px;font-size:.85rem}
+.back-link{display:inline-block;margin:16px 0 0}
+.badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;background:#fee2e2;color:#991b1b}
+.badge-low{background:#dbeafe;color:#1e40af}
+@media print{.csv-download-btn{display:none}}
+</style>
+</head>
+<body>
+<header class="report-header"><div class="container"><h1>Tweaking Agency</h1></div></header>
+<div class="report-meta"><div class="container">
+  <h2>Gimme Care — brand impersonation scan (legal)</h2>
+  <div class="meta-details">
+    <span>Client: <strong>Gimme Care</strong></span><br>
+    <span>Date: <strong>2026-07-06</strong></span><br>
+    <span>Flagged listings: <strong>19</strong></span>
+  </div>
+</div></div>
+<main class="container">
+<p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/index.html">← All Gimme reports</a></p>
+
+<div class="callout callout-green">
+  <strong>Summary:</strong> No OJS parasite listings impersonating <strong>Gimme Care</strong> for GLP-1 were found (unlike Amble). Findings are third-party review/affiliate pages on non-gimme.care domains.
+</div>
+
+<h2>Executive summary</h2>
+<ul>
+  <li><strong>0</strong> OJS pdfJsViewer listings with "Gimme Care" GLP-1 headlines on journal domains</li>
+  <li><strong>0</strong> paid Google Ads with parasite display URL + Gimme in headline</li>
+  <li><strong>19</strong> third-party organic pages mentioning Gimme Care on non-gimme.care domains (affiliate SEO / review farms — lower severity)</li>
+  <li><strong>No</strong> healthbenefit.vip / journal parasite redirect chain tied to Gimme Care impersonation</li>
+</ul>
+
+
+<h2>Google paid ads — methodology (parasite display-URL model)</h2>
+<p>Deceptive listings in this campaign do <strong>not</strong> show TrimRx or healthbenefit.vip in Google. They show a <strong>parasite display URL</strong> on a compromised journal domain (e.g. <code>mattioli1885journals.com/.../pdfJsViewer</code>). The affiliate destination (<code>glp-1.healthbenefit.vip</code>) appears only <em>after</em> click-through redirects.</p>
+
+<h3>What we checked (2026-07-06)</h3>
+<ol>
+  <li><strong>Live SERP paid-slot scan</strong> — DataForSEO <code>serp/google/organic/live/advanced</code>, US (2840), desktop + mobile, depth 50. For each brand query, flag items where <code>type</code> is paid/ad/shopping <em>or</em> <code>ad_aclk_url</code> is present, headline mentions the brand, and display URL matches parasite patterns (<code>pdfJsViewer</code>, <code>signOut?source</code>, journal hosts, <code>.top</code> redirectors).</li>
+  <li><strong>Not used as primary test:</strong> Ads Transparency pulls on <code>trimrx.com</code> / <code>healthbenefit.vip</code> — those domains are post-click destinations, not what Google displays in the listing.</li>
+</ol>
+
+<p><strong>Result:</strong> <strong>0 paid listings</strong> with parasite display URLs + brand in headline for both Amble and Gimme Care on this scan date.</p>
+
+<h3>Recommended ongoing monitor (weekly)</h3>
+<ol>
+  <li><strong>SERP parasite watch</strong> — Re-run <code>scan-brand-parasite-serp.js</code> (or schedule via cron). Alert when <code>paid_parasite</code> count &gt; 0 or <code>organic_parasite_unique_urls</code> increases week-over-week.</li>
+  <li><strong>Brand query set</strong> — Maintain 15–20 queries per brand: brand name + GLP-1 terms, <code>site:mattioli1885journals.com {brand}</code>, <code>pdfJsViewer {brand}</code>, semaglutide/tirzepatide variants.</li>
+  <li><strong>Parasite URL signatures</strong> — Match display/landing URLs against:
+    <ul>
+      <li><code>/plugins/generic/pdfJsViewer/</code></li>
+      <li><code>signOut?source=.</code> or <code>signOut%3Fsource%3D.</code></li>
+      <li>Journal hosts: <code>mattioli1885journals.com</code>, <code>journals.econsciences.com</code>, <code>jmbfs.org</code></li>
+      <li>Attacker TLDs: <code>ojsnua44.top</code>, <code>dmouw13.top</code>, <code>cami680.top</code></li>
+    </ul>
+  </li>
+  <li><strong>Paid vs organic</strong> — Treat any SERP item with <code>type: paid</code> or <code>ad_aclk_url</code> + parasite display URL as <strong>P0 legal alert</strong> (higher severity than organic parasite SEO).</li>
+  <li><strong>Manual spot-check</strong> — Weekly screenshot of top 3 brand queries in a clean browser profile; compare Sponsored label vs organic journal-domain results.</li>
+  <li><strong>Google Ads Transparency (secondary)</strong> — Search advertiser name contains "Amble" or "Gimme" and inspect creative preview images for journal-domain display URLs (OCR on preview if metadata lacks headline text).</li>
+  <li><strong>Post-click verification</strong> — For any new parasite URL, sandboxed click trace: indexed URL → attacker subdomain → final LP domain. Log final URL separately from display URL.</li>
+</ol>
+<p>Script path: <code>clients/amble/created/reports/scripts/scan-brand-parasite-serp.js</code> · Output: <code>clients/amble/context/analysis/brand-parasite-serp-scan.json</code></p>
+
+
+<h2>OJS parasite SEO (false positives excluded)</h2>
+<p>Searching <code>site:mattioli1885journals.com gimme</code> returns OJS spam with "Gimme" in CBD gummy headlines (e.g. "Gimme Gummies Cbd") — <strong>not</strong> Gimme Care telehealth. These are excluded from this report.</p>
+
+<h2>Gemini / Google Search grounding (2026-07-06)</h2>
+<p>Gemini 2.5 Flash with Google Search grounding for "gimme care glp-1" returned legitimate third-party comparison/review listings (parties365.com, bariatricreports.org, glpwinner.com, youtube.com). None use the OJS journal parasite pattern seen against Amble.</p>
+
+<h2>Third-party listings (non-owned domains)</h2>
+<div class="table-scroll"><table><thead><tr><th>Severity</th><th>Headline</th><th>Domain</th><th>Notes</th><th>URL</th></tr></thead><tbody><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care semaglutide reviews</td><td>dshafjk.com</td><td>1 day ago — Gimme Care offers compounded semaglutide and tirzepatide with no membership fees and consistently lower prices than competitors.</td><td><a href="https://dshafjk.com/gimme-care-semaglutide-reviews-solution/">https://dshafjk.com/gimme-care-semaglutide-reviews-solution/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care semaglutide reviews</td><td>taoaadt.com</td><td>Gimme Care operates as an online portal facilitating access to GLP-1 receptor agonists. A recurring theme in Gimme Care reviews is the ...</td><td><a href="https://taoaadt.com/gimme-care-semaglutide-reviews-detox/">https://taoaadt.com/gimme-care-semaglutide-reviews-detox/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care semaglutide reviews - taoaadt.com</td><td>taoaadt.com</td><td>Gimme Care operates as an online portal facilitating access to GLP-1 receptor agonists. A recurring theme in Gimme Care reviews is the ...</td><td><a href="https://taoaadt.com/gimme-care-semaglutide-reviews-oil/">https://taoaadt.com/gimme-care-semaglutide-reviews-oil/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care tirzepatide - accelerate labs semaglutide</td><td>taoaadt.com</td><td>As a GLP-1/GIP receptor agonist, this synthetic peptid Read Customer Service Reviews of gimme.care e requires precise handling and a ...</td><td><a href="https://taoaadt.com/gimme-care-tirzepatide-barrier/">https://taoaadt.com/gimme-care-tirzepatide-barrier/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care tirzepatide offers GLP-1 weight-loss medications ...</td><td>dshafjk.com</td><td>2 days ago — We&#x27;re reviewing Gimme Care an online platform offering access to compounded semiglutide and trespatide through a monthly membership model.</td><td><a href="https://dshafjk.com/gimme-care-tirzepatide-gel/">https://dshafjk.com/gimme-care-tirzepatide-gel/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care tirzepatide reviews</td><td>dshafjk.com</td><td>2 days ago — May 4, 2026 — Gimme Care offers compounded semaglutide and tirzepatide with no membership fees and consistently lower prices than ...</td><td><a href="https://dshafjk.com/gimme-care-tirzepatide-reviews-shield/">https://dshafjk.com/gimme-care-tirzepatide-reviews-shield/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care tirzepatide reviews - taoaadt.com</td><td>taoaadt.com</td><td>2 days ago — The Gimme Care Weight Loss Review cycle often emphasizes the importance of verifying the source of compounded semaglutide and tirzepatide. Read more</td><td><a href="https://taoaadt.com/gimme-care-tirzepatide-reviews-ceramide/">https://taoaadt.com/gimme-care-tirzepatide-reviews-ceramide/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>Gimme Care Tirzepatide Reviews for Weight Loss</td><td>dshafjk.com</td><td>Gimme Care makes medical weight loss simple, transparent, and accessible, but the biological response to tirzepatide remains dependent on ...</td><td><a href="https://dshafjk.com/gimme-care-tirzepatide-reviews-for-weight-loss-ultra/">https://dshafjk.com/gimme-care-tirzepatide-reviews-for-weight-loss-ultra…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme care tirzepatide reviews for weight loss lost - taoaadt.com</td><td>taoaadt.com</td><td>Gimme Care is a virtual GLP-1 provider that facilitates access to compounded semaglutide and tirzepatide, positioning itself as a ...</td><td><a href="https://taoaadt.com/gimme-care-tirzepatide-reviews-for-weight-loss-advanced/">https://taoaadt.com/gimme-care-tirzepatide-reviews-for-weight-loss-advan…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme health tirzepatide reviews - taoaadt.com</td><td>taoaadt.com</td><td>... (GLP-1) and glucose-dependent insulinotropic polypeptide (GIP). This ... However, a common Gimme Care review often highlights tha Gimme Care ...</td><td><a href="https://taoaadt.com/gimme-health-tirzepatide-reviews-booster/">https://taoaadt.com/gimme-health-tirzepatide-reviews-booster/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme semaglutide</td><td>taoaadt.com</td><td>2 days ago — ... GLP-1 signaling remains within the intended physi Gimme Care (gimme.care)** — an online telehealth provider that offers GLP-1 weight-loss ... Read more</td><td><a href="https://taoaadt.com/gimme-semaglutide-dermatologist/">https://taoaadt.com/gimme-semaglutide-dermatologist/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme semaglutide Learn more about Gimme Care - dshafjk.com</td><td>dshafjk.com</td><td>* Before Trying Gimme Care GLP-1 Weight Loss Program Compounded Semaglutide from $98: This price point reflects the competitive nature of the ...</td><td><a href="https://dshafjk.com/gimme-semaglutide-clean/">https://dshafjk.com/gimme-semaglutide-clean/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide - accelerate labs semaglutide</td><td>taoaadt.com</td><td>1 day ago — As individuals and researchers seek to learn more about Gimme Care and its position within the broader market of GLP-1 weight-loss medications ... Read more</td><td><a href="https://taoaadt.com/gimme-tirzepatide-bioactive/">https://taoaadt.com/gimme-tirzepatide-bioactive/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide - dshafjk.com</td><td>dshafjk.com</td><td>* Efficacy: Research indicates potential outcomes of up to 15-20% weight loss in controlled coho Gimme Care rts using these specific peptide ...</td><td><a href="https://dshafjk.com/gimme-tirzepatide-advanced/">https://dshafjk.com/gimme-tirzepatide-advanced/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide Learn more about Gimme Care</td><td>dshafjk.com</td><td>2 days ago — As individuals and researchers seek to learn more about Gimme Care and its position within the broader market of GLP-1 weight-loss medications ... Read more</td><td><a href="https://dshafjk.com/gimme-tirzepatide-purifying/">https://dshafjk.com/gimme-tirzepatide-purifying/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide reviews</td><td>150cent.com</td><td>gimme tirzepatide reviews Gimme Care Starter Plans Compounded Tirzepatide (Compliant with 28-Day Guideline) : r/gimmecare. Sale price$23.44 Regular price$26.04. Read more</td><td><a href="https://150cent.com/products/85298305689">https://150cent.com/products/85298305689…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide reviews</td><td>taoaadt.com</td><td>Gimme Care tirzepatide review (2026) — breaking down how this telehealth GLP-1 program works, what the sign-up and prescription process.</td><td><a href="https://taoaadt.com/gimme-tirzepatide-reviews-alcoholfree/">https://taoaadt.com/gimme-tirzepatide-reviews-alcoholfree/…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide reviews Has anyone used Gimme Care ...</td><td>haddadjewelers.com</td><td>gimme tirzepatide reviews Has anyone used Gimme Care for tirzepatide?</td><td><a href="https://haddadjewelers.com/review/87173260614">https://haddadjewelers.com/review/87173260614…</a></td></tr><tr><td><span class="badge badge-low">LOW</span></td><td>gimme tirzepatide WARNING</td><td>taoaadt.com</td><td>Learn more about Gimme Care. Compare GLP-1 treatments, pricing, and read reviews.</td><td><a href="https://taoaadt.com/gimme-tirzepatide-pure/">https://taoaadt.com/gimme-tirzepatide-pure/…</a></td></tr></tbody></table></div>
+
+
+<div class="csv-download-box" id="csv-download">
+  <strong>Download evidence CSV</strong>
+  <p>Full listing inventory (gimme-brand-impersonation-listings.csv)</p>
+  <button class="csv-download-btn" id="csv-download-btn" type="button">Download CSV</button>
+</div>
+<script>
+var csv = "channel,headline,display_domain,indexed_url,snippet,trigger_query,click_destination,severity\r\nOrganic (affiliate/review spam),gimme care semaglutide reviews,dshafjk.com,https://dshafjk.com/gimme-care-semaglutide-reviews-solution/,1 day ago \u2014 Gimme Care offers compounded semaglutide and tirzepatide with no membership fees and consistently lower prices than competitors.,\"\"\"gimme care\"\" semaglutide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care semaglutide reviews,taoaadt.com,https://taoaadt.com/gimme-care-semaglutide-reviews-detox/,Gimme Care operates as an online portal facilitating access to GLP-1 receptor agonists. A recurring theme in Gimme Care reviews is the\u00a0...,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care semaglutide reviews - taoaadt.com,taoaadt.com,https://taoaadt.com/gimme-care-semaglutide-reviews-oil/,Gimme Care operates as an online portal facilitating access to GLP-1 receptor agonists. A recurring theme in Gimme Care reviews is the\u00a0...,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care tirzepatide - accelerate labs semaglutide,taoaadt.com,https://taoaadt.com/gimme-care-tirzepatide-barrier/,\"As a GLP-1/GIP receptor agonist, this synthetic peptid Read Customer Service Reviews of gimme.care e requires precise handling and a\u00a0...\",\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care tirzepatide offers GLP-1 weight-loss medications ...,dshafjk.com,https://dshafjk.com/gimme-care-tirzepatide-gel/,2 days ago \u2014 We're reviewing Gimme Care an online platform offering access to compounded semiglutide and trespatide through a monthly membership model.,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care tirzepatide reviews,dshafjk.com,https://dshafjk.com/gimme-care-tirzepatide-reviews-shield/,\"2 days ago \u2014 May 4, 2026 \u2014 Gimme Care offers compounded semaglutide and tirzepatide with no membership fees and consistently lower prices than\u00a0...\",\"\"\"gimme care\"\" semaglutide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care tirzepatide reviews - taoaadt.com,taoaadt.com,https://taoaadt.com/gimme-care-tirzepatide-reviews-ceramide/,2 days ago \u2014 The Gimme Care Weight Loss Review cycle often emphasizes the importance of verifying the source of compounded semaglutide and tirzepatide. Read more,\"\"\"gimme care\"\" semaglutide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),Gimme Care Tirzepatide Reviews for Weight Loss,dshafjk.com,https://dshafjk.com/gimme-care-tirzepatide-reviews-for-weight-loss-ultra/,\"Gimme Care makes medical weight loss simple, transparent, and accessible, but the biological response to tirzepatide remains dependent on\u00a0...\",\"\"\"gimme care\"\" tirzepatide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme care tirzepatide reviews for weight loss lost - taoaadt.com,taoaadt.com,https://taoaadt.com/gimme-care-tirzepatide-reviews-for-weight-loss-advanced/,\"Gimme Care is a virtual GLP-1 provider that facilitates access to compounded semaglutide and tirzepatide, positioning itself as a\u00a0...\",\"\"\"gimme care\"\" semaglutide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme health tirzepatide reviews - taoaadt.com,taoaadt.com,https://taoaadt.com/gimme-health-tirzepatide-reviews-booster/,\"... (GLP-1) and glucose-dependent insulinotropic polypeptide (GIP). This ... However, a common Gimme Care review often highlights tha Gimme Care\u00a0...\",\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme semaglutide,taoaadt.com,https://taoaadt.com/gimme-semaglutide-dermatologist/,2 days ago \u2014 ... GLP-1 signaling remains within the intended physi Gimme Care (gimme.care)** \u2014 an online telehealth provider that offers GLP-1 weight-loss\u00a0... Read more,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme semaglutide Learn more about Gimme Care - dshafjk.com,dshafjk.com,https://dshafjk.com/gimme-semaglutide-clean/,* Before Trying Gimme Care GLP-1 Weight Loss Program Compounded Semaglutide from $98: This price point reflects the competitive nature of the\u00a0...,\"\"\"gimme care\"\" glp-1; \"\"gimme care\"\" semaglutide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide - accelerate labs semaglutide,taoaadt.com,https://taoaadt.com/gimme-tirzepatide-bioactive/,1 day ago \u2014 As individuals and researchers seek to learn more about Gimme Care and its position within the broader market of GLP-1 weight-loss medications\u00a0... Read more,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide - dshafjk.com,dshafjk.com,https://dshafjk.com/gimme-tirzepatide-advanced/,* Efficacy: Research indicates potential outcomes of up to 15-20% weight loss in controlled coho Gimme Care rts using these specific peptide\u00a0...,\"\"\"gimme care\"\" tirzepatide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide Learn more about Gimme Care,dshafjk.com,https://dshafjk.com/gimme-tirzepatide-purifying/,2 days ago \u2014 As individuals and researchers seek to learn more about Gimme Care and its position within the broader market of GLP-1 weight-loss medications\u00a0... Read more,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide reviews,150cent.com,https://150cent.com/products/85298305689,gimme tirzepatide reviews Gimme Care Starter Plans Compounded Tirzepatide (Compliant with 28-Day Guideline) : r/gimmecare. Sale price$23.44 Regular price$26.04. Read more,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide reviews,taoaadt.com,https://taoaadt.com/gimme-tirzepatide-reviews-alcoholfree/,\"Gimme Care tirzepatide review (2026) \u2014 breaking down how this telehealth GLP-1 program works, what the sign-up and prescription process.\",\"\"\"gimme care\"\" tirzepatide\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide reviews Has anyone used Gimme Care ...,haddadjewelers.com,https://haddadjewelers.com/review/87173260614,gimme tirzepatide reviews Has anyone used Gimme Care for tirzepatide?,\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\nOrganic (affiliate/review spam),gimme tirzepatide WARNING,taoaadt.com,https://taoaadt.com/gimme-tirzepatide-pure/,\"Learn more about Gimme Care. Compare GLP-1 treatments, pricing, and read reviews.\",\"\"\"gimme care\"\" glp-1\",Unknown \u2014 not gimme.care,LOW\r\n";
+document.getElementById('csv-download-btn').addEventListener('click', function() {
+  var blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "gimme-brand-impersonation-listings.csv";
+  a.click();
+});
+</script>
+
+
+<h2>Amble parallel (for legal context)</h2>
+<p>The Amble campaign uses journal parasite display URLs with post-click routing to healthbenefit.vip. <strong>No parallel Gimme Care parasite campaign was identified</strong> in the expanded scan (155 Amble parasite URLs vs 0 Gimme).</p>
+</main>
+<footer class="report-footer"><div class="container">Internal legal / competitive intelligence — not for publication. Evidence: DataForSEO expanded parasite SERP scan + paid-slot check (2026-07-06).</div></footer>
+</body>
+</html>
