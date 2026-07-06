@@ -64,7 +64,7 @@ code{padding:2px 6px;font-size:.82rem}
   </div>
 </div></div>
 <main class="container">
-<p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/index.html">← All Amble reports</a></p>
+<p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/index.html">← All Amble reports</a> · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260706_amble_legal-outreach-trimrx-affiliate.html">Takedown letters &amp; script</a></p>
 
 <div class="callout-danger callout">
   <strong>Legal priority:</strong> <strong>155</strong> unique indexed Google listings use <strong>Amble Health</strong> headlines on compromised journal domains. <strong>Display URLs</strong> are parasite journal paths (e.g. <code>mattioli1885journals.com/.../pdfJsViewer</code>) — <em>not</em> joinamble.com. Post-click redirects route to <a href="https://glp-1.healthbenefit.vip/">glp-1.healthbenefit.vip</a> (user-verified).
@@ -78,6 +78,61 @@ code{padding:2px 6px;font-size:.82rem}
   <li><strong>Primary attack:</strong> OJS pdfJsViewer open redirect + CVE-2024-4367 PDF.js exploit (<a href="https://forum.pkp.sfu.ca/t/ojs-spam-indexing-investigation-open-redirect-pdf-js-cve-2024-4367/98414">PKP forum</a>)</li>
   <li><strong>Post-click beneficiary:</strong> TrimRx LP at healthbenefit.vip (destination only — not visible in Google listing URL)</li>
 </ul>
+
+
+<h2>What is happening (for counsel)</h2>
+
+<p>Third parties are running a <strong>parasite SEO</strong> campaign against Amble Health. They exploit compromised academic journal websites (Open Journal Systems / <code>pdfJsViewer</code> paths on domains like <code>mattioli1885journals.com</code> and <code>journals.econsciences.com</code>) to get Google to index pages whose <strong>headlines and snippets use “Amble Health”</strong> — while the <strong>display URL in search results is the journal domain</strong>, not joinamble.com. A consumer searching for Amble reasonably believes the result is about our client.</p>
+<p>When the user clicks, the listing does <em>not</em> go to joinamble.com. It follows an open-redirect / malicious-PDF chain through attacker infrastructure (<code>ojsnua44.top</code>, <code>dmouw13.top</code>, and related domains) and lands on a <strong>compounded GLP-1 marketing page at <code>glp-1.healthbenefit.vip</code></strong> (TrimRx affiliate funnel). The deceptive brand use happens in <strong>organic search</strong>; the competitor destination appears only <strong>after the click</strong>. We have documented <strong>155+ unique indexed URLs</strong> in this pattern (SERP screenshots and CSV attached below).</p>
+
+
+<h2>What legal can do</h2>
+
+<ul>
+  <li><strong>Demand letters (10 business days):</strong> Serve cease-and-desist on <strong>TrimRx</strong> (commercial beneficiary) and the <strong>healthbenefit.vip</strong> operator — require affiliate termination, takedown of Amble-branded copy, and preservation of affiliate logs. Full letter templates: <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260706_amble_legal-outreach-trimrx-affiliate.html">legal outreach pack</a>.</li>
+  <li><strong>Google Search removal:</strong> File <a href="https://search.google.com/search-console/remove-outdated-content">outdated-content / spam reports</a> and <a href="https://safebrowsing.google.com/safebrowsing/report_phish/">phishing reports</a> for representative indexed parasite URLs (attach SERP exhibits + redirect recording).</li>
+  <li><strong>Journal / host abuse:</strong> Notify compromised journal operators (e.g. Mattioli 1885, EconSciences) and their hosts; cite PKP OJS open-redirect abuse. Request immediate removal of parasite paths and account suspension.</li>
+  <li><strong>Registrar / infrastructure:</strong> File abuse complaints with registrars for <code>ojsnua44.top</code>, <code>dmouw13.top</code>, <code>cami680.top</code>, and WHOIS contacts for <code>healthbenefit.vip</code>.</li>
+  <li><strong>FTC / state AG:</strong> If no remediation, refer deceptive search listings and post-click routing to FTC (UDAP) and relevant state consumer-protection authorities.</li>
+  <li><strong>Litigation reserve:</strong> Preserve redirect-chain evidence (HAR files, screen recordings). Injunctive relief and Lanham Act claims remain available if affiliates are not terminated.</li>
+</ul>
+
+
+<h2>Takedown script</h2>
+<p>Use the script below for first contact with TrimRx affiliate compliance, then escalate to formal demand letters in the <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260706_amble_legal-outreach-trimrx-affiliate.html">outreach pack</a> if they do not remediate within 10 business days.</p>
+
+<div class="letter-block">
+<h3>Script — initial call or email to TrimRx / affiliate compliance</h3>
+<p class="letter-meta"><strong>DRAFT — customize before use.</strong> Full letters in <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260706_amble_legal-outreach-trimrx-affiliate.html">outreach pack</a>.</p>
+<pre class="letter-body">Subject: Urgent — Unauthorized use of [AMBLE HEALTH / GIMME CARE] in deceptive Google listings
+
+"Hello, I'm [Name] with counsel for [Amble Health / Gimme Care], the telehealth platform at [joinamble.com / gimme.care].
+
+We've documented Google organic listings that use our client's brand in the headline but route consumers through third-party domains — including compromised journal sites and affiliate review pages — to compounded GLP-1 landing pages at glp-1.healthbenefit.vip associated with TrimRx.
+
+This creates a false impression that our client endorses or operates those pages. We are not affiliated with TrimRx or healthbenefit.vip.
+
+We need your team to:
+1) Identify any affiliate, media buyer, or partner using 'Amble' or 'Gimme Care' in search copy, metadata, or landing pages;
+2) Terminate those relationships and take down infringing pages within 48 hours;
+3) Confirm in writing within 10 business days what actions were taken; and
+4) Preserve affiliate logs and contracts for traffic from journal-parasite URLs and healthbenefit.vip since June 2026.
+
+I'm attaching our evidence report, SERP screenshots, and URL inventory. Who on your side owns affiliate compliance and can confirm takedown today?"
+
+--- If they stall ---
+
+"We've given you notice of trademark impersonation and deceptive routing to your funnel. If affiliates aren't terminated, we'll proceed with Google abuse reports, registrar complaints, FTC referral, and injunctive relief. Please escalate to your General Counsel."
+
+--- Parallel track (same day) ---
+
+• Google: report 3–5 sample indexed URLs from our CSV as deceptive / phishing.
+• Journal hosts: email abuse@ for mattioli1885journals.com / econsciences.com with indexed parasite URLs.
+• Registrars: abuse ticket for ojsnua44.top, dmouw13.top, and healthbenefit.vip WHOIS contact.
+</pre>
+</div>
+
+
 
 <h2>Attack flow (display URL vs click destination)</h2>
 <pre class="flow">Google listing
