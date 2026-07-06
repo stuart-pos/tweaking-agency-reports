@@ -47,6 +47,9 @@ code{padding:2px 6px;font-size:.82rem}
 .exhibit-cap{padding:12px 16px;font-size:.82rem;color:var(--color-text-light)}
 .exhibit-cap strong{color:var(--color-primary)}
 @media (min-width:900px){.exhibit-grid{grid-template-columns:1fr 1fr}}
+.letter-block{margin:28px 0;padding:20px;border:1px solid var(--color-border);border-radius:10px;background:var(--color-bg-alt)}
+.letter-meta{font-size:.85rem;color:var(--color-text-light);margin-bottom:12px}
+.letter-body{font-family:Georgia,'Times New Roman',serif;font-size:.88rem;line-height:1.65;white-space:pre-wrap;background:#fff;padding:20px;border-radius:8px;border:1px solid var(--color-border)}
 @media print{.csv-download-btn{display:none}}
 </style>
 </head>
@@ -98,6 +101,10 @@ document.getElementById('csv-download-btn').addEventListener('click', function()
 });
 </script>
 
+
+<h2>SERP exhibits — third-party Gimme Care listings</h2>
+<p>Screenshots of Google organic results where <strong>Gimme Care</strong> appears in headlines/snippets but the display URL is <em>not</em> gimme.care (affiliate/review spam domains).</p>
+<div class="exhibit-grid"><div class="exhibit-card"><img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/exhibits/gimme-exhibit-01-serp-gimme-care-glp1.png" alt="Query: &quot;gimme care&quot; glp-1"><div class="exhibit-cap"><strong>Query: &quot;gimme care&quot; glp-1</strong><br>Third-party pages using Gimme Care in SERP — not gimme.care.</div></div><div class="exhibit-card"><img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/exhibits/gimme-exhibit-02-serp-site-dshafjk.png" alt="Query: site:dshafjk.com &quot;gimme care&quot;"><div class="exhibit-cap"><strong>Query: site:dshafjk.com &quot;gimme care&quot;</strong><br>Affiliate SEO farm (dshafjk.com) indexed with Gimme Care copy.</div></div><div class="exhibit-card"><img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/exhibits/gimme-exhibit-03-serp-site-taoaadt.png" alt="Query: site:taoaadt.com gimme care tirzepatide"><div class="exhibit-cap"><strong>Query: site:taoaadt.com gimme care tirzepatide</strong><br>Affiliate review-spam domain (taoaadt.com) with Gimme Care tirzepatide pages.</div></div></div>
 
 <h2>Amble parallel (for legal context)</h2>
 <p>The Amble campaign uses journal parasite display URLs with post-click routing to healthbenefit.vip. <strong>No parallel Gimme Care parasite campaign was identified</strong> in the expanded scan (155 Amble parasite URLs vs 0 Gimme).</p>
