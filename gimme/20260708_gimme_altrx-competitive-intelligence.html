@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltRx Competitive Intelligence — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 960px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        .callout { background: var(--color-bg-alt); border-left: 4px solid var(--color-accent); padding: 20px 24px; margin: 20px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.danger { border-left-color: var(--color-danger); background: #fef2f2; }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .callout.success { border-left-color: var(--color-success); background: #f0fdf4; }
+        .verdict-badge { display: inline-block; padding: 6px 14px; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; background: #fee2e2; color: #991b1b; }
+        .conf-high { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background: #dcfce7; color: #166534; }
+        .conf-med-high { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background: #dbeafe; color: #1e40af; }
+        .conf-medium { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; background: #fef3c7; color: #92400e; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .highlight-row { background: #fef3c7 !important; font-weight: 600; }
+        .danger-cell { color: var(--color-danger); font-weight: 600; }
+        .success-cell { color: var(--color-success); font-weight: 600; }
+        .chart-img { width: 100%; border: 1px solid var(--color-border); border-radius: var(--border-radius); margin: 16px 0; }
+        .chart-caption { font-size: 0.85rem; color: var(--color-text-light); text-align: center; margin-top: -8px; margin-bottom: 20px; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .label { font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .value { font-size: 1.8rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .score-card .sub { font-size: 0.8rem; color: var(--color-text-light); margin-top: 4px; }
+        .score-card.danger .value { color: var(--color-danger); }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .recommendations ol { padding-left: 20px; }
+        .recommendations li { margin-bottom: 12px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, thead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+            <div>
+                <h1>Tweaking Agency</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>AltRx competitive intelligence</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-07-08</strong></span>
+                <span>Account: <strong>7957170099</strong></span>
+                <span>Period: <strong>Mar 30 – Jul 6 weekly</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <div class="scores-grid">
+            <div class="score-card danger">
+                <div class="label">AltRx IS (Jul 6)</div>
+                <div class="value">~25%</div>
+                <div class="sub">Auction Insights · NB + Shopping filter</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">Gimme IS (Jul 6)</div>
+                <div class="value">~10%</div>
+                <div class="sub">Same auction · 2.5× behind AltRx</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Advertiser accounts</div>
+                <div class="value">1</div>
+                <div class="sub">Trinity Healthcare supply LLC</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">NB V2 rank-lost IS</div>
+                <div class="value">84.8%</div>
+                <div class="sub">Week of Jun 22 · AltRx surge week</div>
+            </div>
+        </div>
+
+        <h2>Executive summary</h2>
+        <div class="callout danger">
+            <p><strong>AltRx is the newest aggressive entrant in Gimme's NB + Shopping auction</strong> — climbing from near-zero to <strong>~25% impression share</strong> by July 6 while Gimme fell from a <strong>~30% mid-April peak to ~10%</strong>. AltRx now outranks Gimme <strong>2.5:1</strong> in the same filtered campaigns.</p>
+            <p>Unlike TrimRx's 3-account affiliate network, Transparency Center shows <strong>one verified buyer — Trinity Healthcare supply LLC</strong> — with 3 image creatives all first-shown <strong>June 23, 2026</strong>. AltRx's strategy is <strong>price-led</strong>: homepage hero at <strong>$89/mo</strong>, inline quiz, then <code>/consultation</code> BMI intake.</p>
+            <p style="margin-bottom:0">Gimme is spending <strong>$14,330 on AltRx conquest terms</strong> (25.6 conv, $559 CPA). Google AI Overviews cite negative Reddit sentiment for both brands, but AltRx's late-June surge happened despite an <strong>FDA warning letter (Jun 8)</strong>. <span class="verdict-badge">Verdict: Single-account price aggressor</span> Recovery path: restore Mar/Apr LP-first economics before chasing rank.</p>
+        </div>
+
+        <h2>Confirmed Auction Insights — NB + Shopping campaigns</h2>
+        <p>Source: Google Ads UI · Campaigns: <code>Search_Tirzepatide_Semaglutide</code> (paused), <code>Search_Tirzepatide_Semaglutide_V2</code>, <code>Shopping_GLP-1_Subs</code> · Mar 30 – Jul 6, 2026 · Weekly. Auction Insights cannot be pulled via API.</p>
+
+        <img src="exhibits/gimme-exhibit-auction-insights-altrx-02.png" alt="Auction Insights showing AltRx surge to 25% IS while Gimme falls to 10%" class="chart-img">
+        <p class="chart-caption">Search Auction Insights — weekly impression share. AltRx (magenta) dormant Mar–Apr, first visible mid-May, aggressive late-June surge to ~25%. Gimme (purple) peaked ~30% mid-April, now ~10%.</p>
+
+        <img src="exhibits/gimme-exhibit-auction-insights-altrx-01.png" alt="Auction Insights alternate view with campaign filter" class="chart-img">
+        <p class="chart-caption">Same auction filter — three campaigns selected. forhers.com (red) market leader ~38%; trimrx.com (green) ~23% stabilized after May ramp.</p>
+
+        <h3>Week of July 6, 2026 — competitor impression share</h3>
+        <table>
+            <thead>
+                <tr><th>Domain</th><th>Search IS</th><th>vs Gimme</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>forhers.com</td><td>~38%</td><td>+28pp</td><td>Market leader; rising through June</td></tr>
+                <tr class="highlight-row"><td><strong>altrx.com</strong></td><td><strong>~25%</strong></td><td class="danger-cell"><strong>+15pp</strong></td><td>Late-June surge — newest threat</td></tr>
+                <tr><td>trimrx.com</td><td>~23%</td><td>+13pp</td><td>May ramp; stabilized</td></tr>
+                <tr class="highlight-row"><td><strong>You (Gimme)</strong></td><td><strong>~10%</strong></td><td>—</td><td>Peaked ~30% mid-April</td></tr>
+                <tr><td>forbes.com, webmd.com</td><td>&lt;5%</td><td>—</td><td>Flat</td></tr>
+            </tbody>
+        </table>
+
+        <h3>AltRx ramp timeline</h3>
+        <table>
+            <thead><tr><th>Phase</th><th>Period</th><th>AltRx behavior</th><th>Gimme behavior</th></tr></thead>
+            <tbody>
+                <tr><td>Dormant</td><td>Mar 30 – May 4</td><td>Near 0%</td><td>Rising to ~30% peak (mid-April)</td></tr>
+                <tr class="highlight-row"><td>First presence</td><td><strong>Week of May 11</strong></td><td>~10% spike</td><td>~20–25%, beginning decline</td></tr>
+                <tr><td>Volatile</td><td>May 11 – Jun 22</td><td>5–20%, choppy</td><td>15–25% declining</td></tr>
+                <tr class="highlight-row"><td><strong>Aggressive surge</strong></td><td><strong>Jun 22 – Jul 6</strong></td><td><strong>~15% → ~25%</strong></td><td><strong>~15% → ~10%</strong></td></tr>
+            </tbody>
+        </table>
+
+        <h2>Gimme weekly impression share — API data</h2>
+        <p>Source: Google Ads API · 90-day pull with 8-day conversion lag · Impression-weighted weekly rollup.</p>
+
+        <h3>March/April baseline (when Gimme was winning)</h3>
+        <table>
+            <thead><tr><th>Week</th><th>Campaign</th><th>IS %</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td>W17 (Apr 20–26)</td><td>Shopping_GLP-1_Subs</td><td class="success-cell"><strong>52.06</strong></td><td>Peak Shopping IS</td></tr>
+                <tr><td>Mar 2026</td><td>NB Search</td><td>—</td><td>CPA <strong>$327</strong>, CVR <strong>6.16%</strong></td></tr>
+                <tr><td>Mid-April</td><td>Auction Insights</td><td>~30%</td><td>Gimme peak before TrimRx/AltRx scale</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Search_Tirzepatide_Semaglutide_V2 (current NB — restarted mid-June)</h3>
+        <table>
+            <thead><tr><th>Week</th><th>IS %</th><th>Rank-lost %</th><th>Budget-lost %</th><th>Impressions</th><th>Cost</th></tr></thead>
+            <tbody>
+                <tr><td>Jun 8–14 (W24)</td><td>24.73</td><td class="danger-cell">75.27</td><td>0.00</td><td>578,877</td><td>$610,848</td></tr>
+                <tr><td>Jun 15–21 (W25)</td><td>21.44</td><td class="danger-cell">67.47</td><td>11.08</td><td>972,301</td><td>$977,368</td></tr>
+                <tr class="highlight-row"><td>Jun 22–28 (W26)</td><td>15.23</td><td class="danger-cell">84.77</td><td>0.00</td><td>300,533</td><td>$260,847</td></tr>
+                <tr><td>Jun 29 – Jul 5 (W27)</td><td>17.96</td><td class="danger-cell">64.47</td><td>17.58</td><td>65,243</td><td>$63,637</td></tr>
+            </tbody>
+        </table>
+        <div class="callout warning">
+            <p style="margin:0">AltRx late-June surge (W26) coincides with Gimme's worst rank-lost week (84.77%). V2 spend collapsed from $977k (W25) to $261k (W26) as Smart Bidding pulled back.</p>
+        </div>
+
+        <h3>Shopping_GLP-1_Subs</h3>
+        <table>
+            <thead><tr><th>Week</th><th>IS %</th><th>Rank-lost %</th><th>Budget-lost %</th><th>Trend</th></tr></thead>
+            <tbody>
+                <tr><td>Apr 20 (W17)</td><td class="success-cell">52.06</td><td>7.71</td><td>40.23</td><td>Peak IS</td></tr>
+                <tr><td>May 18 (W21)</td><td class="danger-cell">29.16</td><td>8.92</td><td class="danger-cell">61.92</td><td>Budget constraint</td></tr>
+                <tr><td>Jun 22 (W26)</td><td>39.98</td><td class="danger-cell">59.62</td><td>0.41</td><td>Rank returns</td></tr>
+                <tr><td>Jun 29 (W27)</td><td>42.17</td><td class="danger-cell">51.37</td><td>6.46</td><td>Rank + budget</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Search_Brand — healthy baseline</h3>
+        <p>Brand IS stable at <strong>72–85%</strong>. Brand ads are <strong>LIMITED BY BUDGET</strong> on review/legit SERPs — see sentiment section.</p>
+
+        <h2>AltRx account structure — Transparency Center</h2>
+        <p>Source: DataForSEO · US (2840) · 3 creatives · Pulled 2026-07-08</p>
+
+        <table>
+            <thead>
+                <tr><th>Advertiser</th><th>Verified</th><th>Creatives</th><th>First shown</th><th>Last shown</th><th>Format</th></tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row"><td><strong>Trinity Healthcare supply LLC</strong><br><code>AR01585332292207771649</code></td><td>Yes</td><td>3</td><td><strong>2026-06-23</strong></td><td>2026-07-03</td><td>Image</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout warning">
+            <p><strong>Transparency vs Auction Insights gap:</strong> AltRx appears in Auction Insights from <strong>mid-May</strong>, but Transparency creatives only from <strong>Jun 23</strong>. Earlier buying may use uncaptured accounts, Shopping-only ads, or different display URLs.</p>
+            <p style="margin-bottom:0"><strong>FDA linkage:</strong> Google AI Overview cites <em>Trinity HealthCare Supply, LLC dba altRx</em> FDA warning letter (Jun 8, 2026) on <code>altrx reviews</code> queries — same entity family as Transparency advertiser.</p>
+        </div>
+
+        <p><strong>Overall verdict:</strong> <span class="conf-med-high">Medium-high · 75%</span> single-account price aggressor — not a TrimRx-style affiliate network.</p>
+
+        <h2>AltRx live funnel architecture</h2>
+        <p><strong>Source:</strong> Puppeteer scrape 2026-07-08. Full notes: <code>context/competitor-ads/altrx-funnel-teardown.md</code></p>
+
+        <img src="exhibits/gimme-exhibit-altrx-consultation-intake.png" alt="AltRx consultation intake — BMI height and weight step 1" class="chart-img">
+        <p class="chart-caption">AltRx <code>/consultation</code> — step 1 is BMI height/weight. No email gate; no price on step 1.</p>
+
+        <table>
+            <thead>
+                <tr><th>Path</th><th>Price before intake?</th><th>Email gate?</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><code>www.altrx.com/</code></td>
+                    <td><strong>Yes</strong> — $89/mo hero, strikethrough $199/$299</td>
+                    <td>No</td>
+                    <td>Live</td>
+                </tr>
+                <tr>
+                    <td><code>offers.altrx.com/</code></td>
+                    <td>Same as homepage</td>
+                    <td>No</td>
+                    <td>Live (paid-traffic subdomain)</td>
+                </tr>
+                <tr>
+                    <td><code>www.altrx.com/consultation</code></td>
+                    <td>No on step 1</td>
+                    <td>No</td>
+                    <td>BMI intake first</td>
+                </tr>
+                <tr>
+                    <td><code>/glp1</code>, <code>/quiz</code>, <code>/semaglutide</code></td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><strong>404</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>AltRx vs Gimme funnel comparison</h3>
+        <table>
+            <thead><tr><th>Factor</th><th>AltRx</th><th>Gimme today</th></tr></thead>
+            <tbody>
+                <tr><td>Price anchoring</td><td><strong>$89 hero</strong> + comparison table vs $179 competitors</td><td>$163/$130 in RSA → $199 checkout mismatch</td></tr>
+                <tr><td>LP role</td><td>Homepage = full offer page</td><td>LP-first worked Mar/Apr; direct-intake skipped it</td></tr>
+                <tr><td>Intake step 1</td><td>BMI height/weight</td><td>Weight goal (1 of 9)</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Why AltRx scaled</h2>
+        <table>
+            <thead><tr><th>#</th><th>Driver</th><th>Evidence</th><th>Strength</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td>1</td><td>Aggressive price anchoring</td><td>$89/mo vs $179 comparison on LP</td><td>High</td></tr>
+                <tr><td>2</td><td>Late-June bid surge</td><td>IS 15% → 25%; Trinity creatives Jun 23</td><td>High</td></tr>
+                <tr><td>3</td><td>Category timing</td><td>Gimme CVR fell Mar–May; CPA $327 → $552</td><td>High</td></tr>
+                <tr><td>4</td><td>Multi-competitor squeeze</td><td>forhers + TrimRx + AltRx layered</td><td>High</td></tr>
+                <tr><td>5</td><td>Sentiment doesn't block paid</td><td>FDA warning in AI Overview; IS still climbed</td><td>Medium</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Online sentiment layer</h2>
+        <p>Source: Google AI Overview SERP audit 2026-07-08 · Reddit monitor 2026-06-23</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+            <img src="exhibits/gimme-exhibit-serp-gimme-care-reviews.png" alt="Google AI Overview for gimme care reviews" class="chart-img" style="margin:0">
+            <img src="exhibits/gimme-exhibit-serp-altrx-reviews.png" alt="Google AI Overview for altrx reviews" class="chart-img" style="margin:0">
+        </div>
+        <p class="chart-caption">Left: <code>gimme care reviews</code> — AI cites affordable pricing but also chat-only support, cancellation fees, shipping complaints. Right: <code>altrx reviews</code> — AI cites FDA warning letter, Trustpilot billing issues, yet AltRx still bids on own review terms.</p>
+
+        <table>
+            <thead><tr><th>Brand</th><th>AI Overview sentiment</th><th>Paid presence on review SERP</th><th>Impact on Gimme</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>Gimme</strong></td>
+                    <td>Mixed — affordable but operational complaints (Reddit, Trustpilot, BBB)</td>
+                    <td>Brand ad LIMITED BY BUDGET</td>
+                    <td>Legitimacy-query CPA inflation</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>AltRx</strong></td>
+                    <td>Mixed-negative — FDA warning Jun 8, billing complaints</td>
+                    <td>Sponsored <code>altrx.com/highly/reviewed</code></td>
+                    <td>Gimme spends $14k conquesting AltRx review terms</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Path back to March/April</h2>
+        <div class="callout success">
+            <p><strong>March/April was recoverable because Gimme controlled the economics:</strong> LP-first funnels, ~25–30% auction IS, NB CPA $327, Shopping IS peak 52%. Competition (TrimRx, AltRx) was not yet at scale.</p>
+            <p style="margin-bottom:0"><strong>Recovery sequence:</strong> (1) Restore LP-first NB with honest price anchoring, (2) Stabilize V2 Smart Bidding, (3) QS audit before bid increases, (4) Shopping budget to recover 50%+ IS, (5) Cap AltRx conquest at $400 CPA, (6) Fix ops driving Reddit/AI sentiment.</p>
+        </div>
+
+        <h2>Gimme leverage matrix</h2>
+        <h3>Easiest high-leverage (do first)</h3>
+        <table>
+            <thead><tr><th>Rank</th><th>Initiative</th><th>Why</th><th>Effort</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td>1</td><td>Restore LP-first on NB V2</td><td>Mar/Apr model; counters AltRx $89 LP</td><td>Med (dev)</td></tr>
+                <tr><td>2</td><td>Cap AltRx conquest at $400 CPA</td><td>$14k at $559 CPA — bleed</td><td>Low</td></tr>
+                <tr><td>3</td><td>Stabilize V2 Smart Bidding</td><td>Spend collapsed Jun 27</td><td>Low</td></tr>
+                <tr><td>4</td><td>Fix Brand budget on review SERPs</td><td>LIMITED BY BUDGET on legit queries</td><td>Low</td></tr>
+                <tr><td>5</td><td>Weekly Auction Insights export</td><td>Track AltRx IS trajectory</td><td>Low</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Gimme AltRx brand conquest</h2>
+        <table>
+            <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+            <tbody>
+                <tr><td>AltRx-related query rows</td><td>245</td></tr>
+                <tr><td>Total spend</td><td>$14,330</td></tr>
+                <tr><td>Conversions</td><td>25.6</td></tr>
+                <tr class="highlight-row"><td>CPA</td><td class="danger-cell"><strong>$559</strong> (target: $400)</td></tr>
+            </tbody>
+        </table>
+        <p>More efficient than TrimRx conquest ($1,050 CPA) but still above target. Pause bare <code>altrx</code> brand ($746 CPA); keep review terms only where CPA allows.</p>
+
+        <h2>Recommendations</h2>
+        <div class="recommendations">
+            <h3 style="margin-top:0">Immediate (this week)</h3>
+            <ol>
+                <li><strong>Do not chase AltRx on rank with bids alone</strong> — at $559+ CPA, gaining IS accelerates losses. Fix LP/CVR first.</li>
+                <li><strong>Pause or cap <code>altrx</code> brand term</strong> ($6,629 at $746 CPA).</li>
+                <li><strong>Increase Brand campaign budget</strong> — LIMITED BY BUDGET on <code>gimme care reviews</code> and scam queries.</li>
+                <li><strong>Diagnose V2 rank loss</strong> — 64–85% rank-lost IS; QS audit before bid changes.</li>
+            </ol>
+            <h3>Medium-term (2–4 weeks)</h3>
+            <ol start="5">
+                <li><strong>Launch LP-first NB test</strong> mirroring Mar/Apr paths with honest pricing.</li>
+                <li><strong>Monitor Trinity Healthcare monthly</strong> for new creatives or advertiser IDs.</li>
+                <li><strong>Weekly Auction Insights</strong> on V2 + Shopping.</li>
+            </ol>
+            <h3>Strategic context</h3>
+            <ol start="8">
+                <li><strong>AltRx is not the only threat</strong> — forhers (~38%) and TrimRx (~23%) still dominate.</li>
+                <li><strong>March/April is recoverable</strong> — IS was 3× current when LP-first + $327 CPA worked.</li>
+                <li><strong>Sentiment is a funnel problem</strong> — Reddit/AI Overview complaints align with CVR decline.</li>
+            </ol>
+        </div>
+
+        <h2>Data sources and limitations</h2>
+        <table>
+            <thead><tr><th>Data</th><th>Source</th><th>Limitation</th></tr></thead>
+            <tbody>
+                <tr><td>Gimme weekly IS</td><td>Google Ads API (2026-07-08)</td><td>Own-account only</td></tr>
+                <tr><td>Auction Insights</td><td>Google Ads UI screenshots</td><td>Visual estimates; cannot API-pull</td></tr>
+                <tr><td>AltRx advertiser structure</td><td>DataForSEO Transparency</td><td>3 creatives only; no ad copy OCR</td></tr>
+                <tr><td>Search term conquest</td><td>search-terms-periodA.csv</td><td>Period aggregate</td></tr>
+                <tr><td>Funnel teardown</td><td>Puppeteer 2026-07-08</td><td>Cold scrape</td></tr>
+                <tr><td>Sentiment / AI Overview</td><td>Browser SERP audit</td><td>Geo/user dependent</td></tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <span class="company-name">Tweaking Agency</span>
+            <span>stuart@tweaking.agency · tweaking.agency</span>
+        </div>
+    </footer>
+
+</body>
+</html>
