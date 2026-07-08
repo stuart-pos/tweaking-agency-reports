@@ -133,7 +133,7 @@
         <div class="callout danger">
             <p><strong>AltRx is the newest aggressive entrant in Gimme's NB + Shopping auction</strong> — climbing from near-zero to <strong>~25% impression share</strong> by July 6 while Gimme fell from a <strong>~30% mid-April peak to ~10%</strong>. AltRx now outranks Gimme <strong>2.5:1</strong> in the same filtered campaigns.</p>
             <p>Unlike TrimRx's 3-account affiliate network, Transparency Center shows <strong>one verified buyer — Trinity Healthcare supply LLC</strong> — running price-led RSAs to a dedicated <code>glp1/offer-v9-fl</code> LP ("locks your price in for life", $89 hero, countdown timer) plus Shopping on category terms.</p>
-            <p style="margin-bottom:0">Gimme is spending <strong>$14,330 on AltRx conquest terms</strong> (25.6 conv, $559 CPA). Google AI Overviews cite negative Reddit sentiment for both brands, but AltRx's late-June surge happened despite an <strong>FDA warning letter (Jun 8)</strong>. <span class="verdict-badge">Verdict: Single-account price aggressor</span> Recovery path: restore Mar/Apr LP-first economics before chasing rank.</p>
+            <p style="margin-bottom:0">Gimme is spending <strong>$14,330 on AltRx conquest terms</strong> (25.6 conv, $559 CPA). Net pressure model in this report: <strong>~65% of AltRx takeover is LP/pricing architecture</strong> (price-lock LP + prepay ladders + Shopping + vanity-path ad routing) and <strong>~35% is Gimme reputation drag</strong> (legit/scam complaint amplification on AI Overview + Reddit). <span class="verdict-badge">Verdict: Single-account price aggressor</span> Recovery path: restore Mar/Apr LP-first economics before chasing rank.</p>
         </div>
 
         <h2>Confirmed Auction Insights — NB + Shopping campaigns</h2>
@@ -331,6 +331,35 @@
             </tbody>
         </table>
 
+        <h3>Pricing stack comparison — AltRx vs TrimRx vs Gimme</h3>
+        <p>This is the core traffic thesis: AltRx and TrimRx both use <strong>front-loaded low anchors on paid LPs</strong>, then move users into intake. Gimme ad copy is price-forward too, but users still encounter a <strong>checkout anchor mismatch</strong> that weakens conversion under competitive pressure.</p>
+
+        <table>
+            <thead>
+                <tr><th>Brand</th><th>Top-of-funnel price shown in ads/LP</th><th>LP structure for paid traffic</th><th>Observed risk to Gimme</th></tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td><strong>AltRx</strong></td>
+                    <td><strong>$89/mo</strong> semaglutide anchor (was $199), tirzepatide from $149, prepay down to $75/$125</td>
+                    <td><code>/glp1/offer-v9-fl</code> price-lock LP + countdown + social proof; vanity display paths route into tracked offer URL</td>
+                    <td>Most aggressive current undercut in your auction; strongest message-ad-to-LP continuity</td>
+                </tr>
+                <tr>
+                    <td><strong>TrimRx</strong></td>
+                    <td>Common anchors observed: <strong>$179</strong> in ads, <strong>$174</strong> on offers LP, some promo paths from <strong>$149</strong></td>
+                    <td>Multi-funnel affiliate network (<code>offers.trimrx.com</code>, promo pages, direct intake paths)</td>
+                    <td>Still large IS player; pricing is less undercut than AltRx but scale/distribution is broader</td>
+                </tr>
+                <tr>
+                    <td><strong>Gimme</strong></td>
+                    <td>RSA anchors often <strong>$163/$130</strong> equivalents</td>
+                    <td>Direct-intake test + LP variants; historical LP-first model worked best in Mar/Apr</td>
+                    <td class="danger-cell">Ad/LP/checkout price continuity gap reduces trust on already skeptical traffic</td>
+                </tr>
+            </tbody>
+        </table>
+
         <h3>Homepage &amp; offers subdomain</h3>
         <p>Both <code>www.altrx.com</code> and <code>offers.altrx.com</code> render the same price-anchored homepage — $89 hero, product cards (GLP-1 $199→$89, GLP-1+GIP $299→$129), inline weight-goal quiz, and comparison table vs "Others companies" at $179.</p>
 
@@ -392,7 +421,8 @@
                 <tr><td>2</td><td>Late-June bid surge</td><td>IS 15% → 25%; Trinity creatives Jun 23</td><td>High</td></tr>
                 <tr><td>3</td><td>Category timing</td><td>Gimme CVR fell Mar–May; CPA $327 → $552</td><td>High</td></tr>
                 <tr><td>4</td><td>Multi-competitor squeeze</td><td>forhers + TrimRx + AltRx layered</td><td>High</td></tr>
-                <tr><td>5</td><td>Sentiment doesn't block paid</td><td>FDA warning in AI Overview; IS still climbed</td><td>Medium</td></tr>
+                <tr><td>5</td><td>Sentiment doesn't block paid (for AltRx)</td><td>Despite FDA-warning and billing negatives in AI Overview, AltRx still scaled IS via aggressive bid + LP economics</td><td>Medium-high</td></tr>
+                <tr><td>6</td><td>Gimme sentiment drag compounds auction pressure</td><td>Legitimacy-query complaints (support, cancellation fee, shipping, pharmacy trust) increase CPA and lower post-click trust</td><td>High</td></tr>
             </tbody>
         </table>
 
@@ -422,6 +452,32 @@
                 </tr>
             </tbody>
         </table>
+
+        <h3>Most-cited Gimme complaints hurting conversion</h3>
+        <p>These complaints recur across Reddit + AI Overview summaries and map directly to lower trust at the exact point users are comparing providers.</p>
+        <table>
+            <thead><tr><th>Complaint cluster</th><th>Where it appears most</th><th>Funnel impact</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td><strong>Support responsiveness / chat-only frustration</strong></td><td>r/gimmecare threads, AI summary bullets on <code>gimme care reviews</code></td><td>High abandonment on trust-sensitive review/legit traffic</td></tr>
+                <tr><td><strong>Cancellation / billing friction</strong> (incl. $100 cancellation fee, double-charge claims)</td><td>Reddit complaint clusters + AI review/scam overviews</td><td>Raises hesitation on prepaid or longer-term plans; inflates legitimacy-query CPA</td></tr>
+                <tr><td><strong>Shipping delay / fulfillment reliability</strong></td><td>Reddit high-risk posts + AI overviews</td><td>Damages urgency and offer credibility after click</td></tr>
+                <tr><td><strong>Pharmacy transparency / medication confidence</strong></td><td>Reddit "Rush Pharmacy"/quality trust threads + AI scam/legit queries</td><td>Direct trust hit at decision step; weakens ability to monetize brand demand</td></tr>
+                <tr><td><strong>Dose/price clarity confusion</strong></td><td>Review threads and AI summary framing</td><td>Price skepticism; amplifies competitor undercut messaging</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Impact split: price pressure vs reputation damage</h3>
+        <table>
+            <thead><tr><th>Factor</th><th>Estimated share of current AltRx pressure</th><th>Why</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td><strong>AltRx pricing + LP architecture</strong></td><td><strong>~65%</strong></td><td>$89 anchor, price-lock positioning, prepay ladders, strong ad→LP continuity, Shopping + Search presence</td></tr>
+                <tr><td><strong>Gimme reputation drag</strong></td><td><strong>~35%</strong></td><td>Review/legit complaint amplification raises CPA and depresses CVR on the exact queries where Gimme should convert best</td></tr>
+            </tbody>
+        </table>
+        <div class="callout warning">
+            <p><strong>Interpretation:</strong> AltRx is winning primarily because of offer mechanics and auction pressure, but Gimme's trust issues are materially increasing the cost of defense and conquest.</p>
+            <p style="margin-bottom:0"><strong>Execution implication:</strong> Treat pricing/LP fixes and trust-remediation as parallel tracks; doing only one leaves recoverable IS on the table.</p>
+        </div>
 
         <h2>Path back to March/April</h2>
         <div class="callout success">
@@ -473,7 +529,7 @@
             <ol start="8">
                 <li><strong>AltRx is not the only threat</strong> — forhers (~38%) and TrimRx (~23%) still dominate.</li>
                 <li><strong>March/April is recoverable</strong> — IS was 3× current when LP-first + $327 CPA worked.</li>
-                <li><strong>Sentiment is a funnel problem</strong> — Reddit/AI Overview complaints align with CVR decline.</li>
+                <li><strong>Sentiment is a funnel problem</strong> — complaint themes (support, billing/cancel, shipping, pharmacy trust) show up exactly where high-intent review traffic evaluates credibility.</li>
             </ol>
         </div>
 
