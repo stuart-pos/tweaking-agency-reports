@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Reddit Negative Posts — Removal Priority — Gimme Care | Tweaking Agency</title>
+    <title>Reddit Reputation Report — Negative Posts + Amble Tie — Gimme Care | Tweaking Agency</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -67,6 +67,47 @@
         .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
         .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .report-footer .company-name { font-weight: 700; color: #ffffff; }
+
+        .section-divider {
+            margin: 48px 0 0;
+            padding: 28px 24px;
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: var(--border-radius);
+        }
+        .section-divider h2 {
+            color: #fff;
+            border-bottom: none;
+            margin: 0 0 8px;
+            padding: 0;
+            font-size: 1.35rem;
+        }
+        .section-divider p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+        .section-divider.amble {
+            background: #0f3d4c;
+        }
+        .toc {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 20px 0 8px;
+        }
+        .toc a {
+            display: inline-block;
+            padding: 10px 16px;
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .toc a:hover { background: #eef2ff; }
         @media print {
             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .btn { display: none; }
@@ -85,28 +126,39 @@
             <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
             <div>
                 <h1>Tweaking Agency</h1>
-                <p class="tagline">Reputation · Reddit post removal + Amble-tie monitor</p>
+                <p class="tagline">Reputation · Two themes: negative posts · Gimme↔Amble brand tie</p>
             </div>
         </div>
     </header>
 
     <div class="report-meta">
         <div class="container">
-            <h2>Top 15 negative Reddit posts — removal priority</h2>
+            <h2>Reddit reputation report — two separate themes</h2>
             <div class="meta-details">
                 <span>Client: <strong>Gimme Care</strong></span>
                 <span>Date: <strong>2026-07-17</strong></span>
                 <span>Skill: <strong>reddit-monitor</strong></span>
-                <span>Scope: <strong>Posts only</strong> (not comments)</span>
+                <span>Themes: <strong>1) Negative posts</strong> · <strong>2) Amble brand-tie</strong></span>
             </div>
         </div>
     </div>
 
     <main class="container">
 
+        <p>This report has <strong>two separate themes</strong>. Jump to either:</p>
+        <div class="toc">
+            <a href="#section-negative">Part A — Top 15 negative posts (removal)</a>
+            <a href="#section-amble-tie">Part B — Top 10 Gimme ↔ Amble brand-tie posts</a>
+        </div>
+
+        <div class="section-divider" id="section-negative">
+            <h2>Part A — Negative posts (removal priority)</h2>
+            <p>Top 15 removable Reddit posts ranked by AI Overview utilization and engagement. Posts only — not comments.</p>
+        </div>
+
         <div class="scores-grid">
             <div class="score-card danger">
-                <div class="label">Posts in this list</div>
+                <div class="label">Negative posts</div>
                 <div class="value">15</div>
                 <div class="sub">Removable posts only</div>
             </div>
@@ -125,25 +177,20 @@
                 <div class="value">Remove</div>
                 <div class="sub">Posts — not comments</div>
             </div>
-            <div class="score-card danger">
-                <div class="label">Amble-tie posts</div>
-                <div class="value">10</div>
-                <div class="sub">Same-business narrative</div>
-            </div>
         </div>
 
         <div class="callout danger">
-            <strong>Constraint:</strong> Only <em>posts</em> can be removed — not individual comments. This report lists the <strong>top 15 negative posts</strong> prioritized by (1) Google AI Overview utilization and (2) Reddit engagement (upvotes + comments).
+            <strong>Constraint:</strong> Only <em>posts</em> can be removed — not individual comments. This section lists the <strong>top 15 negative posts</strong> prioritized by (1) Google AI Overview utilization and (2) Reddit engagement (upvotes + comments).
         </div>
 
-        <h2>1. Ranking method</h2>
+        <h2>A1. Ranking method</h2>
         <ul class="notes">
             <li><strong>AI Overview named citation</strong> — highest priority. Confirmed: <em>“WARNING: Do not use Gimme”</em> on <code>is gimme care a scam</code> (SERP audit 2026-07-08).</li>
             <li><strong>AI Overview theme match</strong> — posts that mirror AIO bullets: scam/legit doubts, warm vials / shipping delays, chat-only support, cancellation / billing friction, low-concentration / dose confusion. r/gimmecare is itself an AIO cited source on review queries.</li>
             <li><strong>Engagement</strong> — upvotes first, then comment volume as secondary signal.</li>
         </ul>
 
-        <h2>2. WARNING post (AI Overview anchor)</h2>
+        <h2>A2. WARNING post (AI Overview anchor)</h2>
         <table>
             <tbody>
                 <tr><th>Title</th><td><strong>WARNING: Do not use Gimme!</strong></td></tr>
@@ -157,7 +204,7 @@
         <p class="quote">“I just want to warn anyone who is thinking of using Gimme for refills that this is how they treat their customers. I will definitely be doing a chargeback with my credit card!”</p>
         <p><strong>Allegation:</strong> 12.5mg patient auto-prescribed 2.2mg “maintenance” without consult; $100 consult fee floated; chargeback threatened. This is the single highest-leverage removable post for legitimacy SERPs.</p>
 
-        <h2>3. Top 15 negative posts (removal priority)</h2>
+        <h2>A3. Top 15 negative posts (removal priority)</h2>
         <p>
             <button class="btn" id="csv-download-btn" type="button">Download CSV</button>
         </p>
@@ -316,7 +363,7 @@
             <strong>Paid search note:</strong> Removing #1 (WARNING) is the highest-ROI reputation action for <code>is gimme care a scam</code> / <code>gimme care legit</code> AI Overviews. Posts #5–#12 on r/gimmecare matter because Google already cites that subreddit on review queries — even when individual thread titles are not named.
         </div>
 
-        <h2>4. Full URL list</h2>
+        <h2>A4. Full URL list (negative posts)</h2>
         <ol class="notes">
             <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/</a></li>
             <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1st7o7n/gimme_got_me/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1st7o7n/gimme_got_me/</a></li>
@@ -336,13 +383,41 @@
         </ol>
 
 
-        <h2>5. Top 10 posts tying Gimme ↔ Amble (same business)</h2>
+        <div class="section-divider amble" id="section-amble-tie">
+            <h2>Part B — Gimme ↔ Amble brand-tie posts</h2>
+            <p>Separate from Part A. Top 10 posts where Redditors claim Gimme and Amble are the same business, a rebrand, sister brand, or shared ownership.</p>
+        </div>
+
+        <div class="scores-grid">
+            <div class="score-card danger">
+                <div class="label">Amble-tie posts</div>
+                <div class="value">10</div>
+                <div class="sub">Same-business narrative</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Explicit titles</div>
+                <div class="value">2</div>
+                <div class="sub">“is Amble” / “= Amble”</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Top thread</div>
+                <div class="value">135</div>
+                <div class="sub">Comments on #1 despite denials</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Focus</div>
+                <div class="value">Brand link</div>
+                <div class="sub">Not the same as Part A removal list</div>
+            </div>
+        </div>
+
         <div class="callout warning">
-            <strong>Scope:</strong> Posts where Redditors claim Gimme and Amble are the same business, a rebrand, sister brand, or shared ownership (Stiver). Ranked by (1) explicit title/body claim, then (2) comment-thread ownership narrative strength, then (3) engagement (upvotes + comments). Searched via reddit-monitor workflow + Reddit/Google: <code>"gimme care" amble</code>, <code>gimme amble</code> on r/tirzepatidecompound, affiliation/rebrand queries.
+            <strong>Scope (Part B only):</strong> Posts where Redditors claim Gimme and Amble are the same business, a rebrand, sister brand, or shared ownership (Stiver). Ranked by (1) explicit title/body claim, then (2) comment-thread ownership narrative strength, then (3) engagement (upvotes + comments). Searched via reddit-monitor workflow + Reddit/Google: <code>"gimme care" amble</code>, <code>gimme amble</code> on r/tirzepatidecompound, affiliation/rebrand queries.
         </div>
         <p>
             <button class="btn" id="csv-amble-download-btn" type="button">Download Amble-tie CSV</button>
         </p>
+        <h2>B1. Top 10 brand-tie posts</h2>
         <table>
             <thead>
                 <tr>
@@ -449,7 +524,7 @@
             </tbody>
         </table>
 
-        <h3>5a. Anchor threads (explicit titles)</h3>
+        <h2>B2. Anchor threads (explicit titles)</h2>
         <table>
             <tbody>
                 <tr><th>Title</th><td><strong>Gimme = Amble despite denials</strong></td></tr>
@@ -469,7 +544,7 @@
         </table>
         <p class="quote">“Have you noticed that Amble is spinning multiple companies like gimme care and instarx? Did they declare a rebranding or is it under the table?”</p>
 
-        <h3>5b. Full Amble-tie URL list</h3>
+        <h2>B3. Full Amble-tie URL list</h2>
         <ol class="notes">
             <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/</a></li>
             <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/</a></li>
@@ -483,7 +558,7 @@
             <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qm7fj8/cosmeticrx_price_match/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1qm7fj8/cosmeticrx_price_match/</a></li>
         </ol>
 
-        <h2>6. Sources</h2>
+        <h2>Sources</h2>
         <p><strong>Skill:</strong> <code>reddit-monitor</code> · Live Reddit scan 2026-07-17 · Amble-tie follow-up 2026-07-17 · Prior r/gimmecare monitor 2026-06-23 · SERP/AIO audit 2026-07-08 (<code>gimme-sentiment-serp-audit.json</code>)</p>
 
     </main>
@@ -491,7 +566,7 @@
     <footer class="report-footer">
         <div class="container">
             <span class="company-name">Tweaking Agency</span>
-            <span>Internal — Gimme Care · 2026-07-17 · Posts-only removal list + Amble-tie top 10 · Not for public SEO indexing</span>
+            <span>Internal — Gimme Care · 2026-07-17 · Part A negative posts · Part B Amble brand-tie · Not for public SEO indexing</span>
         </div>
     </footer>
 
