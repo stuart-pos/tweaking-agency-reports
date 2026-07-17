@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Reddit Negative Posts — Removal Priority — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-danger: #ef4444;
+            --color-warning: #f59e0b;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 960px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-header .tagline { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        a { color: #1d4ed8; }
+        .callout { background: var(--color-bg-alt); border-left: 4px solid var(--color-accent); padding: 20px 24px; margin: 20px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.danger { border-left-color: var(--color-danger); background: #fef2f2; }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .label { font-size: 0.75rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .value { font-size: 1.8rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .score-card .sub { font-size: 0.8rem; color: var(--color-text-light); margin-top: 4px; }
+        .score-card.danger .value { color: var(--color-danger); }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .highlight-row { background: #fef2f2 !important; font-weight: 600; }
+        .url-cell { font-size: 0.8rem; word-break: break-all; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 700; white-space: nowrap; }
+        .badge-aio { background: #fee2e2; color: #991b1b; }
+        .badge-aio-theme { background: #ffedd5; color: #9a3412; }
+        .badge-engage { background: #e0e7ff; color: #3730a3; }
+        .btn { display: inline-block; padding: 10px 18px; background: var(--color-primary); color: #fff !important; text-decoration: none; border-radius: var(--border-radius); font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; }
+        .btn:hover { background: var(--color-secondary); }
+        .quote { font-style: italic; color: var(--color-text-light); border-left: 3px solid var(--color-border); padding-left: 12px; margin: 8px 0 12px; }
+        ul.notes { padding-left: 20px; margin-bottom: 16px; }
+        ul.notes li { margin-bottom: 8px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .btn { display: none; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            table { font-size: 0.78rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+            <div>
+                <h1>Tweaking Agency</h1>
+                <p class="tagline">Reputation · Reddit post removal priority</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>Top 15 negative Reddit posts — removal priority</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-07-17</strong></span>
+                <span>Skill: <strong>reddit-monitor</strong></span>
+                <span>Scope: <strong>Posts only</strong> (not comments)</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <div class="scores-grid">
+            <div class="score-card danger">
+                <div class="label">Posts in this list</div>
+                <div class="value">15</div>
+                <div class="sub">Removable posts only</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">#1 WARNING score</div>
+                <div class="value">139</div>
+                <div class="sub">241 comments · AI Overview cited</div>
+            </div>
+            <div class="score-card">
+                <div class="label">AI Overview hits</div>
+                <div class="value">1+theme</div>
+                <div class="sub">Named WARNING + warm/scam themes</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Action</div>
+                <div class="value">Remove</div>
+                <div class="sub">Posts — not comments</div>
+            </div>
+        </div>
+
+        <div class="callout danger">
+            <strong>Constraint:</strong> Only <em>posts</em> can be removed — not individual comments. This report lists the <strong>top 15 negative posts</strong> prioritized by (1) Google AI Overview utilization and (2) Reddit engagement (upvotes + comments).
+        </div>
+
+        <h2>1. Ranking method</h2>
+        <ul class="notes">
+            <li><strong>AI Overview named citation</strong> — highest priority. Confirmed: <em>“WARNING: Do not use Gimme”</em> on <code>is gimme care a scam</code> (SERP audit 2026-07-08).</li>
+            <li><strong>AI Overview theme match</strong> — posts that mirror AIO bullets: scam/legit doubts, warm vials / shipping delays, chat-only support, cancellation / billing friction, low-concentration / dose confusion. r/gimmecare is itself an AIO cited source on review queries.</li>
+            <li><strong>Engagement</strong> — upvotes first, then comment volume as secondary signal.</li>
+        </ul>
+
+        <h2>2. WARNING post (AI Overview anchor)</h2>
+        <table>
+            <tbody>
+                <tr><th>Title</th><td><strong>WARNING: Do not use Gimme!</strong></td></tr>
+                <tr><th>URL</th><td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/</a></td></tr>
+                <tr><th>Subreddit</th><td>r/tirzepatidecompound</td></tr>
+                <tr><th>Author</th><td>u/Angel061803</td></tr>
+                <tr><th>Engagement</th><td><strong>139</strong> upvotes · <strong>241</strong> comments · 88% upvote ratio</td></tr>
+                <tr><th>AIO status</th><td><span class="badge badge-aio">Named in AI Overview</span></td></tr>
+            </tbody>
+        </table>
+        <p class="quote">“I just want to warn anyone who is thinking of using Gimme for refills that this is how they treat their customers. I will definitely be doing a chargeback with my credit card!”</p>
+        <p><strong>Allegation:</strong> 12.5mg patient auto-prescribed 2.2mg “maintenance” without consult; $100 consult fee floated; chargeback threatened. This is the single highest-leverage removable post for legitimacy SERPs.</p>
+
+        <h2>3. Top 15 negative posts (removal priority)</h2>
+        <p>
+            <button class="btn" id="csv-download-btn" type="button">Download CSV</button>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Sub</th>
+                    <th>Votes</th>
+                    <th>Cmts</th>
+                    <th>AIO / why ranked</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td>1</td>
+                    <td>WARNING: Do not use Gimme!</td>
+                    <td>tirzepatidecompound</td>
+                    <td>139</td>
+                    <td>241</td>
+                    <td><span class="badge badge-aio">Named AIO</span> + max engagement</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Gimme Got Me</td>
+                    <td>tirzepatidecompound</td>
+                    <td>88</td>
+                    <td>143</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> dose / low-concentration confusion · high engagement</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1st7o7n/gimme_got_me/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Gimme Care Warning</td>
+                    <td>TirzepatideRX</td>
+                    <td>48</td>
+                    <td>90</td>
+                    <td><span class="badge badge-engage">Engagement</span> warning framing on large GLP sub</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/TirzepatideRX/comments/1tq0on9/gimme_care_warning/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Stay away from gimmecare</td>
+                    <td>compoundedtirzepatide</td>
+                    <td>24</td>
+                    <td>48</td>
+                    <td><span class="badge badge-engage">Engagement</span> explicit avoid call-to-action</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/compoundedtirzepatide/comments/1uq4v51/stay_away_from_gimmecare/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Scammed by gimme?</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> scam / chargeback · AIO-cited sub</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1t1rq7d/scammed_by_gimme/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Is this a scam??</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> legitimacy · AIO-cited sub</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1snyth3/is_this_a_scam/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>My Tirzepatide order just arrived hot.</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> warm vials (reviews AIO bullet)</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1twtt2z/my_tirzepatide_order_just_arrived_hot/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Warm Medicine</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> warm vials</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1ti6zy9/warm_medicine/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>10-day delay only to receive warm meds</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> shipping delay + warm vials</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1t08ccc/10day_delay_only_to_receive_warm_meds/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Bad experience — suggested inject meds left in sun 4 days</td>
+                    <td>compoundedtirzepatide</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> cold-chain / safety</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/compoundedtirzepatide/comments/1ufweqh/gimme_care_bad_experience_suggested_i_inject/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Beyond frustrated!!!</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> chat-only support · dosing</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1tkj6ox/beyond_frustrated/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Took my money… double charged… will not respond</td>
+                    <td>gimmecare</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td><span class="badge badge-aio-theme">AIO theme</span> billing / cancel-fee adjacent</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/gimmecare/comments/1u6fsaq/took_my_money_out_3_months_in_advancedouble/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>Another bad experience with Gimme</td>
+                    <td>tirzepatidecompound</td>
+                    <td>19</td>
+                    <td>7</td>
+                    <td><span class="badge badge-engage">Engagement</span> recent negative on large GLP sub</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1ur427e/another_bad_experience_with_gimme/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Gimme is a LETDOWN.</td>
+                    <td>TirzepatideRX</td>
+                    <td>18</td>
+                    <td>27</td>
+                    <td><span class="badge badge-engage">Engagement</span> brand-letdown framing</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/TirzepatideRX/comments/1urw934/gimme_is_a_letdown/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Gimme Care is horrible</td>
+                    <td>tirzepatidecompound</td>
+                    <td>12</td>
+                    <td>82</td>
+                    <td><span class="badge badge-engage">Engagement</span> high comment volume despite lower votes</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1uh17rn/gimme_care_is_horrible/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout warning">
+            <strong>Paid search note:</strong> Removing #1 (WARNING) is the highest-ROI reputation action for <code>is gimme care a scam</code> / <code>gimme care legit</code> AI Overviews. Posts #5–#12 on r/gimmecare matter because Google already cites that subreddit on review queries — even when individual thread titles are not named.
+        </div>
+
+        <h2>4. Full URL list</h2>
+        <ol class="notes">
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1st7o7n/gimme_got_me/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1st7o7n/gimme_got_me/</a></li>
+            <li><a href="https://www.reddit.com/r/TirzepatideRX/comments/1tq0on9/gimme_care_warning/" target="_blank" rel="noopener">https://www.reddit.com/r/TirzepatideRX/comments/1tq0on9/gimme_care_warning/</a></li>
+            <li><a href="https://www.reddit.com/r/compoundedtirzepatide/comments/1uq4v51/stay_away_from_gimmecare/" target="_blank" rel="noopener">https://www.reddit.com/r/compoundedtirzepatide/comments/1uq4v51/stay_away_from_gimmecare/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1t1rq7d/scammed_by_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1t1rq7d/scammed_by_gimme/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1snyth3/is_this_a_scam/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1snyth3/is_this_a_scam/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1twtt2z/my_tirzepatide_order_just_arrived_hot/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1twtt2z/my_tirzepatide_order_just_arrived_hot/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1ti6zy9/warm_medicine/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1ti6zy9/warm_medicine/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1t08ccc/10day_delay_only_to_receive_warm_meds/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1t08ccc/10day_delay_only_to_receive_warm_meds/</a></li>
+            <li><a href="https://www.reddit.com/r/compoundedtirzepatide/comments/1ufweqh/gimme_care_bad_experience_suggested_i_inject/" target="_blank" rel="noopener">https://www.reddit.com/r/compoundedtirzepatide/comments/1ufweqh/gimme_care_bad_experience_suggested_i_inject/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1tkj6ox/beyond_frustrated/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1tkj6ox/beyond_frustrated/</a></li>
+            <li><a href="https://www.reddit.com/r/gimmecare/comments/1u6fsaq/took_my_money_out_3_months_in_advancedouble/" target="_blank" rel="noopener">https://www.reddit.com/r/gimmecare/comments/1u6fsaq/took_my_money_out_3_months_in_advancedouble/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1ur427e/another_bad_experience_with_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1ur427e/another_bad_experience_with_gimme/</a></li>
+            <li><a href="https://www.reddit.com/r/TirzepatideRX/comments/1urw934/gimme_is_a_letdown/" target="_blank" rel="noopener">https://www.reddit.com/r/TirzepatideRX/comments/1urw934/gimme_is_a_letdown/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1uh17rn/gimme_care_is_horrible/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1uh17rn/gimme_care_is_horrible/</a></li>
+        </ol>
+
+        <h2>5. Sources</h2>
+        <p><strong>Skill:</strong> <code>reddit-monitor</code> · Live Reddit scan 2026-07-17 · Prior r/gimmecare monitor 2026-06-23 · SERP/AIO audit 2026-07-08 (<code>gimme-sentiment-serp-audit.json</code>)</p>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <span class="company-name">Tweaking Agency</span>
+            <span>Internal — Gimme Care · 2026-07-17 · Posts-only removal list · Not for public SEO indexing</span>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        var csv = [
+            "rank,title,subreddit,votes,comments,aio_signal,url",
+            "1,\"WARNING: Do not use Gimme!\",tirzepatidecompound,139,241,Named AIO,https://www.reddit.com/r/tirzepatidecompound/comments/1pcjgzv/warning_do_not_use_gimme/",
+            "2,Gimme Got Me,tirzepatidecompound,88,143,AIO theme - dose confusion,https://www.reddit.com/r/tirzepatidecompound/comments/1st7o7n/gimme_got_me/",
+            "3,Gimme Care Warning,TirzepatideRX,48,90,Engagement,https://www.reddit.com/r/TirzepatideRX/comments/1tq0on9/gimme_care_warning/",
+            "4,Stay away from gimmecare,compoundedtirzepatide,24,48,Engagement,https://www.reddit.com/r/compoundedtirzepatide/comments/1uq4v51/stay_away_from_gimmecare/",
+            "5,Scammed by gimme?,gimmecare,,,AIO theme - scam / AIO-cited sub,https://www.reddit.com/r/gimmecare/comments/1t1rq7d/scammed_by_gimme/",
+            "6,Is this a scam??,gimmecare,,,AIO theme - legit / AIO-cited sub,https://www.reddit.com/r/gimmecare/comments/1snyth3/is_this_a_scam/",
+            "7,My Tirzepatide order just arrived hot.,gimmecare,,,AIO theme - warm vials,https://www.reddit.com/r/gimmecare/comments/1twtt2z/my_tirzepatide_order_just_arrived_hot/",
+            "8,Warm Medicine,gimmecare,,,AIO theme - warm vials,https://www.reddit.com/r/gimmecare/comments/1ti6zy9/warm_medicine/",
+            "9,10-day delay only to receive warm meds,gimmecare,,,AIO theme - shipping + warm,https://www.reddit.com/r/gimmecare/comments/1t08ccc/10day_delay_only_to_receive_warm_meds/",
+            "10,\"Bad experience — sun meds 4 days\",compoundedtirzepatide,,,AIO theme - cold chain,https://www.reddit.com/r/compoundedtirzepatide/comments/1ufweqh/gimme_care_bad_experience_suggested_i_inject/",
+            "11,Beyond frustrated!!!,gimmecare,,,AIO theme - chat support,https://www.reddit.com/r/gimmecare/comments/1tkj6ox/beyond_frustrated/",
+            "12,Double charged will not respond,gimmecare,,,AIO theme - billing,https://www.reddit.com/r/gimmecare/comments/1u6fsaq/took_my_money_out_3_months_in_advancedouble/",
+            "13,Another bad experience with Gimme,tirzepatidecompound,19,7,Engagement,https://www.reddit.com/r/tirzepatidecompound/comments/1ur427e/another_bad_experience_with_gimme/",
+            "14,Gimme is a LETDOWN.,TirzepatideRX,18,27,Engagement,https://www.reddit.com/r/TirzepatideRX/comments/1urw934/gimme_is_a_letdown/",
+            "15,Gimme Care is horrible,tirzepatidecompound,12,82,Engagement,https://www.reddit.com/r/tirzepatidecompound/comments/1uh17rn/gimme_care_is_horrible/"
+        ].join("\n");
+        var btn = document.getElementById("csv-download-btn");
+        if (btn) {
+            btn.addEventListener("click", function () {
+                var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+                var a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "20260717_gimme_reddit-negative-engagement.csv";
+                a.click();
+                URL.revokeObjectURL(a.href);
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
