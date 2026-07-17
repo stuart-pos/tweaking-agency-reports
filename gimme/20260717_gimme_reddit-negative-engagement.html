@@ -85,7 +85,7 @@
             <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
             <div>
                 <h1>Tweaking Agency</h1>
-                <p class="tagline">Reputation · Reddit post removal priority</p>
+                <p class="tagline">Reputation · Reddit post removal + Amble-tie monitor</p>
             </div>
         </div>
     </header>
@@ -124,6 +124,11 @@
                 <div class="label">Action</div>
                 <div class="value">Remove</div>
                 <div class="sub">Posts — not comments</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">Amble-tie posts</div>
+                <div class="value">10</div>
+                <div class="sub">Same-business narrative</div>
             </div>
         </div>
 
@@ -330,15 +335,163 @@
             <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1uh17rn/gimme_care_is_horrible/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1uh17rn/gimme_care_is_horrible/</a></li>
         </ol>
 
-        <h2>5. Sources</h2>
-        <p><strong>Skill:</strong> <code>reddit-monitor</code> · Live Reddit scan 2026-07-17 · Prior r/gimmecare monitor 2026-06-23 · SERP/AIO audit 2026-07-08 (<code>gimme-sentiment-serp-audit.json</code>)</p>
+
+        <h2>5. Top 10 posts tying Gimme ↔ Amble (same business)</h2>
+        <div class="callout warning">
+            <strong>Scope:</strong> Posts where Redditors claim Gimme and Amble are the same business, a rebrand, sister brand, or shared ownership (Stiver). Ranked by (1) explicit title/body claim, then (2) comment-thread ownership narrative strength, then (3) engagement (upvotes + comments). Searched via reddit-monitor workflow + Reddit/Google: <code>"gimme care" amble</code>, <code>gimme amble</code> on r/tirzepatidecompound, affiliation/rebrand queries.
+        </div>
+        <p>
+            <button class="btn" id="csv-amble-download-btn" type="button">Download Amble-tie CSV</button>
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Sub</th>
+                    <th>Votes</th>
+                    <th>Cmts</th>
+                    <th>Why ranked / how tied</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td>1</td>
+                    <td>Gimme = Amble despite denials</td>
+                    <td>tirzepatidecompound</td>
+                    <td>28</td>
+                    <td>135</td>
+                    <td><span class="badge badge-aio">Explicit title</span> Post body: Gimme Care = Amble Health = MinuteMD = Vaxxen, owned by Joseph Stiver. Evidence screenshots + trademark / corp filings debated in comments.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>2</td>
+                    <td>Gimme care is Amble. Fyi</td>
+                    <td>tirzepatidecompound</td>
+                    <td>45</td>
+                    <td>77</td>
+                    <td><span class="badge badge-aio">Explicit title</span> Title + body claim Amble is spinning Gimme Care / InstaRX as under-the-table rebrands.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Explained: How Telehealth Companies Actually Work</td>
+                    <td>tirzepatidecompound</td>
+                    <td>156</td>
+                    <td>102</td>
+                    <td><span class="badge badge-aio-theme">Comment thread</span> Posted by u/chloe-gimme. Comments: “Gimme is the rebrand of Amble,” Joe Stiver owner theory; staff denial (“we're not Amble, we just use the same software”). Highest engagement on a tie-adjacent thread.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qtz86t/explained_how_telehealth_companies_actually_work/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>BEWARE! GIMME TOOK MY MONEY AND MEDS! BLACKLISTED!</td>
+                    <td>tirzepatidecompound</td>
+                    <td>40</td>
+                    <td>130</td>
+                    <td><span class="badge badge-aio-theme">Comment thread</span> Comments: “owner of Amble is the owner of Gimme”; Joseph “Joe” Stiver named; Gimme framed as Amble reboot after reputation damage.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1tv5wrt/beware_gimme_took_my_money_and_meds_blacklisted/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Not feeling good about Gimme</td>
+                    <td>tirzepatidecompound</td>
+                    <td>27</td>
+                    <td>150</td>
+                    <td><span class="badge badge-aio-theme">Comment thread</span> High-engagement complaint thread; top comments state “Gimme is owned by Amble” and compare dosing patterns across both brands.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1quxbtv/not_feeling_good_about_gimme/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Whats up with Gimme?</td>
+                    <td>tirzepatidecompound</td>
+                    <td>7</td>
+                    <td>51</td>
+                    <td><span class="badge badge-aio-theme">Comment thread</span> Commenter reports Gimme survey ended on “Amble Health” branding — treated as proof of shared ops.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1swagsm/whats_up_with_gimme/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Gimme Care</td>
+                    <td>compoundedtirzepatide</td>
+                    <td>5</td>
+                    <td>15</td>
+                    <td><span class="badge badge-aio-theme">Comment thread</span> Comments: “Gimme was the rebrand of Amble”; “amble sister site same creators”; CEO/TikTok affiliate narrative.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/compoundedtirzepatide/comments/1swtctc/gimme_care/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Gimme and Fitness</td>
+                    <td>tirzepatidecompound</td>
+                    <td>1</td>
+                    <td>7</td>
+                    <td><span class="badge badge-aio-theme">Comment thread</span> Comment names “Amble (gimmie owner)” and states Bask telehealths are separate “except gimmie and amble.”</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1stnttz/gimme_and_fitness/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Gimme is also refills</td>
+                    <td>tirzepatidecompound</td>
+                    <td>0</td>
+                    <td>21</td>
+                    <td><span class="badge badge-engage">Same-company claim (adjacent)</span> Post claims Gimme & Refills are the same company; comments clarify shared platform and name Amble alongside Gimme/Good Life on same software — fuels multi-brand confusion.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qqqej0/gimme_is_also_refills/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>CosmeticRX price match</td>
+                    <td>tirzepatidecompound</td>
+                    <td>16</td>
+                    <td>30</td>
+                    <td><span class="badge badge-engage">Affiliation debate</span> Thread where Gimme rep Chloe denials of Amble affiliation are contested; ToS / Google AI Overview “Gimme Care by Amble” narrative referenced.</td>
+                    <td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qm7fj8/cosmeticrx_price_match/" target="_blank" rel="noopener">Open</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>5a. Anchor threads (explicit titles)</h3>
+        <table>
+            <tbody>
+                <tr><th>Title</th><td><strong>Gimme = Amble despite denials</strong></td></tr>
+                <tr><th>URL</th><td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/</a></td></tr>
+                <tr><th>Engagement</th><td><strong>28</strong> upvotes · <strong>135</strong> comments</td></tr>
+                <tr><th>Claim</th><td>Gimme Care = Amble Health = MinuteMD = Vaxxen (Stiver)</td></tr>
+            </tbody>
+        </table>
+        <p class="quote">“Gimme care = Amble health = minuteMD . Added to the group is Vaxxen. All owned by Joseph stiver…”</p>
+        <table>
+            <tbody>
+                <tr><th>Title</th><td><strong>Gimme care is Amble. Fyi</strong></td></tr>
+                <tr><th>URL</th><td class="url-cell"><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/</a></td></tr>
+                <tr><th>Engagement</th><td><strong>45</strong> upvotes · <strong>77</strong> comments</td></tr>
+                <tr><th>Claim</th><td>Amble spinning multiple companies (Gimme Care, InstaRX) without declared rebrand</td></tr>
+            </tbody>
+        </table>
+        <p class="quote">“Have you noticed that Amble is spinning multiple companies like gimme care and instarx? Did they declare a rebranding or is it under the table?”</p>
+
+        <h3>5b. Full Amble-tie URL list</h3>
+        <ol class="notes">
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qtz86t/explained_how_telehealth_companies_actually_work/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1qtz86t/explained_how_telehealth_companies_actually_work/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1tv5wrt/beware_gimme_took_my_money_and_meds_blacklisted/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1tv5wrt/beware_gimme_took_my_money_and_meds_blacklisted/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1quxbtv/not_feeling_good_about_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1quxbtv/not_feeling_good_about_gimme/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1swagsm/whats_up_with_gimme/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1swagsm/whats_up_with_gimme/</a></li>
+            <li><a href="https://www.reddit.com/r/compoundedtirzepatide/comments/1swtctc/gimme_care/" target="_blank" rel="noopener">https://www.reddit.com/r/compoundedtirzepatide/comments/1swtctc/gimme_care/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1stnttz/gimme_and_fitness/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1stnttz/gimme_and_fitness/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qqqej0/gimme_is_also_refills/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1qqqej0/gimme_is_also_refills/</a></li>
+            <li><a href="https://www.reddit.com/r/tirzepatidecompound/comments/1qm7fj8/cosmeticrx_price_match/" target="_blank" rel="noopener">https://www.reddit.com/r/tirzepatidecompound/comments/1qm7fj8/cosmeticrx_price_match/</a></li>
+        </ol>
+
+        <h2>6. Sources</h2>
+        <p><strong>Skill:</strong> <code>reddit-monitor</code> · Live Reddit scan 2026-07-17 · Amble-tie follow-up 2026-07-17 · Prior r/gimmecare monitor 2026-06-23 · SERP/AIO audit 2026-07-08 (<code>gimme-sentiment-serp-audit.json</code>)</p>
 
     </main>
 
     <footer class="report-footer">
         <div class="container">
             <span class="company-name">Tweaking Agency</span>
-            <span>Internal — Gimme Care · 2026-07-17 · Posts-only removal list · Not for public SEO indexing</span>
+            <span>Internal — Gimme Care · 2026-07-17 · Posts-only removal list + Amble-tie top 10 · Not for public SEO indexing</span>
         </div>
     </footer>
 
@@ -375,5 +528,23 @@
         }
     })();
     </script>
+
+    <script>
+    (function () {
+        var ambleCsv = "rank,title,subreddit,votes,comments,tie_type,rationale,url\n1,\"Gimme = Amble despite denials\",tirzepatidecompound,28,135,\"Explicit title\",\"Post body: Gimme Care = Amble Health = MinuteMD = Vaxxen, owned by Joseph Stiver. Evidence screenshots + trademark / corp filings debated in comments.\",https://www.reddit.com/r/tirzepatidecompound/comments/1sj5ekc/gimme_amble_despite_denials/\n2,\"Gimme care is Amble. Fyi\",tirzepatidecompound,45,77,\"Explicit title\",\"Title + body claim Amble is spinning Gimme Care / InstaRX as under-the-table rebrands.\",https://www.reddit.com/r/tirzepatidecompound/comments/1ql2j1l/gimme_care_is_amble_fyi/\n3,\"Explained: How Telehealth Companies Actually Work\",tirzepatidecompound,156,102,\"Comment thread\",\"Posted by u/chloe-gimme. Comments: \u201cGimme is the rebrand of Amble,\u201d Joe Stiver owner theory; staff denial (\u201cwe're not Amble, we just use the same software\u201d). Highest engagement on a tie-adjacent thread.\",https://www.reddit.com/r/tirzepatidecompound/comments/1qtz86t/explained_how_telehealth_companies_actually_work/\n4,\"BEWARE! GIMME TOOK MY MONEY AND MEDS! BLACKLISTED!\",tirzepatidecompound,40,130,\"Comment thread\",\"Comments: \u201cowner of Amble is the owner of Gimme\u201d; Joseph \u201cJoe\u201d Stiver named; Gimme framed as Amble reboot after reputation damage.\",https://www.reddit.com/r/tirzepatidecompound/comments/1tv5wrt/beware_gimme_took_my_money_and_meds_blacklisted/\n5,\"Not feeling good about Gimme\",tirzepatidecompound,27,150,\"Comment thread\",\"High-engagement complaint thread; top comments state \u201cGimme is owned by Amble\u201d and compare dosing patterns across both brands.\",https://www.reddit.com/r/tirzepatidecompound/comments/1quxbtv/not_feeling_good_about_gimme/\n6,\"Whats up with Gimme?\",tirzepatidecompound,7,51,\"Comment thread\",\"Commenter reports Gimme survey ended on \u201cAmble Health\u201d branding \u2014 treated as proof of shared ops.\",https://www.reddit.com/r/tirzepatidecompound/comments/1swagsm/whats_up_with_gimme/\n7,\"Gimme Care\",compoundedtirzepatide,5,15,\"Comment thread\",\"Comments: \u201cGimme was the rebrand of Amble\u201d; \u201camble sister site same creators\u201d; CEO/TikTok affiliate narrative.\",https://www.reddit.com/r/compoundedtirzepatide/comments/1swtctc/gimme_care/\n8,\"Gimme and Fitness\",tirzepatidecompound,1,7,\"Comment thread\",\"Comment names \u201cAmble (gimmie owner)\u201d and states Bask telehealths are separate \u201cexcept gimmie and amble.\u201d\",https://www.reddit.com/r/tirzepatidecompound/comments/1stnttz/gimme_and_fitness/\n9,\"Gimme is also refills\",tirzepatidecompound,0,21,\"Same-company claim (adjacent)\",\"Post claims Gimme & Refills are the same company; comments clarify shared platform and name Amble alongside Gimme/Good Life on same software \u2014 fuels multi-brand confusion.\",https://www.reddit.com/r/tirzepatidecompound/comments/1qqqej0/gimme_is_also_refills/\n10,\"CosmeticRX price match\",tirzepatidecompound,16,30,\"Affiliation debate\",\"Thread where Gimme rep Chloe denials of Amble affiliation are contested; ToS / Google AI Overview \u201cGimme Care by Amble\u201d narrative referenced.\",https://www.reddit.com/r/tirzepatidecompound/comments/1qm7fj8/cosmeticrx_price_match/";
+        var btn = document.getElementById("csv-amble-download-btn");
+        if (btn) {
+            btn.addEventListener("click", function () {
+                var blob = new Blob([ambleCsv], { type: "text/csv;charset=utf-8" });
+                var a = document.createElement("a");
+                a.href = URL.createObjectURL(blob);
+                a.download = "20260717_gimme_reddit-amble-tie.csv";
+                a.click();
+                URL.revokeObjectURL(a.href);
+            });
+        }
+    })();
+    </script>
 </body>
+
 </html>
