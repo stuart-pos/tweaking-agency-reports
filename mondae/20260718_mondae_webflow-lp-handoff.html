@@ -156,10 +156,10 @@
   <p>Default state on load: tirzepatide · No · Cheapest · 1 month · Boudreaux (as cheapest path).</p>
 
   <h3 id="query-defaults">A1b. Query-parameter defaults (deep links)</h3>
-  <p>Ads / SMS can pre-select medication + plan length via URL. Other controls stay at the normal defaults (Currently taking = <strong>No</strong>, preference = <strong>Cheapest</strong>). Invalid or missing params fall back to the page default.</p>
+  <p>Ads / SMS can pre-select medication + plan length via URL. <strong>Prefer <code>prod=</code> + <code>plan=</code> in Google Ads Final URLs</strong> (neutral wording). The React LP also accepts <code>drug=</code> / <code>product=</code> as aliases. Other controls stay at the normal defaults (Currently taking = <strong>No</strong>, preference = <strong>Cheapest</strong>). Invalid or missing params fall back to the page default.</p>
   <table>
     <thead>
-      <tr><th>Intent</th><th>URL</th><th>Selected on load</th></tr>
+      <tr><th>Intent</th><th>URL (use in Ads)</th><th>Selected on load</th></tr>
     </thead>
     <tbody>
       <tr>
@@ -169,24 +169,24 @@
       </tr>
       <tr>
         <td><strong>3-month tirz</strong></td>
-        <td><code>/lp/mondae/glp-1?drug=tirzepatide&amp;plan=3</code></td>
+        <td><code>/lp/mondae/glp-1?prod=tirzepatide&amp;plan=3</code></td>
         <td>tirzepatide · 3 month</td>
       </tr>
       <tr>
         <td><strong>1-month sema</strong></td>
-        <td><code>/lp/mondae/glp-1?drug=semaglutide&amp;plan=1</code></td>
+        <td><code>/lp/mondae/glp-1?prod=semaglutide&amp;plan=1</code></td>
         <td>semaglutide · 1 month</td>
       </tr>
       <tr>
         <td><strong>3-month sema</strong></td>
-        <td><code>/lp/mondae/glp-1?drug=semaglutide&amp;plan=3</code></td>
+        <td><code>/lp/mondae/glp-1?prod=semaglutide&amp;plan=3</code></td>
         <td>semaglutide · 3 month</td>
       </tr>
     </tbody>
   </table>
-  <p><strong>Accepted aliases:</strong> <code>drug</code> = <code>tirzepatide</code>|<code>tirz</code> · <code>semaglutide</code>|<code>sema</code>. <code>plan</code> = <code>1</code>|<code>1-month</code>|<code>1mo</code> · <code>3</code>|<code>3-month</code>|<code>3mo</code>.</p>
+  <p><strong>Accepted values:</strong> <code>prod</code> (preferred) / <code>product</code> / <code>drug</code> = <code>tirzepatide</code>|<code>tirz</code> · <code>semaglutide</code>|<code>sema</code>. <code>plan</code> = <code>1</code>|<code>1-month</code>|<code>1mo</code> · <code>3</code>|<code>3-month</code>|<code>3mo</code>.</p>
   <div class="callout">
-    <p><strong>Webflow note:</strong> Mirror this with CMS/collection or page-level query params that set the initial selected state of the medication + plan buttons before the visitor interacts. Do not require a full page rebuild per variant — one LP template, four entry URLs.</p>
+    <p><strong>Webflow note:</strong> Mirror the same <code>prod</code> + <code>plan</code> query keys so React and Webflow entry URLs stay identical. One LP template, four entry URLs — do not rebuild a separate page per variant.</p>
   </div>
 
   <h3 id="quad-screens">A2. Screenshots</h3>
