@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Mondae LP Webflow handoff — Dual GLP-1 + Simplified-alt | Tweaking Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #1a1a2e;
+      --color-accent: #e94560;
+      --color-bg: #ffffff;
+      --color-bg-alt: #f8f9fa;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-border: #e0e0e0;
+      --container-max: 960px;
+      --border-radius: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, sans-serif; color: var(--color-text); background: var(--color-bg); line-height: 1.6; }
+    .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+    .report-header { background: var(--color-primary); color: #fff; padding: 40px 0; }
+    .report-header .container { display: flex; align-items: center; gap: 24px; }
+    .report-logo { width: 64px; height: 64px; object-fit: contain; }
+    .report-header h1 { font-size: 1.5rem; font-weight: 700; color: #fff; }
+    .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+    .report-meta .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .report-meta h2 { font-size: 1.25rem; font-weight: 700; color: var(--color-primary); }
+    .meta-details { font-size: 0.9rem; color: var(--color-text-light); text-align: right; }
+    h2 { font-size: 1.35rem; font-weight: 700; color: var(--color-primary); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+    h3 { font-size: 1.05rem; font-weight: 700; color: var(--color-primary); margin: 28px 0 10px; }
+    h4 { font-size: 0.95rem; font-weight: 700; margin: 18px 0 8px; }
+    p, li { margin-bottom: 10px; }
+    ul, ol { padding-left: 1.25rem; margin-bottom: 14px; }
+    a { color: var(--color-accent); }
+    .back-link { display: inline-block; margin: 16px 0 0; font-size: 0.9rem; }
+    .callout { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 16px 20px; margin: 16px 0 24px; border-radius: var(--border-radius); }
+    .callout.warn { background: #fffbeb; border-left-color: #d97706; }
+    .toc { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 20px; margin: 16px 0 28px; }
+    .toc a { display: block; margin: 4px 0; text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    .shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 24px; }
+    @media (max-width: 720px) { .shot-grid { grid-template-columns: 1fr; } }
+    .shot { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); overflow: hidden; }
+    .shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--color-border); }
+    .shot figcaption { font-size: 0.82rem; color: var(--color-text-light); padding: 10px 12px; }
+    .shot.full { grid-column: 1 / -1; }
+    .asset-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 24px; }
+    @media (max-width: 720px) { .asset-row { grid-template-columns: 1fr; } }
+    .asset-card { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 14px; background: #fff; }
+    .asset-card img { width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--color-border); margin-bottom: 10px; }
+    .badge { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 999px; background: #e0e7ff; color: #3730a3; margin-bottom: 8px; }
+    .badge.mobile { background: #dcfce7; color: #166534; }
+    .badge.desktop { background: #ffedd5; color: #9a3412; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; font-size: 0.88rem; }
+    thead { background: var(--color-primary); color: #fff; }
+    th { padding: 8px 10px; text-align: left; font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
+    td { padding: 10px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+    tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: var(--color-bg-alt); padding: 1px 5px; border-radius: 3px; }
+    .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+    .report-footer .company-name { font-weight: 700; color: #fff; }
+    .disclaimer { font-size: 0.85rem; color: var(--color-text-light); margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--color-border); }
+  </style>
+</head>
+<body>
+<header class="report-header">
+  <div class="container">
+    <img src="logo.svg" class="report-logo" alt="Tweaking Agency logo">
+    <div><h1>Tweaking Agency</h1></div>
+  </div>
+</header>
+
+<div class="report-meta">
+  <div class="container">
+    <h2>Mondae — Webflow LP handoff (Dual GLP-1 + Simplified-alt)</h2>
+    <div class="meta-details">
+      <span>Client: <strong>Mondae</strong></span><br>
+      <span>Date: <strong>2026-07-18</strong></span><br>
+      <span>Audience: Webflow developer build brief</span>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <p class="back-link"><a href="index.html">← All Mondae reports</a></p>
+
+  <div class="callout">
+    <p><strong>Purpose:</strong> Build brief for recreating two Mondae landing-page mockups in Webflow. Screenshots show layout, expanded FAQs, and how the quad selector behaves when choices change.</p>
+    <p><strong>Pricing:</strong> Full pharmacy × dose × plan matrices are intentionally omitted — you already have that data. This brief covers interaction + UI only.</p>
+    <p><strong>Coded preview routes</strong> (local intakes app): <code>/lp/mondae/glp-1</code> · <code>/lp/mondae/simplified-alt</code></p>
+  </div>
+
+  <div class="toc">
+    <strong>Contents</strong>
+    <a href="#section-a">A. Dual GLP-1 quad selector</a>
+    <a href="#selector-behavior">A1. Selector behavior (what each choice does)</a>
+    <a href="#quad-screens">A2. Screenshots</a>
+    <a href="#section-b">B. Simplified-alt</a>
+    <a href="#hero-assets">B1. Hero lifestyle assets (desktop vs mobile)</a>
+    <a href="#simplified-screens">B2. Screenshots</a>
+    <a href="#shared-faq">C. Shared FAQ copy (8 items)</a>
+  </div>
+
+  <h2 id="section-a">A. Dual GLP-1 quad selector</h2>
+  <p>In-hero configurator LP for compounded tirzepatide + semaglutide. Section order:</p>
+  <ol>
+    <li>Hero — headline, quad selector, primary CTA, dual-vial product image</li>
+    <li>How it works (3 steps)</li>
+    <li>Price lock chart</li>
+    <li>FAQ (“Common questions”)</li>
+    <li>Sticky / repeated CTAs</li>
+  </ol>
+  <p>Hero headline: <strong>Lock in your price for life</strong>. Subtitle: price stays locked as dose increases. CTA label: <strong>Get started</strong>.</p>
+
+  <h3 id="selector-behavior">A1. Selector behavior</h3>
+  <div class="callout warn">
+    <p>The selector only updates the price summary inside the card. It does <strong>not</strong> swap the hero vial image or navigate away. CTA is separate.</p>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Control</th><th>Options</th><th>What happens in the UI</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Medication</strong></td>
+        <td>tirzepatide · semaglutide</td>
+        <td>Swaps the dose list for that drug. Resets starting dose to the drug’s starter dose and pharmacy selection back to Boudreaux.</td>
+      </tr>
+      <tr>
+        <td><strong>Currently taking a GLP-1?</strong></td>
+        <td>Yes · No</td>
+        <td><strong>No</strong> (default): dose grid hidden; pricing uses starter dose (summary shows “Starter”). <strong>Yes</strong>: “Select starting dose” grid appears (dose buttons + “I don’t know”).</td>
+      </tr>
+      <tr>
+        <td><strong>Starting dose</strong> (only if Yes)</td>
+        <td>Drug-specific mg doses + “I don’t know”</td>
+        <td>Selected dose drives the price. “I don’t know” prices from starter and can show a “From $X” style summary.</td>
+      </tr>
+      <tr>
+        <td><strong>Which do you care more about</strong></td>
+        <td>Cheapest price · Choose my pharmacy</td>
+        <td><strong>Cheapest</strong>: auto-picks lowest pharmacy for the current dose + plan; summary shows “Cheapest”. <strong>Choose my pharmacy</strong>: reveals pharmacy button row (Boudreaux, Rush, Strive, Align, RxCompound) plus an additive line for the selected pharmacy.</td>
+      </tr>
+      <tr>
+        <td><strong>Plan length</strong></td>
+        <td>1 month · 3 month</td>
+        <td>Recalculates displayed <strong>$/month</strong> (plan total ÷ months) and the “price locked at $X/month” sentence.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Default state on load: tirzepatide · No · Cheapest · 1 month · Boudreaux (as cheapest path).</p>
+
+  <h3 id="quad-screens">A2. Screenshots</h3>
+
+  <h4>Desktop — hero &amp; selector states</h4>
+  <div class="shot-grid">
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-hero.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-hero.png" alt="Quad LP desktop hero" loading="lazy"></a>
+      <figcaption>Desktop hero (viewport) — headline + selector + vials</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-selector-default.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-default.png" alt="Selector default state" loading="lazy"></a>
+      <figcaption>Selector default — No / Cheapest / 1 month (dose grid hidden)</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-selector-dose-grid.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-dose-grid.png" alt="Selector with dose grid" loading="lazy"></a>
+      <figcaption>Currently taking = Yes → dose grid + “I don’t know”</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-selector-choose-pharmacy.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-choose-pharmacy.png" alt="Selector choose pharmacy" loading="lazy"></a>
+      <figcaption>Choose my pharmacy → pharmacy row + additive line</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-selector-semaglutide.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-semaglutide.png" alt="Selector on semaglutide" loading="lazy"></a>
+      <figcaption>Medication = semaglutide — dose set changes</figcaption>
+    </figure>
+  </div>
+
+  <h4>Desktop — below fold + FAQ (all answers shown)</h4>
+  <div class="shot-grid">
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-how-it-works.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-how-it-works.png" alt="How it works" loading="lazy"></a>
+      <figcaption>How it works — 3 steps</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-price-lock.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-price-lock.png" alt="Price lock chart" loading="lazy"></a>
+      <figcaption>Price lock chart section</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/quad-desktop-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-faq-expanded.png" alt="FAQs expanded" loading="lazy"></a>
+      <figcaption>FAQ — all 8 items expanded for Webflow content reference (live UI is single-open accordion)</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/quad-desktop-full.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-full.png" alt="Full page desktop" loading="lazy"></a>
+      <figcaption>Full-page desktop scroll</figcaption>
+    </figure>
+  </div>
+
+  <h4>Mobile</h4>
+  <div class="shot-grid">
+    <figure class="shot">
+      <a href="assets/screenshots/quad-mobile-hero.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-hero.png" alt="Quad mobile hero" loading="lazy"></a>
+      <figcaption>Mobile hero (~390px)</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-mobile-selector-default.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-selector-default.png" alt="Mobile selector default" loading="lazy"></a>
+      <figcaption>Mobile selector — default</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-mobile-selector-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-selector-expanded.png" alt="Mobile selector expanded" loading="lazy"></a>
+      <figcaption>Mobile selector — Yes + Choose pharmacy expanded</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-mobile-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-faq-expanded.png" alt="Mobile FAQ expanded" loading="lazy"></a>
+      <figcaption>Mobile FAQ — all answers shown</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/quad-mobile-full.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-full.png" alt="Mobile full page" loading="lazy"></a>
+      <figcaption>Full-page mobile scroll</figcaption>
+    </figure>
+  </div>
+
+  <h2 id="section-b">B. Simplified-alt</h2>
+  <p>AltRx-style dual product-tile LP. <strong>No quad selector.</strong> Section order:</p>
+  <ol>
+    <li>Lifestyle hero + promo card (headline with gold italic emphasis on “locks your price”)</li>
+    <li>Product tiles — tirzepatide left / semaglutide right (stacked on mobile, tirz on top)</li>
+    <li>How it works (same as quad LP)</li>
+    <li>Price lock chart (same)</li>
+    <li>FAQ (same 8 items)</li>
+  </ol>
+  <p>Primary CTA label: <strong>Get my plan</strong>. Reassurance under CTA: not charged until provider approves.</p>
+
+  <h3 id="hero-assets">B1. Hero lifestyle assets — desktop vs mobile</h3>
+  <p>Use these two files in Webflow. Background is a flat peach/tan — match section background to the image edge for a seamless bleed.</p>
+  <div class="asset-row">
+    <div class="asset-card">
+      <span class="badge mobile">Mobile · 1024×1024</span>
+      <a href="assets/hero-lifestyle-mobile-1024.png" target="_blank" rel="noopener">
+        <img src="assets/hero-lifestyle-mobile-1024.png" alt="Hero lifestyle mobile square">
+      </a>
+      <p><strong>File:</strong> <code>assets/hero-lifestyle-mobile-1024.png</code></p>
+      <p>Square crop for mobile / tablet — full-width under the ATF copy stack.</p>
+    </div>
+    <div class="asset-card">
+      <span class="badge desktop">Desktop · 1024×681</span>
+      <a href="assets/hero-lifestyle-desktop-1024x681.png" target="_blank" rel="noopener">
+        <img src="assets/hero-lifestyle-desktop-1024x681.png" alt="Hero lifestyle desktop landscape">
+      </a>
+      <p><strong>File:</strong> <code>assets/hero-lifestyle-desktop-1024x681.png</code></p>
+      <p>Landscape for desktop — right-column half-bleed beside the headline / CTA.</p>
+    </div>
+  </div>
+
+  <h3 id="simplified-screens">B2. Screenshots</h3>
+  <div class="shot-grid">
+    <figure class="shot">
+      <a href="assets/screenshots/simplified-desktop-hero.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-hero.png" alt="Simplified desktop hero" loading="lazy"></a>
+      <figcaption>Desktop ATF — copy left, lifestyle image right</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/simplified-mobile-hero.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-mobile-hero.png" alt="Simplified mobile hero" loading="lazy"></a>
+      <figcaption>Mobile ATF — copy then lifestyle image below</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/simplified-desktop-product-tiles.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-product-tiles.png" alt="Product tiles desktop" loading="lazy"></a>
+      <figcaption>Product tiles — tirz left / sema right</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/simplified-mobile-product-tiles.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-mobile-product-tiles.png" alt="Product tiles mobile" loading="lazy"></a>
+      <figcaption>Product tiles — stacked (tirz on top)</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/simplified-desktop-how-it-works.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-how-it-works.png" alt="HIW simplified" loading="lazy"></a>
+      <figcaption>How it works (shared with quad LP)</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/simplified-desktop-price-lock.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-price-lock.png" alt="Price lock simplified" loading="lazy"></a>
+      <figcaption>Price lock (shared)</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/simplified-desktop-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-faq-expanded.png" alt="Simplified FAQ expanded" loading="lazy"></a>
+      <figcaption>FAQ expanded (desktop) — same 8 items as quad LP</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/simplified-mobile-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-mobile-faq-expanded.png" alt="Simplified mobile FAQ" loading="lazy"></a>
+      <figcaption>FAQ expanded (mobile)</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/simplified-desktop-full.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-full.png" alt="Simplified full desktop" loading="lazy"></a>
+      <figcaption>Full-page desktop</figcaption>
+    </figure>
+    <figure class="shot full">
+      <a href="assets/screenshots/simplified-mobile-full.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-mobile-full.png" alt="Simplified full mobile" loading="lazy"></a>
+      <figcaption>Full-page mobile</figcaption>
+    </figure>
+  </div>
+
+  <h2 id="shared-faq">C. Shared FAQ copy (both LPs)</h2>
+  <p>Heading: <strong>Common questions</strong>. Live UI is a single-open accordion; screenshots above force all answers open for content entry.</p>
+  <ol>
+    <li>
+      <strong>How does pricing work, and what's included?</strong><br>
+      Your price depends on the dose you start at. Once you begin, that rate stays locked in for as long as you remain a member, even if your dose increases later. That price includes your compounded GLP-1 medication, clinician review, and shipping. There are no membership fees or hidden costs.
+    </li>
+    <li>
+      <strong>Who prescribes my medication?</strong><br>
+      Your medication is prescribed by state-licensed U.S. clinicians and dispensed by licensed U.S. pharmacies. Mondae connects you with providers for evaluation and ongoing care through your patient portal.
+    </li>
+    <li>
+      <strong>What dose will I be prescribed?</strong><br>
+      Final approval, and the dosage that you are prescribed is solely at the discretion of your licensed prescriber and is based off of the information you provide during your medical intake questionnaire.
+    </li>
+    <li>
+      <strong>When am I charged, and can I cancel anytime?</strong><br>
+      You won't be charged until a licensed clinician approves your treatment. You can cancel your order anytime before it's dispensed or shipped by the pharmacy, with no cancellation fee. Once your order has been dispensed or shipped, it can't be canceled. To cancel before shipment, email us right away at support@mondae.com. For ongoing care, you can also cancel upcoming renewal orders at any time from your patient portal.
+    </li>
+    <li>
+      <strong>I'm switching from another provider, can I keep my current dose?</strong><br>
+      Yes. Tell your clinician your current medication and dose during intake, and they can continue you at that level when medically appropriate, with no need to restart from the lowest dose.
+    </li>
+    <li>
+      <strong>What states is Mondae available in?</strong><br>
+      Mondae is available in all 50 states.
+    </li>
+    <li>
+      <strong>Do I need insurance?</strong><br>
+      No, insurance is not required.
+    </li>
+    <li>
+      <strong>Will I get charged if I don't qualify for treatment?</strong><br>
+      No, you won't be charged until a physician approves your treatment.
+    </li>
+  </ol>
+
+  <p class="disclaimer">
+    Compounded medications are not FDA-approved. This handoff is a design/build brief for marketing pages, not medical or legal advice.
+    Screenshots captured from the coded mockups on 2026-07-18.
+  </p>
+</main>
+
+<footer class="report-footer">
+  <div class="container">
+    <div>
+      <div class="company-name">Tweaking Agency</div>
+      <div>Mondae Webflow LP handoff · 2026-07-18</div>
+    </div>
+    <div><a href="index.html" style="color:#fff;">Mondae reports index</a></div>
+  </div>
+</footer>
+</body>
+</html>
