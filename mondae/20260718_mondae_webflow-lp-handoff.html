@@ -97,6 +97,7 @@
     <strong>Contents</strong>
     <a href="#section-a">A. Dual GLP-1 quad selector</a>
     <a href="#selector-behavior">A1. Selector behavior (what each choice does)</a>
+    <a href="#query-defaults">A1b. Query-parameter defaults</a>
     <a href="#quad-screens">A2. Screenshots</a>
     <a href="#section-b">B. Simplified-alt</a>
     <a href="#hero-assets">B1. Hero lifestyle assets (desktop vs mobile)</a>
@@ -104,6 +105,7 @@
     <a href="#shared-faq">C. Shared FAQ copy (8 items)</a>
   </div>
 
+  <!-- ========== A: QUAD ========== -->
   <h2 id="section-a">A. Dual GLP-1 quad selector</h2>
   <p>In-hero configurator LP for compounded tirzepatide + semaglutide. Section order:</p>
   <ol>
@@ -152,6 +154,40 @@
     </tbody>
   </table>
   <p>Default state on load: tirzepatide · No · Cheapest · 1 month · Boudreaux (as cheapest path).</p>
+
+  <h3 id="query-defaults">A1b. Query-parameter defaults (deep links)</h3>
+  <p>Ads / SMS can pre-select medication + plan length via URL. Other controls stay at the normal defaults (Currently taking = <strong>No</strong>, preference = <strong>Cheapest</strong>). Invalid or missing params fall back to the page default.</p>
+  <table>
+    <thead>
+      <tr><th>Intent</th><th>URL</th><th>Selected on load</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Default</strong> (current)</td>
+        <td><code>/lp/mondae/glp-1</code></td>
+        <td>tirzepatide · 1 month</td>
+      </tr>
+      <tr>
+        <td><strong>3-month tirz</strong></td>
+        <td><code>/lp/mondae/glp-1?drug=tirzepatide&amp;plan=3</code></td>
+        <td>tirzepatide · 3 month</td>
+      </tr>
+      <tr>
+        <td><strong>1-month sema</strong></td>
+        <td><code>/lp/mondae/glp-1?drug=semaglutide&amp;plan=1</code></td>
+        <td>semaglutide · 1 month</td>
+      </tr>
+      <tr>
+        <td><strong>3-month sema</strong></td>
+        <td><code>/lp/mondae/glp-1?drug=semaglutide&amp;plan=3</code></td>
+        <td>semaglutide · 3 month</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Accepted aliases:</strong> <code>drug</code> = <code>tirzepatide</code>|<code>tirz</code> · <code>semaglutide</code>|<code>sema</code>. <code>plan</code> = <code>1</code>|<code>1-month</code>|<code>1mo</code> · <code>3</code>|<code>3-month</code>|<code>3mo</code>.</p>
+  <div class="callout">
+    <p><strong>Webflow note:</strong> Mirror this with CMS/collection or page-level query params that set the initial selected state of the medication + plan buttons before the visitor interacts. Do not require a full page rebuild per variant — one LP template, four entry URLs.</p>
+  </div>
 
   <h3 id="quad-screens">A2. Screenshots</h3>
 
@@ -223,6 +259,7 @@
     </figure>
   </div>
 
+  <!-- ========== B: SIMPLIFIED ========== -->
   <h2 id="section-b">B. Simplified-alt</h2>
   <p>AltRx-style dual product-tile LP. <strong>No quad selector.</strong> Section order:</p>
   <ol>
@@ -299,6 +336,7 @@
     </figure>
   </div>
 
+  <!-- ========== C: FAQ ========== -->
   <h2 id="shared-faq">C. Shared FAQ copy (both LPs)</h2>
   <p>Heading: <strong>Common questions</strong>. Live UI is a single-open accordion; screenshots above force all answers open for content entry.</p>
   <ol>
