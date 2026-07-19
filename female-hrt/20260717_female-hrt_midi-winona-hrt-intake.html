@@ -50,7 +50,10 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
 .pill.warn { background: #fef3c7; color: #92400e; }
 .flow { background: #0f172a; color: #e2e8f0; padding: 16px 18px; border-radius: var(--border-radius); font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; line-height: 1.45; overflow-x: auto; white-space: pre; margin: 12px 0 20px; }
 .exhibit { margin: 18px 0; }
-.exhibit img { display: block; max-width: 100%; width: auto; height: auto; margin: 0 auto; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; }
+.exhibit { max-width: 420px; }
+    .exhibit.exhibit-wide { max-width: 960px; }
+    .exhibit img { display: block; width: auto; max-width: 100%; height: auto; margin: 0; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; }
+.note { font-size: 0.9rem; color: var(--color-text-light); margin: 8px 0 16px; }
 .exhibit figcaption { font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px; }
 .report-footer { background: var(--color-primary); color: #fff; padding: 28px 0; margin-top: 48px; font-size: 0.9rem; }
 .report-footer a { color: #fff; }
@@ -147,6 +150,7 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
 → (not completed) Visit scheduling + health questionnaire</div>
 
   <h2>Winona exhibits</h2>
+  <p class="note">Mobile viewport captures (390×844). Late intake steps (doctor visit → identity) omitted — prior source screenshots were corrupted (UI offset/clipped); re-crawl those steps before republishing.</p>
   <figure class="exhibit">
   <img src="assets/exhibits/winona/01-account-creation-state.png" alt="01 account creation state" loading="lazy">
     <figcaption>01 account creation state — <code>01-account-creation-state.png</code></figcaption>
@@ -167,41 +171,17 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   <img src="assets/exhibits/winona/05-sex-assigned.png" alt="05 sex assigned" loading="lazy">
     <figcaption>05 sex assigned — <code>05-sex-assigned.png</code></figcaption>
 </figure>
-<figure class="exhibit">
-  <img src="assets/exhibits/winona/06-eligible-legal-info.png" alt="06 eligible legal info" loading="lazy">
-    <figcaption>06 eligible legal info — <code>06-eligible-legal-info.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <img src="assets/exhibits/winona/07-doctor-visit.png" alt="07 doctor visit" loading="lazy">
-    <figcaption>07 doctor visit — <code>07-doctor-visit.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <img src="assets/exhibits/winona/08-allergies.png" alt="08 allergies" loading="lazy">
-    <figcaption>08 allergies — <code>08-allergies.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <img src="assets/exhibits/winona/09-previous-hrt.png" alt="09 previous hrt" loading="lazy">
-    <figcaption>09 previous hrt — <code>09-previous-hrt.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <img src="assets/exhibits/winona/10-treatment-options-pricing.png" alt="10 treatment options pricing" loading="lazy">
-    <figcaption>10 treatment options pricing — <code>10-treatment-options-pricing.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <img src="assets/exhibits/winona/11-identity-verification.png" alt="11 identity verification" loading="lazy">
-    <figcaption>11 identity verification — <code>11-identity-verification.png</code></figcaption>
-</figure>
-
-  <h2>Midi exhibits</h2>
-  <figure class="exhibit">
+<h2>Midi exhibits</h2>
+  <p class="note">Full-viewport captures (1280×900).</p>
+  <figure class="exhibit exhibit-wide">
   <img src="assets/exhibits/midi/01-hrt-landing.png" alt="01 hrt landing" loading="lazy">
     <figcaption>01 hrt landing — <code>01-hrt-landing.png</code></figcaption>
 </figure>
-<figure class="exhibit">
+<figure class="exhibit exhibit-wide">
   <img src="assets/exhibits/midi/02-create-account.png" alt="02 create account" loading="lazy">
     <figcaption>02 create account — <code>02-create-account.png</code></figcaption>
 </figure>
-<figure class="exhibit">
+<figure class="exhibit exhibit-wide">
   <img src="assets/exhibits/midi/03-create-account-form.png" alt="03 create account form" loading="lazy">
     <figcaption>03 create account form — <code>03-create-account-form.png</code></figcaption>
 </figure>
