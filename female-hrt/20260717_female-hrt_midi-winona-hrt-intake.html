@@ -49,12 +49,13 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
 .pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; background: #dcfce7; color: #166534; }
 .pill.warn { background: #fef3c7; color: #92400e; }
 .flow { background: #0f172a; color: #e2e8f0; padding: 16px 18px; border-radius: var(--border-radius); font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; line-height: 1.45; overflow-x: auto; white-space: pre; margin: 12px 0 20px; }
-.exhibit { margin: 18px 0; }
-.exhibit { max-width: 420px; }
-    .exhibit.exhibit-wide { max-width: 960px; }
-    .exhibit img { display: block; width: auto; max-width: 100%; height: auto; margin: 0; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; }
+.exhibit { margin: 18px 0; max-width: 520px; }
+    .exhibit.exhibit-wide { max-width: 100%; }
+    .exhibit a { display: inline-block; max-width: 100%; }
+    .exhibit img { display: block; width: auto; max-width: 100%; height: auto; margin: 0; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; cursor: zoom-in; }
+    .exhibit figcaption { font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px; }
+    .exhibit figcaption::after { content: " — click image to open full size"; }
 .note { font-size: 0.9rem; color: var(--color-text-light); margin: 8px 0 16px; }
-.exhibit figcaption { font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px; }
 .report-footer { background: var(--color-primary); color: #fff; padding: 28px 0; margin-top: 48px; font-size: 0.9rem; }
 .report-footer a { color: #fff; }
 </style>
@@ -152,37 +153,37 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   <h2>Winona exhibits</h2>
   <p class="note">Mobile viewport captures (390×844). Late intake steps (doctor visit → identity) omitted — prior source screenshots were corrupted (UI offset/clipped); re-crawl those steps before republishing.</p>
   <figure class="exhibit">
-  <img src="assets/exhibits/winona/01-account-creation-state.png" alt="01 account creation state" loading="lazy">
+  <a href="assets/exhibits/winona/01-account-creation-state.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/01-account-creation-state.png" alt="01 account creation state" loading="lazy"></a>
     <figcaption>01 account creation state — <code>01-account-creation-state.png</code></figcaption>
 </figure>
 <figure class="exhibit">
-  <img src="assets/exhibits/winona/02-state-california.png" alt="02 state california" loading="lazy">
+  <a href="assets/exhibits/winona/02-state-california.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/02-state-california.png" alt="02 state california" loading="lazy"></a>
     <figcaption>02 state california — <code>02-state-california.png</code></figcaption>
 </figure>
 <figure class="exhibit">
-  <img src="assets/exhibits/winona/03-email-password.png" alt="03 email password" loading="lazy">
+  <a href="assets/exhibits/winona/03-email-password.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/03-email-password.png" alt="03 email password" loading="lazy"></a>
     <figcaption>03 email password — <code>03-email-password.png</code></figcaption>
 </figure>
 <figure class="exhibit">
-  <img src="assets/exhibits/winona/04-birthday.png" alt="04 birthday" loading="lazy">
+  <a href="assets/exhibits/winona/04-birthday.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/04-birthday.png" alt="04 birthday" loading="lazy"></a>
     <figcaption>04 birthday — <code>04-birthday.png</code></figcaption>
 </figure>
 <figure class="exhibit">
-  <img src="assets/exhibits/winona/05-sex-assigned.png" alt="05 sex assigned" loading="lazy">
+  <a href="assets/exhibits/winona/05-sex-assigned.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/05-sex-assigned.png" alt="05 sex assigned" loading="lazy"></a>
     <figcaption>05 sex assigned — <code>05-sex-assigned.png</code></figcaption>
 </figure>
 <h2>Midi exhibits</h2>
   <p class="note">Full-viewport captures (1280×900).</p>
   <figure class="exhibit exhibit-wide">
-  <img src="assets/exhibits/midi/01-hrt-landing.png" alt="01 hrt landing" loading="lazy">
+  <a href="assets/exhibits/midi/01-hrt-landing.png" target="_blank" rel="noopener"><img src="assets/exhibits/midi/01-hrt-landing.png" alt="01 hrt landing" loading="lazy"></a>
     <figcaption>01 hrt landing — <code>01-hrt-landing.png</code></figcaption>
 </figure>
 <figure class="exhibit exhibit-wide">
-  <img src="assets/exhibits/midi/02-create-account.png" alt="02 create account" loading="lazy">
+  <a href="assets/exhibits/midi/02-create-account.png" target="_blank" rel="noopener"><img src="assets/exhibits/midi/02-create-account.png" alt="02 create account" loading="lazy"></a>
     <figcaption>02 create account — <code>02-create-account.png</code></figcaption>
 </figure>
 <figure class="exhibit exhibit-wide">
-  <img src="assets/exhibits/midi/03-create-account-form.png" alt="03 create account form" loading="lazy">
+  <a href="assets/exhibits/midi/03-create-account-form.png" target="_blank" rel="noopener"><img src="assets/exhibits/midi/03-create-account-form.png" alt="03 create account form" loading="lazy"></a>
     <figcaption>03 create account form — <code>03-create-account-form.png</code></figcaption>
 </figure>
 
