@@ -64,6 +64,20 @@
     .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
     .report-footer .company-name { font-weight: 700; color: #fff; }
     .disclaimer { font-size: 0.85rem; color: var(--color-text-light); margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--color-border); }
+
+    .rules { display: grid; gap: 8px; margin: 12px 0 20px; }
+    .rule { display: grid; grid-template-columns: 140px 1fr; gap: 12px; padding: 10px 14px; background: var(--color-bg-alt); border-radius: var(--border-radius); border: 1px solid var(--color-border); font-size: 0.9rem; }
+    @media (max-width: 640px) { .rule { grid-template-columns: 1fr; gap: 4px; } }
+    .rule strong { color: var(--color-primary); }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px; }
+    .chip { font-size: 0.8rem; padding: 6px 10px; background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: 6px; }
+    .chip code { background: transparent; padding: 0; }
+    .compact p { margin-bottom: 8px; }
+    .toc { columns: 2; column-gap: 24px; }
+    @media (max-width: 640px) { .toc { columns: 1; } }
+    .toc a { break-inside: avoid; }
+    h2 { margin: 32px 0 12px; }
+    h3 { margin: 22px 0 8px; }
   </style>
 </head>
 <body>
@@ -88,112 +102,62 @@
 <main class="container">
   <p class="back-link"><a href="index.html">← All Mondae reports</a></p>
 
-  <div class="callout">
-    <p><strong>Purpose:</strong> Build brief for recreating two Mondae landing-page mockups in Webflow. Screenshots show layout, expanded FAQs, and how the quad selector behaves when choices change.</p>
-    <p><strong>Pricing:</strong> Full pharmacy × dose × plan matrices are intentionally omitted — you already have that data. This brief covers interaction + UI only.</p>
-    <p><strong>Coded preview routes</strong> (local intakes app): <code>/lp/mondae/glp-1</code> · <code>/lp/mondae/simplified-alt</code></p>
+  <div class="callout compact">
+    <p><strong>Webflow build brief</strong> for two Mondae LPs. Interaction + layout only — pricing matrices not included (you already have them).</p>
+    <p>Preview: <code>/lp/mondae/glp-1</code> · <code>/lp/mondae/simplified-alt</code></p>
   </div>
 
   <div class="toc">
-    <strong>Contents</strong>
-    <a href="#section-a">A. Dual GLP-1 quad selector</a>
-    <a href="#selector-behavior">A1. Selector behavior (what each choice does)</a>
-    <a href="#query-defaults">A1b. Query-parameter defaults</a>
-    <a href="#quad-screens">A2. Screenshots</a>
-    <a href="#section-b">B. Simplified-alt</a>
-    <a href="#hero-assets">B1. Hero lifestyle assets (desktop vs mobile)</a>
-    <a href="#simplified-screens">B2. Screenshots</a>
-    <a href="#shared-faq">C. Shared FAQ copy (8 items)</a>
+    <strong>Jump to</strong>
+    <a href="#section-a">A. Quad selector LP</a>
+    <a href="#selector-behavior">→ Selector behavior</a>
+    <a href="#query-defaults">→ Deep-link URLs</a>
+    <a href="#quad-screens">→ Screenshots</a>
+    <a href="#section-b">B. Simplified-alt LP</a>
+    <a href="#hero-assets">→ Hero assets</a>
+    <a href="#simplified-screens">→ Screenshots</a>
+    <a href="#shared-faq">C. FAQ copy</a>
   </div>
 
   <!-- ========== A: QUAD ========== -->
   <h2 id="section-a">A. Dual GLP-1 quad selector</h2>
-  <p>In-hero configurator LP for compounded tirzepatide + semaglutide. Section order:</p>
-  <ol>
-    <li>Hero — headline, quad selector, primary CTA, dual-vial product image</li>
-    <li>How it works (3 steps)</li>
-    <li>Price lock chart</li>
-    <li>FAQ (“Common questions”)</li>
-    <li>Sticky / repeated CTAs</li>
-  </ol>
-  <p>Hero headline: <strong>Lock in your price for life</strong>. Subtitle: price stays locked as dose increases. CTA label: <strong>Get started</strong>.</p>
+  <p><strong>Lock in your price for life</strong> · CTA: <strong>Get started</strong></p>
+  <p>Hero (headline + selector + vials) → How it works → Price lock → FAQ → sticky CTAs</p>
 
-  <h3 id="selector-behavior">A1. Selector behavior</h3>
-  <div class="callout warn">
-    <p>The selector only updates the price summary inside the card. It does <strong>not</strong> swap the hero vial image or navigate away. CTA is separate.</p>
+  <h3 id="selector-behavior">Selector behavior</h3>
+  <p class="note" style="margin:0 0 12px;font-size:0.9rem;color:var(--color-text-light)">Updates price summary only — does not change hero image or navigate. Default: tirz · No · Cheapest · 1 mo.</p>
+  <div class="rules">
+    <div class="rule"><strong>Medication</strong><span>tirzepatide / semaglutide → swaps dose list; resets dose + pharmacy to starter / Boudreaux</span></div>
+    <div class="rule"><strong>Currently taking?</strong><span><strong>No</strong> (default): hide dose grid, price as Starter. <strong>Yes</strong>: show dose grid + “I don’t know”</span></div>
+    <div class="rule"><strong>Starting dose</strong><span>Only if Yes. Selected dose sets price. “I don’t know” → starter / “From $X”</span></div>
+    <div class="rule"><strong>Preference</strong><span><strong>Cheapest</strong>: auto lowest pharmacy. <strong>Choose pharmacy</strong>: show Boudreaux · Rush · Strive · Align · RxCompound + additive</span></div>
+    <div class="rule"><strong>Plan</strong><span>1 or 3 month → refresh $/mo and “price locked at $X/month”</span></div>
   </div>
+
+  <h3 id="query-defaults">Deep-link URLs (Ads)</h3>
+  <div class="chips">
+    <span class="chip">Product: <code>?tirz</code> or <code>?sema</code></span>
+    <span class="chip">Plan: <code>plan=1</code> | <code>plan=3</code></span>
+    <span class="chip">Dose: <code>dose=</code> only if <em>above</em> lowest</span>
+  </div>
+  <ul>
+    <li>Lowest doses (tirz <code>1.5mg</code>, sema <code>.2mg</code>) → omit <code>dose=</code> → Currently taking = <strong>No</strong></li>
+    <li>Higher <code>dose=</code> → Currently taking = <strong>Yes</strong> + that dose</li>
+    <li>No URL for “I don’t know”. Preference always starts Cheapest.</li>
+    <li>Same query shape in Webflow + React — one template, not one page per variant.</li>
+  </ul>
   <table>
     <thead>
-      <tr><th>Control</th><th>Options</th><th>What happens in the UI</th></tr>
+      <tr><th>URL</th><th>Loads as</th></tr>
     </thead>
     <tbody>
-      <tr>
-        <td><strong>Medication</strong></td>
-        <td>tirzepatide · semaglutide</td>
-        <td>Swaps the dose list for that drug. Resets starting dose to the drug’s starter dose and pharmacy selection back to Boudreaux.</td>
-      </tr>
-      <tr>
-        <td><strong>Currently taking a GLP-1?</strong></td>
-        <td>Yes · No</td>
-        <td><strong>No</strong> (default): dose grid hidden; pricing uses starter dose (summary shows “Starter”). <strong>Yes</strong>: “Select starting dose” grid appears (dose buttons + “I don’t know”).</td>
-      </tr>
-      <tr>
-        <td><strong>Starting dose</strong> (only if Yes)</td>
-        <td>Drug-specific mg doses + “I don’t know”</td>
-        <td>Selected dose drives the price. “I don’t know” prices from starter and can show a “From $X” style summary.</td>
-      </tr>
-      <tr>
-        <td><strong>Which do you care more about</strong></td>
-        <td>Cheapest price · Choose my pharmacy</td>
-        <td><strong>Cheapest</strong>: auto-picks lowest pharmacy for the current dose + plan; summary shows “Cheapest”. <strong>Choose my pharmacy</strong>: reveals pharmacy button row (Boudreaux, Rush, Strive, Align, RxCompound) plus an additive line for the selected pharmacy.</td>
-      </tr>
-      <tr>
-        <td><strong>Plan length</strong></td>
-        <td>1 month · 3 month</td>
-        <td>Recalculates displayed <strong>$/month</strong> (plan total ÷ months) and the “price locked at $X/month” sentence.</td>
-      </tr>
+      <tr><td><code>/lp/mondae/glp-1</code></td><td>tirz · No · 1 mo</td></tr>
+      <tr><td><code>?tirz&amp;plan=3</code></td><td>tirz · No · 3 mo</td></tr>
+      <tr><td><code>?sema&amp;plan=1</code></td><td>sema · No · 1 mo</td></tr>
+      <tr><td><code>?sema&amp;dose=0.6mg&amp;plan=3</code></td><td>sema · Yes · 0.6mg · 3 mo</td></tr>
+      <tr><td><code>?tirz&amp;dose=6mg&amp;plan=1</code></td><td>tirz · Yes · 6mg · 1 mo</td></tr>
     </tbody>
   </table>
-  <p>Default state on load: tirzepatide · No · Cheapest · 1 month · Boudreaux (as cheapest path).</p>
-
-  <h3 id="query-defaults">A1b. Query-parameter defaults (deep links)</h3>
-  <p>Ads / SMS can pre-select medication, plan, and (optionally) a higher starting dose via URL. Product is a <strong>bare flag</strong> (<code>?tirz</code> or <code>?sema</code> — no value). Plan uses <code>plan=1</code> or <code>plan=3</code>. Dose uses <code>dose=</code> only when the dose is <strong>above the lowest</strong> for that product (tirz lowest = <code>1.5mg</code>, sema lowest = <code>.2mg</code>). A higher <code>dose=</code> flips <strong>Currently taking</strong> to Yes and selects that dose; omitting <code>dose=</code> (or linking the lowest dose) leaves Currently taking = <strong>No</strong>. There is <strong>no URL</strong> for “I don’t know”. Preference stays <strong>Cheapest</strong>. Invalid params fall back to the page default.</p>
-  <table>
-    <thead>
-      <tr><th>Intent</th><th>URL (use in Ads)</th><th>Selected on load</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Default</strong></td>
-        <td><code>/lp/mondae/glp-1</code></td>
-        <td>tirzepatide · Currently taking No · 1 month</td>
-      </tr>
-      <tr>
-        <td><strong>3-month tirz</strong> (starter)</td>
-        <td><code>/lp/mondae/glp-1?tirz&amp;plan=3</code></td>
-        <td>tirzepatide · No · 3 month</td>
-      </tr>
-      <tr>
-        <td><strong>1-month sema</strong> (starter)</td>
-        <td><code>/lp/mondae/glp-1?sema&amp;plan=1</code></td>
-        <td>semaglutide · No · 1 month</td>
-      </tr>
-      <tr>
-        <td><strong>3-month sema · 0.6mg</strong></td>
-        <td><code>/lp/mondae/glp-1?sema&amp;dose=0.6mg&amp;plan=3</code></td>
-        <td>semaglutide · Yes · 0.6mg · 3 month</td>
-      </tr>
-      <tr>
-        <td><strong>Tirz · 6mg · 1 month</strong></td>
-        <td><code>/lp/mondae/glp-1?tirz&amp;dose=6mg&amp;plan=1</code></td>
-        <td>tirzepatide · Yes · 6mg · 1 month</td>
-      </tr>
-    </tbody>
-  </table>
-  <p><strong>Accepted values:</strong> product flags = <code>tirz</code> · <code>sema</code> (also <code>tirzepatide</code> / <code>semaglutide</code>). <code>plan</code> = <code>1</code>|<code>1-month</code>|<code>1mo</code> · <code>3</code>|<code>3-month</code>|<code>3mo</code>. <code>dose</code> = catalog dose with optional <code>mg</code> suffix (e.g. <code>0.6mg</code>, <code>6</code>, <code>.6mg</code>) — <strong>omit for lowest dose</strong>; do not deep-link “I don’t know”.</p>
-  <div class="callout">
-    <p><strong>Webflow note:</strong> Mirror the same <code>tirz</code>/<code>sema</code> + <code>plan</code> + <code>dose</code> query shape so React and Webflow entry URLs stay identical. One LP template — do not rebuild a separate page per variant.</p>
-  </div>
 
   <h3 id="quad-screens">A2. Screenshots</h3>
 
@@ -205,19 +169,19 @@
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-desktop-selector-default.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-default.png" alt="Selector default state" loading="lazy"></a>
-      <figcaption>Selector default — No / Cheapest / 1 month (dose grid hidden)</figcaption>
+      <figcaption>Default — No / Cheapest / 1 mo</figcaption>
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-desktop-selector-dose-grid.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-dose-grid.png" alt="Selector with dose grid" loading="lazy"></a>
-      <figcaption>Currently taking = Yes → dose grid + “I don’t know”</figcaption>
+      <figcaption>Yes → dose grid</figcaption>
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-desktop-selector-choose-pharmacy.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-choose-pharmacy.png" alt="Selector choose pharmacy" loading="lazy"></a>
-      <figcaption>Choose my pharmacy → pharmacy row + additive line</figcaption>
+      <figcaption>Choose pharmacy → row + additive</figcaption>
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-desktop-selector-semaglutide.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-semaglutide.png" alt="Selector on semaglutide" loading="lazy"></a>
-      <figcaption>Medication = semaglutide — dose set changes</figcaption>
+      <figcaption>Semaglutide selected</figcaption>
     </figure>
   </div>
 
@@ -233,7 +197,7 @@
     </figure>
     <figure class="shot full">
       <a href="assets/screenshots/quad-desktop-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-faq-expanded.png" alt="FAQs expanded" loading="lazy"></a>
-      <figcaption>FAQ — all 8 items expanded for Webflow content reference (live UI is single-open accordion)</figcaption>
+      <figcaption>FAQ — all 8 expanded (paste reference)</figcaption>
     </figure>
     <figure class="shot full">
       <a href="assets/screenshots/quad-desktop-full.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-full.png" alt="Full page desktop" loading="lazy"></a>
@@ -253,7 +217,7 @@
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-mobile-selector-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-selector-expanded.png" alt="Mobile selector expanded" loading="lazy"></a>
-      <figcaption>Mobile selector — Yes + Choose pharmacy expanded</figcaption>
+      <figcaption>Mobile — Yes + pharmacy</figcaption>
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-mobile-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-mobile-faq-expanded.png" alt="Mobile FAQ expanded" loading="lazy"></a>
@@ -267,34 +231,25 @@
 
   <!-- ========== B: SIMPLIFIED ========== -->
   <h2 id="section-b">B. Simplified-alt</h2>
-  <p>AltRx-style dual product-tile LP. <strong>No quad selector.</strong> Section order:</p>
-  <ol>
-    <li>Lifestyle hero + promo card (headline with gold italic emphasis on “locks your price”)</li>
-    <li>Product tiles — tirzepatide left / semaglutide right (stacked on mobile, tirz on top)</li>
-    <li>How it works (same as quad LP)</li>
-    <li>Price lock chart (same)</li>
-    <li>FAQ (same 8 items)</li>
-  </ol>
-  <p>Primary CTA label: <strong>Get my plan</strong>. Reassurance under CTA: not charged until provider approves.</p>
+  <p>Dual product tiles · <strong>no selector</strong> · CTA: <strong>Get my plan</strong> (not charged until approved)</p>
+  <p>Lifestyle hero → Product tiles (tirz left / sema right; mobile: tirz on top) → How it works → Price lock → FAQ <em>(same as A)</em></p>
 
-  <h3 id="hero-assets">B1. Hero lifestyle assets — desktop vs mobile</h3>
-  <p>Use these two files in Webflow. Background is a flat peach/tan — match section background to the image edge for a seamless bleed.</p>
+  <h3 id="hero-assets">Hero lifestyle assets</h3>
+  <p>Match section background to the peach/tan image edge for a seamless bleed.</p>
   <div class="asset-row">
     <div class="asset-card">
       <span class="badge mobile">Mobile · 1024×1024</span>
       <a href="assets/hero-lifestyle-mobile-1024.png" target="_blank" rel="noopener">
         <img src="assets/hero-lifestyle-mobile-1024.png" alt="Hero lifestyle mobile square">
       </a>
-      <p><strong>File:</strong> <code>assets/hero-lifestyle-mobile-1024.png</code></p>
-      <p>Square crop for mobile / tablet — full-width under the ATF copy stack.</p>
+      <p><code>assets/hero-lifestyle-mobile-1024.png</code> — square, full-width under copy</p>
     </div>
     <div class="asset-card">
       <span class="badge desktop">Desktop · 1024×681</span>
       <a href="assets/hero-lifestyle-desktop-1024x681.png" target="_blank" rel="noopener">
         <img src="assets/hero-lifestyle-desktop-1024x681.png" alt="Hero lifestyle desktop landscape">
       </a>
-      <p><strong>File:</strong> <code>assets/hero-lifestyle-desktop-1024x681.png</code></p>
-      <p>Landscape for desktop — right-column half-bleed beside the headline / CTA.</p>
+      <p><code>assets/hero-lifestyle-desktop-1024x681.png</code> — landscape, right half-bleed</p>
     </div>
   </div>
 
@@ -326,7 +281,7 @@
     </figure>
     <figure class="shot full">
       <a href="assets/screenshots/simplified-desktop-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-desktop-faq-expanded.png" alt="Simplified FAQ expanded" loading="lazy"></a>
-      <figcaption>FAQ expanded (desktop) — same 8 items as quad LP</figcaption>
+      <figcaption>FAQ expanded (desktop)</figcaption>
     </figure>
     <figure class="shot full">
       <a href="assets/screenshots/simplified-mobile-faq-expanded.png" target="_blank" rel="noopener"><img src="assets/screenshots/simplified-mobile-faq-expanded.png" alt="Simplified mobile FAQ" loading="lazy"></a>
@@ -343,8 +298,8 @@
   </div>
 
   <!-- ========== C: FAQ ========== -->
-  <h2 id="shared-faq">C. Shared FAQ copy (both LPs)</h2>
-  <p>Heading: <strong>Common questions</strong>. Live UI is a single-open accordion; screenshots above force all answers open for content entry.</p>
+  <h2 id="shared-faq">C. FAQ copy (both LPs)</h2>
+  <p>Heading: <strong>Common questions</strong>. Accordion is single-open live; screenshots show all answers for easy paste-in.</p>
   <ol>
     <li>
       <strong>How does pricing work, and what's included?</strong><br>
