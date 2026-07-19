@@ -44,7 +44,8 @@
     .shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 24px; }
     @media (max-width: 720px) { .shot-grid { grid-template-columns: 1fr; } }
     .shot { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); overflow: hidden; }
-    .shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--color-border); }
+    /* Do not stretch element crops — show at native size, centered */
+    .shot img { display: block; max-width: 100%; width: auto; height: auto; margin: 0 auto; border-bottom: 1px solid var(--color-border); }
     .shot figcaption { font-size: 0.82rem; color: var(--color-text-light); padding: 10px 12px; }
     .shot.full { grid-column: 1 / -1; }
     .asset-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 24px; }
@@ -156,37 +157,42 @@
   <p>Default state on load: tirzepatide · No · Cheapest · 1 month · Boudreaux (as cheapest path).</p>
 
   <h3 id="query-defaults">A1b. Query-parameter defaults (deep links)</h3>
-  <p>Ads / SMS can pre-select medication + plan length via URL. <strong>Prefer <code>prod=</code> + <code>plan=</code> in Google Ads Final URLs</strong> (neutral wording). The React LP also accepts <code>drug=</code> / <code>product=</code> as aliases. Other controls stay at the normal defaults (Currently taking = <strong>No</strong>, preference = <strong>Cheapest</strong>). Invalid or missing params fall back to the page default.</p>
+  <p>Ads / SMS can pre-select medication, plan, and (optionally) a higher starting dose via URL. Product is a <strong>bare flag</strong> (<code>?tirz</code> or <code>?sema</code> — no value). Plan uses <code>plan=1</code> or <code>plan=3</code>. Dose uses <code>dose=</code> only when the dose is <strong>above the lowest</strong> for that product (tirz lowest = <code>1.5mg</code>, sema lowest = <code>.2mg</code>). A higher <code>dose=</code> flips <strong>Currently taking</strong> to Yes and selects that dose; omitting <code>dose=</code> (or linking the lowest dose) leaves Currently taking = <strong>No</strong>. There is <strong>no URL</strong> for “I don’t know”. Preference stays <strong>Cheapest</strong>. Invalid params fall back to the page default.</p>
   <table>
     <thead>
       <tr><th>Intent</th><th>URL (use in Ads)</th><th>Selected on load</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Default</strong> (current)</td>
+        <td><strong>Default</strong></td>
         <td><code>/lp/mondae/glp-1</code></td>
-        <td>tirzepatide · 1 month</td>
+        <td>tirzepatide · Currently taking No · 1 month</td>
       </tr>
       <tr>
-        <td><strong>3-month tirz</strong></td>
-        <td><code>/lp/mondae/glp-1?prod=tirzepatide&amp;plan=3</code></td>
-        <td>tirzepatide · 3 month</td>
+        <td><strong>3-month tirz</strong> (starter)</td>
+        <td><code>/lp/mondae/glp-1?tirz&amp;plan=3</code></td>
+        <td>tirzepatide · No · 3 month</td>
       </tr>
       <tr>
-        <td><strong>1-month sema</strong></td>
-        <td><code>/lp/mondae/glp-1?prod=semaglutide&amp;plan=1</code></td>
-        <td>semaglutide · 1 month</td>
+        <td><strong>1-month sema</strong> (starter)</td>
+        <td><code>/lp/mondae/glp-1?sema&amp;plan=1</code></td>
+        <td>semaglutide · No · 1 month</td>
       </tr>
       <tr>
-        <td><strong>3-month sema</strong></td>
-        <td><code>/lp/mondae/glp-1?prod=semaglutide&amp;plan=3</code></td>
-        <td>semaglutide · 3 month</td>
+        <td><strong>3-month sema · 0.6mg</strong></td>
+        <td><code>/lp/mondae/glp-1?sema&amp;dose=0.6mg&amp;plan=3</code></td>
+        <td>semaglutide · Yes · 0.6mg · 3 month</td>
+      </tr>
+      <tr>
+        <td><strong>Tirz · 6mg · 1 month</strong></td>
+        <td><code>/lp/mondae/glp-1?tirz&amp;dose=6mg&amp;plan=1</code></td>
+        <td>tirzepatide · Yes · 6mg · 1 month</td>
       </tr>
     </tbody>
   </table>
-  <p><strong>Accepted values:</strong> <code>prod</code> (preferred) / <code>product</code> / <code>drug</code> = <code>tirzepatide</code>|<code>tirz</code> · <code>semaglutide</code>|<code>sema</code>. <code>plan</code> = <code>1</code>|<code>1-month</code>|<code>1mo</code> · <code>3</code>|<code>3-month</code>|<code>3mo</code>.</p>
+  <p><strong>Accepted values:</strong> product flags = <code>tirz</code> · <code>sema</code> (also <code>tirzepatide</code> / <code>semaglutide</code>). <code>plan</code> = <code>1</code>|<code>1-month</code>|<code>1mo</code> · <code>3</code>|<code>3-month</code>|<code>3mo</code>. <code>dose</code> = catalog dose with optional <code>mg</code> suffix (e.g. <code>0.6mg</code>, <code>6</code>, <code>.6mg</code>) — <strong>omit for lowest dose</strong>; do not deep-link “I don’t know”.</p>
   <div class="callout">
-    <p><strong>Webflow note:</strong> Mirror the same <code>prod</code> + <code>plan</code> query keys so React and Webflow entry URLs stay identical. One LP template, four entry URLs — do not rebuild a separate page per variant.</p>
+    <p><strong>Webflow note:</strong> Mirror the same <code>tirz</code>/<code>sema</code> + <code>plan</code> + <code>dose</code> query shape so React and Webflow entry URLs stay identical. One LP template — do not rebuild a separate page per variant.</p>
   </div>
 
   <h3 id="quad-screens">A2. Screenshots</h3>
