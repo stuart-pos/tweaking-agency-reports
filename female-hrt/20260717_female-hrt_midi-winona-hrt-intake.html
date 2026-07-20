@@ -9,7 +9,6 @@
 <style>
 :root {
   --color-primary: #1a1a2e;
-  --color-secondary: #16213e;
   --color-accent: #e94560;
   --color-bg: #ffffff;
   --color-bg-alt: #f8f9fa;
@@ -45,17 +44,12 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
 @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
 .card { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 18px; }
-.card h3 { margin-top: 0; border: none; padding: 0; }
-.pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; background: #dcfce7; color: #166534; }
-.pill.warn { background: #fef3c7; color: #92400e; }
-.flow { background: #0f172a; color: #e2e8f0; padding: 16px 18px; border-radius: var(--border-radius); font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; line-height: 1.45; overflow-x: auto; white-space: pre; margin: 12px 0 20px; }
-.exhibit { margin: 18px 0; max-width: 520px; }
-    .exhibit.exhibit-wide { max-width: 100%; }
-    .exhibit a { display: inline-block; max-width: 100%; }
-    .exhibit img { display: block; width: auto; max-width: 100%; height: auto; margin: 0; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; cursor: zoom-in; }
-    .exhibit figcaption { font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px; }
-    .exhibit figcaption::after { content: " — click image to open full size"; }
-.note { font-size: 0.9rem; color: var(--color-text-light); margin: 8px 0 16px; }
+.card h3 { margin-top: 0; }
+.flow { background: #0f172a; color: #e2e8f0; padding: 16px 18px; border-radius: var(--border-radius); font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; line-height: 1.45; overflow-x: auto; white-space: pre-wrap; margin: 12px 0 20px; }
+.exhibit { margin: 18px 0; }
+.exhibit img { width: 100%; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; }
+.exhibit figcaption { font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px; }
+.note { font-size: 0.9rem; color: var(--color-text-light); }
 .report-footer { background: var(--color-primary); color: #fff; padding: 28px 0; margin-top: 48px; font-size: 0.9rem; }
 .report-footer a { color: #fff; }
 </style>
@@ -63,17 +57,15 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
 <body>
 <header class="report-header"><div class="container">
   <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/logo.svg" class="report-logo" alt="Tweaking Agency logo">
-  <div>
-    <h1>Tweaking Agency</h1>
-  </div>
+  <div><h1>Tweaking Agency</h1></div>
 </div></header>
 
 <section class="report-meta"><div class="container">
   <h2>Midi + Winona female HRT intake teardown</h2>
   <div class="meta-details">
     <span>Client: Female HRT (TBD)</span>
-    <span>Date: 2026-07-17</span>
-    <span>Stop: Identity verification (payment not required)</span>
+    <span>Updated: 2026-07-20</span>
+    <span>Stop: Before payment</span>
   </div>
 </div></section>
 
@@ -81,16 +73,16 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   <h2>Executive verdict</h2>
   <div class="exec">
     <p><strong>Winona:</strong> Female HRT is <em>primarily</em> what the site offers — peri/menopause bioidentical HRT is the core product and the entire intake is built around prescribing it.</p>
-    <p><strong>Midi:</strong> Female HRT is a <em>flagship</em> offer inside a broader midlife women’s clinic (also GLP-1, cortisol support, general menopause care). Model is insurance-first clinician visits, not a cash HRT subscription cart.</p>
+    <p><strong>Midi:</strong> Female HRT is a <em>flagship</em> offer inside a broader midlife women’s clinic (also weight management / GLP-1, AgeWell, general concerns). Model is insurance-first clinician visits, not a cash HRT subscription cart.</p>
   </div>
   <div class="grid">
     <div class="card">
-      <h3>Winona <span class="pill">HRT-first</span></h3>
+      <h3>Winona HRT-first</h3>
       <p>Async quiz → recommended Rx plan with prices → identity gate. Cash / HSA-FSA; no insurance billing.</p>
     </div>
     <div class="card">
-      <h3>Midi <span class="pill warn">HRT + more</span></h3>
-      <p>HRT LP → Book now → create-account identity form → (later) visit + questionnaire. Visit fees + pharmacy Rx.</p>
+      <h3>Midi HRT + more</h3>
+      <p>Care-path quiz → account → contact confirm → insurance vs self-pay → (later) visit booking. Visit fees + pharmacy Rx.</p>
     </div>
   </div>
 
@@ -101,8 +93,9 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
       <tr><td>Name</td><td>Jane Demo</td></tr>
       <tr><td>DOB / sex</td><td>03/15/1978 · Female</td></tr>
       <tr><td>State</td><td>California (San Francisco 94102)</td></tr>
-      <tr><td>Symptoms</td><td>Hot flashes, night sweats, sleep disruption, brain fog</td></tr>
+      <tr><td>Symptoms / goals</td><td>Hot flashes, night sweats, sleep disruption, brain fog</td></tr>
       <tr><td>Winona preference</td><td>Body cream</td></tr>
+      <tr><td>Midi path</td><td>Menopause/perimenopause → peri → self-pay choice (stopped)</td></tr>
     </tbody>
   </table>
 
@@ -119,12 +112,8 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
       <tr><td>Estrogen tablets</td><td>From $54/mo</td></tr>
       <tr><td>Progesterone capsules</td><td>From $39/mo</td></tr>
       <tr><td>DHEA</td><td>From $27 / 3-month supply</td></tr>
-      <tr><td>Forms in intake</td><td>Body cream · bi-weekly patch · daily pills · no preference</td></tr>
-      <tr><td>Hormones by form</td><td>Estrogen, progesterone, E+P, DHEA (cream / vaginal / pill / patch)</td></tr>
-      <tr><td>Adjacent products</td><td>Estriol face cream $150/3mo · sildenafil cream $79 · minoxidil $150/3mo · deep sleep $119–$269</td></tr>
     </tbody>
   </table>
-
   <h3>Midi</h3>
   <table>
     <thead><tr><th>Item</th><th>Price / detail</th></tr></thead>
@@ -134,69 +123,106 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
       <tr><td>With insurance</td><td>Copay/deductible; Midi cites ~$50 avg OOP; PPO; not Medicaid/Medi-Cal</td></tr>
       <tr><td>HRT forms</td><td>Pill, patch, vaginal ring, topical cream/gel (FDA-approved bioidentical)</td></tr>
       <tr><td>Medications</td><td>Filled at patient’s pharmacy (separate from visit fee); labs separate</td></tr>
-      <tr><td>Testosterone (select states)</td><td>Compounded cream — third-party indexes cite from ~$100 / 90 days</td></tr>
       <tr><td>Membership</td><td>None — pay per visit</td></tr>
     </tbody>
   </table>
 
   <h2>Flowcharts</h2>
   <h3>Winona</h3>
-  <div class="flow">State+terms → Account → Birthday → Sex(F) → Legal name/phone
-→ Symptoms → Clinical history (mostly No) → Body cream preference
-→ Meds/questions/vitals → Treatment plan + prices → Identity verification STOP</div>
+  <div class="flow">State+terms → Account → Birthday → Sex(F) → Legal name/phone → Symptoms → Clinical history → Body cream preference → Meds/questions/vitals → Treatment plan + prices → Identity verification STOP</div>
+  <h3>Midi (completed through payment-type)</h3>
+  <div class="flow">/hrt LP + Self-Pay ($250/$150)
+→ Care path: Menopause or perimenopause
+→ Health goals (multi-select: hot flashes, brain fog, sleep…)
+→ Primary support goal (first 30-min visit focus)
+→ Menopause journey (peri / menopause / not sure)
+→ Create account (PII + SMS/privacy consent; NANP phone validation)
+→ Confirm email / mobile (OTP login hint)
+→ Choose payment type: insurance vs self-pay STOP
+→ (not done) visit booking / payment / clinician questionnaire</div>
 
-  <h3>Midi</h3>
-  <div class="flow">/hrt LP → Self-Pay ($250/$150) → Book now
-→ Create account (identity PII) STOP
-→ (not completed) Visit scheduling + health questionnaire</div>
+  <h2>Midi exhibits</h2>
+  <p class="note">Full path walked 2026-07-20. Stopped on <code>/registration/choose-payment-type</code> before payment.</p>
+
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-01-hrt-landing.png" alt="Midi HRT landing page">
+    <figcaption>01 — HRT landing (<code>joinmidi.com/hrt</code>)</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-02-selfpay-pricing.png" alt="Midi self-pay pricing $250 / $150">
+    <figcaption>02 — Self-Pay tab: initial $250 · continued care $150</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-03-care-path.png" alt="Midi care path main reason for visit">
+    <figcaption>03 — Care path: main reason for visit (Menopause / Weight / AgeWell / General / Not sure)</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-04-health-goals.png" alt="Midi health goals multi-select">
+    <figcaption>04 — Health goals multi-select (“What health goals are top of mind?”)</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-05-primary-goal.png" alt="Midi primary support goal">
+    <figcaption>05 — Primary support goal for first 30-minute visit</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-06-menopause-journey.png" alt="Midi menopause journey stage">
+    <figcaption>06 — Menopause journey stage (menopause / peri / not sure)</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-07-create-account.png" alt="Midi create account form filled">
+    <figcaption>07 — Create account (identity PII). Note: fictional <code>555</code> phones fail NANP validation.</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-08-confirm-email.png" alt="Midi confirm email and phone">
+    <figcaption>08 — Confirm email / mobile for OTP login</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-09-choose-payment-type-STOP.png" alt="Midi choose payment type insurance vs self-pay STOP">
+    <figcaption>09 — <strong>STOP</strong> Choose payment type (insurance vs self-pay). Medicare/Medicaid notes shown. Payment not entered.</figcaption>
+  </figure>
 
   <h2>Winona exhibits</h2>
-  <p class="note">Mobile viewport captures (390×844). Late intake steps (doctor visit → identity) omitted — prior source screenshots were corrupted (UI offset/clipped); re-crawl those steps before republishing.</p>
+  <p class="note">Mobile viewport captures. Stopped at identity verification (SSN last-4 or government ID).</p>
   <figure class="exhibit">
-  <a href="assets/exhibits/winona/01-account-creation-state.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/01-account-creation-state.png" alt="01 account creation state" loading="lazy"></a>
-    <figcaption>01 account creation state — <code>01-account-creation-state.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <a href="assets/exhibits/winona/02-state-california.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/02-state-california.png" alt="02 state california" loading="lazy"></a>
-    <figcaption>02 state california — <code>02-state-california.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <a href="assets/exhibits/winona/03-email-password.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/03-email-password.png" alt="03 email password" loading="lazy"></a>
-    <figcaption>03 email password — <code>03-email-password.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <a href="assets/exhibits/winona/04-birthday.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/04-birthday.png" alt="04 birthday" loading="lazy"></a>
-    <figcaption>04 birthday — <code>04-birthday.png</code></figcaption>
-</figure>
-<figure class="exhibit">
-  <a href="assets/exhibits/winona/05-sex-assigned.png" target="_blank" rel="noopener"><img src="assets/exhibits/winona/05-sex-assigned.png" alt="05 sex assigned" loading="lazy"></a>
-    <figcaption>05 sex assigned — <code>05-sex-assigned.png</code></figcaption>
-</figure>
-<h2>Midi exhibits</h2>
-  <p class="note">Full-viewport captures (1280×900).</p>
-  <figure class="exhibit exhibit-wide">
-  <a href="assets/exhibits/midi/01-hrt-landing.png" target="_blank" rel="noopener"><img src="assets/exhibits/midi/01-hrt-landing.png" alt="01 hrt landing" loading="lazy"></a>
-    <figcaption>01 hrt landing — <code>01-hrt-landing.png</code></figcaption>
-</figure>
-<figure class="exhibit exhibit-wide">
-  <a href="assets/exhibits/midi/02-create-account.png" target="_blank" rel="noopener"><img src="assets/exhibits/midi/02-create-account.png" alt="02 create account" loading="lazy"></a>
-    <figcaption>02 create account — <code>02-create-account.png</code></figcaption>
-</figure>
-<figure class="exhibit exhibit-wide">
-  <a href="assets/exhibits/midi/03-create-account-form.png" target="_blank" rel="noopener"><img src="assets/exhibits/midi/03-create-account-form.png" alt="03 create account form" loading="lazy"></a>
-    <figcaption>03 create account form — <code>03-create-account-form.png</code></figcaption>
-</figure>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-01-account-creation-state.png" alt="Winona account creation state">
+    <figcaption>01 — Account / state eligibility</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-02-state-california.png" alt="Winona California state">
+    <figcaption>02 — State: California</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-03-email-password.png" alt="Winona email password">
+    <figcaption>03 — Email / password</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-04-birthday.png" alt="Winona birthday">
+    <figcaption>04 — Birthday</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-05-sex-assigned.png" alt="Winona sex assigned">
+    <figcaption>05 — Sex assigned at birth</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-10-treatment-options-pricing.png" alt="Winona treatment options pricing">
+    <figcaption>10 — Treatment plan + pricing</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-11-identity-verification.png" alt="Winona identity verification STOP">
+    <figcaption>11 — Identity verification STOP</figcaption>
+  </figure>
 
   <h2>Blockers / notes</h2>
   <ul>
-    <li><strong>Winona:</strong> Stopped at identity verification (SSN last-4 or government ID upload). Payment not pursued per updated scope.</li>
-    <li><strong>Midi:</strong> Captured create-account identity form; address autocomplete made full account submission brittle. Sufficient for identity-depth comparison.</li>
+    <li><strong>Winona:</strong> Stopped at identity verification (SSN last-4 or government ID upload). Payment not pursued.</li>
+    <li><strong>Midi:</strong> Completed care path through <code>/registration/choose-payment-type</code>. Stopped before payment / visit booking.</li>
+    <li><strong>Midi phone validation:</strong> Numbers using <code>555</code> exchanges are rejected (“must follow North American Numbering Plan”).</li>
     <li>Folder slug <code>female-hrt</code> is temporary until the real client name is known.</li>
   </ul>
 </main>
 
 <footer class="report-footer"><div class="container">
-  Tweaking Agency · <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a> · <a href="https://tweaking.agency">tweaking.agency</a>
+  Tweaking Agency · <a href="mailto:stuart@tweaking.agency">stuart@tweaking.agency</a> · tweaking.agency
 </div></footer>
 </body>
 </html>
