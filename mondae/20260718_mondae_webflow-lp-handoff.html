@@ -125,7 +125,7 @@
   <p>Hero (headline + selector + vials) → How it works → Price lock → FAQ → sticky CTAs</p>
 
   <h3 id="selector-behavior">Selector behavior</h3>
-  <p class="note" style="margin:0 0 12px;font-size:0.9rem;color:var(--color-text-light)">Updates price summary only — does not change hero image or navigate. Default: tirz · No · Cheapest · 1 mo.</p>
+  <p class="note" style="margin:0 0 12px;font-size:0.9rem;color:var(--color-text-light)">Updates price summary only — does not change hero image or navigate. Default: <strong>sema</strong> · No · Cheapest · 1 mo.</p>
   <div class="rules">
     <div class="rule"><strong>Medication</strong><span>tirzepatide / semaglutide → swaps dose list; resets dose + pharmacy to starter / Boudreaux</span></div>
     <div class="rule"><strong>Currently taking?</strong><span><strong>No</strong> (default): hide dose grid, price as Starter. <strong>Yes</strong>: show dose grid + “I don’t know”</span></div>
@@ -151,13 +151,13 @@
       <tr><th>URL</th><th>Loads as</th></tr>
     </thead>
     <tbody>
-      <tr><td><code>/lp/mondae/glp-1</code></td><td>tirz · No · 1 mo</td></tr>
+      <tr><td><code>/lp/mondae/glp-1</code></td><td>sema · No · 1 mo <em>(default)</em></td></tr>
+      <tr><td><code>?sema&amp;plan=3</code></td><td>sema · No · 3 mo</td></tr>
+      <tr><td><code>?tirz&amp;plan=1</code></td><td>tirz · No · 1 mo</td></tr>
       <tr><td><code>?tirz&amp;plan=3</code></td><td>tirz · No · 3 mo</td></tr>
-      <tr><td><code>?sema&amp;plan=1</code></td><td>sema · No · 1 mo</td></tr>
-      <tr><td><code>?sema&amp;dose=0.6mg&amp;plan=3</code></td><td>sema · Yes · 0.6mg · 3 mo</td></tr>
-      <tr><td><code>?tirz&amp;dose=6mg&amp;plan=1</code></td><td>tirz · Yes · 6mg · 1 mo</td></tr>
     </tbody>
   </table>
+  <p style="font-size:0.9rem;color:var(--color-text-light)">Optional higher <code>dose=</code> still works (e.g. <code>?sema&amp;dose=0.6mg&amp;plan=3</code> → Yes · 0.6mg).</p>
 
   <h3 id="quad-screens">A2. Screenshots</h3>
 
