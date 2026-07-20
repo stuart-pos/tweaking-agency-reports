@@ -122,8 +122,11 @@
   <!-- ========== A: QUAD ========== -->
   <h2 id="section-a">A. Dual GLP-1 quad selector</h2>
   <p><strong>Lock in your price for life</strong> · CTA: <strong>Get started</strong></p>
-  <p>Hero → How it works → Price lock → FAQ → sticky CTAs. Desktop hero: <strong>vials left</strong> · selector right. Mobile: selector first, vials below.</p>
+  <p>Hero → How it works → Price lock → FAQ → sticky CTAs.</p>
   <div class="rules">
+    <div class="rule"><strong>Desktop layout</strong><span>Two columns in a ~max 1150px shell: <strong>vials left (~40%)</strong> · <strong>selector right (~60%)</strong>. Do not use equal 50/50 — selector is wider so the image reads smaller.</span></div>
+    <div class="rule"><strong>Desktop sticky image</strong><span>Vials column is <strong>position: sticky</strong> (top ≈ under the header, ~96px). As the user scrolls the taller selector / CTA / footnotes, the product image stays pinned in view until the hero section ends — same behavior as the React preview.</span></div>
+    <div class="rule"><strong>Mobile layout</strong><span>Single column: selector + CTA first, vials image below. No sticky image on mobile.</span></div>
     <div class="rule"><strong>Subhead</strong><span>Full column width (don’t balance/compress the line break under the H1)</span></div>
     <div class="rule"><strong>Trust bullets</strong><span>Under Get started: <strong>Pharmacy selection</strong> · No membership fees · 1:1 Physician guidance</span></div>
     <div class="rule"><strong>Hero footnotes</strong><span>Directly under those bullets (same copy as simplified-alt). Not the footer legal block.</span></div>
@@ -174,7 +177,11 @@
   <div class="shot-grid">
     <figure class="shot">
       <a href="assets/screenshots/quad-desktop-hero.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-hero.png" alt="Quad LP desktop hero" loading="lazy"></a>
-      <figcaption>Desktop hero — vials left, Pharmacy selection bullets + FDA footnotes</figcaption>
+      <figcaption>Desktop hero — vials ~40% left (sticky on scroll), selector ~60% right</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="assets/screenshots/quad-desktop-hero-sticky.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-hero-sticky.png" alt="Desktop vials sticky while scrolling selector" loading="lazy"></a>
+      <figcaption>Desktop scroll — vials stay pinned (sticky) while selector/CTA move</figcaption>
     </figure>
     <figure class="shot">
       <a href="assets/screenshots/quad-desktop-selector-default.png" target="_blank" rel="noopener"><img src="assets/screenshots/quad-desktop-selector-default.png" alt="Selector default state" loading="lazy"></a>
