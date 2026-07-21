@@ -95,7 +95,7 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
       <tr><td>State</td><td>California (San Francisco 94102)</td></tr>
       <tr><td>Symptoms / goals</td><td>Hot flashes, night sweats, sleep disruption, brain fog</td></tr>
       <tr><td>Winona preference</td><td>Body cream</td></tr>
-      <tr><td>Midi path</td><td>Menopause/perimenopause → peri → self-pay choice (stopped)</td></tr>
+      <tr><td>Midi path</td><td>Menopause/perimenopause → peri → self-pay → Stripe card-on-file (stopped)</td></tr>
     </tbody>
   </table>
 
@@ -190,7 +190,7 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   <h2>Flowcharts</h2>
   <h3>Winona</h3>
   <div class="flow">State+terms → Account → Birthday → Sex(F) → Legal name/phone → Symptoms → Clinical history → Body cream preference → Meds/questions/vitals → Treatment plan + prices → Identity verification STOP</div>
-  <h3>Midi (completed through payment-type)</h3>
+  <h3>Midi (completed through self-pay card-on-file)</h3>
   <div class="flow">/hrt LP + Self-Pay ($250/$150)
 → Care path: Menopause or perimenopause
 → Health goals (multi-select: hot flashes, brain fog, sleep…)
@@ -198,11 +198,12 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
 → Menopause journey (peri / menopause / not sure)
 → Create account (PII + SMS/privacy consent; NANP phone validation)
 → Confirm email / mobile (OTP login hint)
-→ Choose payment type: insurance vs self-pay STOP
-→ (not done) visit booking / payment / clinician questionnaire</div>
+→ Choose payment type: No, I'll self-pay
+→ Self-pay card on file (Stripe $250/$150) STOP
+→ (not done) visit booking / clinician questionnaire</div>
 
   <h2>Midi exhibits</h2>
-  <p class="note">Full path walked 2026-07-20. Stopped on <code>/registration/choose-payment-type</code> before payment.</p>
+  <p class="note">Full path walked 2026-07-20. Continued as self-pay; stopped on <code>/registration/self-pay</code> before entering card.</p>
 
   <figure class="exhibit">
     <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-01-hrt-landing.png" alt="Midi HRT landing page">
@@ -237,8 +238,12 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
     <figcaption>08 — Confirm email / mobile for OTP login</figcaption>
   </figure>
   <figure class="exhibit">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-09-choose-payment-type-STOP.png" alt="Midi choose payment type insurance vs self-pay STOP">
-    <figcaption>09 — <strong>STOP</strong> Choose payment type (insurance vs self-pay). Medicare/Medicaid notes shown. Payment not entered.</figcaption>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-09-selfpay-selected.png" alt="Midi self-pay selected on payment type">
+    <figcaption>09 — Choose payment type: <strong>No, I'll self-pay</strong> selected. Medicare/Medicaid notes shown.</figcaption>
+  </figure>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-10-selfpay-card-on-file-STOP.png" alt="Midi self-pay Stripe card on file STOP">
+    <figcaption>10 — <strong>STOP</strong> Self-pay card on file (Stripe). First visit $250 · subsequent $150. “Won't pay anything now… charge after visit.” Card not entered.</figcaption>
   </figure>
 
   <h2>Winona exhibits</h2>
@@ -275,7 +280,7 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   <h2>Blockers / notes</h2>
   <ul>
     <li><strong>Winona:</strong> Stopped at identity verification (SSN last-4 or government ID upload). Payment not pursued.</li>
-    <li><strong>Midi:</strong> Completed care path through <code>/registration/choose-payment-type</code>. Stopped before payment / visit booking.</li>
+    <li><strong>Midi:</strong> Continued as self-pay through <code>/registration/self-pay</code> (Stripe card-on-file, $250/$150). Stopped before entering card / visit booking.</li>
     <li><strong>Midi phone validation:</strong> Numbers using <code>555</code> exchanges are rejected (“must follow North American Numbering Plan”).</li>
     <li>Folder slug <code>female-hrt</code> is temporary until the real client name is known.</li>
   </ul>
