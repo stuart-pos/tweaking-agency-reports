@@ -209,17 +209,25 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
     </tbody>
   </table>
 
-  <h3>Midi (completed through self-pay card-on-file)</h3>
-  <div class="flow">/hrt LP + Self-Pay ($250/$150)
-→ Care path: Menopause or perimenopause
-→ Health goals (multi-select: hot flashes, brain fog, sleep…)
-→ Primary support goal (first 30-min visit focus)
-→ Menopause journey (peri / menopause / not sure)
-→ Create account (PII + SMS/privacy consent; NANP phone validation)
-→ Confirm email / mobile (OTP login hint)
-→ Choose payment type: No, I'll self-pay
-→ Self-pay card on file (Stripe $250/$150) STOP
-→ (not done) visit booking / clinician questionnaire</div>
+  <h3>Midi — how each reply changes the flow</h3>
+  <p class="note">Decision flowchart: yellow diamonds = questions; edge labels = replies; red = stops/exits. Walked path used Menopause/perimenopause · peri · Female · self-pay. PDF: <a href="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/20260722_female-hrt_midi-intake-flowchart.pdf">midi-intake-flowchart.pdf</a></p>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/midi-flowchart.png" alt="Midi HRT intake decision flowchart showing how each reply changes the flow">
+    <figcaption>Midi intake decision tree — care-path choice, menopause stage, account blockers, insurance vs self-pay → Stripe STOP.</figcaption>
+  </figure>
+  <table>
+    <thead><tr><th>If you answer…</th><th>What changes</th></tr></thead>
+    <tbody>
+      <tr><td>Weight / AgeWell / General / Not sure (vs menopause)</td><td>Leaves the HRT menopause spine for another care path</td></tr>
+      <tr><td>Existing patient Log in</td><td>Leaves new-intake registration</td></tr>
+      <tr><td>Menopause journey (menopause / peri / not sure)</td><td>All continue to create-account on this path</td></tr>
+      <tr><td>Invalid NANP phone (e.g. 555)</td><td>Account blocked until valid phone</td></tr>
+      <tr><td>Duplicate identity / phone</td><td>Blocked — contact care@joinmidi.com</td></tr>
+      <tr><td>Yes, I'll use insurance</td><td>Insurance eligibility path (not completed here)</td></tr>
+      <tr><td>No, I'll self-pay</td><td>Stripe card-on-file · $250 first / $150 subsequent</td></tr>
+      <tr><td>Medicaid / Medi-Cal note</td><td>Cannot use Midi; Medicare may self-pay only</td></tr>
+    </tbody>
+  </table>
 
   <h2>Midi exhibits</h2>
   <p class="note">Full path walked 2026-07-20. Continued as self-pay; stopped on <code>/registration/self-pay</code> before entering card.</p>
