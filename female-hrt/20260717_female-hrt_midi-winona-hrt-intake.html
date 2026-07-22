@@ -64,7 +64,7 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   <h2>Midi + Winona female HRT intake teardown</h2>
   <div class="meta-details">
     <span>Client: Female HRT (TBD)</span>
-    <span>Updated: 2026-07-20</span>
+    <span>Updated: 2026-07-21</span>
     <span>Stop: Before payment</span>
   </div>
 </div></section>
@@ -188,8 +188,27 @@ tbody tr:nth-child(even) { background: var(--color-bg-alt); }
   </table>
 
   <h2>Flowcharts</h2>
-  <h3>Winona</h3>
-  <div class="flow">State+terms → Account → Birthday → Sex(F) → Legal name/phone → Symptoms → Clinical history → Body cream preference → Meds/questions/vitals → Treatment plan + prices → Identity verification STOP</div>
+  <h3>Winona — how each reply changes the flow</h3>
+  <p class="note">Decision flowchart: yellow diamonds = questions; edge labels = replies; red = stops/blocks. Walked path used California · Female · mostly No clinically · Body Cream. PDF: <a href="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/20260721_female-hrt_winona-intake-flowchart.pdf">winona-intake-flowchart.pdf</a></p>
+  <figure class="exhibit">
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/female-hrt/exhibits/winona-flowchart.png" alt="Winona HRT intake decision flowchart showing how each reply changes the flow">
+    <figcaption>Winona intake decision tree — each answer routes to continue, follow-up, or STOP.</figcaption>
+  </figure>
+  <table>
+    <thead><tr><th>If you answer…</th><th>What changes</th></tr></thead>
+    <tbody>
+      <tr><td>Unavailable state</td><td>Waitlist / not available — intake ends</td></tr>
+      <tr><td>Log in (vs create account)</td><td>Leaves new-intake path</td></tr>
+      <tr><td>Underage / ineligible DOB</td><td>Not eligible — intake ends</td></tr>
+      <tr><td>Male (vs Female)</td><td>Exits female HRT path</td></tr>
+      <tr><td>Pregnant / lactating / trying = Yes</td><td>Clinical block or follow-up (may stop prescribing path)</td></tr>
+      <tr><td>Clinical Yes (BC, conditions, allergies, prior HRT, etc.)</td><td>Usually follow-up detail; still can continue</td></tr>
+      <tr><td>Treatment form (Cream / Patch / Pills / Vaginal / No pref)</td><td>Changes recommended plan SKUs + prices on treatment screen</td></tr>
+      <tr><td>Monthly vs 3-month supply</td><td>$89/mo vs $219/3 mo on cream path (+ optional DHEA)</td></tr>
+      <tr><td>SSN last-4 vs ID upload</td><td>Same gate; then payment (not entered in this teardown)</td></tr>
+    </tbody>
+  </table>
+
   <h3>Midi (completed through self-pay card-on-file)</h3>
   <div class="flow">/hrt LP + Self-Pay ($250/$150)
 → Care path: Menopause or perimenopause
