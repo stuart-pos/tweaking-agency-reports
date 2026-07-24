@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Reddit sale vs Google Ads cannibalization — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 960px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; color: var(--color-primary); margin: 24px 0 12px; }
+        p { margin-bottom: 12px; }
+        ul, ol { padding-left: 20px; margin-bottom: 16px; }
+        li { margin-bottom: 8px; }
+        a { color: #1d4ed8; }
+        code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+        .callout { background: var(--color-bg-alt); border-left: 4px solid var(--color-accent); padding: 20px 24px; margin: 20px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.danger { border-left-color: var(--color-danger); background: #fef2f2; }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .callout.success { border-left-color: var(--color-success); background: #f0fdf4; }
+        .callout.info { border-left-color: var(--color-info); background: #eff6ff; }
+        .verdict-badge { display: inline-block; padding: 6px 14px; border-radius: var(--border-radius); font-weight: 700; font-size: 0.9rem; background: #fef3c7; color: #92400e; }
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+        .badge-strong { background: #dcfce7; color: #166534; }
+        .badge-plausible { background: #fef3c7; color: #92400e; }
+        .badge-weak { background: #fee2e2; color: #991b1b; }
+        .badge-unproven { background: #e5e7eb; color: #374151; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .highlight-row { background: #fef3c7 !important; font-weight: 600; }
+        .danger-row { background: #fef2f2 !important; }
+        .danger-cell { color: var(--color-danger); font-weight: 600; }
+        .success-cell { color: var(--color-success); font-weight: 600; }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .label { font-size: 0.75rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .value { font-size: 1.8rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .score-card .sub { font-size: 0.8rem; color: var(--color-text-light); margin-top: 4px; }
+        .score-card.danger .value { color: var(--color-danger); }
+        .score-card.warning .value { color: var(--color-warning); }
+        .score-card.info .value { color: var(--color-info); }
+        .flow { display: grid; gap: 12px; margin: 20px 0; }
+        .flow-step { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 18px; background: var(--color-bg); }
+        .flow-step .step-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-accent); margin-bottom: 6px; }
+        .flow-step strong { color: var(--color-primary); }
+        .flow-arrow { text-align: center; color: var(--color-text-light); font-size: 0.85rem; }
+        .recommendations { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 24px; margin: 24px 0; }
+        .recommendations ol { padding-left: 20px; }
+        .recommendations li { margin-bottom: 12px; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+        .panel { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 18px; }
+        .panel h4 { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; color: var(--color-primary); margin-bottom: 10px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        .sources { font-size: 0.85rem; color: var(--color-text-light); margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--color-border); }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, thead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .two-col { grid-template-columns: 1fr; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="report-header">
+        <div class="container">
+            <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+            <div>
+                <h1>Tweaking Agency</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>Reddit sale vs Google Ads cannibalization</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Gimme Care</strong></span>
+                <span>Date: <strong>2026-07-24</strong></span>
+                <span>Account: <strong>7957170099</strong></span>
+                <span>Window: <strong>Jul 10–23, 2026</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+
+        <div class="callout warning">
+            <p><span class="verdict-badge">Verdict: price-driven cannibalization, likely</span></p>
+            <p style="margin-top:12px;margin-bottom:0;">
+                The Jul 22 Reddit flash sale undercuts Google Ads creative pricing by ~30%. PostHog shows Reddit traffic rising while Google Ads funnel entry and NB Search auction rank collapse. Sitewide purchases fall much less than Google Ads conversions — demand is shifting channels, not disappearing. AI Overview as a tracked referrer is <strong>not</strong> well supported.
+            </p>
+        </div>
+
+        <div class="scores-grid">
+            <div class="score-card info">
+                <div class="label">Reddit flash Tirz / Sema</div>
+                <div class="value">$115 / $89</div>
+                <div class="sub">3-month Boudreaux · Reddit-only link</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Google Ads creative</div>
+                <div class="value">$163 / $130</div>
+                <div class="sub">Tirz / Sema any-dose claims</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">Account spend Jul 21→23</div>
+                <div class="value">−55%</div>
+                <div class="sub">$77.9k → $34.8k</div>
+            </div>
+            <div class="score-card danger">
+                <div class="label">NB V2 search IS</div>
+                <div class="value">≤10%</div>
+                <div class="sub">Rank-lost IS 86–90%</div>
+            </div>
+        </div>
+
+        <h2>1. What launched on Reddit</h2>
+        <p>
+            On ~Jul 22, r/gimmecare published a <strong>72-hour flash sale</strong> (Chloe) with Reddit-gated pricing via
+            <code>get.gimme.care/start-online-visit/welcomeback</code>. Must use that link to get sale pricing.
+        </p>
+
+        <div class="two-col">
+            <div class="panel">
+                <h4>Flash sale (Reddit-only)</h4>
+                <table>
+                    <thead><tr><th>Offer</th><th>Price</th></tr></thead>
+                    <tbody>
+                        <tr><td>Tirz 1-mo Rush / Boudreaux</td><td>$139/mo</td></tr>
+                        <tr class="highlight-row"><td>Tirz 3-mo Boudreaux</td><td>$345 ($115/mo)</td></tr>
+                        <tr><td>Sema 1-mo Rush / Boudreaux</td><td>$99/mo</td></tr>
+                        <tr class="highlight-row"><td>Sema 3-mo Boudreaux</td><td>$267 ($89/mo)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel">
+                <h4>What Ads / sticky Reddit show</h4>
+                <table>
+                    <thead><tr><th>Surface</th><th>Price</th></tr></thead>
+                    <tbody>
+                        <tr><td>Google Ads Tirz creative</td><td>$163/mo any dose</td></tr>
+                        <tr><td>Google Ads Sema creative</td><td>$130/mo any dose</td></tr>
+                        <tr><td>Reddit sticky Tirz (regular)</td><td>from $142/mo</td></tr>
+                        <tr><td>Reddit sticky Sema (regular)</td><td>from $99/mo</td></tr>
+                        <tr><td>BPI sticky 3-mo 40mg</td><td>$399 ($133/mo)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="callout danger">
+            <strong>Price gap:</strong> Flash Tirz $115 vs Ads $163 (−$48 / −29%). Flash Sema $89 vs Ads $130 (−$41 / −32%).
+            Anyone who discovers the Reddit link after seeing a Google ad has a clear reason not to convert on the paid path — or not to click the ad at all.
+        </div>
+
+        <h2>2. How cannibalization can happen</h2>
+        <p>
+            Three paths can all reduce Google Ads efficacy at the same time. They are not mutually exclusive.
+        </p>
+
+        <div class="flow">
+            <div class="flow-step">
+                <div class="step-label">Path A — Pre-click skip</div>
+                <p style="margin:0;">
+                    User searches GLP-1 terms → sees Google Ads at <strong>$163 / $130</strong> → also sees or already knows Reddit sale pricing at <strong>$115 / $89</strong> →
+                    <strong>never clicks the ad</strong> (or clicks a competitor / organic / Reddit). Result: lower CTR, lower Quality/expected CTR signal, Smart Bidding bids down, impression share collapses via <em>rank loss</em>.
+                </p>
+            </div>
+            <div class="flow-arrow">↓ same price gap feeds Path B</div>
+            <div class="flow-step">
+                <div class="step-label">Path B — Post-click abandon</div>
+                <p style="margin:0;">
+                    User clicks Google Ad → lands on LP / starts intake → researches “Gimme Care Reddit” or price → finds flash sale link →
+                    <strong>abandons paid path</strong> and converts (or waits) on Reddit pricing. Result: Google pays for the click; conversion attributes to Reddit or appears as a lost Ads conversion.
+                </p>
+            </div>
+            <div class="flow-arrow">↓ SERP / AI surfaces can amplify either path</div>
+            <div class="flow-step">
+                <div class="step-label">Path C — SERP / AI Overview amplification (hypothesis)</div>
+                <p style="margin:0;">
+                    Google AI Overview or organic SERP cites r/gimmecare sale pricing → user learns the discount <em>before</em> clicking Ads.
+                    This would look like rising unpaid Google referrers and falling paid click-through, without a clean “chatgpt.com” referrer spike.
+                </p>
+            </div>
+        </div>
+
+        <div class="callout info">
+            <strong>Why Path A fits the Ads data best:</strong> account CPA did not explode on Jul 22–23; volume and impression share did.
+            That is what you expect when fewer people click / convert into Smart Bidding’s feedback loop, and Google responds by reducing bids (rank-lost IS ↑, budget-lost IS → 0).
+        </div>
+
+        <h2>3. Google Ads evidence</h2>
+        <p>Live pull for account <code>7957170099</code>, Jul 10–23. Damage is concentrated in NB Search V2, not Brand.</p>
+
+        <h3>Account daily performance around the sale</h3>
+        <table>
+            <thead>
+                <tr><th>Day</th><th>Clicks</th><th>Cost</th><th>Conv</th><th>CPA</th><th>CVR</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Jul 21 (pre)</td><td>4,330</td><td>$77,902</td><td>137.3</td><td>$567</td><td>3.17%</td></tr>
+                <tr class="highlight-row"><td>Jul 22 (sale)</td><td>3,707</td><td>$54,562</td><td>117.2</td><td>$465</td><td>3.16%</td></tr>
+                <tr class="danger-row"><td>Jul 23</td><td>2,633</td><td>$34,794</td><td>70.0</td><td>$497</td><td>2.66%</td></tr>
+                <tr><td><strong>Δ 21→23</strong></td><td class="danger-cell">−39%</td><td class="danger-cell">−55%</td><td class="danger-cell">−49%</td><td>−12%</td><td>−0.5pp</td></tr>
+            </tbody>
+        </table>
+
+        <h3>NB Search V2 — auction mechanism</h3>
+        <table>
+            <thead>
+                <tr><th>Day</th><th>Search IS</th><th>Rank-lost IS</th><th>Budget-lost IS</th><th>Clicks</th><th>Cost</th><th>Conv</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Jul 20</td><td>23.3%</td><td>35.1%</td><td>41.6%</td><td>2,324</td><td>$53,122</td><td>68.1</td></tr>
+                <tr><td>Jul 21</td><td>17.5%</td><td>58.2%</td><td>24.3%</td><td>2,254</td><td>$52,447</td><td>67.9</td></tr>
+                <tr class="highlight-row"><td>Jul 22</td><td class="danger-cell">≤10%</td><td class="danger-cell">85.6%</td><td>4.7%</td><td>1,554</td><td>$32,834</td><td>40.2</td></tr>
+                <tr class="danger-row"><td>Jul 23</td><td class="danger-cell">≤10%</td><td class="danger-cell">90.0%</td><td>0%</td><td>367</td><td>$8,357</td><td>6.5</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout danger">
+            Jul 22–23 is <strong>rank failure, not budget failure</strong>. Budget-lost IS falls to ~0 while rank-lost IS jumps to 86–90%.
+            Smart Bidding pulled bids after conversion volume softened. V2 is nearly offline by Jul 23 (367 clicks / $8.4k / 6.5 conv).
+        </div>
+
+        <div class="two-col">
+            <div class="panel">
+                <h4>What held</h4>
+                <ul>
+                    <li><strong>Search_Brand</strong> — ~$10k/day, CPA ~$176→$197 (stable)</li>
+                    <li><strong>Shopping_GLP-1_Subs</strong> — spend flat; CPA improved slightly ($748→$645)</li>
+                </ul>
+            </div>
+            <div class="panel">
+                <h4>Confounders</h4>
+                <ul>
+                    <li>V4 CIO campaign work starts Jul 23 ~17:19 — <em>after</em> Jul 22 collapse began</li>
+                    <li>CPA was already elevated Jul 17–18 ($646–$679) before the flash sale</li>
+                    <li>Ongoing competitive pressure (AltRx / TrimRx) remains a backdrop</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>4. PostHog evidence (Gimme project 267736)</h2>
+        <p>Filter test accounts · Jul 15–23. Reddit UTM and gclid are session/event-level; purchases use person first-touch where noted.</p>
+
+        <table>
+            <thead>
+                <tr><th>Metric</th><th>Jul 21</th><th>Jul 22</th><th>Jul 23</th><th>Reading</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Reddit UTM pageview users</td><td>1,957</td><td class="success-cell">2,487</td><td>2,058</td><td>Sale traffic lift (+27% day-of)</td></tr>
+                <tr><td>gclid pageview users</td><td>5,018</td><td>4,535</td><td>4,211</td><td>Soft decline (−16%)</td></tr>
+                <tr class="danger-row"><td>Google form_started (utm=google)</td><td>330</td><td>219</td><td class="danger-cell">137</td><td>Funnel entry collapses (−58%)</td></tr>
+                <tr><td>Google organic referrer, no gclid</td><td>623</td><td>746</td><td>780</td><td>Unpaid Google landings +25%</td></tr>
+                <tr><td>ChatGPT / AI-named referrers</td><td>~54</td><td>~55</td><td>~52</td><td>Flat / tiny — weak AI Overview signal</td></tr>
+                <tr><td>Sitewide plan_purchased</td><td>248</td><td>238</td><td>201</td><td>−19% (milder than Ads)</td></tr>
+                <tr><td>Purchases · person $initial=google</td><td>149</td><td>135</td><td>109</td><td>Google first-touch down</td></tr>
+                <tr class="danger-row"><td>Google Ads conversions (account)</td><td>137</td><td>117</td><td class="danger-cell">70</td><td>−49%</td></tr>
+            </tbody>
+        </table>
+
+        <div class="callout success">
+            Sitewide purchases fell <strong>−19%</strong> while Google Ads conversions fell <strong>−49%</strong>.
+            That is the clearest cross-channel signature: total demand softens modestly; paid Google loses a much larger share.
+        </div>
+
+        <h2>5. Theory scorecard</h2>
+        <table>
+            <thead>
+                <tr><th>Hypothesis</th><th>Support</th><th>Evidence</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Price undercut: Reddit sale cheaper than Ads creative</td>
+                    <td><span class="badge badge-strong">Strong</span></td>
+                    <td>$115/$89 vs $163/$130; Reddit-gated <code>/welcomeback</code> link</td>
+                </tr>
+                <tr>
+                    <td>Pre-click skip: users find Reddit price and never click Ads</td>
+                    <td><span class="badge badge-plausible">Plausible</span></td>
+                    <td>Ads IS/rank collapse + organic Google referrer up; CPA on remaining clicks not the main break</td>
+                </tr>
+                <tr>
+                    <td>Post-click abandon: Ads click → leave → Reddit sale</td>
+                    <td><span class="badge badge-unproven">Unproven</span></td>
+                    <td>Person-level gclid ∩ Reddit purchase join returned 0 (identity gap: server-side <code>plan_purchased</code>)</td>
+                </tr>
+                <tr>
+                    <td>AI Overview surfaces Reddit sale pricing</td>
+                    <td><span class="badge badge-weak">Weak</span></td>
+                    <td>No spike in chatgpt/openai/perplexity referrers; organic google.com lift could include AI Overview but is unseparated</td>
+                </tr>
+                <tr>
+                    <td>Smart Bidding death spiral after conversion signal softens</td>
+                    <td><span class="badge badge-strong">Strong</span></td>
+                    <td>Rank-lost IS 58%→86–90%; budget-lost →0; V2 spend/clicks crater</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>6. Recommended next actions</h2>
+        <div class="recommendations">
+            <ol>
+                <li>
+                    <strong>Decide sale / Ads coexistence policy.</strong>
+                    Either align Ads price claims with flash floors for the promo window, or temporarily suppress NB while Reddit promo is live if margin requires protecting the auction.
+                </li>
+                <li>
+                    <strong>Do not “force” NB back with budget alone.</strong>
+                    Rank-lost IS near 90% means Smart Bidding is choosing not to bid. Forcing spend without CVR recovery burns cash into low-quality auctions.
+                </li>
+                <li>
+                    <strong>Build one P&amp;L for Reddit + Google during promo windows.</strong>
+                    Attribute Reddit sale revenue (new + returning) so “overall numbers up / Google down” is visible in one view for client conversations.
+                </li>
+                <li>
+                    <strong>Close the Path B proof gap.</strong>
+                    Match <code>/welcomeback</code> landings to prior <code>gclid</code> within 7 days after identify merges; optionally sample session replay for Ads → Reddit research behavior.
+                </li>
+                <li>
+                    <strong>Treat AI Overview as unproven until instrumented.</strong>
+                    Organic Google referrer lift is consistent with SERP research, but named AI referrers are flat. Do not over-claim AI Overview causation in client/comms without SERP screenshots or dedicated instrumentation.
+                </li>
+            </ol>
+        </div>
+
+        <div class="callout">
+            <strong>Slack-ready summary:</strong>
+            Reddit flash undercuts Ads by ~30%. Google Ads tanked via NB Search rank loss (Smart Bidding retreat), not Brand CPA blow-up.
+            PostHog shows Reddit up, Google funnel entry down, sitewide purchases holding better than Ads — classic cannibalization signature.
+            AI Overview as a tracked channel is weak; price-driven pre-click skip + bidding death spiral is the best current explanation.
+        </div>
+
+        <div class="sources">
+            <p><strong>Sources</strong></p>
+            <ul>
+                <li>r/gimmecare flash sale post — <em>Tirzepatide ($115 p/m) and Semaglutide ($89 p/m) 72-Hour Flash Sale</em> (<code>1v3tdw6</code>)</li>
+                <li>Google Ads GAQL — campaign daily + NB Search impression share, customer <code>7957170099</code>, Jul 10–23</li>
+                <li>PostHog Gimme project <code>267736</code> — trends / web stats (Reddit UTM, gclid, form_started, plan_purchased, referring domains)</li>
+                <li>Ads creative pricing — <code>clients/gimme/context/google-ads/ads.md</code></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <div>
+                <div class="company-name">Tweaking Agency</div>
+                <div>stuart@tweaking.agency · https://tweaking.agency</div>
+            </div>
+            <div>Confidential — Gimme Care · 2026-07-24</div>
+        </div>
+    </footer>
+
+</body>
+</html>
