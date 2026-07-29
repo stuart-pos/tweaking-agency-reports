@@ -138,7 +138,7 @@
         <h2>Confirmed Auction Insights — legacy NB campaign</h2>
         <p>Source: Google Ads UI · Campaign <code>Search_Tirzepatide_Semaglutide</code> (paused) · Feb 1 – Jun 10, 2026 · Weekly frequency. Auction Insights cannot be pulled via API.</p>
 
-        <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/auction-insights-search-tirzepatide-semaglutide.png" alt="Auction Insights chart showing TrimRx impression share ramp from 0% to 29% while Gimme falls to 11.7%" class="chart-img">
+        <img src="auction-insights-search-tirzepatide-semaglutide.png" alt="Auction Insights chart showing TrimRx impression share ramp from 0% to 29% while Gimme falls to 11.7%" class="chart-img">
         <p class="chart-caption">Search Auction Insights — weekly impression share by display URL domain. TrimRx (olive green) ramps from ~0% starting mid-April to 29.31% by June 8.</p>
 
         <h3>Week of June 8, 2026 — competitor impression share</h3>
@@ -285,26 +285,51 @@
 
         <h3>Comparison-site arbitrage funnel (not S-Class)</h3>
         <p>Discovered 2026-07-01. Separate affiliate publisher — <strong>not</strong> one of the three Google Ads Transparency accounts.</p>
+        <div class="callout">
+            <p><strong>Operator (updated 2026-07-29):</strong> <a href="https://bestweightloss.io/compare.html">bestweightloss.io</a> is run by <strong>Moonshot Marketing LTD</strong> (Tel Aviv affiliate/PPC shop), branded on-site as BestWeightLoss.io Media Ltd. Contact/privacy use <code>@moonshot.co.il</code> and Moonshot’s Kaufmann St HQ. Redirects set <code>ms_click_id</code> / <code>MSRID…</code> into TrimRx <code>affid=375</code>. <strong>Not</strong> S-Class, Ads Mavericks, or MetaFit.</p>
+            <p style="margin-bottom:0">Confidence: <span class="conf-high">High · ~90%</span> on Moonshot as operator. WHOIS registrant remains Domains By Proxy–masked. Sources: <a href="https://bestweightloss.io/contact.html">contact</a>, <a href="https://bestweightloss.io/policy.html">privacy</a>, <a href="https://moonshot-marketing.com/">moonshot-marketing.com</a>.</p>
+        </div>
         <table>
             <thead><tr><th>Step</th><th>URL</th><th>Notes</th></tr></thead>
             <tbody>
                 <tr>
                     <td>1. Comparison LP</td>
-                    <td><a href="https://bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html">bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html</a></td>
-                    <td>TrimRx ranked #1; fabricated scores (“9.9 Outstanding”, “31,481 User Votes”) — not Trustpilot</td>
+                    <td><a href="https://bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html">bestweightloss.io/…comp_trimrx.html</a><br><a href="https://bestweightloss.io/compare.html">bestweightloss.io/compare.html</a></td>
+                    <td>TrimRx ranked #1; fabricated scores (“9.9 Outstanding”, “31,481 User Votes”) — not Trustpilot · <strong>Moonshot Marketing LTD</strong></td>
                 </tr>
                 <tr>
-                    <td>2. TrimRx promo LP</td>
+                    <td>2. Redirect</td>
+                    <td><code>bestweightloss.io/redirect/…</code></td>
+                    <td>Sets <code>ms_click_id</code>; passes <code>sub1=MSRID…</code> (MoonShot-style IDs)</td>
+                </tr>
+                <tr>
+                    <td>3. TrimRx promo LP</td>
                     <td><a href="https://trimrx.com/glp1/offer-v4-winter-4">trimrx.com/glp1/offer-v4-winter-4</a></td>
                     <td>Loads <strong>without affiliate ID</strong>; with redirect: <code>affid=375</code>, <code>discount=SPRING140</code></td>
                 </tr>
                 <tr>
-                    <td>3. Intake</td>
+                    <td>4. Intake</td>
                     <td><code>start.trimrx.com/intake/trimrx?discount=join120</code></td>
                     <td>BMI-first; no email gate</td>
                 </tr>
             </tbody>
         </table>
+
+        <h3>Clarification: four partners ≠ four affiliate networks</h3>
+        <div class="callout warning">
+            <p><strong>No — TrimRx is not running four different affiliate networks.</strong></p>
+            <p style="margin-bottom:0">What we found is <strong>4 distinct third-party partners</strong> feeding TrimRx traffic — not four separate networks (e.g. not CJ + Impact + ShareASale + etc.). Evidence supports <strong>one TrimRx Everflow affiliate stack</strong> (or equivalent) with multiple partners using different tactics.</p>
+        </div>
+        <table>
+            <thead><tr><th>Entity</th><th>Role</th><th>Evidence</th><th>What it is</th></tr></thead>
+            <tbody>
+                <tr><td><strong>MetaFit Pharma Solutions LLC</strong></td><td>Google Ads → <code>trimrx.com</code></td><td>Transparency <code>AR03145052045162053633</code></td><td>Partner / media buyer</td></tr>
+                <tr class="highlight-row"><td><strong>S-Class Media Pty Ltd</strong></td><td>Google Ads → <code>/discount</code></td><td>Transparency <code>AR15103560497078730753</code></td><td>Partner / media buyer</td></tr>
+                <tr><td><strong>Ads Mavericks LLC</strong></td><td>Google Ads → <code>start.trimrx.com</code></td><td>Transparency <code>AR07314605978291273729</code></td><td>Partner / media buyer</td></tr>
+                <tr class="highlight-row"><td><strong>Moonshot Marketing LTD</strong> (<code>bestweightloss.io</code>)</td><td>Comparison farm → Everflow into TrimRx</td><td><code>@moonshot.co.il</code>; <code>affid=375</code>; MSRID tracking</td><td>Partner / publisher</td></tr>
+            </tbody>
+        </table>
+        <p>The three Transparency accounts buy Google Search ads directly onto TrimRx domains. Moonshot hosts comparison inventory and attributes via Everflow <code>affid=375</code>. Same program family, different traffic tactics.</p>
 
         <h3>Additional TrimRx landing pages (public ecosystem)</h3>
         <p>These URLs exist on TrimRx's public web properties but are not yet mapped to a specific Google Ads advertiser account:</p>
@@ -323,7 +348,7 @@
         </ul>
 
         <div class="callout">
-            <p><strong>Not a single account.</strong> Three distinct verified Google Ads advertiser IDs — a media agency (S-Class, Australia), a pharma LLC (MetaFit), and an ads agency (Ads Mavericks) — all running ads to <code>trimrx.com</code>. This is consistent with an affiliate/performance marketing network, not a single TrimRx corporate Ads account scaling bids.</p>
+            <p><strong>Not a single account.</strong> Three distinct verified Google Ads advertiser IDs — a media agency (S-Class, Australia), a pharma LLC (MetaFit), and an ads agency (Ads Mavericks) — all running ads to <code>trimrx.com</code>, plus a fourth partner (Moonshot / bestweightloss.io) as a comparison publisher. This is consistent with an affiliate/performance marketing <em>program</em> with multiple partners — not a single TrimRx corporate Ads account, and <strong>not four separate affiliate networks</strong>.</p>
             <p style="margin-bottom:0">The May 2026 acceleration was driven primarily by <strong>S-Class Media Pty Ltd</strong> (4 new text creatives, May 9–20), layered on MetaFit's established presence since June 2025.</p>
         </div>
 
@@ -364,8 +389,8 @@
                     <td><span class="conf-high">Yes</span> — $174/mo hero</td>
                 </tr>
                 <tr class="highlight-row">
-                    <td><a href="https://bestweightloss.io/weight_loss_USA_D_ENG_comp_trimrx.html">bestweightloss.io</a> → <a href="https://trimrx.com/glp1/offer-v4-winter-4">offer-v4-winter-4</a></td>
-                    <td>Comparison publisher (<code>affid=375</code>)</td>
+                    <td><a href="https://bestweightloss.io/compare.html">bestweightloss.io</a> → <a href="https://trimrx.com/glp1/offer-v4-winter-4">offer-v4-winter-4</a></td>
+                    <td><strong>Moonshot Marketing LTD</strong> (<code>affid=375</code>)</td>
                     <td>Listicle → redirect → promo LP → intake</td>
                     <td><span class="conf-high">No</span></td>
                     <td><span class="conf-high">Yes</span> — from $149/mo</td>
@@ -414,6 +439,80 @@
             </tbody>
         </table>
 
+        <h2>Online sentiment: TrimRx vs Gimme</h2>
+        <p>Source: Live Google AI Overview for <code>trimrx reviews</code> (2026-07-13) · Trustpilot / US News / Bariatric Reports / Reddit (<code>r/tirzepatidecompound</code>) · Gimme AI Overview + Reddit monitor (2026-07-08 / 2026-06-23).</p>
+
+        <div class="callout">
+            <p><strong>Verdict for auction analysis:</strong> TrimRx does <em>not</em> win Auction Insights because shoppers love them more. AI Overview for <code>trimrx reviews</code> explicitly calls reviews <strong>&quot;notably mixed&quot;</strong> — pros on speed/flat pricing, cons on support, communication, and billing (Trustpilot). Reddit also surfaces &quot;DO NOT USE TrimRX / scam&quot; threads. TrimRx scales because of <strong>3-affiliate auction coverage + offer LPs + bid aggression</strong>, while Gimme's sentiment problems concentrate on <em>brand/legit</em> queries Gimme should own.</p>
+            <p style="margin-bottom:0"><strong>Where TrimRx still looks stronger than Gimme on trust SERPs:</strong> LegitScript + BBB accreditation amplify in &quot;is TrimRx legit?&quot; results, review volume is larger (hundreds–1,000+ Trustpilot), and there is no branded complaint subreddit equivalent to <code>r/gimmecare</code> feeding every Gimme AI Overview.</p>
+        </div>
+
+        <img src="exhibits/gimme-exhibit-serp-trimrx-reviews.png" alt="Google AI Overview for trimrx reviews — notably mixed pros and cons" class="chart-img">
+        <p class="chart-caption">Live SERP · <code>trimrx reviews</code> · AI Overview: mixed — appetite/weight-loss &amp; flat-rate pricing positives vs Trustpilot-cited support, communication, and billing negatives.</p>
+
+        <h3>Head-to-head reputation scorecard</h3>
+        <table>
+            <thead><tr><th>Signal</th><th>Gimme</th><th>TrimRx</th><th>Who looks better?</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>AI Overview on &quot;brand reviews&quot;</strong></td>
+                    <td>Mixed — affordable vs support / cancel / shipping / pharmacy; <code>r/gimmecare</code> cited</td>
+                    <td>Notably mixed — fast onboarding, effective WL, flat-rate pricing vs CS + billing (Trustpilot, US News, Bariatric Reports)</td>
+                    <td>~Tie on tone</td>
+                </tr>
+                <tr>
+                    <td><strong>Trustpilot headline</strong></td>
+                    <td>~4.3/5 at ~280–450 reviews (smaller sample)</td>
+                    <td>~3.3–3.5/5 at ~700–1,000+ reviews; ~28–29% 1-star clustered on billing</td>
+                    <td><strong>Gimme score</strong> vs <strong>TrimRx volume / authenticity signal</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Legitimacy infrastructure</strong></td>
+                    <td>No FDA letter in AI Overview; scam SERPs still cite BBB Scam Tracker + Reddit warnings</td>
+                    <td>BBB-accredited (MetaFit Pharma) + LegitScript frequently cited in &quot;is TrimRx legit&quot; content</td>
+                    <td class="danger-cell"><strong>TrimRx</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Reddit pattern</strong></td>
+                    <td>Dedicated <code>r/gimmecare</code> high-risk cluster (scam, billing, pharmacy, support)</td>
+                    <td>Category subreddits (<code>r/tirzepatidecompound</code>, <code>r/Semaglutide</code>) — both praise and &quot;Trimrx warning&quot; / scam threads</td>
+                    <td class="danger-cell"><strong>TrimRx</strong> (negatives less concentrated into brand identity)</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td><strong>Auction relevance</strong></td>
+                    <td>Sentiment drag raises brand/legit CPA + post-click trust; NB IS lost mainly to rank/price stack</td>
+                    <td>Mixed sentiment does not block 0% → ~29% IS ramp via affiliate network</td>
+                    <td class="danger-cell">Sentiment is <strong>not</strong> the primary TrimRx advantage</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Shared complaint themes</h3>
+        <table>
+            <thead><tr><th>Theme</th><th>Gimme</th><th>TrimRx</th></tr></thead>
+            <tbody>
+                <tr><td>Billing / cancellation</td><td>$100 cancel fee, double-charge claims</td><td>Charges around approval, multi-month refund friction, cancel difficulty</td></tr>
+                <tr><td>Customer support</td><td>Chat-only / slow response</td><td>Major AI Overview con — slow communication, missing-order follow-up</td></tr>
+                <tr><td>Price after first order</td><td>Checkout/plan clarity complaints</td><td>Reddit reports of price jumps / intro-hook framing</td></tr>
+                <tr class="highlight-row"><td>Scam framing</td><td>AI Overview + BBB Scam Tracker on <code>is gimme care a scam</code></td><td>Reddit &quot;DO NOT USE TrimRX. It is a scam!&quot; discussions visible on review SERP</td></tr>
+            </tbody>
+        </table>
+
+        <h3>How this interacts with Auction Insights</h3>
+        <table>
+            <thead><tr><th>Hypothesis</th><th>Evidence</th><th>Strength</th></tr></thead>
+            <tbody>
+                <tr class="highlight-row"><td>TrimRx IS gains are driven by media structure (3 buyers) + LP/funnels, not superior brand love</td><td>AI Overview = mixed; 28%+ 1-star Trustpilot billing cluster; still ramped IS Apr–Jun</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>Gimme loses relatively more trust on <em>own</em> brand SERPs</td><td><code>r/gimmecare</code> citation pattern + Brand LIMITED BY BUDGET on review/scam queries</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>TrimRx legitimacy pages (BBB / LegitScript) cushion paid traffic more than Gimme's Trustpilot score alone</td><td>Legit-query SERP composition for TrimRx leans credentialed; Gimme leans complaint threads</td><td><span class="conf-med-high">Med-high</span></td></tr>
+                <tr><td>Chasing TrimRx brand conquest to &quot;steal&quot; unhappy customers is still expensive</td><td>Gimme TrimRx conquest ~$1,050 CPA</td><td><span class="conf-high">High</span></td></tr>
+            </tbody>
+        </table>
+        <div class="callout warning">
+            <p><strong>Implication:</strong> Do not wait for TrimRx to &quot;collapse&quot; on reputation — their mixed reviews already exist and have not capped paid share. Counter with parallel funnels, LP price anchoring, and Smart Bidding / QS fixes.</p>
+            <p style="margin-bottom:0"><strong>Ops still matters for Gimme:</strong> Fixing support/shipping/cancel clarity recovers Gimme brand/legit CVR; it does not by itself replace TrimRx's multi-account IS.</p>
+        </div>
+
         <h2>Why TrimRx's affiliate network scaled</h2>
         <table>
             <thead><tr><th>#</th><th>Driver</th><th>Evidence</th><th>Strength</th></tr></thead>
@@ -425,6 +524,7 @@
                 <tr><td>5</td><td>Creative/message diversification</td><td>Quiz, discount, "GLP-1 USA", promo vs Gimme price-led RSAs</td><td><span class="conf-high">High</span></td></tr>
                 <tr><td>6</td><td>Externalized media buying risk</td><td>Affiliates may accept worse unit economics short-term</td><td><span class="conf-medium">Inference</span></td></tr>
                 <tr><td>7</td><td>Timing vs Gimme CVR decline</td><td>Ramp Apr 13; Gimme CPA $274 → $743 Feb–Jun</td><td><span class="conf-high">High</span></td></tr>
+                <tr><td>8</td><td>Sentiment is not a blocker</td><td>AI Overview &quot;notably mixed&quot; + Trustpilot 1-star billing cluster; IS still climbed</td><td><span class="conf-high">High</span></td></tr>
             </tbody>
         </table>
 
@@ -517,6 +617,7 @@
                 <tr><td>Search term conquest</td><td>Google Ads API</td><td>45-day window</td></tr>
                 <tr><td>TrimRx IS on V2 campaign</td><td>Not yet available</td><td>Requires manual Auction Insights export</td></tr>
                 <tr><td>Live funnel teardown</td><td>Puppeteer scrape 2026-06-29</td><td>/discount requires affiliate chain; email gate partial</td></tr>
+                <tr><td>Online sentiment</td><td>Google AI Overview <code>trimrx reviews</code> 2026-07-13 + Trustpilot/US News/Reddit synthesis</td><td>Geo/user dependent; Trustpilot score varies by scrape date</td></tr>
             </tbody>
         </table>
 
