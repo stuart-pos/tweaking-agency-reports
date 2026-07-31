@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root { --color-primary:#1a1a2e; --color-accent:#e94560; --color-bg:#fff; --color-bg-alt:#f8f9fa;
-  --color-text:#333; --color-border:#e0e0e0; --container-max:920px; }
+  --color-text:#333; --color-text-light:#666; --color-border:#e0e0e0; --container-max:980px; }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Inter,system-ui,sans-serif;color:var(--color-text);line-height:1.55;font-size:0.92rem}
 .container{max-width:var(--container-max);margin:0 auto;padding:0 28px}
@@ -25,43 +25,96 @@ thead{background:var(--color-primary);color:#fff}
 .callout{background:#eff6ff;border-left:4px solid #3b82f6;padding:14px 18px;margin:14px 0;border-radius:8px}
 .callout-warn{background:#fef3c7;border-left-color:#f59e0b}
 .callout-danger{background:#fef2f2;border-left-color:#ef4444}
+.callout-ok{background:#ecfdf5;border-left-color:#059669}
 .step{border:1px solid var(--color-border);border-radius:10px;padding:16px 18px;margin:12px 0}
 .step .n{display:inline-block;min-width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;background:var(--color-primary);color:#fff;font-size:.75rem;font-weight:700;margin-right:8px}
-.draft{background:#111827;color:#e5e7eb;border-radius:10px;padding:18px 20px;margin:12px 0;font-size:.82rem;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.45}
+.draft{background:#111827;color:#e5e7eb;border-radius:10px;padding:18px 20px;margin:12px 0;font-size:.8rem;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.45;max-height:480px;overflow:auto}
 .checklist label{display:block;margin:6px 0}
+.exhibit{border:1px solid var(--color-border);border-radius:10px;padding:14px;margin:14px 0;background:#fff}
+.exhibit img{display:block;width:100%;height:auto;border:1px solid var(--color-border);border-radius:6px;margin-top:10px}
+.exhibit .cap{font-size:.82rem;color:var(--color-text-light);margin-top:8px}
+.badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;background:#d1fae5;color:#065f46;margin-left:6px}
 .report-footer{background:var(--color-primary);color:rgba(255,255,255,.8);padding:28px 0;margin-top:40px;font-size:.85rem}
 code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:6px;padding:1px 5px;font-size:.82rem}
 </style>
 </head>
 <body>
+<style>
+#pw-gate{position:fixed;inset:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,system-ui,sans-serif}
+#pw-box{background:#fff;border-radius:12px;padding:40px 32px;width:320px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#pw-box h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:8px}
+#pw-box p{font-size:.85rem;color:#666;margin-bottom:20px}
+#pw-input{width:100%;padding:10px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px}
+#pw-btn{width:100%;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+#pw-err{color:#ef4444;font-size:.8rem;margin-top:8px;display:none}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Gimme Care Reports</h2>
+    <p>Enter the password to access this report.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Continue</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='gc_report_auth',PWD='tweaking26!';
+  function unlock(){document.getElementById('pw-gate').style.display='none';}
+  if(sessionStorage.getItem(KEY)===PWD){unlock();return;}
+  document.getElementById('pw-btn').addEventListener('click',check);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  function check(){
+    var v=document.getElementById('pw-input').value;
+    if(v===PWD){sessionStorage.setItem(KEY,PWD);unlock();}
+    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
+  }
+})();
+</script>
+
 <header class="report-header"><div class="container"><h1>Tweaking Agency</h1></div></header>
 <div class="report-meta"><div class="container">
   <strong>TrimRx runbook — FTC + CA AG + Edelson / Keller Postman</strong><br>
-  Client: Gimme Care · 2026-07-30 · No Remedy tip · Efficacy + guarantee + ROSCA/cancel
+  Client: Gimme Care · Updated 2026-07-30 · Screenshots captured · Efficacy + guarantee + ROSCA/cancel
 </div></div>
 <main class="container">
-<p style="margin-top:16px"><a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/index.html">← All Gimme reports</a> · <a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260724_gimme_trimrx-regulatory-evidence.html">Jul 24 dossier</a></p>
+<p style="margin-top:16px">
+  <a href="index.html">← All Gimme reports</a> ·
+  <a href="20260730_gimme_trimrx-ftc-tip-evidence.html">Full evidence pack</a> ·
+  <a href="20260730_trimrx-ftc-evidence/">Screenshot folder</a> ·
+  <a href="20260724_gimme_trimrx-regulatory-evidence.html">Jul 24 dossier</a>
+</p>
 
 <div class="callout callout-danger">
-  <strong>Order today:</strong> (0) screenshots → (1) FTC → (2) CA AG → (3) Edelson form → (4) Keller Postman form.
-  Same evidence packet for all four. Do not file as a fake consumer.
+  <strong>Order:</strong> (1) FTC → (2) CA AG → (3) Edelson → (4) Keller Postman.
+  Screenshots are already captured (below). Do not file as a fake consumer.
+</div>
+
+<div class="callout">
+  <strong>Do I need my name / title / agency on the FTC tip?</strong><br>
+  <strong>No — not required.</strong> ReportFraud.ftc.gov lets you submit anonymously. How much personal info you give is up to you.<br><br>
+  <strong>Recommended minimum:</strong> leave an <em>email</em> so you get a confirmation number emailed back (FTC form also cannot attach screenshots — so confirmation + this evidence pack URL is your paper trail).<br><br>
+  <strong>Optional but useful:</strong> your name if you’re fine being contacted for follow-up. Title/agency are <em>not</em> required fields — only include them in the narrative if you want to signal this is a competitor tip (helps framing; not mandatory).<br><br>
+  <strong>Tradeoff:</strong> FTC may share reporter info with other enforcers (and sometimes the company) under its Privacy Act routine uses. If you want distance, stay anonymous + email-only, or use a work email without title/agency in the body.
 </div>
 
 <div class="callout callout-warn">
-  <strong>CA AG heads-up:</strong> Their form asks you to authorize sending the complaint <em>to TrimRx</em>. Expect MetaFit to see that you tipped. That is normal and fine for a competitor tip — just don’t put anything you wouldn’t want them to read.
+  <strong>CA AG heads-up:</strong> Their form asks you to authorize sending the complaint <em>to TrimRx</em> — MetaFit will see it. Use your real contact there (form requires it). Don’t put anything you wouldn’t want them to read.
 </div>
 
-<h2>0 — Capture evidence first (do once)</h2>
+<h2>0 — Evidence status <span class="badge">DONE 2026-07-30</span></h2>
 <div class="step">
-  <p>Save as PDF/PNG with date in filename. Prefer one combined PDF ≤4MB for CA AG upload if possible.</p>
+  <p>All captures live in <a href="20260730_trimrx-ftc-evidence/"><code>20260730_trimrx-ftc-evidence/</code></a> and the annotated pack
+  <a href="20260730_gimme_trimrx-ftc-tip-evidence.html">20260730_gimme_trimrx-ftc-tip-evidence.html</a>.</p>
   <div class="checklist">
-    <label>☐ <code>offers.trimrx.com/offer-v2</code> — 5-Month Weight-Loss Guarantee</label>
-    <label>☐ Same — Weight Loss Warranty / money-back copy</label>
-    <label>☐ Same — <strong>94.6% success rate</strong> + <strong>2x faster / industry average</strong></label>
-    <label>☐ Same — #1 / Most Trusted claims + self-report footnote</label>
-    <label>☐ <code>trimrx.com/terms-and-conditions</code> — refund only DQ/billing error; intake non-refundable; no refund after charge</label>
-    <label>☐ Same — price table ($199/$299/$349/$399)</label>
-    <label>☐ Trustpilot profile snapshot (optional)</label>
+    <label>☑ Hero — 5-Month Weight-Loss Guarantee · #1 · 94.6% · Warranty seal → <code>01-…</code></label>
+    <label>☑ Efficacy — 2x faster / 94.6% / self-reported ~300k footnote → <code>02-…</code>, <code>05-…</code></label>
+    <label>☑ Weight Loss Warranty — “refund you every penny” → <code>03-…</code></label>
+    <label>☑ No Hidden Fees strip → <code>04-…</code></label>
+    <label>☑ Terms refund: only DQ / billing error; intake non-refundable; cancel after charge = no refund → <code>08-…</code>, <code>09-…</code></label>
+    <label>☑ Terms pricing $199/$299/$349/$399 → <code>10-…</code></label>
+    <label>☑ Trustpilot 3.6 / 5,455 reviews → <code>12-…</code></label>
+    <label>☑ Full-page offer-v2 + Terms → <code>06-…</code>, <code>11-…</code></label>
   </div>
   <p>Company identity for all forms:</p>
   <ul>
@@ -72,13 +125,50 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
   </ul>
 </div>
 
+<h2>Key exhibits (embedded)</h2>
+
+<div class="exhibit">
+  <h3>01 — Hero: guarantee + 94.6% + #1</h3>
+  <img src="20260730_trimrx-ftc-evidence/01-offer-v2-hero-guarantee.png" alt="offer-v2 hero guarantee and 94.6%">
+  <p class="cap">offers.trimrx.com/offer-v2 · 2026-07-30</p>
+</div>
+
+<div class="exhibit">
+  <h3>02 — Efficacy superiority (2x / 94.6%)</h3>
+  <img src="20260730_trimrx-ftc-evidence/02-offer-v2-efficacy-2x-946.png" alt="We Outperform 2x and 94.6%">
+  <p class="cap">Self-reported ~300k footnote visible under stats</p>
+</div>
+
+<div class="exhibit">
+  <h3>03 — Weight Loss Warranty (“every penny”)</h3>
+  <img src="20260730_trimrx-ftc-evidence/03-offer-v2-weight-loss-warranty.png" alt="Weight Loss Warranty refund every penny">
+</div>
+
+<div class="exhibit">
+  <h3>08 — Terms Refund Policy (mismatch with ads)</h3>
+  <img src="20260730_trimrx-ftc-evidence/08-terms-refund-policy.png" alt="Terms refund eligibility narrow">
+  <p class="cap">Refunds only medical DQ or billing error · intake non-refundable · cancel after charge = no refund</p>
+</div>
+
+<div class="exhibit">
+  <h3>10 — Terms pricing</h3>
+  <img src="20260730_trimrx-ftc-evidence/10-terms-pricing.png" alt="Terms GLP-1 pricing 199 299">
+</div>
+
+<div class="exhibit">
+  <h3>12 — Trustpilot profile</h3>
+  <img src="20260730_trimrx-ftc-evidence/12-trustpilot-profile.png" alt="Trustpilot 3.6 5455 reviews">
+</div>
+
 <h2>1 — FTC</h2>
 <div class="step">
   <h3><span class="n">1</span> File at <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener">reportfraud.ftc.gov</a></h3>
   <ul>
     <li>Report a company / bad business practice</li>
     <li>Money lost: <strong>$0</strong> (competitor tip)</li>
-    <li>Paste <strong>Draft FTC</strong> below into the description</li>
+    <li><strong>Attachments:</strong> FTC form does <em>not</em> accept uploads — put URLs in the narrative; keep screenshots for CA AG / your files</li>
+    <li>Paste <strong>Draft FTC</strong> below</li>
+    <li>Contact: anonymous OK; email recommended for confirmation #</li>
     <li>Save confirmation #</li>
   </ul>
 </div>
@@ -89,7 +179,8 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
   <table>
     <thead><tr><th>Field</th><th>Enter</th></tr></thead>
     <tbody>
-      <tr><td>Submitting on behalf of someone else?</td><td><strong>No</strong> (you are the tipster)</td></tr>
+      <tr><td>Submitting on behalf of someone else?</td><td><strong>No</strong></td></tr>
+      <tr><td>Your name / address / email</td><td>Required by form — use real contact</td></tr>
       <tr><td>Company Name</td><td>MetaFit Pharma Solutions LLC d/b/a TrimRx</td></tr>
       <tr><td>Company City / State / Zip</td><td>San Diego / CA / 92130</td></tr>
       <tr><td>Phone</td><td>888-896-1612</td></tr>
@@ -97,10 +188,10 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
       <tr><td>Website</td><td>https://trimrx.com</td></tr>
       <tr><td>Amount in dispute</td><td><strong>0</strong></td></tr>
       <tr><td>Complaint description</td><td>Paste <strong>Draft CA AG</strong></td></tr>
-      <tr><td>Reasonable resolution</td><td>Paste resolution line in Draft CA AG</td></tr>
+      <tr><td>Reasonable resolution</td><td>Paste resolution line below</td></tr>
       <tr><td>Contacted the company?</td><td><strong>No</strong></td></tr>
-      <tr><td>Contacted other agencies?</td><td><strong>Yes</strong> — FTC ReportFraud (put confirmation # + today’s date)</td></tr>
-      <tr><td>Upload documents?</td><td><strong>Yes</strong> — offer-v2 + Terms PDF/screenshots (pdf/docx; keep under size limits)</td></tr>
+      <tr><td>Contacted other agencies?</td><td><strong>Yes</strong> — FTC ReportFraud (confirmation # + date)</td></tr>
+      <tr><td>Upload documents?</td><td><strong>Yes</strong> — upload key PNGs from <code>20260730_trimrx-ftc-evidence/</code> (pdf/png/docx; watch size limits). Priority: 01, 02, 03, 08, 10</td></tr>
       <tr><td>Authorize send to company?</td><td><strong>Yes</strong> (required) — TrimRx will see the tip</td></tr>
     </tbody>
   </table>
@@ -108,28 +199,27 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
 
 <h2>3 — Edelson PC</h2>
 <div class="step">
-  <h3><span class="n">3</span> Submit tip via <a href="https://edelson.com/contact/" target="_blank" rel="noopener">edelson.com/contact</a></h3>
+  <h3><span class="n">3</span> <a href="https://edelson.com/contact/" target="_blank" rel="noopener">edelson.com/contact</a></h3>
   <ul>
-    <li>Subject: tip / ROSCA / TrimRx (paste subject from Draft Plaintiff)</li>
-    <li>Message: paste <strong>Draft Plaintiff</strong></li>
-    <li>This is a tip for them to investigate a consumer class — you are not asking them to represent Tweaking as plaintiff</li>
+    <li>Paste subject + <strong>Draft Plaintiff</strong></li>
+    <li>Tip for consumer class investigation — not asking them to represent Tweaking as plaintiff</li>
+    <li>Link them to the evidence pack URL after it’s live</li>
   </ul>
 </div>
 
 <h2>4 — Keller Postman</h2>
 <div class="step">
-  <h3><span class="n">4</span> Submit via <a href="https://kellerpostman.com/contact/" target="_blank" rel="noopener">kellerpostman.com/contact</a> → Start a New Claim</h3>
+  <h3><span class="n">4</span> <a href="https://kellerpostman.com/contact/" target="_blank" rel="noopener">kellerpostman.com/contact</a> → Start a New Claim</h3>
   <ul>
-    <li>Same <strong>Draft Plaintiff</strong> in “Describe Your Issue”</li>
-    <li>Case type: closest to consumer / subscription / deceptive practices if listed</li>
-    <li>Zip: your zip</li>
+    <li>Same <strong>Draft Plaintiff</strong></li>
+    <li>Your contact required on their form</li>
   </ul>
 </div>
 
 <h2>Draft FTC — paste into ReportFraud.ftc.gov</h2>
 <div class="draft">COMPETITOR TIP — MetaFit Pharma Solutions LLC d/b/a TrimRx (San Diego, CA)
 
-I work at a marketing agency for competing telehealth weight-loss brands. I am reporting TrimRx for deceptive advertising and unfair subscription practices that appear to violate FTC Act Section 5 and ROSCA. I did not personally purchase from them; this is a public-interest tip based on live ads/pages and widespread consumer complaints.
+I am reporting TrimRx for deceptive advertising and unfair subscription practices that appear to violate FTC Act Section 5 and ROSCA. I did not personally purchase from them; this is a public-interest / competitor tip based on live ads/pages and widespread consumer complaints.
 
 COMPANY
 MetaFit Pharma Solutions LLC d/b/a TrimRx
@@ -143,45 +233,50 @@ On https://offers.trimrx.com/offer-v2 (live as of 2026-07-30), TrimRx claims:
 • Members lose weight “2x faster” / “twice as fast as the industry average within 90 days”
 • “America’s #1 Most Trusted GLP-1 Program” and similar #1 rankings
 These are presented as proven clinical/industry superiority. Footnotes attribute results to self-reported customer data (approx. 66,260–300,000 members), not controlled clinical trials vs competitors. FTC substantiation rules for health and comparative claims require competent and reliable scientific evidence before dissemination. Net impression: superior, proven medical outcomes for compounded GLP-1s (same page admits compounded meds are not FDA-approved).
+Dated screenshots captured 2026-07-30 (hero + “We Outperform” section).
 
 PROBLEM 2 — DECEPTIVE WEIGHT-LOSS / MONEY-BACK GUARANTEE
-Same LP markets a “5-Month Weight-Loss Guarantee,” “Weight Loss Warranty,” and money-back-if-you-don’t-hit-goal language.
+Same LP markets a “5-Month Weight-Loss Guarantee,” “Weight Loss Warranty,” and money-back-if-you-don’t-hit-goal language (“refund you every penny”).
 https://trimrx.com/terms-and-conditions limits refunds to (1) medical disqualification or (2) billing error; states orders are non-refundable once intake is submitted; cancellation after a charge does not refund prior charges. Advertising vs contract mismatch is deceptive.
 
 PROBLEM 3 — BAIT PRICING + HARD CANCEL / NEGATIVE OPTION (ROSCA)
-Ads/offer pages promote low monthly prices (e.g. ~$144–$179, “No Hidden Fees”) while Terms list higher plan prices (e.g. GLP-1 $199/$299; GLP-1+GIP $349/$399). Public Trustpilot and BBB complaints: advertised price ≠ charged price; inability to cancel; continued charges after cancel requests; non-response to refill forms treated as renew consent.
+Ads/offer pages promote low monthly prices and “No Hidden Fees” while Terms list higher plan prices (e.g. GLP-1 $199/$299; GLP-1+GIP $349/$399). Public Trustpilot (~3.6/5, 5,400+ reviews) and BBB complaints: advertised price ≠ charged price; inability to cancel; continued charges after cancel requests; non-response to refill forms treated as renew consent.
 
 Example public complaints:
 • https://www.trustpilot.com/reviews/6a63c641143886095dffa2c1 ($144 → ~$232)
 • https://www.trustpilot.com/reviews/6a63a9a61a0dca562f268391 (cannot cancel; silence = renew)
 • https://www.bbb.org/scamtracker/lookupscam/1254827 (2 months charged; Everflow affiliate ID in URL)
-• https://www.trustpilot.com/reviews/6a62f4d535512c64a1cea0ae (price switch; told stuck)
-• https://www.trustpilot.com/reviews/6a62753472539de53907baeb (refund promise then 28-day refusal)
+• https://www.trustpilot.com/reviews/6a62f4d535512c64a1cea0ae
+• https://www.trustpilot.com/reviews/6a62753472539de53907baeb
 
 ROSCA requires clear disclosure of material terms, express informed consent before charging, and a simple mechanism to stop recurring charges.
 
 PROBLEM 4 — AFFILIATE DISTRIBUTION
 Multiple Google Ads advertisers and Everflow affiliate tracking amplify these claims beyond one corporate ad account.
 
-REQUEST
-Please enter into Consumer Sentinel and consider investigation for deceptive health/efficacy claims, deceptive guarantees, and ROSCA/negative-option violations. Dated screenshots of the live LP and Terms available on request.
+EVIDENCE NOTE
+FTC form does not accept file uploads. Dated screenshots of offer-v2 and Terms (2026-07-30) are preserved and can be provided on request / are filed with California AG.
 
-Reporter: [YOUR NAME], [TITLE], [AGENCY]
-Email: [EMAIL] · Phone: [PHONE]
-Date: 2026-07-30</div>
+REQUEST
+Please enter into Consumer Sentinel and consider investigation for deceptive health/efficacy claims, deceptive guarantees, and ROSCA/negative-option violations.
+
+Date: 2026-07-30
+[OPTIONAL — leave blank to stay anonymous in the narrative]
+Reporter: [NAME or omit]
+Contact email: [EMAIL — recommended for confirmation]</div>
 
 <h2>Draft CA AG — complaint description</h2>
 <div class="draft">COMPETITOR / PUBLIC-INTEREST TIP (not a personal purchase dispute; amount in dispute $0)
 
-I work for a marketing agency that manages advertising for telehealth brands in the same category as TrimRx. I am reporting MetaFit Pharma Solutions LLC d/b/a TrimRx (San Diego, CA) for deceptive advertising and unfair automatic-renewal / cancellation practices harming California and national consumers.
+I am reporting MetaFit Pharma Solutions LLC d/b/a TrimRx (San Diego, CA) for deceptive advertising and unfair automatic-renewal / cancellation practices harming California and national consumers. I work in performance marketing for telehealth brands in the same category. I did not buy from TrimRx.
 
-Product/service: Online compounded GLP-1 / GLP-1+GIP weight-loss telehealth subscriptions sold via trimrx.com, offers.trimrx.com, and start.trimrx.com.
+Product/service: Online compounded GLP-1 / GLP-1+GIP weight-loss telehealth subscriptions via trimrx.com, offers.trimrx.com, and start.trimrx.com.
 
-Dates: Ongoing; live advertising captured July 30, 2026 on https://offers.trimrx.com/offer-v2 and terms at https://trimrx.com/terms-and-conditions. I did not buy from TrimRx.
+Dates: Ongoing; live advertising captured July 30, 2026 on https://offers.trimrx.com/offer-v2 and terms at https://trimrx.com/terms-and-conditions.
 
 What the ads say (offer-v2):
-1) Efficacy/superiority: “94.6% success rate”; members lose weight “2x faster” / “twice as fast as the industry average within 90 days”; “America’s #1 Most Trusted GLP-1 Program.” Footnotes cite self-reported member data, not clinical head-to-head trials — inadequate substantiation for health/comparative superiority claims.
-2) Guarantee: “5-Month Weight-Loss Guarantee,” “Weight Loss Warranty,” money-back if goals not met.
+1) Efficacy/superiority: “94.6% success rate”; “2x faster” / “twice as fast as the industry average within 90 days”; “America’s #1 Most Trusted GLP-1 Program.” Footnotes cite self-reported member data, not clinical head-to-head trials.
+2) Guarantee: “5-Month Weight-Loss Guarantee,” “Weight Loss Warranty,” money-back if goals not met (“refund you every penny”).
 3) Pricing: low promotional prices and “No Hidden Fees.”
 
 What the contract says (Terms):
@@ -197,7 +292,7 @@ Bait pricing, inability to cancel, continued charges after cancel requests, and 
 
 These practices implicate California UCL / FAL / Automatic Renewal Law and parallel federal ROSCA / FTC Act issues. I also filed an FTC tip at ReportFraud.ftc.gov on [DATE] (confirmation: [FTC CONFIRMATION #]).
 
-Supporting screenshots of offer-v2 and Terms are uploaded with this form.
+Supporting screenshots of offer-v2 and Terms (captured 2026-07-30) are uploaded with this form (exhibits 01, 02, 03, 08, 10, 12).
 
 Company: MetaFit Pharma Solutions LLC d/b/a TrimRx · 12636 High Bluff Drive Ste 400, San Diego, CA 92130 · (888) 896-1612 · hello@trimrx.org · https://trimrx.com</div>
 
@@ -208,7 +303,7 @@ Company: MetaFit Pharma Solutions LLC d/b/a TrimRx · 12636 High Bluff Drive Ste
 <p><strong>Subject (Edelson):</strong> Tip — TrimRx / MetaFit Pharma — ROSCA negative-option + deceptive weight-loss guarantee + unsubstantiated efficacy claims</p>
 <div class="draft">Hello —
 
-I’m with a performance-marketing agency that works with competing compounded-GLP telehealth advertisers. I’m sending a tip for your consumer-protection / class investigations — not asking your firm to represent our agency as a plaintiff.
+I’m sending a tip for your consumer-protection / class investigations regarding MetaFit Pharma Solutions LLC d/b/a TrimRx — not asking your firm to represent me/my agency as a plaintiff.
 
 TARGET
 MetaFit Pharma Solutions LLC d/b/a TrimRx (San Diego, CA)
@@ -221,40 +316,38 @@ WHY THIS LOOKS ACTIONABLE FOR CONSUMERS
 Public Trustpilot + BBB complaints describe bait pricing, inability to cancel, continued charges after cancel requests, and treating silence on refill forms as renew consent. Example URLs:
 • https://www.trustpilot.com/reviews/6a63c641143886095dffa2c1 ($144 advertised → ~$232 charged)
 • https://www.trustpilot.com/reviews/6a63a9a61a0dca562f268391 (cannot cancel; form silence = renew)
-• https://www.bbb.org/scamtracker/lookupscam/1254827 (multi-month charge; Everflow affiliate ID in URL)
+• https://www.bbb.org/scamtracker/lookupscam/1254827
 • https://www.trustpilot.com/reviews/6a62f4d535512c64a1cea0ae
-• https://www.trustpilot.com/reviews/6a62753472539de53907baeb (refund promised, then 28-day refusal)
+• https://www.trustpilot.com/reviews/6a62753472539de53907baeb
 
 2) Deceptive weight-loss / money-back guarantee
 Live LP offers.trimrx.com/offer-v2 (captured 2026-07-30) sells “5-Month Weight-Loss Guarantee,” “Weight Loss Warranty,” and money-back-if-you-don’t-hit-goal framing.
 TrimRx Terms limit refunds to medical disqualification or billing error; intake submitted = non-refundable; cancel after charge = no refund.
 
-3) Unsubstantiated efficacy / superiority (FTC Act §5 / state UDAP)
+3) Unsubstantiated efficacy / superiority
 Same LP claims “94.6% success rate,” “2x faster than the industry average,” and “#1 Most Trusted,” based on self-reported member data — not competent clinical substantiation for comparative health claims. Page also admits compounded meds are not FDA-approved.
 
 4) Distribution
 Multi-advertiser Google Ads + Everflow affiliate traffic amplifies the claims.
 
 WHAT I’M OFFERING
-Dated screenshots of offer-v2 + Terms, our Jul 24 evidence dossier (claim scan + complaint table), and FTC/CA AG tip confirmations once filed. Happy to hop on a call.
+Dated screenshots (2026-07-30) of offer-v2 + Terms, Jul 24 evidence dossier, and FTC/CA AG tip confirmations once filed. Evidence pack:
+https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_gimme_trimrx-ftc-tip-evidence.html
 
 WHAT YOU’D NEED
 Likely a named consumer who was charged after a cancel attempt / hit bait pricing / was denied the advertised warranty. I can help surface public complaint leads; I am not that consumer.
 
-I also filed / am filing parallel tips with the FTC (ReportFraud) and California AG (MetaFit is San Diego–based).
-
 Thank you,
 [YOUR NAME]
-[TITLE], [AGENCY]
 [EMAIL] · [PHONE]</div>
 
-<div class="callout">
-  <strong>Done when:</strong> You have FTC confirmation #, CA AG submission receipt/email, Edelson form submit confirmation, Keller Postman form submit confirmation — saved with the screenshot PDF.
+<div class="callout callout-ok">
+  <strong>Done when:</strong> FTC confirmation # · CA AG receipt · Edelson submit · Keller Postman submit — saved next to <code>20260730_trimrx-ftc-evidence/</code>.
 </div>
 
 </main>
 <footer class="report-footer"><div class="container">
-  <p>Tweaking Agency · Not legal advice · Counsel review before submit if client policy requires.</p>
+  <p>Tweaking Agency · Not legal advice · Screenshots captured 2026-07-30 · Counsel review before submit if client policy requires.</p>
 </div></footer>
 </body>
 </html>
