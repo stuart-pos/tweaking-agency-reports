@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gimme Care — TrimRx FTC tip evidence pack | Tweaking Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --color-primary:#1a1a2e; --color-accent:#e94560; --color-bg:#fff; --color-bg-alt:#f8f9fa;
+  --color-text:#333; --color-text-light:#666; --color-border:#e0e0e0; --container-max:980px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--color-text);line-height:1.55;font-size:0.92rem;background:#fff}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 28px}
+.report-header{background:var(--color-primary);color:#fff;padding:36px 0}
+.report-meta{background:var(--color-bg-alt);border-bottom:1px solid var(--color-border);padding:18px 0}
+h2{font-size:1.25rem;font-weight:700;color:var(--color-primary);margin:32px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--color-primary)}
+h3{font-size:1.02rem;color:var(--color-primary);margin:22px 0 10px}
+p,li{margin-bottom:10px}
+ul,ol{margin:0 0 14px 22px}
+a{color:var(--color-accent)}
+.callout{background:#eff6ff;border-left:4px solid #3b82f6;padding:14px 18px;margin:14px 0;border-radius:8px}
+.callout-danger{background:#fef2f2;border-left-color:#ef4444}
+.callout-warn{background:#fef3c7;border-left-color:#f59e0b}
+.draft{background:#111827;color:#e5e7eb;border-radius:10px;padding:18px 20px;margin:12px 0;font-size:.8rem;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.45;max-height:520px;overflow:auto}
+.exhibit{border:1px solid var(--color-border);border-radius:10px;padding:14px;margin:16px 0;background:#fff}
+.exhibit img{display:block;width:100%;height:auto;border:1px solid var(--color-border);border-radius:6px;margin-top:10px}
+.exhibit .cap{font-size:.82rem;color:var(--color-text-light);margin-top:8px}
+.badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;background:#fee2e2;color:#991b1b;margin-left:6px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.82rem}
+th,td{padding:8px;border-bottom:1px solid var(--color-border);text-align:left;vertical-align:top}
+thead{background:var(--color-primary);color:#fff}
+.report-footer{background:var(--color-primary);color:rgba(255,255,255,.8);padding:28px 0;margin-top:40px;font-size:.85rem}
+code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:6px;padding:1px 5px;font-size:.82rem}
+.copy-hint{font-size:.8rem;color:var(--color-text-light);margin-bottom:8px}
+</style>
+</head>
+<body>
+<style>
+#pw-gate{position:fixed;inset:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,system-ui,sans-serif}
+#pw-box{background:#fff;border-radius:12px;padding:40px 32px;width:320px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#pw-box h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:8px}
+#pw-box p{font-size:.85rem;color:#666;margin-bottom:20px}
+#pw-input{width:100%;padding:10px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px}
+#pw-btn{width:100%;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+#pw-err{color:#ef4444;font-size:.8rem;margin-top:8px;display:none}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Gimme Care Reports</h2>
+    <p>Enter the password to access this report.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Continue</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='gc_report_auth',PWD='tweaking26!';
+  function unlock(){document.getElementById('pw-gate').style.display='none';}
+  if(sessionStorage.getItem(KEY)===PWD){unlock();return;}
+  document.getElementById('pw-btn').addEventListener('click',check);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  function check(){
+    var v=document.getElementById('pw-input').value;
+    if(v===PWD){sessionStorage.setItem(KEY,PWD);unlock();}
+    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
+  }
+})();
+</script>
+
+<header class="report-header"><div class="container"><h1>Tweaking Agency</h1></div></header>
+<div class="report-meta"><div class="container">
+  <strong>TrimRx / MetaFit — FTC tip evidence pack</strong><br>
+  Client: Gimme Care · Captured: <strong>2026-07-30</strong> · Also for CA AG + Edelson / Keller Postman tips
+</div></div>
+
+<main class="container">
+<p style="margin-top:16px"><a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/index.html">← All Gimme reports</a> · Related: <a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260724_gimme_trimrx-regulatory-evidence.html">Jul 24 dossier</a></p>
+
+<div class="callout callout-danger">
+  <strong>How to use:</strong> File at <a href="https://reportfraud.ftc.gov/" target="_blank" rel="noopener">reportfraud.ftc.gov</a> with money lost = $0 (competitor tip). Paste the FTC draft below. Keep this page + exhibit PNGs as your evidence folder. Same pack supports CA AG upload and plaintiff-firm tips.
+</div>
+
+<h2>1. Company identity</h2>
+<table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Legal name</td><td>MetaFit Pharma Solutions LLC</td></tr>
+<tr><td>Trade name</td><td>TrimRx / TrimRX</td></tr>
+<tr><td>Address</td><td>12636 High Bluff Drive Ste 400, San Diego, CA 92130</td></tr>
+<tr><td>Phone</td><td>(888) 896-1612</td></tr>
+<tr><td>Email</td><td>hello@trimrx.org</td></tr>
+<tr><td>Primary exhibits</td><td><a href="https://offers.trimrx.com/offer-v2" target="_blank" rel="noopener">offers.trimrx.com/offer-v2</a> · <a href="https://trimrx.com/terms-and-conditions" target="_blank" rel="noopener">trimrx.com/terms-and-conditions</a></td></tr>
+</tbody>
+</table>
+
+<h2>2. FTC form draft — paste into ReportFraud.ftc.gov</h2>
+<p class="copy-hint">Select all in the box → copy → paste into the FTC “what happened” field. Fill brackets with your name/agency.</p>
+<div class="draft" id="ftc-draft">COMPETITOR TIP — MetaFit Pharma Solutions LLC d/b/a TrimRx (San Diego, CA)
+
+I work at a marketing agency for competing telehealth weight-loss brands. I am reporting TrimRx for deceptive advertising and unfair subscription practices that appear to violate FTC Act Section 5 and ROSCA. I did not personally purchase from them; this is a public-interest tip based on live ads/pages and widespread consumer complaints.
+
+COMPANY
+MetaFit Pharma Solutions LLC d/b/a TrimRx
+Websites: https://trimrx.com · https://offers.trimrx.com · https://start.trimrx.com
+Phone: (888) 896-1612 · Email: hello@trimrx.org
+Address: 12636 High Bluff Drive Ste 400, San Diego, CA 92130
+
+PROBLEM 1 — UNSUBSTANTIATED EFFICACY / SUPERIORITY CLAIMS
+On https://offers.trimrx.com/offer-v2 (live as of 2026-07-30), TrimRx claims:
+• “94.6% success rate”
+• Members lose weight “2x faster” / “twice as fast as the industry average within 90 days”
+• “America’s #1 Most Trusted GLP-1 Program” and similar #1 rankings
+These are presented as proven clinical/industry superiority. Footnotes attribute results to self-reported customer data (approx. 66,260–300,000 members), not controlled clinical trials vs competitors. FTC substantiation rules for health and comparative claims require competent and reliable scientific evidence before dissemination. Net impression: superior, proven medical outcomes for compounded GLP-1s (same page admits compounded meds are not FDA-approved).
+Evidence: Exhibits 01, 02, 05 (screenshots captured 2026-07-30).
+
+PROBLEM 2 — DECEPTIVE WEIGHT-LOSS / MONEY-BACK GUARANTEE
+Same LP markets a “5-Month Weight-Loss Guarantee,” “Weight Loss Warranty,” and money-back-if-you-don’t-hit-goal language (“refund you every penny”).
+https://trimrx.com/terms-and-conditions limits refunds to (1) medical disqualification or (2) billing error; states orders are non-refundable once intake is submitted; cancellation after a charge does not refund prior charges. Advertising vs contract mismatch is deceptive.
+Evidence: Exhibits 01, 03 vs 08, 09.
+
+PROBLEM 3 — BAIT PRICING + HARD CANCEL / NEGATIVE OPTION (ROSCA)
+Ads/offer pages promote low monthly prices and “No Hidden Fees” while Terms list higher plan prices (e.g. GLP-1 $199/$299; GLP-1+GIP $349/$399). Public Trustpilot (~3.6/5, 5,400+ reviews) and BBB complaints: advertised price ≠ charged price; inability to cancel; continued charges after cancel requests; non-response to refill forms treated as renew consent.
+Example public complaints:
+• https://www.trustpilot.com/reviews/6a63c641143886095dffa2c1 ($144 → ~$232)
+• https://www.trustpilot.com/reviews/6a63a9a61a0dca562f268391 (cannot cancel; silence = renew)
+• https://www.bbb.org/scamtracker/lookupscam/1254827 (2 months charged; Everflow affiliate ID in URL)
+• https://www.trustpilot.com/reviews/6a62f4d535512c64a1cea0ae
+• https://www.trustpilot.com/reviews/6a62753472539de53907baeb
+Evidence: Exhibits 04, 10, 12.
+
+PROBLEM 4 — AFFILIATE DISTRIBUTION
+Multiple Google Ads advertisers and Everflow affiliate tracking amplify these claims beyond one corporate ad account.
+
+REQUEST
+Please enter into Consumer Sentinel and consider investigation for deceptive health/efficacy claims, deceptive guarantees, and ROSCA/negative-option violations. Dated screenshots available at this evidence pack / on request.
+
+Reporter: [YOUR NAME], [TITLE], [AGENCY]
+Email: [EMAIL] · Phone: [PHONE]
+Date: 2026-07-30</div>
+
+<h2>3. Exhibit index</h2>
+<table>
+<thead><tr><th>#</th><th>File</th><th>What it proves</th></tr></thead>
+<tbody>
+<tr><td>01</td><td><code>01-offer-v2-hero-guarantee.png</code></td><td>5-Month Weight-Loss Guarantee · #1 Most Trusted · 94.6% · Weight Loss Warranty badge</td></tr>
+<tr><td>02</td><td><code>02-offer-v2-efficacy-2x-946.png</code></td><td>“We Outperform” · 2x faster · 21+ lbs · 94.6% · self-reported ~300k footnote</td></tr>
+<tr><td>03</td><td><code>03-offer-v2-weight-loss-warranty.png</code></td><td>“refund you every penny” Weight Loss Warranty</td></tr>
+<tr><td>04</td><td><code>04-offer-v2-no-hidden-fees.png</code></td><td>“No Hidden Fees” / honest pricing strip</td></tr>
+<tr><td>05</td><td><code>05-offer-v2-self-reported-footnote.png</code></td><td>Self-reported methodology disclaimer</td></tr>
+<tr><td>06</td><td><code>06-offer-v2-fullpage.png</code></td><td>Full offer-v2 capture</td></tr>
+<tr><td>07–11</td><td>Terms screenshots</td><td>Refund only DQ/billing error; intake non-refundable; cancel after charge = no refund; Terms prices</td></tr>
+<tr><td>12</td><td><code>12-trustpilot-profile.png</code></td><td>Live Trustpilot 3.6/5 · 5,455 reviews (vs #1 / “Excellent” LP claims)</td></tr>
+</tbody>
+</table>
+<p>All files: <a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/">20260730_trimrx-ftc-evidence/</a></p>
+
+<h2>4. Exhibits (screenshots)</h2>
+
+<div class="exhibit">
+  <h3>Exhibit 01 — Hero: guarantee + 94.6% + #1 <span class="badge">EFFICACY + GUARANTEE</span></h3>
+  <p>Source: <code>https://offers.trimrx.com/offer-v2</code> · 2026-07-30</p>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/01-offer-v2-hero-guarantee.png" alt="TrimRx offer-v2 hero showing 5-Month Weight-Loss Guarantee, 94.6% success rate, Americas #1 Most Trusted">
+  <p class="cap">Ticker: “5-Month Weight-Loss Guarantee — or Your Money Back!” · Hero: “America’s #1 Most Trusted GLP-1 Program” · “94.6% Success Rate Nationwide!” · Weight Loss Warranty seal</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 02 — Efficacy superiority: 2x / 94.6% <span class="badge">EFFICACY</span></h3>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/02-offer-v2-efficacy-2x-946.png" alt="TrimRx We Outperform section with 2x faster and 94.6% success rate">
+  <p class="cap">“We Outperform” · “2x faster results” vs industry average · “94.6% success rate” · footnote: self-reported data from ~300,000 customers · compounded meds not FDA-evaluated</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 03 — Weight Loss Warranty copy <span class="badge">GUARANTEE</span></h3>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/03-offer-v2-weight-loss-warranty.png" alt="TrimRx Weight Loss Warranty refund every penny">
+  <p class="cap">“If you don't, we'll refund you every penny. It's that simple.”</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 04 — No Hidden Fees / pricing strip <span class="badge">PRICING</span></h3>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/04-offer-v2-no-hidden-fees.png" alt="TrimRx No Hidden Fees trust strip">
+  <p class="cap">Trust strip including “No Insurance. No Waitlist. No Hidden Fees.”</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 05 — Self-reported footnote <span class="badge">EFFICACY</span></h3>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/05-offer-v2-self-reported-footnote.png" alt="Self-reported data methodology footnote on offer-v2">
+  <p class="cap">Methodology attributed to self-reported member weight entries — not clinical head-to-head trials</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 08 — Terms Refund Policy (vs warranty ads) <span class="badge">MISMATCH</span></h3>
+  <p>Source: <code>https://trimrx.com/terms-and-conditions</code> · 2026-07-30 (promo popup dismissed)</p>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/08-terms-refund-policy.png" alt="TrimRx Terms refund eligibility and non-refundable situations">
+  <p class="cap">Refunds only for medical disqualification or billing error · Intake submitted = non-refundable · Cancel after charge = no refund of processed charges</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 10 — Terms pricing vs promo math <span class="badge">PRICING</span></h3>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/10-terms-pricing.png" alt="TrimRx Terms product pricing GLP-1 199 and 299">
+  <p class="cap">GLP-1 initial $199 / follow-up $299 · GLP-1+GIP initial $349 / follow-up $399 · conflicts with low promo pricing on ads/LPs</p>
+</div>
+
+<div class="exhibit">
+  <h3>Exhibit 12 — Trustpilot live profile <span class="badge">SOCIAL PROOF</span></h3>
+  <img src="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/12-trustpilot-profile.png" alt="Trustpilot TrimRx 3.6 score 5455 reviews">
+  <p class="cap">TrustScore 3.6 / 5 · 5,455 reviews · large 1-star share — contrasts with #1 / “Excellent” LP framing</p>
+</div>
+
+<div class="callout callout-warn">
+  <strong>Also in folder (not all embedded above):</strong>
+  <code>06-offer-v2-fullpage.png</code>,
+  <code>07-terms-top.png</code>,
+  <code>09-terms-non-refundable.png</code>,
+  <code>11-terms-fullpage.png</code>
+  — download from <a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_trimrx-ftc-evidence/">evidence folder</a> for CA AG upload (PDF/PNG, keep under portal size limits).
+</div>
+
+<h2>5. Public complaint URLs (attach as links)</h2>
+<ol>
+  <li><a href="https://www.trustpilot.com/reviews/6a63c641143886095dffa2c1" target="_blank" rel="noopener">Trustpilot — $144 → ~$232 bait pricing</a></li>
+  <li><a href="https://www.trustpilot.com/reviews/6a63a9a61a0dca562f268391" target="_blank" rel="noopener">Trustpilot — cannot cancel; silence = renew</a></li>
+  <li><a href="https://www.bbb.org/scamtracker/lookupscam/1254827" target="_blank" rel="noopener">BBB Scam Tracker #1254827</a></li>
+  <li><a href="https://www.trustpilot.com/reviews/6a62f4d535512c64a1cea0ae" target="_blank" rel="noopener">Trustpilot — price switch; told stuck</a></li>
+  <li><a href="https://www.trustpilot.com/reviews/6a62753472539de53907baeb" target="_blank" rel="noopener">Trustpilot — refund promise then 28-day refusal</a></li>
+</ol>
+
+<div class="callout">
+  <strong>Next after FTC:</strong> Same draft adapted for CA AG form + plaintiff tip to Edelson / Keller Postman (see runbook:
+  <a href="https://stuart-pos.github.io/tweaking-agency-reports/gimme/20260730_gimme_trimrx-ftc-caag-plaintiff-runbook.html">20260730_gimme_trimrx-ftc-caag-plaintiff-runbook.html</a>).
+</div>
+
+</main>
+<footer class="report-footer"><div class="container">
+  <p>Tweaking Agency · Evidence pack for counsel / regulatory tips · Not legal advice · Captured 2026-07-30</p>
+</div></footer>
+</body>
+</html>
