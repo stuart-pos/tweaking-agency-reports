@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Research Report for Listicle — Gimme Care | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --container-max: 980px;
+            --border-radius: 8px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #ffffff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; object-fit: contain; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #ffffff; margin: 0; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        h2 { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; color: var(--color-primary); margin: 36px 0 16px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: var(--color-primary); margin: 28px 0 12px; }
+        h4 { font-family: var(--font-heading); font-size: 1rem; font-weight: 600; color: var(--color-secondary); margin: 18px 0 8px; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 0 0 14px 1.25rem; }
+        li { margin-bottom: 6px; }
+        .toc { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 20px 24px; margin: 20px 0; }
+        .toc a { color: var(--color-info); text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+        .callout { background: var(--color-bg-alt); border-left: 4px solid var(--color-accent); padding: 16px 20px; margin: 16px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.danger { border-left-color: var(--color-danger); background: #fef2f2; }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .callout.success { border-left-color: var(--color-success); background: #f0fdf4; }
+        .callout.info { border-left-color: var(--color-info); background: #eff6ff; }
+        .flag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; background: #fef3c7; color: #92400e; letter-spacing: 0.3px; }
+        .flag-hands { background: #fee2e2; color: #991b1b; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0 20px; }
+        .pro-box, .con-box { border-radius: var(--border-radius); padding: 16px 18px; border: 1px solid var(--color-border); }
+        .pro-box { background: #f0fdf4; border-color: #bbf7d0; }
+        .con-box { background: #fef2f2; border-color: #fecaca; }
+        .pro-box h4, .con-box h4 { margin-top: 0; }
+        .brand-card { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 20px 22px; margin: 24px 0; background: #fff; }
+        .brand-card > h3 { margin-top: 0; border-bottom: 1px solid var(--color-border); padding-bottom: 10px; }
+        .hook { font-size: 1.05rem; color: var(--color-text-light); font-style: italic; margin-bottom: 16px; }
+        .kv { display: grid; grid-template-columns: 180px 1fr; gap: 6px 12px; font-size: 0.92rem; margin: 12px 0 18px; }
+        .kv dt { font-weight: 600; color: var(--color-text-light); }
+        .kv dd { margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+        thead { background: var(--color-primary); color: #ffffff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .scroll { overflow-x: auto; }
+        .sources { font-size: 0.85rem; color: var(--color-text-light); }
+        .sources a { color: var(--color-info); }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 20px 0; }
+        .score-card { padding: 16px; border-radius: var(--border-radius); border: 1px solid var(--color-border); text-align: center; }
+        .score-card .label { font-size: 0.75rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .score-card .value { font-size: 1.35rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .score-card .sub { font-size: 0.75rem; color: var(--color-text-light); margin-top: 4px; }
+        .kit-block { background: var(--color-bg-alt); border-radius: var(--border-radius); padding: 16px 18px; margin: 12px 0; }
+        .kit-block h4 { margin-top: 0; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 32px 0; margin-top: 48px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #ffffff; }
+        code { background: #f0f0f0; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .report-header, .report-footer, thead { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .two-col { grid-template-columns: 1fr; }
+            .kv { grid-template-columns: 1fr; }
+            table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="report-header">
+    <div class="container">
+        <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+        <div>
+            <h1>Tweaking Agency</h1>
+        </div>
+    </div>
+</header>
+
+<div class="report-meta">
+    <div class="container">
+        <h2>Competitor research report for listicle</h2>
+        <div class="meta-details">
+            <span>Client: <strong>Gimme Care</strong></span>
+            <span>Date: <strong>2026-08-10</strong></span>
+            <span>Use: <strong>null.health listicle copy kit</strong></span>
+            <span>Method: <strong>Desk research (no paid orders)</strong></span>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+
+<div class="callout info">
+    <strong>Purpose.</strong> Raw material to write Vaccine Alliance–style independent review / ranking pages (for null.health). This is <em>not</em> a published patient-facing listicle. Do not invent hands-on cold-chain, cancel-path, or delivery details — fields not confirmed on site / Trustpilot / Reddit are marked <span class="flag flag-hands">NEEDS HANDS-ON</span>.
+</div>
+
+<div class="scores-grid">
+    <div class="score-card"><div class="label">Brands covered</div><div class="value">6</div><div class="sub">Effecty · Ozari · Coby · Gimme · Amble · Mondae</div></div>
+    <div class="score-card"><div class="label">Template</div><div class="value">VA</div><div class="sub">Pros/cons · prices · support tone · pharmacy</div></div>
+    <div class="score-card"><div class="label">Sources</div><div class="value">Primary</div><div class="sub">Sites · Trustpilot · Reddit · BBB · client context</div></div>
+    <div class="score-card"><div class="label">VA model pages</div><div class="value">2</div><div class="sub">Gimme Care + Effecty reviews (corroboration)</div></div>
+</div>
+
+<nav class="toc">
+    <strong>Contents</strong>
+    <ol>
+        <li><a href="#va-template">Vaccine Alliance field checklist</a></li>
+        <li><a href="#compare">Master comparison table</a></li>
+        <li><a href="#effecty">Effecty</a></li>
+        <li><a href="#ozari">Ozari Health</a></li>
+        <li><a href="#coby">Coby Health</a></li>
+        <li><a href="#gimme">Gimme Care</a></li>
+        <li><a href="#amble">Amble</a></li>
+        <li><a href="#mondae">Mondae</a></li>
+        <li><a href="#kit">Listicle writing kit</a></li>
+        <li><a href="#gaps">Research gaps</a></li>
+        <li><a href="#sources">Sources</a></li>
+    </ol>
+</nav>
+
+<h2 id="va-template">1. Vaccine Alliance field checklist</h2>
+<p>Modeled on <a href="https://www.vaccinealliance.org/reviews/gimme-care/">VA Gimme Care</a> and <a href="https://www.vaccinealliance.org/reviews/effecty/">VA Effecty</a>. Each brand dossier below fills the same slots.</p>
+<ul>
+    <li><strong>Headline hook</strong> — one pro + one con contrast</li>
+    <li><strong>What we liked / Where it falls short</strong> — including “little things” (phone, AI chat, ad vs MTM price, cancel UX, reply tone)</li>
+    <li><strong>Medications &amp; monthly prices</strong> — MTM + bundles; first-month bait called out</li>
+    <li><strong>Key details</strong> — treatment type, insurance, HSA/FSA, states, support, coaching</li>
+    <li><strong>Intake / consult</strong> — async vs video; ID/SSN</li>
+    <li><strong>Pharmacy transparency</strong> — named vs undisclosed; names from reviews when public site is silent</li>
+    <li><strong>Shipping / cold chain</strong> — only from reviews or VA hands-on (flagged)</li>
+    <li><strong>Reputation</strong> — Trustpilot score/volume, BBB, Reddit; <em>tone of clinic replies</em></li>
+    <li><strong>Fit filters</strong> — For you if / Not for you if</li>
+</ul>
+
+<h2 id="compare">2. Master comparison table</h2>
+<p>Prices verified 2026-08-10 from public sites / secondary reviews. Promo pricing moves — re-check before publishing null.health copy.</p>
+<div class="scroll">
+<table>
+    <thead>
+        <tr>
+            <th>Clinic</th>
+            <th>Best for</th>
+            <th>Sema entry</th>
+            <th>Tirz entry</th>
+            <th>Pricing model</th>
+            <th>Pharmacy public?</th>
+            <th>Support</th>
+            <th>Trustpilot</th>
+            <th>Biggest con</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Effecty</strong></td>
+            <td>Compounded + branded menu; free expedited ship</td>
+            <td>$95 first → <strong>$195</strong> MTM (12-mo $145 ongoing after $45 first)</td>
+            <td>$175 first → <strong>$275</strong> MTM (12-mo $220)</td>
+            <td>Flat by plan length; first-mo promo</td>
+            <td>No (ask support)</td>
+            <td>Phone + AI chat + email</td>
+            <td>~4.5–4.6 · ~700+</td>
+            <td>Ad headline ≠ ongoing MTM; quiet on complaints</td>
+        </tr>
+        <tr>
+            <td><strong>Ozari Health</strong></td>
+            <td>Budget entry + named pharmacies</td>
+            <td><strong>$86</strong>/mo 3-mo starter (ongoing $145 qtr / $175 mo)</td>
+            <td><strong>$125</strong>/mo starter (ongoing $199 qtr / $235 mo)</td>
+            <td>Flat by billing cadence</td>
+            <td><strong>Yes</strong> — Hallandale, VialsRx</td>
+            <td>Phone + email + text + portal</td>
+            <td>Thin / dedicated profile not confirmed</td>
+            <td>Starter ≠ true ongoing; new brand</td>
+        </tr>
+        <tr>
+            <td><strong>Coby Health</strong></td>
+            <td>Transparent dose table + human phone</td>
+            <td><strong>$159</strong> @ 0.25mg → $249 maintenance</td>
+            <td><strong>$239</strong> @ 2.5mg → $439 top dose</td>
+            <td><strong>Dose-escalating</strong> + bundles</td>
+            <td>No (reviewers: GreenwichRX / Hallandale)</td>
+            <td>Phone + email; no live chat</td>
+            <td>~4.8–4.9 · ~83–88 (small sample)</td>
+            <td>Price climbs with dose; pharmacy opacity</td>
+        </tr>
+        <tr class="highlight-row">
+            <td><strong>Gimme Care</strong></td>
+            <td>Flat all-in compounded; fast async</td>
+            <td><strong>$160</strong> MTM / <strong>$130</strong> 3-mo</td>
+            <td><strong>$199</strong> MTM / <strong>$163</strong> 3-mo</td>
+            <td>Flat all-in; no membership</td>
+            <td>No (VA order: Hallandale)</td>
+            <td><strong>No phone</strong>; AI chat off-hours; email</td>
+            <td>~4.2–4.3 · ~287–358</td>
+            <td>Pharmacy secrecy + defensive TP replies + Meta 3-mo framing</td>
+        </tr>
+        <tr>
+            <td><strong>Amble</strong></td>
+            <td>Clear multi-month sema ladder; large review base</td>
+            <td><strong>$179</strong> → $160 / $145 / $135</td>
+            <td>~$289–$329 MTM (bundles lower)</td>
+            <td>Flat “same price every dose” (with fine print)</td>
+            <td>No public picker (internal roster exists)</td>
+            <td>Claims 24/7; phone weak in hands-on reviews</td>
+            <td>~4.4 · ~2,800+</td>
+            <td>BBB F + pattern of unanswered complaints</td>
+        </tr>
+        <tr>
+            <td><strong>Mondae</strong></td>
+            <td>Named pharmacy picker + starting-dose price lock</td>
+            <td><strong>$115</strong> @ lowest start (3-mo ~$113)</td>
+            <td><strong>$145</strong> @ lowest start (3-mo ~$135)</td>
+            <td>Starting-dose lock (not flat at every start dose)</td>
+            <td><strong>Yes</strong> — patient picks Boudreaux / Rush / Hallandale / Greenwich / Align / VialsRx</td>
+            <td>Email + Intercom; phone unclear</td>
+            <td>Thin for mondae.com (ignore mondae.dk)</td>
+            <td>Ezra→Mondae transition; thin public reputation trail</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<!-- ========== EFFECTY ========== -->
+<div class="brand-card" id="effecty">
+    <h3>3. Effecty</h3>
+    <p class="hook">“Great delivery and branded + compounded menu — but the ad price is a first-month teaser, and public complaints often go unanswered.”</p>
+    <dl class="kv">
+        <dt>Site</dt><dd><a href="https://www.effecty.com/weight-loss/glp-1">effecty.com/weight-loss/glp-1</a></dd>
+        <dt>Entity</dt><dd>SBK Effecty LLC · Miami FL address cited by reviewers · LegitScript yes</dd>
+        <dt>Meds</dt><dd>Compounded GLP-1 / GLP-1+GIP; branded Ozempic, Wegovy, Mounjaro, Zepbound</dd>
+        <dt>Consult</dt><dd>Async questionnaire; no required video/phone visit</dd>
+        <dt>States</dt><dd>Site FAQ: all states · VA/NNC: <strong>49, excludes LA</strong> — conflict flagged</dd>
+        <dt>HSA/FSA</dt><dd>Yes · Insurance: No</dd>
+        <dt>Coaching</dt><dd>Not offered</dd>
+    </dl>
+
+    <h4>Pricing (live site 2026-08-10)</h4>
+    <div class="scroll">
+    <table>
+        <thead><tr><th>Plan</th><th>Compounded GLP-1</th><th>GLP-1 + GIP</th></tr></thead>
+        <tbody>
+            <tr><td>1 month</td><td>$95 first → <strong>$195</strong>/mo after</td><td>$175 first → <strong>$275</strong>/mo after</td></tr>
+            <tr><td>3 month</td><td>$75 → $175</td><td>$150 → $250</td></tr>
+            <tr><td>6 month</td><td>$55 → $155</td><td>$135 → $235</td></tr>
+            <tr><td>12 month</td><td>$45 → <strong>$145</strong> (hero “starting at”)</td><td>$120 → $220</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>Hero leads “Starting at $145/mo*” with footnote: 12-month plan + first-time promo. Brand cash prices cited by VA: Ozempic/Mounjaro ~$1,300; Wegovy ~$1,600; Zepbound ~$1,400. No membership fee; shipping included.</p>
+
+    <div class="two-col">
+        <div class="pro-box">
+            <h4>What we liked</h4>
+            <ul>
+                <li>Clear 1/3/6/12 plan grid with first vs ongoing shown</li>
+                <li>No membership fee; flat rate within a plan (not by dose)</li>
+                <li>Compounded + branded on one platform</li>
+                <li>Free expedited shipping; VA cold-chain strong (ice packs frozen)</li>
+                <li>LegitScript + phone support (800) 597-0884</li>
+                <li>Easy cancel in VA hands-on (~2 min)</li>
+                <li>Large Trustpilot volume vs peers</li>
+                <li>Same-day async approvals reported</li>
+            </ul>
+        </div>
+        <div class="con-box">
+            <h4>Where it falls short</h4>
+            <ul>
+                <li>Ad “starting at $X” = first month / long bundle, not forever MTM</li>
+                <li>Pharmacies <strong>not listed on site</strong></li>
+                <li>Public complaints largely unanswered since ~Aug 2025 (VA)</li>
+                <li>Chat leads with AI (“Taylor”)</li>
+                <li>No coaching / lifestyle program</li>
+                <li>ID upload or last-4 SSN at intake</li>
+                <li>No insurance even for brands</li>
+                <li>LA exclusion conflict (site vs reviews)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Support &amp; reputation tone</h4>
+    <ul>
+        <li><strong>Channels:</strong> Phone Mon–Fri ~9–6 EST (VA); email hello@effecty.com; portal messaging; AI chat first</li>
+        <li><strong>Trustpilot:</strong> ~4.5–4.6 / ~700+ · reply rate to negatives low (~12%); typical reply lag &gt;1 month</li>
+        <li><strong>Tone:</strong> Mostly <strong>silent / non-engaging</strong> on public complaint threads after Aug 2025 — VA’s “Ignored Complaints” hook</li>
+        <li><strong>BBB:</strong> B+ · ~2 complaints (secondary; re-verify)</li>
+        <li><strong>Reddit:</strong> Mixed / thin vs Trustpilot volume</li>
+        <li><strong>Pharmacy (VA asked support):</strong> Emerald, VialsRx, Greenwich, GoGo Meds, Pharmacy Hub — not on website</li>
+    </ul>
+
+    <h4>For you if / Not for you if</h4>
+    <ul>
+        <li><strong>For you if:</strong> You want brands + compounded; you will pay ongoing plan rate after promo; you value overnight cold chain.</li>
+        <li><strong>Not for you if:</strong> You need pharmacy names before you buy; you expect public complaint replies; you assumed $95/$145 is your permanent monthly.</li>
+    </ul>
+</div>
+
+<!-- ========== OZARI ========== -->
+<div class="brand-card" id="ozari">
+    <h3>4. Ozari Health</h3>
+    <p class="hook">“One of the cheapest compounded entry points — and they actually name Hallandale and VialsRx — but $86 is a starter plan, not the forever rate.”</p>
+    <dl class="kv">
+        <dt>Site</dt><dd><a href="https://www.ozarihealth.com/treatments/semaglutide">ozarihealth.com/treatments/semaglutide</a> · FAQ <a href="https://ozarihealth.com/glp1-faq">glp1-faq</a></dd>
+        <dt>Entity</dt><dd>Ozari LLC · NY · LegitScript claimed (verify on legitscript.com)</dd>
+        <dt>Meds</dt><dd>Compounded sema/tirz primary; brands claimed (Ozempic/Wegovy/Mounjaro/Zepbound)</dd>
+        <dt>Consult</dt><dd>Online intake · provider review ~24–48h</dd>
+        <dt>States</dt><dd>Marketed as all 50; pharmacy availability varies by state</dd>
+        <dt>HSA/FSA</dt><dd>Accepted · Insurance: not required / cash-pay</dd>
+        <dt>Coaching</dt><dd>No lifestyle upsell tiers; “concierge” clinical support marketed</dd>
+    </dl>
+
+    <h4>Pricing (site / transparency blog)</h4>
+    <div class="scroll">
+    <table>
+        <thead><tr><th>Plan</th><th>Sema</th><th>Tirz</th></tr></thead>
+        <tbody>
+            <tr><td>3-mo starter (first-time)</td><td><strong>$86</strong>/mo</td><td><strong>$125</strong>/mo</td></tr>
+            <tr><td>Quarterly</td><td>$145/mo</td><td>$199/mo</td></tr>
+            <tr><td>Monthly</td><td>$175/mo</td><td>$235/mo</td></tr>
+            <tr><td>6 / 12 mo</td><td colspan="2"><span class="flag flag-hands">NEEDS HANDS-ON</span> — plans exist in cancel FAQ; dollar amounts not on main blog table</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>No membership fee. Shipping included. Early cancel on long commitments can true-up to higher monthly rate (clawback risk — document carefully).</p>
+
+    <div class="two-col">
+        <div class="pro-box">
+            <h4>What we liked</h4>
+            <ul>
+                <li>Aggressive entry pricing on starter plans</li>
+                <li><strong>Named pharmacies</strong> (Hallandale PCAB 503A + VialsRx)</li>
+                <li>Patient pharmacy choice claimed at standardized prices</li>
+                <li>No membership fee; shipping included</li>
+                <li>Phone (302) 316-5231 + care@ + text for urgent ship issues</li>
+                <li>HSA/FSA accepted</li>
+                <li>LegitScript claim + named clinicians</li>
+                <li>Cold-chain packaging described on site</li>
+            </ul>
+        </div>
+        <div class="con-box">
+            <h4>Where it falls short</h4>
+            <ul>
+                <li><strong>$86/$125 is starter</strong> — quarterly/monthly is the real ongoing compare</li>
+                <li>Very new (~May 2026 launch) — thin independent reviews</li>
+                <li>Dedicated Trustpilot profile not confirmed</li>
+                <li>BBB profile not found in desk research</li>
+                <li>Support hours not clearly published</li>
+                <li>Annual/semi-annual clawback on early cancel</li>
+                <li>Brand cash prices not clearly carded on main treatment UI</li>
+                <li>Heavy self-published “legitimacy” content — verify seals yourself</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Support &amp; reputation tone</h4>
+    <ul>
+        <li><strong>Trustpilot / Reddit / BBB:</strong> Insufficient organic volume for solid tone analysis — mark as early brand</li>
+        <li><strong>Listicle angle:</strong> Contrast pharmacy transparency vs Gimme/Effecty/Coby opacity — then emphasize starter vs refill math</li>
+    </ul>
+
+    <h4>For you if / Not for you if</h4>
+    <ul>
+        <li><strong>For you if:</strong> Budget first-time compounded patient who wants named pharmacies before buying.</li>
+        <li><strong>Not for you if:</strong> You need a deep public review trail or assumed $86 forever at maintenance.</li>
+    </ul>
+</div>
+
+<!-- ========== COBY ========== -->
+<div class="brand-card" id="coby">
+    <h3>5. Coby Health <span style="font-weight:400;font-size:0.9rem;color:#666">(not “Koby”)</span></h3>
+    <p class="hook">“Crystal-clear dose pricing and real phone support — but your monthly climbs as you titrate, and the compounding pharmacy stays unnamed until you ask.”</p>
+    <dl class="kv">
+        <dt>Site</dt><dd><a href="https://www.cobyhealth.com/">cobyhealth.com</a> · pricing example <a href="https://www.cobyhealth.com/semaglutide/evanston-il">semaglutide lander</a></dd>
+        <dt>Entity</dt><dd>Coby Health LLC · Springfield/Chicago IL · LegitScript yes (seal cited 38387067) · Beluga Health P.A. clinical</dd>
+        <dt>Meds</dt><dd>Compounded sema/tirz (+ NAD+); branded FAQ “may” but no clear price cards</dd>
+        <dt>Consult</dt><dd>Async online; video not required unless state requires</dd>
+        <dt>States</dt><dd><strong>All except AR, LA, MS, NM</strong> (46)</dd>
+        <dt>HSA/FSA</dt><dd>Cited by reviewers · Insurance: No</dd>
+        <dt>Coaching</dt><dd>Not offered</dd>
+    </dl>
+
+    <h4>Pricing (live dose tables)</h4>
+    <div class="scroll">
+    <table>
+        <thead><tr><th>Sema dose</th><th>$/mo</th><th>Tirz dose</th><th>$/mo</th></tr></thead>
+        <tbody>
+            <tr><td>0.25 mg</td><td><strong>$159</strong> (strike $199)</td><td>2.5 mg</td><td><strong>$239</strong></td></tr>
+            <tr><td>0.50 mg</td><td>$199</td><td>5.0 mg</td><td>$299</td></tr>
+            <tr><td>1.0 mg</td><td>$229</td><td>7.5 mg</td><td>$329</td></tr>
+            <tr><td>1.7 / 2.4 mg</td><td>$249</td><td>10 / 12.5–15</td><td>$379 / $439</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>Kickstart bundles cut entry (sema 3-mo kickstart ~$133/mo at $399; 6-mo ~$155/mo). Same-dose 6-mo from <strong>$99</strong>/mo at 0.25 mg. No membership fee; shipping included. <strong>This is not a flat-rate clinic.</strong></p>
+
+    <div class="two-col">
+        <div class="pro-box">
+            <h4>What we liked</h4>
+            <ul>
+                <li>Full dose-by-dose + bundle tables published</li>
+                <li>No membership fee — monthly or prepaid</li>
+                <li>Human phone (312) 971-8711 + email (no AI wall)</li>
+                <li>Fast approve/ship praised in hands-on reviews</li>
+                <li>LegitScript + Beluga network</li>
+                <li>Clear state exclusions listed</li>
+                <li>Strong early Trustpilot (~4.9)</li>
+                <li>Cold-chain packaging praised by reviewers</li>
+            </ul>
+        </div>
+        <div class="con-box">
+            <h4>Where it falls short</h4>
+            <ul>
+                <li><strong>Dose-based pricing</strong> — maintenance &gt;&gt; starter ads</li>
+                <li>Pharmacies not named publicly</li>
+                <li>No live chat</li>
+                <li>Branded GLP-1s not a clear buy path</li>
+                <li>Thin review sample (~80–90)</li>
+                <li>Quiet / no public replies across platforms (NNC)</li>
+                <li>$50 clinical fee may apply if cancel before pharmacy ships</li>
+                <li>BBB rating inconsistent across sources (Not Rated vs A-)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Support &amp; reputation tone</h4>
+    <ul>
+        <li><strong>Trustpilot:</strong> <a href="https://www.trustpilot.com/review/cobyhealth.com">cobyhealth.com</a> ~4.8–4.9 · small N — interpret cautiously</li>
+        <li><strong>Reply tone:</strong> Reviewers describe lack of public responses (different from Gimme’s defensive overshare)</li>
+        <li><strong>Reddit:</strong> Thin; notes that cost climbs after intro doses</li>
+        <li><strong>Pharmacy (hands-on secondary):</strong> GreenwichRX filled one order; Hallandale for some formulations</li>
+    </ul>
+
+    <h4>For you if / Not for you if</h4>
+    <ul>
+        <li><strong>For you if:</strong> You want to see every dose’s price before checkout and prefer human phone over AI chat.</li>
+        <li><strong>Not for you if:</strong> You want one locked flat monthly from start through maintenance, or you need pharmacy name before payment.</li>
+    </ul>
+</div>
+
+<!-- ========== GIMME ========== -->
+<div class="brand-card" id="gimme">
+    <h3>6. Gimme Care</h3>
+    <p class="hook">“Flat-rate compounded GLP-1s with transparent site pricing — but pharmacies stay hidden, Meta leads with the 3-month number, and Trustpilot replies can read defensive.”</p>
+    <p class="callout warning" style="margin-top:0">Vaccine Alliance hands-on (updated June 29, 2026) is the richest secondary source for the “little things.” Re-verify scores before publishing patient copy.</p>
+    <dl class="kv">
+        <dt>Site</dt><dd><a href="https://gimme.care/">gimme.care</a> · intake.gimme.care</dd>
+        <dt>Entity</dt><dd>Start Gimme LLC · 251 Little Falls Drive, Wilmington, DE 19808 · LegitScript yes · Bask Telehealth providers</dd>
+        <dt>Meds</dt><dd>Compounded sema + tirz only (no branded Ozempic/Wegovy/etc. on catalog)</dd>
+        <dt>Consult</dt><dd>Fully async most states; video/audio required KS, LA, MS, NM, WV</dd>
+        <dt>States</dt><dd>All 50 + DC claimed</dd>
+        <dt>HSA/FSA</dt><dd>Yes + LMN / receipts · Insurance: No</dd>
+        <dt>Coaching</dt><dd>Not offered</dd>
+    </dl>
+
+    <h4>Pricing</h4>
+    <div class="scroll">
+    <table>
+        <thead><tr><th>Medication</th><th>Month-to-month</th><th>3-month effective</th></tr></thead>
+        <tbody>
+            <tr><td>Compounded semaglutide</td><td><strong>$160</strong>/mo</td><td><strong>$130</strong>/mo (~$390 upfront)</td></tr>
+            <tr><td>Compounded tirzepatide</td><td><strong>$199</strong>/mo</td><td><strong>$163</strong>/mo (~$489 upfront)</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>All-in: med + supplies + overnight shipping + messaging. No membership fee. Auto-refill every ~28 days (opt-out required). <strong>Ad pattern:</strong> Meta / Search often leads with 3-mo per-month rate; site table shows both — labeling risk if visitor thinks $130 is MTM.</p>
+
+    <div class="two-col">
+        <div class="pro-box">
+            <h4>What we liked (aligns with VA)</h4>
+            <ul>
+                <li>Flat all-in pricing on site; nothing hidden once on LP</li>
+                <li>LegitScript certified</li>
+                <li>Same-day approval common</li>
+                <li>50 states + HSA/FSA docs</li>
+                <li>No labs required to start</li>
+                <li>Overnight shipping included</li>
+                <li>Compounded sema + tirz both available</li>
+                <li>Unlimited messaging included</li>
+            </ul>
+        </div>
+        <div class="con-box">
+            <h4>Where it falls short (aligns with VA)</h4>
+            <ul>
+                <li>Pharmacy partners not shared publicly or on request</li>
+                <li><strong>No phone</strong> — email + AI chat off-hours</li>
+                <li>BBB complaint volume (VA: 12 in 12 mo; secondary varies)</li>
+                <li>Trustpilot replies that read <strong>passive-aggressive / oversharing</strong></li>
+                <li>No coaching / nutrition / community</li>
+                <li>Meta ads display 3-mo as the “monthly” story</li>
+                <li>Cancel option buried (delay/pause easier to find)</li>
+                <li>“Licensed US pharmacies” claim unverifiable without disclosure</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Support &amp; reputation tone — critical for listicle</h4>
+    <ul>
+        <li><strong>Hours (VA):</strong> Human support M–F ~8am–6pm EST; limited weekends; AI chat off-hours routes to email</li>
+        <li><strong>Trustpilot:</strong> ~4.2–4.3 · hundreds of reviews · reviews generally sound real</li>
+        <li><strong>Reply example (VA):</strong> Clinic publicly argued a patient had discarded medication and “assumed” shipment contents rather than leading with a solution — framed as defensive and oversharing patient-specific detail</li>
+        <li><strong>Reddit (r/gimmecare + aggregators):</strong> Mixed — price/results vs dosing inconsistency, CS friction, side-effect worry · <span class="flag flag-hands">NEEDS HANDS-ON</span> fresh scrape (403 this run)</li>
+        <li><strong>Pharmacy:</strong> VA package labeled Hallandale Pharmacy (FL Clear license; FDA Warning Letter 2022 + Form 483 June 2025 noted by VA)</li>
+        <li><strong>Cold chain (VA):</strong> Ice packs present but damp/melted; cold chain “not at full strength” on arrival</li>
+    </ul>
+
+    <h4>For you if / Not for you if</h4>
+    <ul>
+        <li><strong>For you if:</strong> You want predictable all-in flat rates, async care, speed, and HSA/FSA paperwork.</li>
+        <li><strong>Not for you if:</strong> You need pharmacy name before ordering, live phone support, or a clean public complaint-handling record.</li>
+    </ul>
+</div>
+
+<!-- ========== AMBLE ========== -->
+<div class="brand-card" id="amble">
+    <h3>7. Amble</h3>
+    <p class="hook">“Transparent multi-month pricing and a huge Trustpilot base — undercut by a BBB F rating and complaint-handling gaps.”</p>
+    <dl class="kv">
+        <dt>Site</dt><dd><a href="https://joinamble.com/glp-1-injections">joinamble.com/glp-1-injections</a></dd>
+        <dt>Entity</dt><dd>Amble Health, Inc. · LegitScript certified (merchant) · Bask platform cited</dd>
+        <dt>Meds</dt><dd>Compounded sema + tirz; peptides / med kits also sold · branded not confirmed in hands-on reviews</dd>
+        <dt>Consult</dt><dd>Async most states; live NM/KS/WV/LA/MS · may request full-body selfie</dd>
+        <dt>States</dt><dd>All 50 with exclusions language</dd>
+        <dt>HSA/FSA</dt><dd>Yes on <strong>3-month+</strong> · Insurance: No</dd>
+        <dt>Coaching</dt><dd>Homepage claims conflict with hands-on “no structured coaching” — treat carefully</dd>
+    </dl>
+
+    <h4>Pricing (sema live ladder)</h4>
+    <div class="scroll">
+    <table>
+        <thead><tr><th>Plan</th><th>Sema $/mo</th></tr></thead>
+        <tbody>
+            <tr><td>1 month</td><td><strong>$179</strong></td></tr>
+            <tr><td>3 month</td><td>$160</td></tr>
+            <tr><td>6 month</td><td>$145</td></tr>
+            <tr><td>12 month</td><td>$135</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>Tirzepatide MTM much higher in secondary sources (~$289–$329 base; bundles lower). Markets “same price, every dose” with fine print that pricing may change. NNC: site price matched checkout; less Meta bait than Gimme. Shipping + consult included; no membership fee.</p>
+
+    <h4>Pharmacy</h4>
+    <p>Not a patient-facing picker. Internal agency roster (2026-07-30): Strive, The Pharmacy Hub, RxCompoundingStore, Rush, Boudreaux’s, Align. Reviewers often learn pharmacy only from the shipping label.</p>
+
+    <div class="two-col">
+        <div class="pro-box">
+            <h4>What we liked</h4>
+            <ul>
+                <li>Clear pre-intake sema plan ladder</li>
+                <li>Multi-length discounts without membership fee</li>
+                <li>Large Trustpilot dataset (~4.4 / 2.8k+)</li>
+                <li>Fast async + shipping in hands-on tests</li>
+                <li>Easy cancel path reported by NNC</li>
+                <li>Strong compounded-drug disclaimers</li>
+                <li>HSA/FSA on longer plans</li>
+                <li>Less first-month teaser bait than Effecty/Ozari</li>
+            </ul>
+        </div>
+        <div class="con-box">
+            <h4>Where it falls short</h4>
+            <ul>
+                <li>BBB <strong>F</strong> + pattern of complaints; many unanswered (NNC: ~126)</li>
+                <li>Phone advertised but voicemail / no callback in hands-on tests</li>
+                <li>Pharmacies not named for patients on-site</li>
+                <li>Tirz MTM expensive vs Mondae/Gimme entry</li>
+                <li>“Same price every dose” fine-print caveats</li>
+                <li>Coaching claim vs medication-only reality conflict</li>
+                <li>Full-body selfie / weight verification awkward</li>
+                <li>Generic / copy-paste Trustpilot replies</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Support &amp; reputation tone</h4>
+    <ul>
+        <li><strong>Trustpilot:</strong> Replies to ~37% of negatives; within ~1 week typical — tone = <strong>generic / templated</strong>, not Gimme-style overshare</li>
+        <li><strong>BBB:</strong> Main reputation landmine for listicle honesty</li>
+        <li><strong>Reddit:</strong> Split (price/speed vs CS/billing) · <span class="flag flag-hands">NEEDS HANDS-ON</span> fresh sampling</li>
+    </ul>
+
+    <h4>For you if / Not for you if</h4>
+    <ul>
+        <li><strong>For you if:</strong> You want straightforward sema bundles and don’t mind cash-pay without pharmacy choice UI.</li>
+        <li><strong>Not for you if:</strong> BBB complaint history matters, or you need reliable phone support.</li>
+    </ul>
+</div>
+
+<!-- ========== MONDAE ========== -->
+<div class="brand-card" id="mondae">
+    <h3>8. Mondae <span style="font-weight:400;font-size:0.9rem;color:#666">(ex-Ezra · not Danish mondae.dk)</span></h3>
+    <p class="hook">“Let patients pick a named compounding pharmacy and lock the starting-dose price for life — reputation trail is still thin after the Ezra rebrand.”</p>
+    <dl class="kv">
+        <dt>Site</dt><dd><a href="https://mondae.com/treatments/compounded-semaglutide">mondae.com/treatments/compounded-semaglutide</a> · legacy joinezra still referenced in tooling</dd>
+        <dt>Entity</dt><dd>Mondae LLC / Bask-era ops · LegitScript on mondae.com locally noted as in progress</dd>
+        <dt>Meds</dt><dd>Compounded sema/tirz + Sermorelin / NAD+ / Glutathione</dd>
+        <dt>Consult</dt><dd>Questionnaire + medical consultation required · portal messaging</dd>
+        <dt>States</dt><dd>All 50 claimed · each pharmacy has no-ship list</dd>
+        <dt>HSA/FSA</dt><dd>Shown on legacy Ezra UI · <span class="flag flag-hands">NEEDS HANDS-ON</span> on live mondae.com</dd>
+        <dt>Coaching</dt><dd>Not offered (1:1 provider guidance only)</dd>
+    </dl>
+
+    <h4>Pricing (starting-dose lock — agency matrix)</h4>
+    <p>Configurator: “Choose the dose you start at. Your dose may increase, but your price is fixed.” Patient also picks pharmacy (Boudreaux, Rush, Hallandale, Greenwich, Align, VialsRx). Default low-dose / Boudreaux matrix:</p>
+    <div class="scroll">
+    <table>
+        <thead><tr><th>Sema start</th><th>1-mo</th><th>3-mo</th><th>Tirz start</th><th>1-mo</th><th>3-mo</th></tr></thead>
+        <tbody>
+            <tr><td>0.2 mg</td><td><strong>$115</strong></td><td>$113 ($338)</td><td>1.5 mg</td><td><strong>$145</strong></td><td>$135 ($405)</td></tr>
+            <tr><td>0.6 mg</td><td>$125</td><td>$120</td><td>3 mg</td><td>$150</td><td>$141</td></tr>
+            <tr><td>1.1 mg</td><td>$135</td><td>$126</td><td>6 mg</td><td>$155</td><td>$147</td></tr>
+            <tr><td>2.3 mg</td><td>$150</td><td>$135</td><td>13.5 mg</td><td>$180</td><td>$162</td></tr>
+        </tbody>
+    </table>
+    </div>
+    <p>Ads lead $115 / tirz from $145. Site shows strikethrough anchors (e.g. $600 → discounted). No membership fee; charge only if approved. <strong>Not</strong> “one price at every starting dose” — third-party blurbs sometimes misstate this.</p>
+
+    <div class="two-col">
+        <div class="pro-box">
+            <h4>What we liked</h4>
+            <ul>
+                <li>Named <strong>pharmacy picker</strong> (rarest VA-style differentiator)</li>
+                <li>Aggressive entry ($115 / $145)</li>
+                <li>Starting-dose price lock (no titrate tax)</li>
+                <li>Additive disclosure on configurator</li>
+                <li>1-mo and 3-mo options</li>
+                <li>Pay-if-approved / no membership fee</li>
+                <li>Peptide adjuncts on same brand</li>
+                <li>Intercom live on GTM stack</li>
+            </ul>
+        </div>
+        <div class="con-box">
+            <h4>Where it falls short</h4>
+            <ul>
+                <li>Ezra↔Mondae transition confuses reviews &amp; certs</li>
+                <li>Trustpilot for mondae.com thin — <strong>never cite mondae.dk</strong></li>
+                <li>$600 strikethrough can feel gimmicky</li>
+                <li>Pharmacy geo limits → cheapest option may not ship</li>
+                <li>LegitScript on mondae.com may still be in progress</li>
+                <li>Support = email/Intercom; phone unclear</li>
+                <li>Hallandale selectable — known FDA inspection history</li>
+                <li>Public BBB / Reddit footprint sparse</li>
+            </ul>
+        </div>
+    </div>
+
+    <h4>Support &amp; reputation tone</h4>
+    <ul>
+        <li>Email support@… · Intercom widget · no clear published phone on homepage fetch</li>
+        <li>Insufficient Trustpilot reply-tone corpus for mondae.com — <span class="flag flag-hands">NEEDS HANDS-ON</span></li>
+    </ul>
+
+    <h4>For you if / Not for you if</h4>
+    <ul>
+        <li><strong>For you if:</strong> You want to choose the compounding pharmacy and lock an entry price before titration.</li>
+        <li><strong>Not for you if:</strong> You need a thick public review history under the Mondae name specifically.</li>
+    </ul>
+</div>
+
+<h2 id="kit">9. Listicle writing kit</h2>
+<p>Copy-ready blocks for null.health ranking pages. Prefer VA tone: specific, slightly skeptical, cite Trustpilot/Reddit patterns, call out ad vs checkout math.</p>
+
+<div class="kit-block">
+    <h4>Effecty — one-liners</h4>
+    <ul>
+        <li><strong>Price line:</strong> “Hero ‘from $145/mo’ is the 12-month ongoing rate after a $45 first month — month-to-month compounded GLP-1 is $195 after a $95 first month.”</li>
+        <li><strong>Support gotcha:</strong> “Phone exists, but chat starts with AI; public Trustpilot complaints often go unanswered.”</li>
+        <li><strong>Pharmacy:</strong> “Site says licensed partners; reviewers who asked were told Emerald / VialsRx / Greenwich / GoGo / Pharmacy Hub.”</li>
+    </ul>
+</div>
+<div class="kit-block">
+    <h4>Ozari Health — one-liners</h4>
+    <ul>
+        <li><strong>Price line:</strong> “$86/mo sema and $125/mo tirz are first-time 3-month starter rates; quarterly is $145 / $199 and monthly $175 / $235.”</li>
+        <li><strong>Pharmacy win:</strong> “Unlike most peers, Ozari publishes Hallandale Pharmacy and VialsRx.”</li>
+        <li><strong>Caveat:</strong> “Brand is brand-new — don’t fabricate a review consensus that doesn’t exist yet.”</li>
+    </ul>
+</div>
+<div class="kit-block">
+    <h4>Coby Health — one-liners</h4>
+    <ul>
+        <li><strong>Price line:</strong> “Starts at $159 for 0.25 mg sema, then $199 → $229 → $249 as you climb — bundles only soften the curve.”</li>
+        <li><strong>Support win:</strong> “Human phone and email; no AI chat gate.”</li>
+        <li><strong>Pharmacy:</strong> “Not listed on site; third-party orders cite GreenwichRX / Hallandale.”</li>
+    </ul>
+</div>
+<div class="kit-block">
+    <h4>Gimme Care — one-liners (use VA specifics)</h4>
+    <ul>
+        <li><strong>Price line:</strong> “Site: $160 sema / $199 tirz month-to-month, or $130 / $163 on 3-month prepay. Ads often lead with the prepay number.”</li>
+        <li><strong>Support gotcha:</strong> “No phone. AI chat after hours. Trustpilot replies that defend with patient-case details (discarded meds / ‘assumed’ contents) read poorly.”</li>
+        <li><strong>Pharmacy:</strong> “Won’t name partners; Vaccine Alliance’s order came from Hallandale Pharmacy.”</li>
+        <li><strong>Cancel:</strong> “Delay/pause is easier to find than cancel in the portal.”</li>
+    </ul>
+</div>
+<div class="kit-block">
+    <h4>Amble — one-liners</h4>
+    <ul>
+        <li><strong>Price line:</strong> “Sema $179 / $160 / $145 / $135 by plan length — clearer than first-month teasers elsewhere.”</li>
+        <li><strong>Reputation:</strong> “Trustpilot ~4.4 at huge volume, but BBB F + unanswered complaint pattern is the honest counterweight.”</li>
+        <li><strong>Support:</strong> “24/7 claim vs weak phone callback reports — prefer portal messaging caveats.”</li>
+    </ul>
+</div>
+<div class="kit-block">
+    <h4>Mondae — one-liners</h4>
+    <ul>
+        <li><strong>Price line:</strong> “From $115 sema / $145 tirz at the lowest starting dose — that rate locks even if you titrate up.”</li>
+        <li><strong>Pharmacy win:</strong> “Configurator lets you pick Boudreaux, Rush, Hallandale, Greenwich, Align, or VialsRx — check no-ship states.”</li>
+        <li><strong>Caution:</strong> “Do not pull Trustpilot from mondae.dk (unrelated Danish agency). Mondae.com reputation data is still thin post-rebrand.”</li>
+    </ul>
+</div>
+
+<h2 id="gaps">10. Research gaps (<span class="flag flag-hands">NEEDS HANDS-ON</span>)</h2>
+<div class="scroll">
+<table>
+    <thead><tr><th>Brand</th><th>Gap</th><th>Why it matters for VA-style copy</th></tr></thead>
+    <tbody>
+        <tr><td>Effecty</td><td>Confirm LA exclusion at checkout; live BBB complaint count</td><td>States tile accuracy</td></tr>
+        <tr><td>Ozari</td><td>6-/12-mo exact $, Trustpilot profile, BBB, Reddit corpus</td><td>Reputation grade + price table</td></tr>
+        <tr><td>Coby</td><td>Live BBB rating reconciliation; HSA card acceptance at checkout</td><td>Key details grid</td></tr>
+        <tr><td>Gimme</td><td>Fresh r/gimmecare scrape; Start Gimme LLC BBB; Meta ad creative capture; cancel screenshots</td><td>VA’s strongest hooks</td></tr>
+        <tr><td>Amble</td><td>Live tirz configurator $; coaching product reality; pharmacy on label by state</td><td>Price + coaching consistency</td></tr>
+        <tr><td>Mondae</td><td>HSA/FSA on mondae.com; LegitScript badge; Trustpilot under Mondae/Joinezra; Intercom hours</td><td>Key details + reputation</td></tr>
+        <tr><td>All</td><td>Paid-order ice-pack / vial photos</td><td>Cold-chain section (do not invent)</td></tr>
+    </tbody>
+</table>
+</div>
+
+<h2 id="sources">11. Sources</h2>
+<div class="sources">
+<p><strong>Company sites (verified 2026-08-10):</strong>
+<a href="https://www.effecty.com/weight-loss/glp-1">Effecty GLP-1</a> ·
+<a href="https://www.ozarihealth.com/treatments/semaglutide">Ozari sema</a> ·
+<a href="https://ozarihealth.com/glp1-faq">Ozari FAQ</a> ·
+<a href="https://www.ozarihealth.com/blog/is-ozari-health-legitimate-affordable-glp1">Ozari transparency</a> ·
+<a href="https://www.cobyhealth.com/semaglutide/evanston-il">Coby sema pricing</a> ·
+<a href="https://www.cobyhealth.com/help">Coby help</a> ·
+<a href="https://gimme.care/">Gimme</a> ·
+<a href="https://joinamble.com/glp-1-injections">Amble GLP-1</a> ·
+<a href="https://mondae.com/treatments/compounded-semaglutide">Mondae sema</a>
+</p>
+<p><strong>Review / reputation:</strong>
+<a href="https://www.vaccinealliance.org/reviews/gimme-care/">VA Gimme</a> ·
+<a href="https://www.vaccinealliance.org/reviews/effecty/">VA Effecty</a> ·
+<a href="https://www.trustpilot.com/review/effecty.com">TP Effecty</a> ·
+<a href="https://www.trustpilot.com/review/cobyhealth.com">TP Coby</a> ·
+<a href="https://www.trustpilot.com/review/gimme.care">TP Gimme</a> ·
+<a href="https://www.trustpilot.com/review/joinamble.com">TP Amble</a> ·
+<a href="https://www.nutritionnc.com/glp-1/reviews/coby/">NNC Coby</a> ·
+<a href="https://www.nutritionnc.com/glp-1/reviews/amble/">NNC Amble</a> ·
+<a href="https://www.weightlossrankings.org/reviews/mondae">WLR Mondae</a> ·
+<a href="https://www.weightlossrankings.org/reviews/ozari-health">WLR Ozari</a>
+</p>
+<p><strong>Local client context:</strong>
+<code>clients/gimme/context/business.md</code> ·
+<code>clients/amble/context/partner-pharmacies.md</code> ·
+<code>clients/mondae/context/offer-angles-glp1-pricelock.md</code> ·
+<code>clients/mondae/context/faq-pricing-handoff.md</code> ·
+<code>clients/mondae/context/pharmacy-no-ship-states.md</code> ·
+<code>clients/mondae/context/rebrand-ezra-to-mondae.md</code>
+</p>
+<p><strong>Disclaimer:</strong> Desk research only. Not medical advice. Pricing and policies change. Compounded medications are not FDA-approved. For null.health creative: mirror VA specificity on support tone and ad-vs-checkout math; do not invent hands-on details; do not fabricate Trustpilot widgets or Editor’s Choice scores.</p>
+</div>
+
+</main>
+
+<footer class="report-footer">
+    <div class="container">
+        <div>
+            <div class="company-name">Tweaking Agency</div>
+            <div>Competitor research report for listicle · Gimme Care · 2026-08-10</div>
+        </div>
+        <div>Confidential — internal use for null.health listicle production</div>
+    </div>
+</footer>
+
+</body>
+</html>
