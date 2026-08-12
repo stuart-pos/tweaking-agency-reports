@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Amble — Consent Mode, Transcend &amp; conversion tracking briefing | Tweaking Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --color-primary:#1a1a2e; --color-accent:#e94560; --color-bg:#fff; --color-bg-alt:#f8f9fa;
+  --color-text:#333; --color-text-light:#666; --color-border:#e0e0e0; --container-max:920px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--color-text);line-height:1.6;font-size:0.95rem}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 28px}
+.report-header{background:var(--color-primary);color:#fff;padding:36px 0}
+.report-meta{background:var(--color-bg-alt);border-bottom:1px solid var(--color-border);padding:18px 0}
+.report-meta .container{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.report-meta h2{font-size:1.2rem;font-weight:700;color:var(--color-primary)}
+.meta-details{font-size:.9rem;color:var(--color-text-light);text-align:right}
+.toc{background:#fff;border:1px solid var(--color-border);border-radius:10px;padding:20px 24px;margin:24px 0 8px}
+.toc h3{margin:0 0 10px;font-size:1rem;border:none;padding:0}
+.toc ol{margin:0 0 0 18px}
+.toc li{margin-bottom:4px}
+.toc a{color:var(--color-accent);text-decoration:none}
+.toc a:hover{text-decoration:underline}
+h2{font-size:1.3rem;font-weight:700;color:var(--color-primary);margin:40px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--color-primary)}
+h3{font-size:1.05rem;color:var(--color-primary);margin:22px 0 10px}
+p{margin-bottom:12px}
+ul,ol{margin:0 0 16px 20px} li{margin-bottom:6px}
+a{color:var(--color-accent)}
+table{width:100%;border-collapse:collapse;margin:14px 0 20px;font-size:.85rem}
+thead{background:var(--color-primary);color:#fff}
+th{padding:10px;text-align:left;font-size:.72rem;text-transform:uppercase;vertical-align:top}
+td{padding:10px;border-bottom:1px solid var(--color-border);vertical-align:top}
+tbody tr:nth-child(even){background:var(--color-bg-alt)}
+.callout{background:#eff6ff;border-left:4px solid #3b82f6;padding:14px 18px;margin:16px 0;border-radius:8px}
+.callout-warn{background:#fef3c7;border-left-color:#f59e0b}
+.callout-danger{background:#fef2f2;border-left-color:#ef4444}
+.callout-green{background:#ecfdf5;border-left-color:#059669}
+code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:4px;padding:1px 6px;font-size:.84rem}
+.back-link{display:inline-block;margin:16px 0 0}
+.report-footer{background:var(--color-primary);color:rgba(255,255,255,.8);padding:28px 0;margin-top:48px;font-size:.85rem}
+.term{font-weight:700;color:var(--color-primary)}
+.muted{color:var(--color-text-light);font-size:.9rem}
+@media print{.toc{break-after:page}}
+</style>
+</head>
+<body>
+<header class="report-header"><div class="container"><h1>Tweaking Agency</h1></div></header>
+<div class="report-meta"><div class="container">
+  <h2>Amble — Consent Mode, Transcend &amp; conversion tracking briefing</h2>
+  <div class="meta-details">
+    <span>Client: <strong>Amble</strong></span><br>
+    <span>Date: <strong>2026-08-12</strong></span><br>
+    <span>Source: <strong>Transcend US consent project + Zak research</strong></span>
+  </div>
+</div></div>
+
+<main class="container">
+<p class="back-link"><a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/index.html">← All Amble reports</a></p>
+
+<div class="callout">
+  <strong>What this is:</strong> A briefing that walks through the consent / Google Ads measurement decisions discussed for Amble’s compounded GLP-1 business. Read top to bottom. Each section builds on the one before it.
+</div>
+
+<div class="callout-warn callout">
+  <strong>Not legal advice.</strong> This summarises project research (including Zak’s measurements and the <code>tweaking-agency/transcend</code> issue map). Counsel still owns final risk calls — especially whether advertiser identity alone supplies a health inference under Washington law.
+</div>
+
+<nav class="toc" aria-label="Table of contents">
+  <h3>Read in this order</h3>
+  <ol>
+    <li><a href="#s1">Why this is different for Amble</a></li>
+    <li><a href="#s2">Vocabulary (opt-in vs opt-out, GPC, banner vs Consent Mode)</a></li>
+    <li><a href="#s3">What the recent lawsuits actually named</a></li>
+    <li><a href="#s4">Why Consent Mode Advanced is a bad fit</a></li>
+    <li><a href="#s5">Why “no identity attached” does not fix it</a></li>
+    <li><a href="#s6">Basic vs Advanced Consent Mode</a></li>
+    <li><a href="#s7">What Transcend can vary by state (and what it cannot)</a></li>
+    <li><a href="#s8">How conversion tracking would actually work</a></li>
+    <li><a href="#s9">Which states / the National Floor</a></li>
+    <li><a href="#s10">Federal layer vs state opt-out</a></li>
+    <li><a href="#s11">Working decision summary</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================================ -->
+<h2 id="s1">1. Why this is different for Amble</h2>
+
+<p>Amble sells compounded prescription medication (including GLP-1). Marketing and intake pages often name drugs in the URL and title — e.g. <code>/glp-1-injections</code>. That turns ordinary ad-tech behaviour into a <strong>health-data disclosure</strong> problem.</p>
+
+<p>Three pressures stack:</p>
+<ul>
+  <li><strong>State consumer-health / privacy laws</strong> (especially Washington MHMDA, Maryland MODPA, Nevada SB 370, plus sensitive-data opt-in states).</li>
+  <li><strong>Federal enforcement</strong> (FTC telehealth/pixel cases — GoodRx, BetterHelp, Cerebral, Monument, and the July 2026 Hims &amp; Hers suit).</li>
+  <li><strong>Ad-platform contracts</strong> (Google/Meta terms that ban health-derived events and audiences regardless of user consent or US state).</li>
+</ul>
+
+<p>The measurement question is therefore not only “how do we keep Google Ads numbers?” It is “what can we lawfully and contractually send when someone refuses Advertising — or never consented — on a drug-named page?”</p>
+
+<!-- ============================================================ -->
+<h2 id="s2">2. Vocabulary (read this before the rest)</h2>
+
+<h3>Opt-in vs opt-out (industry meaning — easy to reverse)</h3>
+<table>
+  <thead><tr><th>Term</th><th>Meaning</th><th>Tracking at first load</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="term">Opt-in</span> (default)</td>
+      <td>Visitor must <strong>turn tracking on</strong></td>
+      <td><strong>Off</strong> until they consent</td>
+    </tr>
+    <tr>
+      <td><span class="term">Opt-out</span> (default)</td>
+      <td>Visitor is tracked until they <strong>turn it off</strong></td>
+      <td><strong>On</strong> by default</td>
+    </tr>
+  </tbody>
+</table>
+<p class="muted">If someone says “opt-in default” meaning “consented by default,” they usually mean what this document calls <strong>opt-out</strong>.</p>
+
+<h3>Two different products people confuse</h3>
+<table>
+  <thead><tr><th>Piece</th><th>What it is</th><th>Visible?</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="term">Transcend / CMP banner</span></td>
+      <td>The preference UI (banner, modal, “manage settings”). Regional Experiences set per-state defaults.</td>
+      <td>Yes — the popup</td>
+    </tr>
+    <tr>
+      <td><span class="term">Google Consent Mode</span></td>
+      <td>Invisible code that tells Google tags whether Advertising/Analytics are granted or denied, and (Basic vs Advanced) whether tags may load / send pings.</td>
+      <td>No — background plumbing</td>
+    </tr>
+  </tbody>
+</table>
+<p>Consent Mode is <strong>always installed</strong> site-wide. In an opt-out region it often sits in the “open” position (Advertising already <code>granted</code>) until someone closes it. That is <em>not</em> the same as turning Consent Mode off.</p>
+
+<h3>GPC — Global Privacy Control</h3>
+<p><span class="term">GPC</span> is a browser setting (or extension) that tells sites: treat me as opted out of sale/sharing / advertising tracking. The visitor does not have to click your banner. In the Transcend project language this is a <strong>Privacy Signal</strong>: it only ever <em>lowers</em> consent, and it beats a stored preference. Amble’s design also recognises <strong>Do Not Track (DNT)</strong>.</p>
+<p>Some states require honouring such a signal as a valid universal opt-out. The project Floor honours GPC/DNT in every Tier, not only the mandating states.</p>
+
+<h3>Helpful links</h3>
+<ul>
+  <li>Google Consent Mode overview (Basic vs Advanced): <a href="https://developers.google.com/tag-platform/security/concepts/consent-mode">developers.google.com/tag-platform/security/concepts/consent-mode</a></li>
+  <li>Tag Manager “About consent mode”: <a href="https://support.google.com/tagmanager/answer/10000067">support.google.com/tagmanager/answer/10000067</a></li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="s3">3. What the recent lawsuits actually named</h2>
+
+<p><strong>Short answer:</strong> Almost all peer telehealth / health-ad cases are about <strong>conversion and audience signals to ad platforms</strong> (pixels, Conversions API / server-to-server, customer-list matching) — <em>not</em> session recordings. Session replay is a separate risk line.</p>
+
+<table>
+  <thead><tr><th>Matter</th><th>Who sued</th><th>Data / tech named</th><th>Session replay?</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>FTC (+ CA, UT) v. Hims &amp; Hers</strong> (Jul 2026)</td>
+      <td>FTC lead; Utah + California (LA County Counsel) joined; filed N.D. Cal.</td>
+      <td>Meta Pixel <strong>and</strong> Meta Conversions API; Snap customer lists; Google Ads pixel + S2S; TikTok s2s; “Events” + health info despite “private” promises</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>FTC GoodRx / BetterHelp / Premom / Cerebral / Monument</td>
+      <td>FTC</td>
+      <td>Health info to ad platforms via pixels, SDKs, APIs; audience building; Premom: even event names; Cerebral: IP + persistent IDs. Often a <strong>ban</strong> on advertising disclosures, not “consent cures it”</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>CA AG Healthline</td>
+      <td>California AG</td>
+      <td>Selling/sharing PI with a signal that reveals a diagnosed-condition page (title or URL) — <strong>no consent exception</strong></td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Live GLP-1 / telehealth private suits (e.g. Fella Health, FuturHealth, Northbeam)</td>
+      <td>Private plaintiffs</td>
+      <td>Pixels on quizzes; health answers in URLs; identity graphs onward to Meta/TikTok/Snap</td>
+      <td>Not the headline</td>
+    </tr>
+    <tr>
+      <td><strong>Florida v. Roku</strong> / <strong>Mikulsky</strong> (CIPA)</td>
+      <td>FL AG / private</td>
+      <td>Session replay / real-time capture of contents</td>
+      <td><strong>Yes</strong> — separate stack</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout-danger callout">
+  <strong>Hims takeaway for engineering:</strong> the FTC named the <strong>server-side</strong> Conversions API beside the browser pixel with no softer treatment. Moving conversion sends to sGTM / CAPI does not by itself solve the disclosure theory.
+</div>
+
+<p>Press release: <a href="https://www.ftc.gov/news-events/news/press-releases/2026/07/ftc-states-act-against-hims-hers-deceptive-unlawful-privacy-practices">FTC and States Act Against Hims &amp; Hers…</a></p>
+
+<!-- ============================================================ -->
+<h2 id="s4">4. Why Consent Mode Advanced is a bad fit</h2>
+
+<p>Zak’s research (summarised) is the case against Advanced for Amble:</p>
+
+<ol>
+  <li><strong>What Advanced is supposed to buy:</strong> when a visitor refuses advertising, tags still send Google “cookieless pings” so Google can estimate conversions it cannot see. Sales pitch: refuse consent, keep numbers.</li>
+  <li><strong>What it actually sends (observed on the wire):</strong> under total refusal, requests still go to Google carrying the <strong>full page URL</strong>, referrer, and on conversion paths the <strong>purchase value, currency, conversion name, page address, and browser details</strong>. Documentation understates this; measurement is the reliable source.</li>
+  <li><strong>Why Amble is worse than a normal advertiser:</strong> URLs name drugs. A refuse still tells Google: this person bought, for $X, from the GLP-1 page. That pattern matches FTC telehealth enforcement and Washington-style health-data collection theories — and breaks Google’s own health-data contract.</li>
+  <li><strong>Redaction failed:</strong> replacing page title is possible; replacing the page <em>address</em> before it leaves is not (in the tests run). The part that names the drug is the part you cannot change.</li>
+  <li><strong>“Advanced only in relaxed states” fails twice:</strong> (a) Transcend cannot set Basic/Advanced per state via the normal Data Flow tag; (b) even if a workaround worked, Google’s contract does not change at a state line.</li>
+  <li><strong>What you actually give up by saying no to Advanced:</strong> Basic is not “no modelling.” Google still has a <strong>general</strong> model across advertisers. Advanced is a modest accuracy upgrade bought by sending drug-page traffic from people who said no.</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2 id="s5">5. Why “no identity attached” does not fix it</h2>
+
+<p>An instinctive defence — “once the session is not tied to identity, we should be fine” — was already made and retracted in this project’s classification research. Zak’s rebuttal, in short:</p>
+
+<ol>
+  <li><strong>The law does not require a name.</strong> Washington uses “linked or <em>reasonably linkable</em>.” IP address and cookie IDs clear that bar. Google receives IP, UA, and rich browser context, and often can attach signed-in Google accounts.</li>
+  <li><strong>Amble’s advertiser identity can supply the health fact.</strong> A stripped purchase still says “someone bought prescription medication” when the sender is a telehealth pharmacy brand. The sender is part of the disclosure.</li>
+  <li><strong>The FTC rejected the generic-event version of this argument</strong> (Monument: events reduced to “Sign Up” / “Paid” still “effectively disclosed” treatment signup).</li>
+  <li><strong>The live stack is not anonymous anyway</strong> (person profiles, email identifiers, remarketing audience endpoints on drug pages, etc.).</li>
+  <li><strong>Platform contracts</strong> ban health-related advertising data as a warranty — consent and anonymity do not rewrite the warranty.</li>
+</ol>
+
+<p class="muted">Caveat Zak flagged for counsel: whether advertiser identity alone is enough under Washington is an open risk question — about residual risk size, not about anonymity making the risk disappear. A De-Healthed Event is “the least health-revealing form,” not a de-identification.</p>
+
+<!-- ============================================================ -->
+<h2 id="s6">6. Basic vs Advanced Consent Mode</h2>
+
+<table>
+  <thead><tr><th></th><th>Basic</th><th>Advanced</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>When Advertising is <strong>on / granted</strong></td>
+      <td>Tags load → <strong>real</strong> conversion signals</td>
+      <td>Same: real conversion signals</td>
+    </tr>
+    <tr>
+      <td>When Advertising is <strong>off / denied</strong></td>
+      <td>Tags <strong>do not load</strong> → <strong>no hit</strong> from that person</td>
+      <td>Tags still load → <strong>cookieless pings</strong></td>
+    </tr>
+    <tr>
+      <td>Modelling if denied</td>
+      <td>At best Google’s <strong>general</strong> multi-advertiser model</td>
+      <td><strong>Advertiser-specific</strong> model trained partly on your denied traffic</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Basic is a reasonable choice for Amble’s Google Ads setup</strong> precisely because Advanced’s denied-state pings are the clearest legal/contract exposure on Health-Revealing Pages.</p>
+
+<div class="callout callout-green">
+  <strong>Important:</strong> Consent Mode is not an alternative to “normal” conversion tracking. When Advertising is granted, you still get normal Google conversion tracking. Consent Mode is the layer that allows or blocks that behaviour.
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s7">7. What Transcend can vary by state (and what it cannot)</h2>
+
+<p>Transcend’s point <em>is</em> per-state experiences. That works for the <strong>banner / Purpose defaults</strong>. It does <strong>not</strong> work for Basic vs Advanced.</p>
+
+<table>
+  <thead><tr><th>Can vary by Regional Experience (state)</th><th>Cannot vary by state today (global)</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Banner / UI</td>
+      <td><strong>Basic vs Advanced</strong> Consent Mode</td>
+    </tr>
+    <tr>
+      <td>Which Purposes apply</td>
+      <td>Google Data Flow Purpose tags (<code>Essential</code> = Advanced; <code>Advertising</code>/<code>Analytics</code> = Basic)</td>
+    </tr>
+    <tr>
+      <td>Opt-in vs opt-out defaults per Purpose</td>
+      <td>Built-in Meta LDU geography (needs custom wiring)</td>
+    </tr>
+    <tr>
+      <td>GPC / privacy-signal handling (Purpose-level)</td>
+      <td>Server-side enforcement in Stape for non-Google tags (must gate yourself)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So: <strong>Basic (or Advanced) is one site-wide choice.</strong> You still use Regional Experiences so litigious/strict states can start Advertising <em>off</em> and relaxed states can differ on Analytics — but you do not get “Advanced in Texas, Basic in Washington” from the dashboard alone.</p>
+<p>A custom workaround (block Google tag load by <code>airgap.getRegimes()</code> in strict regimes) is unproven and still leaves Advanced’s contract problem in relaxed states.</p>
+
+<!-- ============================================================ -->
+<h2 id="s8">8. How conversion tracking would actually work</h2>
+
+<p>Assume: <strong>Basic Consent Mode nationally</strong> + Regional Experiences for Purpose defaults.</p>
+
+<table>
+  <thead><tr><th>Visitor</th><th>What Google gets under Basic</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Opt-out-style region, Advertising still on</td>
+      <td><strong>Real</strong> conversion signals (Consent Mode reports <code>granted</code>)</td>
+    </tr>
+    <tr>
+      <td>Opt-out-style region, user opted out or GPC cleared Advertising</td>
+      <td><strong>Nothing</strong> (maybe weak general modelling)</td>
+    </tr>
+    <tr>
+      <td>Opt-in region, never consents</td>
+      <td><strong>Nothing</strong> (maybe weak general modelling)</td>
+    </tr>
+    <tr>
+      <td>Opt-in region, affirmatively opts in</td>
+      <td><strong>Real</strong> conversion signals</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Correct analysis:</p>
+<ul>
+  <li>Consent Mode stays <strong>on in all states</strong>.</li>
+  <li>In regions where Advertising starts granted, Basic does not block — you get normal conversion tracking for people who remain on.</li>
+  <li>For people with Advertising off, Basic means <strong>no conversion hit</strong>; any estimate is general modelling, not Advanced pings from your site.</li>
+</ul>
+
+<p>Incorrect analysis to avoid:</p>
+<ul>
+  <li>“Basic means Google models when ads are off” → that is closer to <strong>Advanced</strong>.</li>
+  <li>“In non-litigious states Consent Mode does not need to be used” → Consent Mode is still used; it just sits open while Advertising is granted.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 id="s9">9. Which states / the National Floor</h2>
+
+<p>A common plan is: <em>opt-in in litigious states, opt-out in non-litigious states.</em> For <strong>Advertising</strong>, the settled Transcend project design is stricter.</p>
+
+<div class="callout callout-warn">
+  <strong>ADR 0001 (accepted):</strong> A <strong>National Floor</strong> applies to every visitor and never consults geolocation. <strong>Advertising and Sale Of Info are opt-in in every US state</strong> as part of that Floor. Only Analytics and Functional vary by State Tier. Tiers may add choice or notice on top of the Floor; they may never lower it.
+</div>
+
+<p>Why national opt-in on Advertising: IP state detection is unreliable; Washington’s definition of “consumer” is not a clean residency test; a wrong “opt-out” guess under-protects. The Floor also already bars health-derived event names/paths/titles/audiences to ad platforms.</p>
+
+<h3>Four State Tiers (project map)</h3>
+<table>
+  <thead><tr><th>Tier</th><th>States</th><th>Advertising</th><th>Analytics / Functional</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Strict Health</strong></td>
+      <td>WA, NV (+ non-US / unresolved region)</td>
+      <td>opt-in</td>
+      <td>opt-in</td>
+    </tr>
+    <tr>
+      <td><strong>Opt-In</strong></td>
+      <td>CT, CO, VA, MT, TX, OR, DE, NH, NJ, MN, TN, IN, KY, RI, NE</td>
+      <td>opt-in</td>
+      <td>opt-in</td>
+    </tr>
+    <tr>
+      <td><strong>No consent path</strong></td>
+      <td>MD (sensitive-data sale banned; “strictly necessary” limits)</td>
+      <td>effectively off / notice model</td>
+      <td>off</td>
+    </tr>
+    <tr>
+      <td><strong>Opt-Out</strong></td>
+      <td>CA, UT, IA + states with no comprehensive privacy law</td>
+      <td>still <strong>opt-in under the Floor</strong></td>
+      <td><strong>on by default</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So: if the question is “where can Advertising start on?” under the ADRs — <strong>nowhere</strong>. If the question is “where can first-party Analytics start on?” — the Opt-Out Tier.</p>
+
+<p>Extra Floor item for Washington: because MHMDA’s sale prohibition has no consent cure, ticket 07 added that <strong>no ad platform receives any event from a Washington visitor at any consent state</strong> (mitigated with declared checkout state as a second suppress signal).</p>
+
+<!-- ============================================================ -->
+<h2 id="s10">10. Federal layer vs state opt-out</h2>
+
+<p><strong>Is it “safe” to use Advertising opt-out in non-litigious states?</strong> Not as a green light for ad pixels / health-adjacent conversions.</p>
+
+<ul>
+  <li><strong>State law:</strong> many non-strict states allow opt-out for ordinary sale/share. That does not erase health-sensitive theories where they apply, and it does not rewrite platform contracts.</li>
+  <li><strong>Federal FTC:</strong> peer telehealth cases treat disclosure of health information to advertising platforms as the core unfair/deceptive practice — often remedied with a <strong>ban</strong> on advertising disclosures, not “you may send it if the banner was opt-out.” Hims (2026) is FTC-led with state partners.</li>
+  <li><strong>Contracts:</strong> Google/Meta health restrictions apply in every US state.</li>
+</ul>
+
+<p>That federal + contract layer is exactly why the project put <strong>Advertising on the National Floor</strong> instead of trusting “opt-out is fine in CA/TX/etc.”</p>
+
+<!-- ============================================================ -->
+<h2 id="s11">11. Working decision summary</h2>
+
+<ol>
+  <li><strong>Use Basic Consent Mode nationally</strong> for Google — Advanced’s denied-state pings on drug URLs are the worst exposure for the modest modelling gain.</li>
+  <li><strong>Keep Consent Mode installed everywhere.</strong> When Advertising is granted, normal conversion tracking still works.</li>
+  <li><strong>Use Transcend Regional Experiences</strong> for per-state UI and Purpose defaults — especially Analytics opt-out where lawful.</li>
+  <li><strong>Do not expect Transcend to give per-state Basic/Advanced</strong> via Data Flow tags alone.</li>
+  <li><strong>Follow the National Floor for Advertising:</strong> opt-in everywhere; never send health-derived URLs/event names/audiences to ad platforms; Washington gets an ad blackout regardless of consent.</li>
+  <li><strong>De-identification / “no user id” is not the escape hatch</strong> for health-ad disclosures; counsel owns residual risk on advertiser-identity theories.</li>
+  <li><strong>Session replay</strong> is a separate workstream (PostHog/Sentry) from this Consent Mode decision — still high risk, different case pattern.</li>
+</ol>
+
+<div class="callout">
+  <strong>One-line mental model:</strong> Transcend decides <em>whether Advertising starts on or off by state (within the Floor)</em>. Consent Mode Basic decides <em>what Google gets when Advertising is off</em> (nothing). Platform + FTC rules decide <em>what you may put in a granted conversion</em> even when Advertising is on.
+</div>
+
+<p class="muted" style="margin-top:28px">Primary project sources: <code>tweaking-agency/transcend</code> — <code>CONTEXT.md</code>, <code>docs/adr/0001-national-floor-with-additive-state-tiers.md</code>, <code>.scratch/us-consent/issues/04</code>, <code>08</code>, <code>15</code>, litigation register, and Zak’s Consent Mode / linkability notes (2026-08).</p>
+
+</main>
+
+<footer class="report-footer"><div class="container">
+  Tweaking Agency · Amble internal briefing · 2026-08-12 · <a href="https://stuart-pos.github.io/tweaking-agency-reports/amble/index.html" style="color:#fff">All Amble reports</a>
+</div></footer>
+</body>
+</html>
