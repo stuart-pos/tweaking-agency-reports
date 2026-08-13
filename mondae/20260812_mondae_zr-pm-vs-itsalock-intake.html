@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Mondae intake compare — zr-pm vs itsalock | Tweaking Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1a1a2e;
+  --color-accent: #e94560;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f8f9fa;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-border: #e0e0e0;
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --container-max: 960px;
+  --border-radius: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+.report-header { background: var(--color-primary); color: #fff; padding: 40px 0; }
+.report-header .container { display: flex; align-items: center; gap: 24px; }
+.report-logo { width: 64px; height: 64px; object-fit: contain; }
+.report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin: 0; color: #fff; }
+.report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+.report-meta .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.report-meta h2 { font-size: 1.25rem; color: var(--color-primary); margin: 0; border: none; padding: 0; }
+.meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+h2 { font-family: var(--font-heading); font-size: 1.35rem; color: var(--color-primary); margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+h3 { font-size: 1.1rem; color: var(--color-primary); margin: 24px 0 10px; }
+p, li { margin-bottom: 10px; }
+ul, ol { margin: 0 0 16px 20px; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.88rem; }
+thead { background: var(--color-primary); color: #fff; }
+th { padding: 10px 12px; text-align: left; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+.exec { background: var(--color-bg-alt); border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 20px 24px; margin: 16px 0; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+@media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+.card { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px 18px; }
+.card h3 { margin-top: 0; }
+.exhibit { margin: 18px 0; }
+.exhibit img { width: 100%; border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; }
+.exhibit figcaption { font-size: 0.85rem; color: var(--color-text-light); margin-top: 8px; }
+.note { font-size: 0.9rem; color: var(--color-text-light); }
+.report-footer { background: var(--color-primary); color: #fff; padding: 28px 0; margin-top: 48px; font-size: 0.9rem; }
+.report-footer a { color: #fff; }
+code { font-size: 0.85em; background: #f1f5f9; padding: 1px 5px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<header class="report-header"><div class="container">
+  <img src="logo.svg" class="report-logo" alt="Tweaking Agency logo">
+  <div><h1>Tweaking Agency</h1></div>
+</div></header>
+
+<section class="report-meta"><div class="container">
+  <h2>Mondae intake compare — zr-pm vs itsalock</h2>
+  <div class="meta-details">
+    <span>Client: Mondae</span>
+    <span>Updated: 2026-08-13</span>
+    <span>Stop: Hard payment (FL address cleared shipping)</span>
+  </div>
+</div></section>
+
+<main class="container">
+  <h2>Executive verdict</h2>
+  <div class="exec">
+    <p><strong>Both intakes mapped end-to-end</strong> through plan/payment with FL shipping <code>2775 Seasons Road, Green Cove Springs, FL 32043</code>. Different Bask templates — not the same funnel with a different slug.</p>
+    <p><strong>/zr-pm</strong> still shows the <em>ezra</em> logo and mid-funnel “as low as” cards (Sema $105 · Tirz $140) — but Sema path <strong>checkout landed at $150/mo</strong> (strikethrough $175 → $150; quarterly $140).</p>
+    <p><strong>/itsalock</strong> has full <em>MONDAE</em> chrome + “mins left” progress and early Dose 1 (SKU button labels). Dollars only at checkout: after Tirz dose + “lowest price,” plan showed <strong>Compounded Semaglutide $115/mo</strong> (quarterly $112.67).</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>zr-pm — offer-led</h3>
+      <ul>
+        <li>Ezra logo on Mondae domain</li>
+        <li>7-option motivation multi-select first</li>
+        <li>Lbs goal buckets after BMI</li>
+        <li>$105/$140 cards before shipping → $150 checkout</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>itsalock — brand + lock story</h3>
+      <ul>
+        <li>MONDAE + teal time estimate</li>
+        <li>3-option goal first → email for Rx</li>
+        <li>Early dose estimate (no $); SKU button labels</li>
+        <li>Checkout: Compounded Sema $115 / $112.67</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Demo persona</h2>
+  <p>Jane Demo · Female · 210 lbs / 5'6" · FL zip 32043 · not currently on GLP-1 · shipping 2775 Seasons Rd, Green Cove Springs, FL · stop at hard payment (no card entered).</p>
+
+  <h2>Products &amp; prices</h2>
+  <h3>zr-pm</h3>
+  <table>
+    <thead><tr><th>Product / offer</th><th>Price</th><th>Interval</th><th>Source screen</th></tr></thead>
+    <tbody>
+      <tr><td>Semaglutide – Revive Pharmacy</td><td>$105/mo</td><td>month</td><td>Select your preferred medication (“as low as”)</td></tr>
+      <tr><td>Tirzepatide – Revive Pharmacy</td><td>$140/mo</td><td>month</td><td>Preferred medication · “Most popular!”</td></tr>
+      <tr><td>Monthly plan (Sema path)</td><td>$150.00/mo</td><td>month</td><td>Checkout — select shipping plan</td></tr>
+      <tr><td>Quarterly plan</td><td>$140.00/mo</td><td>month</td><td>Checkout</td></tr>
+      <tr><td>Total if prescribed</td><td>$150.00</td><td>—</td><td>Checkout (~~$175~~)</td></tr>
+    </tbody>
+  </table>
+  <h3>itsalock</h3>
+  <table>
+    <thead><tr><th>Product / offer</th><th>Price</th><th>Interval</th><th>Source screen</th></tr></thead>
+    <tbody>
+      <tr><td>Semaglutide or Tirzepatide – Dose 1 (estimate)</td><td>—</td><td>—</td><td>Your Prescription / Its a lock</td></tr>
+      <tr><td><code>semadose1</code> / <code>tirzdose1</code></td><td>—</td><td>—</td><td>Dose choice buttons (SKU labels)</td></tr>
+      <tr><td>Compounded Semaglutide – Monthly</td><td>$115.00/mo</td><td>month</td><td>Checkout (Tirz dose + “lowest price” path)</td></tr>
+      <tr><td>Compounded Semaglutide – Quarterly</td><td>$112.67/mo</td><td>month</td><td>Checkout</td></tr>
+      <tr><td>Total if prescribed</td><td>$115.00</td><td>—</td><td>Checkout</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Flag: zr-pm “as low as $105” ≠ $150 checkout on Sema path. Flag: itsalock “lowest price” after Tirz dose routed to Compounded Semaglutide.</p>
+
+  <h2>zr-pm — how each reply changes the flow</h2>
+  <p class="note">Decision flowchart: yellow = questions; edge labels = replies; red = stops. PDF: <a href="20260812_mondae_zr-pm-intake-flowchart.pdf">20260812_mondae_zr-pm-intake-flowchart.pdf</a></p>
+  <figure class="exhibit">
+    <img src="exhibits/zr-pm-flowchart.png" alt="zr-pm intake decision flowchart">
+    <figcaption>zr-pm — walked spine with preference + priced medication forks.</figcaption>
+  </figure>
+
+  <h2>itsalock — how each reply changes the flow</h2>
+  <p class="note">PDF: <a href="20260812_mondae_itsalock-intake-flowchart.pdf">20260812_mondae_itsalock-intake-flowchart.pdf</a></p>
+  <figure class="exhibit">
+    <img src="exhibits/itsalock-flowchart.png" alt="itsalock intake decision flowchart">
+    <figcaption>itsalock — early dose estimate, then preference → shipping.</figcaption>
+  </figure>
+
+  <h2>Side-by-side differences</h2>
+  <table>
+    <thead><tr><th></th><th>zr-pm</th><th>itsalock</th></tr></thead>
+    <tbody>
+      <tr><td>Brand chrome</td><td>ezra logo</td><td>MONDAE</td></tr>
+      <tr><td>Progress</td><td>None</td><td>3 mins / 2 mins left</td></tr>
+      <tr><td>First question</td><td>GLP-1 motivations (7, multi)</td><td>Main weight-loss goal (3, single)</td></tr>
+      <tr><td>Account</td><td>After motivations</td><td>After “send prescription” email</td></tr>
+      <tr><td>Dose / price moment</td><td>Late “as low as” cards → $150 checkout</td><td>Early estimate (no $) → $115 checkout</td></tr>
+      <tr><td>Preference copy</td><td>What matters most… (+ provider disclaimer)</td><td>How will you choose your medication?</td></tr>
+      <tr><td>Lbs goal buckets</td><td>Yes (after BMI)</td><td>Not in this walk</td></tr>
+      <tr><td>Checkout molecule (this walk)</td><td>Sema path @ $150/mo</td><td>Compounded Sema @ $115/mo (after Tirz + lowest)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Exhibits — zr-pm</h2>
+  <figure class="exhibit"><img src="exhibits/zr-pm-01-start.png" alt="zr-pm start"><figcaption>01 — Motivations multi-select (ezra logo).</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/zr-pm-02-email-gate.png" alt="zr-pm email"><figcaption>02 — Eligible / email gate.</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/zr-pm-05-goal-lbs.png" alt="zr-pm lbs goals"><figcaption>05 — Weight-loss lbs buckets.</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/zr-pm-07-what-matters.png" alt="zr-pm what matters"><figcaption>07 — What matters most (pharmacy / popular / lowest) + provider disclaimer.</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/zr-pm-08-preferred-med-pricing.png" alt="zr-pm pricing"><figcaption>08 — <strong>Select preferred medication</strong>: Sema $105/mo · Tirz $140/mo (Most popular!).</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/zr-pm-09-shipping.png" alt="zr-pm shipping"><figcaption>09 — Shipping Address (FL — verified).</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/zr-pm-18-checkout-plan.png" alt="zr-pm checkout"><figcaption>18 — Checkout plan: Monthly $150 · Quarterly $140 · ~~$175~~ → $150 · payment (STOP).</figcaption></figure>
+
+  <h2>Exhibits — itsalock</h2>
+  <figure class="exhibit"><img src="exhibits/itsalock-01-start.png" alt="itsalock start"><figcaption>01 — Goal single-select + “3 mins left” (MONDAE).</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/itsalock-02-email-rx.png" alt="itsalock email"><figcaption>02 — Where should we send your prescription?</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/itsalock-04-dose.png" alt="itsalock dose"><figcaption>04 — Your Prescription Dose 1 + <code>semadose1</code> / <code>tirzdose1</code> (tirz selected).</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/itsalock-07-med-preference.png" alt="itsalock preference"><figcaption>07 — How will you choose your medication?</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/itsalock-08-shipping.png" alt="itsalock shipping"><figcaption>08 — Shipping Address (FL — verified).</figcaption></figure>
+  <figure class="exhibit"><img src="exhibits/itsalock-17-checkout-plan.png" alt="itsalock checkout"><figcaption>17 — Select your Plan: Compounded Sema Monthly $115 · Quarterly $112.67 · payment (STOP).</figcaption></figure>
+
+  <h2>Recommendation</h2>
+  <ul>
+    <li>If May/June win was driven by <strong>visible price</strong>, zr-pm still shows $/mo earlier — but reconcile “as low as $105” vs <strong>$150 checkout</strong> on the Sema path before leaning on that number in ads.</li>
+    <li>itsalock wins branding/progress/early lock story — fix SKU button labels; consider a “from $X/mo” on Dose 1; clarify that “lowest price” can switch molecule (Tirz → Sema in this walk).</li>
+    <li>Checkout apples-to-apples this walk: itsalock Sema <strong>$115</strong>/mo vs zr-pm Sema path <strong>$150</strong>/mo.</li>
+  </ul>
+
+  <p class="note">Teardown notes: <code>context/analysis/zr-pm-vs-itsalock-intake-teardown.md</code> · Step logs: <code>context/analysis/*-intake-steps.json</code></p>
+</main>
+
+<footer class="report-footer"><div class="container">
+  Tweaking Agency · Mondae · Intake explorer · 2026-08-13 · Not for publication unless requested
+</div></footer>
+</body>
+</html>
