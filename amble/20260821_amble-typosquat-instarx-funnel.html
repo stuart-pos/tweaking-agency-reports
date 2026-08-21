@@ -32,7 +32,7 @@ tbody tr:nth-child(even){background:var(--color-bg-alt)}
 .callout-warn{background:#fef3c7;border-left-color:#f59e0b}
 .callout-danger{background:#fef2f2;border-left-color:#ef4444}
 .callout-green{background:#ecfdf5;border-left-color:#059669}
-pre.flow{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:6px;padding:16px;font-size:.8rem;white-space:pre-wrap}
+pre.flow{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:6px;padding:16px;font-size:.82rem;white-space:pre-wrap;line-height:1.55}
 code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:4px;padding:2px 6px;font-size:.82rem}
 .report-footer{background:var(--color-primary);color:rgba(255,255,255,.8);padding:32px 0;margin-top:48px;font-size:.85rem}
 .badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:12px;background:#fee2e2;color:#991b1b}
@@ -43,8 +43,15 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
 .exhibit-card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--color-border)}
 .exhibit-cap{padding:12px 16px;font-size:.82rem;color:var(--color-text-light)}
 .exhibit-cap strong{color:var(--color-primary);display:block;margin-bottom:4px}
+.loom-box{background:#fff;border:1px solid var(--color-border);border-radius:10px;padding:18px 20px;margin:16px 0}
+.loom-box h3{margin-top:0}
+.loom-box a{word-break:break-all}
 @media (min-width:900px){.exhibit-grid{grid-template-columns:1fr 1fr}}
-.mermaid-like{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;line-height:1.7}
+@media print{
+  .exhibit-grid{grid-template-columns:1fr;break-inside:avoid}
+  .exhibit-card{break-inside:avoid;page-break-inside:avoid}
+  a{color:inherit;text-decoration:underline}
+}
 </style>
 </head>
 <body>
@@ -61,7 +68,8 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
 <main class="container">
 <p style="margin-top:20px;font-size:.85rem;color:var(--color-text-light)">
   Evidence pack: <code>context/analysis/copycat-domains-2026-08-21/</code> ·
-  Screenshots: <code>created/reports/20260821_amble-typosquat-funnel-assets/</code>
+  Screenshots: <code>created/reports/20260821_amble-typosquat-funnel-assets/</code> ·
+  Full write-up: <code>EVIDENCE-REPORT.md</code>
 </p>
 
 <div class="callout-danger callout">
@@ -72,14 +80,66 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
   (<code>go.instarx.com</code>). Legitimate Amble remains only at <a href="https://joinamble.com/">https://joinamble.com/</a>.
 </div>
 
-<h2>Are these domains the same network?</h2>
-<p><strong>Yes — one coordinated affiliate / typosquat network.</strong> They are not separate businesses operating independently.</p>
+<h2>The funnel (proved live today)</h2>
+<pre class="flow">Misspelled domain (e.g. joinambel.com)
+        │
+        ▼  301 redirect
+my-weight-loss.com branded GoWeightLoss
+        │
+        ▼  CTA click
+miamitrk.com affiliate a=14821
+        │
+        ▼  302 redirect
+InstaRX: https://go.instarx.com/start-glp1
+         patientcare@instarx.com · (866) 673-8730</pre>
+
+<p><strong>joinamble.com is not in this chain.</strong> It is a separate company and site.</p>
+
+<h2>Relationship of domains</h2>
+<div class="table-scroll">
+<table>
+  <thead>
+    <tr>
+      <th>Layer</th>
+      <th>Domains / URLs</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Entry (typosquat)</strong></td>
+      <td>joinambel.com, joinamle.com, joinambl.com, joinanble.com, joinamblee.com, joiamble.com, joinamble.co</td>
+      <td>Steal <code>joinamble</code> typo / trademark traffic</td>
+    </tr>
+    <tr>
+      <td><strong>Shared LP</strong></td>
+      <td>my-weight-loss.com (branded <strong>GoWeightLoss</strong>)</td>
+      <td>Same advertorial page for all 7 typosquats</td>
+    </tr>
+    <tr>
+      <td><strong>Tracker</strong></td>
+      <td>miamitrk.com (<code>a=14821</code>, offer <code>c=175082</code>)</td>
+      <td>Affiliate hop after CTA</td>
+    </tr>
+    <tr>
+      <td><strong>Seller</strong></td>
+      <td>go.instarx.com (<strong>InstaRX</strong>)</td>
+      <td>Actual GLP-1 merchant — not Amble</td>
+    </tr>
+    <tr>
+      <td><strong>Legitimate</strong></td>
+      <td>joinamble.com (Amble Health)</td>
+      <td>Control — not part of this funnel</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <div class="callout-green callout">
   <strong>Same-network proof (all seven typosquats):</strong>
   <ul style="margin-bottom:0">
     <li>Identical landing HTML after redirect (normalized SHA256 match across all saved pages)</li>
-    <li>Same brand on page: <strong>GoWeightLoss</strong> · footer “Copyright © GoWeightLoss 2025”</li>
+    <li>Same page brand: <strong>GoWeightLoss</strong> · footer “Copyright © GoWeightLoss 2025”</li>
     <li>Same CTA pattern: <code>href.li</code> → <code>miamitrk.com/?a=14821&amp;c=175082&amp;s1=wloss#####</code></li>
     <li>Same Clicky analytics ID: <code>101495572</code></li>
     <li>Only difference per domain: the <code>tk=wloss#####</code> / <code>s1=</code> sub-affiliate tag</li>
@@ -87,43 +147,36 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
   </ul>
 </div>
 
-<p>How the pieces relate:</p>
-<ul>
-  <li><strong>Typosquat domains</strong> (joinambel, joinamle, etc.) — traffic capture / brand confusion layer. Different registrars possible; same Cloudflare NS pair observed on sampled WHOIS.</li>
-  <li><strong>my-weight-loss.com / GoWeightLoss</strong> — shared advertorial landing page used by every typosquat.</li>
-  <li><strong>miamitrk.com</strong> — affiliate tracking hop (affiliate ID <code>14821</code>, offer <code>175082</code>).</li>
-  <li><strong>InstaRX (go.instarx.com)</strong> — the company that actually sells GLP-1s after the click. Contact on site: <code>patientcare@instarx.com</code> · <code>(866) 673-8730</code>.</li>
-  <li><strong>joinamble.com (Amble)</strong> — <em>not</em> in this funnel; separate brand, site, and enrollment stack.</li>
-</ul>
+<h2>Loom links — record address bar on each</h2>
+<div class="loom-box">
+  <h3>Control (you)</h3>
+  <p><a href="https://joinamble.com/">https://joinamble.com/</a></p>
 
-<pre class="flow mermaid-like">User types misspelling of joinamble.com
-        │
-        ▼
-┌───────────────────────────────────────┐
-│  TYPOSQUAT ENTRY (7 domains)          │
-│  joinambel.com  ← "Ambel" (FDA)       │
-│  joinamle.com / joinambl.com / …      │
-│  joinamble.co                         │
-└───────────────────┬───────────────────┘
-                    │ 301 redirect
-                    ▼
-┌───────────────────────────────────────┐
-│  SHARED LP: my-weight-loss.com        │
-│  Brand: GoWeightLoss                  │
-│  Unique only by tk=wloss#####         │
-└───────────────────┬───────────────────┘
-                    │ CTA click
-                    ▼
-┌───────────────────────────────────────┐
-│  TRACKER: miamitrk.com                │
-│  a=14821  c=175082  s1=wloss#####     │
-└───────────────────┬───────────────────┘
-                    │ 302 redirect
-                    ▼
-┌───────────────────────────────────────┐
-│  SELLER: go.instarx.com (InstaRX)     │
-│  NOT Amble / NOT joinamble.com        │
-└───────────────────────────────────────┘</pre>
+  <h3>Priority for the FDA letter (“Ambel”)</h3>
+  <p><a href="http://joinambel.com/">http://joinambel.com</a> → <code>…/semaglutide/?tk=wloss10749</code></p>
+
+  <h3>Same network</h3>
+  <ul>
+    <li><a href="http://joinamle.com/">http://joinamle.com</a> → <code>tk=wloss10489</code></li>
+    <li><a href="http://joinambl.com/">http://joinambl.com</a> → <code>tk=wloss10614</code></li>
+    <li><a href="http://joinanble.com/">http://joinanble.com</a> → <code>tk=wloss10616</code></li>
+    <li><a href="http://joinamblee.com/">http://joinamblee.com</a> → <code>tk=wloss10747</code></li>
+    <li><a href="http://joiamble.com/">http://joiamble.com</a> → <code>tk=wloss10488</code></li>
+    <li><a href="http://joinamble.co/">http://joinamble.co</a> → <code>tk=wloss11066</code></li>
+  </ul>
+
+  <h3>Shared LP + seller</h3>
+  <ul>
+    <li><a href="https://www.my-weight-loss.com/semaglutide/?tk=wloss10749">https://www.my-weight-loss.com/semaglutide/?tk=wloss10749</a></li>
+    <li>Click any <strong>“80% off Semaglutide”</strong> CTA</li>
+    <li><a href="https://go.instarx.com/start-glp1">https://go.instarx.com/start-glp1</a></li>
+  </ul>
+</div>
+
+<div class="callout-warn callout">
+  <strong>Loom tip:</strong> Keep the browser address bar visible on every clip. After each typosquat opens, the bar should flip from the misspelled domain to
+  <code>https://www.my-weight-loss.com/semaglutide/?tk=…</code>. Screenshots in this report include a chrome address-bar overlay showing <em>Opened / typed</em> vs <em>address bar now</em> for the same reason.
+</div>
 
 <h2>Inventory — live funnels (2026-08-21)</h2>
 <div class="table-scroll">
@@ -206,7 +259,7 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
       <td>Final seller</td>
       <td>—</td>
       <td><code>utm_campaign=14821</code></td>
-      <td>InstaRX</td>
+      <td>InstaRX · patientcare@instarx.com · (866) 673-8730</td>
     </tr>
   </tbody>
 </table>
@@ -220,72 +273,61 @@ code{background:var(--color-bg-alt);border:1px solid var(--color-border);border-
   Full dump in evidence pack <code>whois.txt</code>.
 </div>
 
-<h2>Screenshot exhibits</h2>
-<p>Each exhibit overlays the <strong>opened URL</strong> and the <strong>address bar after redirect</strong> for Loom / counsel use.</p>
+<h2>Evidence pack</h2>
+<ul>
+  <li><code>context/analysis/copycat-domains-2026-08-21/</code></li>
+  <li>Full write-up: <code>EVIDENCE-REPORT.md</code></li>
+  <li>Screenshots include joinambel / joinamle / joinambl / joinamble.co, InstaRX, and real joinamble.com for side-by-side</li>
+  <li>Each screenshot shows a browser address-bar chrome with <strong>Opened / typed</strong> vs <strong>address bar now</strong> (redirect proof)</li>
+  <li>Also: <code>html/</code> LP captures, <code>redirect-chains.txt</code>, <code>cta-trace.txt</code>, <code>active-copycats.csv</code>, <code>whois.txt</code></li>
+</ul>
 
+<h2>Screenshot exhibits (address bar visible)</h2>
 <div class="exhibit-grid">
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/01-joinamble-com-legitimate.png" alt="Legitimate joinamble.com">
-    <div class="exhibit-cap"><strong>Exhibit A — Legitimate Amble</strong>Opened https://joinamble.com/ · stays on Amble branding</div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/01-joinamble-com-legitimate.png" alt="Legitimate joinamble.com with address bar">
+    <div class="exhibit-cap"><strong>Exhibit A — Control (you)</strong>https://joinamble.com/ — no redirect; Amble branding</div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/02-joinambel-com.png" alt="joinambel.com funnel">
-    <div class="exhibit-cap"><strong>Exhibit B — joinambel.com (“Ambel”)</strong>FDA-priority typosquat → GoWeightLoss <code>tk=wloss10749</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/02-joinambel-com.png" alt="joinambel.com redirect with address bar">
+    <div class="exhibit-cap"><strong>Exhibit B — FDA priority (“Ambel”)</strong>Opened http://joinambel.com/ → address bar now my-weight-loss.com <code>tk=wloss10749</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/03-joinamle-com.png" alt="joinamle.com funnel">
-    <div class="exhibit-cap"><strong>Exhibit C — joinamle.com</strong>Missing “b” → same GoWeightLoss LP <code>tk=wloss10489</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/03-joinamle-com.png" alt="joinamle.com redirect">
+    <div class="exhibit-cap"><strong>Exhibit C — joinamle.com</strong>→ <code>tk=wloss10489</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/04-joinambl-com.png" alt="joinambl.com funnel">
-    <div class="exhibit-cap"><strong>Exhibit D — joinambl.com</strong>Missing “e” → <code>tk=wloss10614</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/04-joinambl-com.png" alt="joinambl.com redirect">
+    <div class="exhibit-cap"><strong>Exhibit D — joinambl.com</strong>→ <code>tk=wloss10614</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/05-joinanble-com.png" alt="joinanble.com funnel">
-    <div class="exhibit-cap"><strong>Exhibit E — joinanble.com</strong>“n” for “m” → <code>tk=wloss10616</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/05-joinanble-com.png" alt="joinanble.com redirect">
+    <div class="exhibit-cap"><strong>Exhibit E — joinanble.com</strong>→ <code>tk=wloss10616</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/06-joinamblee-com.png" alt="joinamblee.com funnel">
-    <div class="exhibit-cap"><strong>Exhibit F — joinamblee.com</strong>Extra “e” → <code>tk=wloss10747</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/06-joinamblee-com.png" alt="joinamblee.com redirect">
+    <div class="exhibit-cap"><strong>Exhibit F — joinamblee.com</strong>→ <code>tk=wloss10747</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/07-joiamble-com.png" alt="joiamble.com funnel">
-    <div class="exhibit-cap"><strong>Exhibit G — joiamble.com</strong>Transposed letters → <code>tk=wloss10488</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/07-joiamble-com.png" alt="joiamble.com redirect">
+    <div class="exhibit-cap"><strong>Exhibit G — joiamble.com</strong>→ <code>tk=wloss10488</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/08-joinamble-co.png" alt="joinamble.co funnel">
-    <div class="exhibit-cap"><strong>Exhibit H — joinamble.co</strong>Wrong TLD → <code>tk=wloss11066</code></div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/08-joinamble-co.png" alt="joinamble.co redirect">
+    <div class="exhibit-cap"><strong>Exhibit H — joinamble.co</strong>→ <code>tk=wloss11066</code></div>
   </div>
   <div class="exhibit-card">
-    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/09-gowightloss-landing.png" alt="GoWeightLoss shared landing">
-    <div class="exhibit-cap"><strong>Exhibit I — Shared GoWeightLoss LP</strong>https://www.my-weight-loss.com/semaglutide/ — advertorial used by all typosquats</div>
+    <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/09-gowightloss-landing.png" alt="GoWeightLoss shared LP">
+    <div class="exhibit-cap"><strong>Exhibit I — Shared LP + seller prep</strong>https://www.my-weight-loss.com/semaglutide/?tk=wloss10749 — click “80% off Semaglutide”</div>
   </div>
   <div class="exhibit-card">
     <img src="https://stuart-pos.github.io/tweaking-agency-reports/amble/20260821_amble-typosquat-funnel-assets/10-instarx-destination.png" alt="InstaRX destination">
-    <div class="exhibit-cap"><strong>Exhibit J — Final seller InstaRX</strong>https://go.instarx.com/start-glp1 — not Amble</div>
+    <div class="exhibit-cap"><strong>Exhibit J — Lands on InstaRX</strong>https://go.instarx.com/start-glp1 · patientcare@instarx.com · (866) 673-8730</div>
   </div>
 </div>
 
-<h2>Loom recording order</h2>
-<ol>
-  <li>https://joinamble.com/ — control</li>
-  <li>http://joinambel.com/ — “Ambel” / FDA priority (show address bar flip)</li>
-  <li>http://joinamle.com/ and http://joinamble.co/ — prove same network</li>
-  <li>Click “80% off Semaglutide” on GoWeightLoss LP</li>
-  <li>https://go.instarx.com/start-glp1 — name the actual seller</li>
-</ol>
-
-<h2>Evidence pack contents</h2>
-<ul>
-  <li><code>context/analysis/copycat-domains-2026-08-21/EVIDENCE-REPORT.md</code></li>
-  <li><code>screenshots/</code> — numbered exhibits + prior captures</li>
-  <li><code>html/</code> — raw LP HTML for all seven typosquats (byte-identical after tag normalize)</li>
-  <li><code>redirect-chains.txt</code>, <code>cta-trace.txt</code>, <code>active-copycats.csv</code>, <code>whois.txt</code></li>
-  <li><code>created/reports/20260821_amble-typosquat-funnel-assets/</code> — report-linked copies</li>
-</ul>
-
 <div class="callout callout">
-  <strong>Recommended next steps:</strong> Registrar abuse (Spaceship / Cosmotown / Cloudflare) · trademark counsel / UDRP on the seven domains · FDA response citing joinambel → InstaRX chain (this report + Loom).
+  <strong>Recommended next steps:</strong> Registrar abuse (Spaceship / Cosmotown / Cloudflare) · trademark counsel / UDRP on the seven domains · FDA response citing joinambel → InstaRX chain (this report + Loom with address bar).
 </div>
 </main>
 
