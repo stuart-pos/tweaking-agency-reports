@@ -25,40 +25,6 @@ a { color:#1e40af; }
 </style>
 </head>
 <body>
-<style>
-#pw-gate{position:fixed;inset:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,system-ui,sans-serif}
-#pw-box{background:#fff;border-radius:12px;padding:40px 32px;width:320px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-#pw-box h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:8px}
-#pw-box p{font-size:.85rem;color:#666;margin-bottom:20px}
-#pw-input{width:100%;padding:10px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px}
-#pw-input:focus{border-color:#1a1a2e}
-#pw-btn{width:100%;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
-#pw-btn:hover{background:#16213e}
-#pw-err{color:#ef4444;font-size:.8rem;margin-top:8px;display:none}
-</style>
-<div id="pw-gate">
-  <div id="pw-box">
-    <h2>Gimme Care Reports</h2>
-    <p>Enter the password to access this report.</p>
-    <input id="pw-input" type="password" placeholder="Password" autofocus />
-    <button id="pw-btn">Continue</button>
-    <div id="pw-err">Incorrect password. Please try again.</div>
-  </div>
-</div>
-<script>
-(function(){
-  var KEY='gc_report_auth',PWD='tweaking26!';
-  function unlock(){document.getElementById('pw-gate').style.display='none';}
-  if(sessionStorage.getItem(KEY)===PWD){unlock();return;}
-  document.getElementById('pw-btn').addEventListener('click',check);
-  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
-  function check(){
-    var v=document.getElementById('pw-input').value;
-    if(v===PWD){sessionStorage.setItem(KEY,PWD);unlock();}
-    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
-  }
-})();
-</script>
 <div class="wrap">
 <h1>Gimme Care parasite URL rescan</h1>
 <p class="sub">2026-09-28 · Google US · DataForSEO organic live, depth 50, desktop and mobile · 27 queries · 0 API errors · click destinations not verified</p>
