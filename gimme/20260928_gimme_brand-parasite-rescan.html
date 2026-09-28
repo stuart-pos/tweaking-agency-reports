@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Gimme Care — parasite URL rescan 2026-09-28</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --primary:#1a1a2e; --bg:#f8f9fa; --border:#e0e0e0; --text:#333; --muted:#666; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+.wrap { max-width:980px; margin:0 auto; padding:40px 24px 64px; }
+h1 { font-size:1.45rem; color:var(--primary); margin-bottom:6px; }
+h2 { font-size:1.05rem; color:var(--primary); margin:28px 0 8px; }
+p, li { font-size:.95rem; }
+.sub { color:var(--muted); margin-bottom:16px; }
+ul { margin:8px 0 0 18px; }
+li { margin:4px 0; }
+table { width:100%; border-collapse:collapse; background:#fff; font-size:.85rem; }
+th, td { border:1px solid var(--border); padding:8px 10px; text-align:left; vertical-align:top; }
+th { background:#fff; color:var(--muted); font-weight:600; }
+a { color:#1e40af; }
+.note { background:#fff; border:1px solid var(--border); border-radius:8px; padding:12px 14px; margin-top:10px; }
+</style>
+</head>
+<body>
+<style>
+#pw-gate{position:fixed;inset:0;background:#1a1a2e;display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Inter,system-ui,sans-serif}
+#pw-box{background:#fff;border-radius:12px;padding:40px 32px;width:320px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#pw-box h2{font-size:1.1rem;color:#1a1a2e;margin-bottom:8px}
+#pw-box p{font-size:.85rem;color:#666;margin-bottom:20px}
+#pw-input{width:100%;padding:10px 14px;border:1px solid #e0e0e0;border-radius:8px;font-size:1rem;outline:none;margin-bottom:12px}
+#pw-input:focus{border-color:#1a1a2e}
+#pw-btn{width:100%;padding:10px;background:#1a1a2e;color:#fff;border:none;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer}
+#pw-btn:hover{background:#16213e}
+#pw-err{color:#ef4444;font-size:.8rem;margin-top:8px;display:none}
+</style>
+<div id="pw-gate">
+  <div id="pw-box">
+    <h2>Gimme Care Reports</h2>
+    <p>Enter the password to access this report.</p>
+    <input id="pw-input" type="password" placeholder="Password" autofocus />
+    <button id="pw-btn">Continue</button>
+    <div id="pw-err">Incorrect password. Please try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='gc_report_auth',PWD='tweaking26!';
+  function unlock(){document.getElementById('pw-gate').style.display='none';}
+  if(sessionStorage.getItem(KEY)===PWD){unlock();return;}
+  document.getElementById('pw-btn').addEventListener('click',check);
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')check();});
+  function check(){
+    var v=document.getElementById('pw-input').value;
+    if(v===PWD){sessionStorage.setItem(KEY,PWD);unlock();}
+    else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
+  }
+})();
+</script>
+<div class="wrap">
+<h1>Gimme Care parasite URL rescan</h1>
+<p class="sub">2026-09-28 · Google US · DataForSEO organic live, depth 50, desktop and mobile · 27 queries · 0 API errors · click destinations not verified</p>
+<div class="note">
+<p>The July 6 journal URL on <strong>journalhistoryknowledge.org</strong> (source <strong>tonicdieting.shop</strong>) did not appear, including on a site: query for that host. One new Open Journal Systems viewer URL did appear, on a university journal, pointing at <strong>solalal.com/keto/</strong>. A second set of pages uses a different kit, <strong>video.unkk.top</strong>, on otherwise unrelated sites.</p>
+</div>
+<h2>New high-severity URLs</h2>
+<p>These are not on gimme.care. The title is often unrelated. Gimme Care shows up in the snippet or the page is stuffed with GLP-1 terms. None of these redirects were opened.</p>
+<table>
+<thead><tr><th>Domain</th><th>Pattern</th><th>Source param</th><th>Title</th><th>Query</th></tr></thead>
+<tbody>
+<tr><td>revistaaloma.blanquerna.edu</td><td>OJS pdfJsViewer</td><td>solalal.com/keto/</td><td><a href="https://www.revistaaloma.blanquerna.edu/plugins/generic/pdfJsViewer/pdf.js/web/viewer.html?file=%2Findex.php%2Findex%2Flogin%2FsignOut%3Fsource%3D.solalal.com%2Fketo%2F&amp;id=tC4wPa0Flzo">New Findings Show 6 Apple Cider Vinegar Drinks ...</a></td><td>inurl:pdfJsViewer &quot;gimme care&quot;</td></tr><tr><td>lab.rtve.es</td><td>krpano viewer</td><td>video.unkk.top</td><td><a href="https://lab.rtve.es/escena-360/almagro-respira-teatro/?&amp;xml=data:gsf,%3Ckrpano%3E%3Cinclude%20url%3D%22%2F%5C%2Fvideo.unkk.top%2Fkrpketo3%2FuJWTLJnE2Ow%22%2F%3E%3C%2Fkrpano%3E">Gimme Care Glp 1 Reviews: An In Depth Look At Effectiveness, Cost ...</a></td><td>&quot;gimme care&quot; glp-1</td></tr><tr><td>har.com</td><td>pannellum viewer</td><td>video.unkk.top</td><td><a href="https://www.har.com/resources/pano/pannellum.htm?config=/%5C/video.unkk.top/panketo2/bJOJEME2f8g">Gimme Glp1: The Ultimate Guide To Weight Management And Glp 1 ...</a></td><td>gimme care weight loss</td></tr><tr><td>dexeus.com</td><td>krpano viewer</td><td>video.unkk.top</td><td><a href="https://www.dexeus.com/tour-virtual-lab/?&amp;xml=data:gsf,%3Ckrpano%3E%3Cinclude%20url%3D%22%2F%5C%2Fvideo.unkk.top%2Fkrpketo3%2FKo7UTkxXa3v%22%2F%3E%3C%2Fkrpano%3E">Gimme Glp1 Guide: Everything You Emphasize For Sustainable Weight ...</a></td><td>gimme care weight loss</td></tr><tr><td>aspo.org</td><td>doorway query string</td><td></td><td><a href="https://aspo.org/?y=4454060674">gimme care tirzepatide Reviews &amp; Pricing Select your plan &amp; ...</a></td><td>&quot;gimme care&quot; semaglutide</td></tr><tr><td>manfredirelais.com</td><td>doorway query string</td><td></td><td><a href="https://manfredirelais.com/?t=70159757536">gimme care tirzepatide reviews | Telehealth Provider — ...</a></td><td>&quot;gimme care&quot; glp-1</td></tr><tr><td>wearmarts.com</td><td>doorway query string</td><td></td><td><a href="https://www.wearmarts.com/?x=85089346195">gimme care glp-1 reviews | Telehealth Provider — Pricing, &amp; Pharmacies ...</a></td><td>&quot;gimme care&quot; glp-1</td></tr><tr><td>schul-it-navigator.de</td><td>doorway query string</td><td></td><td><a href="https://schul-it-navigator.de/?x=82945015399">gimme care tirzepatide reviews all the Compounded ...</a></td><td>&quot;gimme care&quot; semaglutide</td></tr><tr><td>stonevillenc.org</td><td>unrelated .org page stuffed with semaglutide</td><td></td><td><a href="https://stonevillenc.org/compounded-semaglutide-salt-lake-city-media/">compounded semaglutide salt lake city</a></td><td>&quot;gimme care&quot; semaglutide</td></tr><tr><td>serres.gr</td><td>municipal site page stuffed with semaglutide</td><td></td><td><a href="https://www.serres.gr/semaglutide-delivered-to-home-vault/">semaglutide delivered to home what company manufactures semaglutide</a></td><td>&quot;gimme care&quot; semaglutide</td></tr><tr><td>sui.edu</td><td>keto video path</td><td></td><td><a href="https://sui.edu/video/keto/Gelatin-Cubes-The-Ultimate-Guide-to-Making-Using-qVszpQi17NQ">Gelatin Cubes: The Ultimate Guide To Making, Using, And Mastering ...</a></td><td>&quot;gimme care&quot; healthbenefit</td></tr><tr><td>intranet.nso.edu</td><td>keto video path</td><td></td><td><a href="https://intranet.nso.edu/video/keto/Boost-Your-Burn-A-Guide-to-Keto-Gummies-with-MCT-Oil-RUaWV39L2LO">A Guide To Keto Gummies With Mct Oil [RUaWV39L2LO]</a></td><td>&quot;gimme care&quot; healthbenefit</td></tr>
+</tbody>
+</table>
+<h2>July review domains still indexed</h2>
+<ul>
+<li>glpwinner.com — 26 URLs in this scan</li><li>parties365.com — 11 URLs in this scan</li><li>bariatricreports.org — 7 URLs in this scan</li><li>ondra.health — 4 URLs in this scan</li><li>dshafjk.com — 3 URLs in this scan</li><li>glp1match.com — 1 URL in this scan</li><li>glp1providercomparison.com — 1 URL in this scan</li><li>remevihealth.com — 1 URL in this scan</li>
+</ul>
+<h2>New review and comparison domains</h2>
+<ul>
+<li><a href="https://www.weightlossrankings.org/reviews/gimme-care">weightlossrankings.org</a> — Gimme Care Review - Weight Loss Rankings</li><li><a href="https://glpwatchdog.org/reviews/gimme-care">glpwatchdog.org</a> — Gimme Care Review - GLP Watchdog</li><li><a href="https://glploss.com/reviews/gimme-care">glploss.com</a> — Gimme Care review - compounded tirzepatide sellers</li><li><a href="https://www.presidentialglp1.com/reviews/gimme-care">presidentialglp1.com</a> — Gimme Care Review 2026 - Presidential GLP-1</li><li><a href="https://treatmentregistry.com/registry/TR-0032">treatmentregistry.com</a> — Gimme Care compounded tirzepatide cost - Treatment Registry</li><li><a href="https://glp1desk.com/compare/gimme-care-vs-nuviarx">glp1desk.com</a> — Gimme Care vs NuviaRx — Desk Score head-to-head</li><li><a href="https://www.foodnoisestop.com/reviews/gimme-care-2026">foodnoisestop.com</a> — Gimme Care Review (2026)</li><li><a href="https://compoundedtirzepatide.org/providers/gimme-care">compoundedtirzepatide.org</a> — Gimme Care | $216/mo compounded tirzepatide</li><li><a href="https://peptidesport.com/reviews/gimme-care">peptidesport.com</a> — Gimme Care review - Peptide Sport</li><li><a href="https://dosebrief.com/compare/alternatives/gimme-care">dosebrief.com</a> — Alternatives to Gimme Care · Dose Brief</li><li><a href="https://comparepeptide.org/reviews/gimme-care">comparepeptide.org</a> — Gimme Care Review - Compare Peptide</li><li><a href="https://buythispeptide.com/guides/sermorelin-cost">buythispeptide.com</a> — What a sermorelin prescription costs, all-in</li><li><a href="https://aminoscope.com/best/peptide-therapy">aminoscope.com</a> — Best peptide therapy providers (2026) - Aminoscope</li><li><a href="https://clearmetabolic.com/reviews/gimme-care-review/">clearmetabolic.com</a> — Gimme Care Review: Monthly vs Quarterly Costs and Refund ...</li><li><a href="https://claroglp1.com/reviews/gimme-care">claroglp1.com</a> — Gimme Care — Calificado B+ (Índice Claro 87/100)</li><li><a href="https://toptelehealthguide.com/anti-aging/npb-gimme-care/">toptelehealthguide.com</a> — Compare the Best Anti-Aging Telehealth Services in One Place</li>
+</ul>
+<h2>Competitor sites, not parasites</h2>
+<ul>
+<li><strong>telosrx.com</strong> — TelosRX vs Gimme Care comparison on TelosRX&#x27;s own site</li><li><strong>ozarihealth.com</strong> — Ozari pricing post on Ozari&#x27;s own site</li>
+</ul>
+<p class="sub" style="margin-top:18px">Full pull, 142 unique URLs: <a href="20260928_gimme_brand-parasite-listings.csv">20260928_gimme_brand-parasite-listings.csv</a>. Paid ads using this pattern: 0.</p>
+</div>
+</body>
+</html>
