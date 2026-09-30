@@ -132,6 +132,24 @@
     .study .src { margin-top: 14px; font-size: 12px; color: rgba(255, 255, 255, .45); }
     .dark .center { text-align: center; margin-top: 44px; }
 
+    /* members + blog */
+    .row-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; }
+    .row-head h2 { margin-bottom: 0; }
+    .members { background: var(--surface); }
+    .reviews { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .review { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; }
+    .review .stars { color: var(--purple); letter-spacing: 2px; font-size: 15px; margin-bottom: 14px; }
+    .review blockquote { font-size: 15px; line-height: 1.55; color: #444; flex: 1; }
+    .review figcaption { margin-top: 18px; font-weight: 700; font-size: 14px; }
+    .btn-outline { display: inline-block; border: 1px solid var(--ink); border-radius: 16px; padding: 13px 26px; font-size: 15px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+    .posts { display: grid; grid-auto-flow: column; grid-auto-columns: 300px; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 max(32px, calc((100vw - 1120px) / 2 + 32px)); padding: 0 max(32px, calc((100vw - 1120px) / 2 + 32px)) 16px; scrollbar-width: thin; }
+    .post { scroll-snap-align: start; text-decoration: none; display: flex; flex-direction: column; }
+    .post img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; background: #eee; }
+    .post h3 { font-family: Satoshi, Arial, sans-serif; font-weight: 700; font-size: 17px; line-height: 1.35; letter-spacing: -0.01em; margin: 14px 0 8px; }
+    .post .more { font-size: 14px; text-decoration: underline; color: #555; }
+    .post .cat { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .existing-wrap { padding-top: 28px; padding-bottom: 28px; }
+
     /* existing sections */
     .existing { margin: 20px 0; border: 2px dashed #d4d4d4; border-radius: 18px; padding: 26px 28px; background: #fcfcfc; }
     .existing .label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #999; }
@@ -184,6 +202,10 @@
       .study .big { font-size: 24px; }
       .study p { font-size: 14px; }
       .refs ol { grid-template-columns: 1fr; }
+      .row-head { flex-direction: column; align-items: start; margin-bottom: 24px; }
+      .reviews { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -20px; padding: 0 20px 12px; scroll-padding: 0 20px; }
+      .review { scroll-snap-align: start; }
+      .posts { grid-auto-columns: 78%; padding: 0 20px 12px; scroll-padding: 0 20px; }
     }
   </style>
 </head>
@@ -193,7 +215,7 @@
     <div class="wrap">
       <strong>Mockup:</strong> gimme.care/treatments/sermorelin &nbsp;·&nbsp;
       <strong>Hero changes:</strong> H1, subheadline, one 15mg table ($99 / $95), bullets 1–2, larger vial, sticky image on desktop, ODT tile &nbsp;·&nbsp;
-      <strong>New:</strong> 3 sections + References &nbsp;·&nbsp; Dashed blocks = existing sections, unchanged
+      <strong>New:</strong> 3 sections + References &nbsp;·&nbsp; <strong>Moved up:</strong> Reviews + Blog &nbsp;·&nbsp; Dashed blocks = existing sections, unchanged
     </div>
   </div>
 
@@ -399,8 +421,70 @@
     </div>
   </section>
 
+  <!-- MEMBERS -->
+  <section class="section members">
+    <div class="wrap">
+      <div class="row-head">
+        <div>
+          <span class="eyebrow">Reviews</span><span class="new-tag">Moved up</span>
+          <h2>Hear it from our <span class="accent">members</span></h2>
+        </div>
+        <a class="cta inline" href="#">Get started</a>
+      </div>
+      <div class="reviews">
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>I signed up around 9:30AM on Monday, was approved by the doctor around noon and got a tracking number for the shipment on Tuesday morning and it was delivered today Thursday. Spectacular!!</blockquote>
+          <figcaption>Ronald S.</figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>So much faster than the last few companies I was using and to make it even better, this company is cheaper too. So good!</blockquote>
+          <figcaption>Patty S.</figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>Had an amazing experience, Placed my order on Friday, was verified and approved, received my meds on Wednesday. Great customer service and excellent experience</blockquote>
+          <figcaption>Dina B.</figcaption>
+        </figure>
+        <figure class="review">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>Not only the best price, but the best customer service I have had with an online health company. I saved over $100 on my medications compared to my last provider. Highly recommend</blockquote>
+          <figcaption>Micheal M.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section class="section blog">
+    <div class="wrap">
+      <div class="row-head">
+        <div>
+          <span class="eyebrow">Learn more</span><span class="new-tag">Moved up</span>
+          <h2>Read our <span class="accent">blog posts</span></h2>
+        </div>
+        <a class="btn-outline" href="https://gimme.care/blog" target="_blank" rel="noopener">Go to blogs page</a>
+      </div>
+    </div>
+    <div class="posts" tabindex="0" aria-label="Sermorelin blog posts">
+      <a class="post" href="https://gimme.care/blog/sermorelin-and-testosterone" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/befc34d56b945c16ed9cbdb9ddd1a22e92634968-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin and Testosterone: What to Know Before Combining Therapies</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-for-men" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/c339c69cab6cc099e437da333afc32730c719fb4-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin for Men: Benefits, Side Effects, Dosage, and What to Know</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-for-females" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/4a2b2a78c1cea690908bd65f8c0cbd01e2902a0b-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin for Females: Benefits, Side Effects, Dosage, and What to Know</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-and-semaglutide" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/d4ea3f1c4dbaba062d3826081db01b6fc07d3426-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin and Semaglutide: What to Know Before Combining Treatments</h3><span class="more">Read full article</span><span class="cat">Anti Aging, Weight Loss</span></a>
+      <a class="post" href="https://gimme.care/blog/what-happens-when-you-stop-taking-sermorelin" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/7f4bcbbdf68eedc9198f84518212db66a44b978b-1200x896.avif" alt="" loading="lazy" /><h3>What Happens When You Stop Taking Sermorelin? Post-Treatment Expectations</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/does-sermorelin-need-to-be-refrigerated" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/c9c1cb6b76fe9fe8993b68313afc4c61dfb55bc0-1200x896.avif" alt="" loading="lazy" /><h3>Does Sermorelin Need to Be Refrigerated? Safe Storage Tips</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/how-fast-does-sermorelin-work" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/c295ddf345ac8c0b9baf79959a87e1171206f887-1200x896.avif" alt="" loading="lazy" /><h3>How Long Does Sermorelin Take to Work? A Timeline Guide</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-side-effects-cancer" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/274877c80a799ad924292a2a0f5235c92f1299e3-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin Side Effects and Cancer Risk: What to Know</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-tablets" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/b693d3467c0db6f5573d5ddb05830f505b721870-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin Tablets: What to Know Before Starting</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-before-and-after" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/e3048c26972544834ef7c2ed1b3ea26d479a2009-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin Before and After: What Results Can You Expect?</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/what-is-sermorelin" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/0d620c91f4c63e2d33c2aa154819fc15ad78a3fb-1200x896.avif" alt="" loading="lazy" /><h3>What Is Sermorelin? What to Know About This Peptide Therapy</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+      <a class="post" href="https://gimme.care/blog/sermorelin-cost" target="_blank" rel="noopener"><img src="https://cdn.sanity.io/images/nmxk383n/production/d20beab5b033024f5d5293b91fa281d9320b9e92-1200x896.avif" alt="" loading="lazy" /><h3>Sermorelin Cost: What Can You Expect to Pay?</h3><span class="more">Read full article</span><span class="cat">Anti Aging</span></a>
+    </div>
+  </section>
+
   <!-- EXISTING SECTIONS (unchanged) -->
-  <div class="wrap">
+  <div class="wrap existing-wrap">
     <div class="existing">
       <div class="label">Existing section · unchanged</div>
       <h3>How it works</h3>
@@ -411,20 +495,10 @@
       <h3>Gimme care</h3>
       <p><strong>Currently says "fully comprehensive GLP-1 care program" and "track your weight loss."</strong> Recommend swapping to sermorelin-neutral copy on this PDP.</p>
     </div>
-    <div class="existing flag">
-      <div class="label">Existing section · copy flag</div>
-      <h3>Hear it from our members</h3>
-      <p><strong>Reviews reference Semaglutide / GLP-1.</strong> Swap in sermorelin reviews if available, or keep to shipping/service reviews only.</p>
-    </div>
     <div class="existing">
       <div class="label">Existing section · unchanged</div>
       <h3>Frequently asked questions</h3>
       <p>What you get with Gimme · States · Insurance · Video visits · What is Sermorelin · How it works · Uses · Side effects</p>
-    </div>
-    <div class="existing">
-      <div class="label">Existing section · unchanged</div>
-      <h3>Read our blog posts</h3>
-      <p>12 sermorelin articles</p>
     </div>
   </div>
 
