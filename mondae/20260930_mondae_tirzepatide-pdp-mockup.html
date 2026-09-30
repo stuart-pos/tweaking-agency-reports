@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mockup — Compounded tirzepatide PDP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans:opsz@12..24&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: rgba(23, 23, 23, .68);
+      --line: #e7e5e4;
+      --surface: #fafaf9;
+      --card: #f5f5f4;
+      --dark: #2a241c;
+      --dark-card: #3a3228;
+      --gold: #c6a15a;
+      --yellow: #fff1b5;
+      --accent: linear-gradient(90deg, #a8843e, #e6c98a);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "Hedvig Letters Sans", Arial, sans-serif; color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+    h1, h2, h3 { font-family: "Hedvig Letters Serif", Georgia, serif; font-weight: 400; letter-spacing: -0.03em; }
+    .accent { background: var(--accent); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    .note-bar { background: #fef9ec; border-bottom: 1px solid #f0d78c; font-size: 13px; line-height: 1.5; color: #5c4a1f; }
+    .note-bar .wrap { padding-top: 10px; padding-bottom: 10px; }
+    .note-bar strong { color: var(--ink); }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { display: block; color: var(--ink); line-height: 0; }
+    .logo svg { width: 92px; height: auto; }
+    .nav-links { display: flex; gap: 28px; font-size: 15px; color: #555; }
+    .nav-links a { text-decoration: none; }
+
+    .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; padding: 22px 0 56px; align-items: start; }
+    .hero-media { position: sticky; top: 24px; }
+    .hero-frame { width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; overflow: hidden; background: #eceae6; }
+    .hero-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-legal { font-size: 13px; line-height: 1.45; color: var(--muted); margin-top: 16px; }
+    .hero-legal + .hero-legal { margin-top: 8px; }
+
+    .related { margin-top: 28px; }
+    .related-title { font-family: "Hedvig Letters Sans", Arial, sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .related-card { display: block; text-decoration: none; background: #fff; border-radius: 22px; box-shadow: 0 2px 14px rgba(0, 0, 0, .08); padding: 22px 22px 26px; text-align: center; }
+    .related-card .thumb { width: 62%; max-width: 220px; aspect-ratio: 1 / 1; margin: 0 auto; border-radius: 16px; background: #eceae6; overflow: hidden; }
+    .related-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .related-card .name { margin-top: 14px; font-size: 18px; color: #444; }
+
+    .pay { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; }
+    .pay span { font-size: 12px; font-weight: 700; padding: 4px 9px; border-radius: 6px; }
+    .pay .affirm { color: #111; padding-left: 0; font-size: 16px; }
+    .pay .klarna { background: #ffb3c7; color: #111; }
+    .pay .afterpay { background: #b2fce4; color: #111; }
+    .hero-info h1 { font-size: 42px; line-height: 1.08; margin-bottom: 12px; }
+    .hero-info .sub { font-size: 17px; line-height: 1.5; color: #6b6b6b; margin-bottom: 26px; }
+
+    .price-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; font-size: 16px; }
+    .price-table th, .price-table td { text-align: left; padding: 15px 16px; border-bottom: 1px solid var(--line); }
+    .price-table th { font-weight: 500; background: var(--surface); }
+    .price-table th + th, .price-table td + td { border-left: 1px solid var(--line); }
+    .price-table tr:last-child td { border-bottom: none; }
+    .included { font-size: 13px; color: var(--muted); margin: 10px 0 22px; line-height: 1.45; }
+
+    .bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+    .bullets li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #4a4a4a; }
+    .bullets svg { flex: 0 0 auto; margin-top: 2px; }
+    .cta { display: block; width: 100%; text-align: center; text-decoration: none; background: #171717; color: #fff; font-size: 16px; font-weight: 500; padding: 17px 24px; border-radius: 999px; }
+    .cta.inline { display: inline-block; width: auto; padding: 15px 36px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .chips span { border: 1px solid var(--line); background: var(--surface); color: #737373; font-size: 12px; border-radius: 999px; padding: 4px 10px; }
+
+    .faq-mini { margin-top: 22px; border-top: 1px solid var(--line); }
+    .faq-mini details { border-bottom: 1px solid var(--line); }
+    .faq-mini summary { padding: 14px 0; font-size: 15px; display: flex; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; }
+    .faq-mini p { padding: 0 0 16px; font-size: 14px; line-height: 1.6; color: #555; }
+    .moved { display: inline-block; margin-left: 8px; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; background: #e7f3f8; color: #1a2830; padding: 2px 6px; border-radius: 5px; vertical-align: middle; }
+
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; flex: 0 0 auto; color: var(--muted); font-size: 20px; line-height: 1; transition: transform .2s ease; }
+    details[open] > summary::after { transform: rotate(45deg); }
+
+    .section { padding: 88px 0; }
+    .eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #8a6a32; margin-bottom: 14px; }
+    .section h2 { font-size: 44px; line-height: 1.08; margin-bottom: 18px; }
+    .lede { font-size: 18px; line-height: 1.6; color: #555; max-width: 640px; }
+    .new-tag { display: inline-block; margin-left: 10px; vertical-align: middle; font-family: "Hedvig Letters Sans", Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: #fef3c7; color: #92400e; padding: 3px 8px; border-radius: 6px; }
+
+    .what { background: var(--surface); }
+    .what-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .stats { display: grid; gap: 16px; }
+    .stat { background: #fff; border-radius: 20px; padding: 26px 28px; border: 1px solid var(--line); }
+    .stat .num { font-family: "Hedvig Letters Serif", Georgia, serif; font-size: 40px; line-height: 1.05; letter-spacing: -0.03em; }
+    .stat .lbl { margin-top: 8px; font-size: 15px; line-height: 1.45; color: #555; }
+    .what p + p { margin-top: 16px; }
+    .what .cta { margin-top: 30px; }
+
+    .timeline-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 44px; }
+    .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; position: relative; }
+    .timeline::before { content: ""; position: absolute; top: 11px; left: 12px; right: 12px; height: 2px; background: linear-gradient(90deg, #c6a15a, #fff1b5, #ededed); }
+    .step { position: relative; padding-top: 40px; }
+    .step::before { content: ""; position: absolute; top: 3px; left: 0; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid #c6a15a; }
+    .step .when { font-family: "Hedvig Letters Serif", Georgia, serif; font-size: 22px; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .step .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; font-size: 15px; line-height: 1.5; color: #444; min-height: 168px; }
+    .fine { font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 26px; max-width: 760px; }
+
+    .dark { background: var(--dark); color: #fff; }
+    .dark .lede { color: rgba(255, 255, 255, .78); }
+    .dark .eyebrow { color: var(--yellow); }
+    .dark .accent { background-image: linear-gradient(90deg, #fff1b5, #f6ead0); }
+    .compare { margin-top: 36px; width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 20px; overflow: hidden; background: var(--dark-card); }
+    .compare th, .compare td { padding: 18px 20px; text-align: left; font-size: 15px; line-height: 1.5; border-bottom: 1px solid rgba(255, 255, 255, .08); vertical-align: top; }
+    .compare thead th { font-family: "Hedvig Letters Serif", Georgia, serif; font-weight: 400; font-size: 20px; background: #22323b; }
+    .compare thead th.us { color: #fff; background: linear-gradient(90deg, rgba(198, 161, 90, .45), rgba(255, 241, 181, .18)); }
+    .compare tbody th { font-weight: 500; color: rgba(255, 255, 255, .62); width: 22%; }
+    .compare tr:last-child th, .compare tr:last-child td { border-bottom: none; }
+    .cut-note { margin-top: 22px; font-size: 14px; line-height: 1.55; color: rgba(255, 255, 255, .72); max-width: 760px; }
+
+    .existing-wrap { padding-top: 28px; padding-bottom: 8px; }
+    .existing { margin: 20px 0; border: 2px dashed #d4d4d4; border-radius: 18px; padding: 26px 28px; background: #fcfcfc; }
+    .existing .label { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #999; }
+    .existing h3 { font-size: 28px; margin: 6px 0 8px; }
+    .existing p, .existing li { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .existing ul { margin: 8px 0 0 18px; }
+    .existing.flag { border-color: #f0d78c; background: #fffcf2; }
+    .existing.flag .label { color: #92400e; }
+
+    .closer { text-align: center; padding: 72px 0; }
+    .closer h2 { font-size: 40px; margin-bottom: 12px; }
+    .closer p { color: #555; margin-bottom: 22px; }
+    .closer .cta { max-width: 280px; margin: 0 auto; }
+
+    .know { background: var(--surface); padding: 72px 0; border-top: 1px solid var(--line); }
+    .know h2 { font-size: 34px; line-height: 1.15; margin-bottom: 14px; }
+    .know p { font-size: 14px; line-height: 1.6; color: #555; max-width: 820px; }
+    .know p + p { margin-top: 12px; }
+
+    footer { background: var(--dark); color: rgba(255, 255, 255, .55); font-size: 13px; padding: 28px 0; }
+
+    @media (max-width: 900px) {
+      .wrap { padding: 0 20px; }
+      .nav-links { display: none; }
+      .what-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero { display: flex; flex-direction: column; gap: 0; padding-top: 16px; }
+      .hero-info { display: contents; }
+      .buy { order: 1; }
+      .hero-media { order: 2; position: static; margin-top: 28px; }
+      .faq-mini { order: 3; margin-top: 8px; }
+      .hero-info h1 { font-size: 34px; }
+      .hero-info .sub { font-size: 16px; margin-bottom: 20px; }
+      .section { padding: 64px 0; }
+      .section h2 { font-size: 32px; }
+      .timeline-head { flex-direction: column; align-items: start; }
+      .timeline { grid-template-columns: 1fr; gap: 0; }
+      .timeline::before { top: 12px; bottom: 12px; left: 8px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, #c6a15a, #fff1b5, #ededed); }
+      .step { padding: 0 0 18px 36px; }
+      .step::before { top: 4px; }
+      .step .card { min-height: 0; }
+      .compare thead { display: none; }
+      .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
+      .compare tr { padding: 16px 18px; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+      .compare th, .compare td { padding: 4px 0; border: none; }
+      .compare td.sema::before { content: "Semaglutide: "; font-weight: 700; color: var(--yellow); }
+      .compare td.tirz::before { content: "Tirzepatide: "; font-weight: 700; color: #f6ead0; }
+      .closer h2 { font-size: 32px; }
+    }
+</style>
+</head>
+<body>
+  <div class="note-bar"><div class="wrap"><strong>Mockup notes only.</strong> Page: mondae.com/shop/glp-1-gip. Hero pricing kept at $126 for a 1-month supply (no 3-month price on this URL, so none was added). Dose stays out of the H1 because the live page does not state a milligram — a provider sets it. No study cards. <strong>New:</strong> What it is, what to expect, comparison. <strong>Removed:</strong> bottom FAQ (answers that weren’t already in the hero are marked Moved up). Dashed boxes are sections that already exist. Yellow boxes are copy to fix. No reviews or blog posts on the live page, so none were moved.</div></div>
+  <header class="wrap nav">
+    <a class="logo" href="https://mondae.com/" aria-label="Mondae home"><svg width="71" height="10" viewBox="0 0 71 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M63.6114 9.80829V0.191853H70.858V2.05487H65.7621V4.08226H70.4059V5.82199H65.7621V7.95898H70.9539V9.80829H63.6114Z" fill="currentColor"/><path d="M50.4701 9.80829L54.5934 0.150757H56.6208L60.7578 9.80829H58.429L57.5797 7.7672H53.5934L52.7441 9.80829H50.4701ZM54.2646 6.04117H56.9222L55.5934 2.6987L54.2646 6.04117Z" fill="currentColor"/><path d="M26.7319 9.80829V0.219249H28.773L33.321 6.21925V0.191853H35.4443V9.80829H33.5128L28.8689 3.6713V9.80829H26.7319Z" fill="currentColor"/><path d="M18.0872 10C17.3474 10 16.6671 9.87215 16.0461 9.61644C15.4342 9.3516 14.8954 8.99543 14.4296 8.54795C13.973 8.09132 13.6168 7.56164 13.3611 6.9589C13.1146 6.34703 12.9913 5.69406 12.9913 5C12.9913 4.31507 13.1191 3.67123 13.3748 3.06849C13.6305 2.46575 13.9867 1.93607 14.4433 1.47945C14.8999 1.0137 15.4388 0.652968 16.0598 0.39726C16.6899 0.13242 17.3748 0 18.1146 0C18.8452 0 19.521 0.13242 20.142 0.39726C20.763 0.652968 21.3018 1.00913 21.7584 1.46575C22.215 1.92237 22.5712 2.45205 22.8269 3.05479C23.0826 3.6484 23.2105 4.28767 23.2105 4.9726C23.2105 5.68493 23.078 6.34703 22.8132 6.9589C22.5575 7.56164 22.1922 8.09132 21.7173 8.54795C21.2515 9.00457 20.7082 9.36073 20.0872 9.61644C19.4753 9.87215 18.8086 10 18.0872 10ZM18.1009 8.05479C18.6762 8.05479 19.1785 7.91781 19.6077 7.64384C20.0461 7.36073 20.384 6.99087 20.6214 6.53425C20.868 6.06849 20.9913 5.56164 20.9913 5.0137C20.9913 4.60274 20.9228 4.21461 20.7858 3.84931C20.6488 3.47489 20.4479 3.15068 20.1831 2.87671C19.9273 2.59361 19.6214 2.36986 19.2652 2.20548C18.9182 2.0411 18.5255 1.9589 18.0872 1.9589C17.521 1.9589 17.0187 2.09589 16.5803 2.36986C16.142 2.6347 15.7995 3 15.5529 3.46575C15.3155 3.92237 15.1968 4.42466 15.1968 4.9726C15.1968 5.52968 15.32 6.04566 15.5666 6.52055C15.8132 6.9863 16.1557 7.36073 16.594 7.64384C17.0324 7.91781 17.5346 8.05479 18.1009 8.05479Z" fill="currentColor"/><path d="M0.000152588 9.80816V0.219116H2.24673L5.02755 4.61638L7.80837 0.219116H10.0549V9.80816H7.91796V3.56158L5.01385 7.94514L2.12344 3.57528V9.80816H0.000152588Z" fill="currentColor"/><path d="M42.7676 0.191853C43.8635 0.191853 44.8087 0.392734 45.6033 0.79456C46.3978 1.19639 47.0096 1.75808 47.4388 2.47954C47.8772 3.19185 48.0964 4.01831 48.0964 4.95893C48.0964 5.89043 47.8818 6.72158 47.4526 7.45217C47.0234 8.18274 46.4069 8.75803 45.6033 9.17811C44.7996 9.59821 43.8406 9.80829 42.7265 9.80829H39.2881V7.89028H41.4525V7.89052H42.7676C43.4068 7.89052 43.9594 7.77179 44.4252 7.53435C44.8909 7.29691 45.247 6.96356 45.4936 6.53437C45.7402 6.09602 45.8635 5.58449 45.8635 5.00001C45.8635 4.59821 45.7949 4.22379 45.658 3.87678C45.5301 3.52063 45.3384 3.21467 45.0827 2.95898C44.8361 2.69414 44.5347 2.48865 44.1785 2.34254C43.8315 2.19642 43.4342 2.12336 42.9867 2.12336H41.4525H39.2881V0.191853H42.7676Z" fill="currentColor"/></svg></a>
+    <nav class="nav-links"><a href="https://mondae.com/lp/glp-1-wl">Semaglutide</a><a href="https://mondae.com/shop/glp-1-gip">Tirzepatide</a></nav>
+  </header>
+  <main class="wrap hero">
+    <div class="hero-media">
+      <div class="hero-frame"><img src="https://mondae.com/images/lp/product-tirz.avif" alt="Stylized vial labeled compounded tirzepatide." /></div>
+      <p class="hero-legal">Stylized vial for marketing. Actual prescription packaging may differ. *Compounded medications are not approved by the FDA. The FDA does not review compounded medications for safety or quality.</p>
+      <p class="hero-legal">These medications are prepared for individual patients based on a provider’s medical judgment. Prescription required.</p>
+      <p class="hero-legal">**Dosage prescribed is at the discretion of your licensed prescriber.</p>
+      <div class="related">
+        <p class="related-title">Related <span class="new-tag">New</span></p>
+        <a class="related-card" href="https://mondae.com/lp/glp-1-wl">
+          <div class="thumb"><img src="https://mondae.com/images/lp/product-sema.avif" alt="" /></div>
+          <div class="name">Compounded semaglutide</div>
+        </a>
+      </div>
+    </div>
+    <div class="hero-info">
+      <div class="buy">
+        <div class="pay"><span class="affirm">affirm</span><span class="klarna">Klarna</span><span class="afterpay">afterpay</span></div>
+        <h1>Compounded tirzepatide</h1>
+        <p class="sub">A once-weekly GLP-1 + GIP injection.</p>
+        <table class="price-table">
+          <thead><tr><th>Billing cycle</th><th>Per month</th></tr></thead>
+          <tbody><tr><td>1-month</td><td>$126</td></tr></tbody>
+        </table>
+        <p class="included">Same price every month, any dose. No membership or hidden fees. You’re only charged if a provider prescribes it.</p>
+        <ul class="bullets">
+          <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m7 10 2 2 4-4"/></svg> May be prescribed for weight management if a provider decides it is appropriate</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m7 10 2 2 4-4"/></svg> No insurance required</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m7 10 2 2 4-4"/></svg> Same price at every dose</li>
+          <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#171717" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m7 10 2 2 4-4"/></svg> Shipped from a licensed U.S. pharmacy</li>
+        </ul>
+        <a class="cta" href="https://intake.mondae.com/otp">Get started</a>
+        <div class="chips"><span>HSA / FSA eligible</span><span>1:1 provider guidance</span><span>40,000+ patients</span></div>
+      </div>
+      <div class="faq-mini"><details><summary>What is Mondae?</summary><p>Mondae is a telehealth platform that connects eligible patients with licensed healthcare providers for evaluation and, when medically appropriate, prescription treatment. If prescribed, medications are dispensed and shipped by a licensed pharmacy, with ongoing access to your healthcare provider throughout your treatment.</p></details>
+<details><summary>How does Mondae work?</summary><p>Begin by completing a secure online intake questionnaire detailing your health history, current medications, and treatment goals. A U.S.-licensed healthcare provider will review your information and conduct a medical consultation to determine whether treatment is appropriate for you. If prescribed, your medication will be shipped directly to your door with tracking information. Throughout your treatment, you can securely message your healthcare provider through your online patient portal.</p></details>
+<details><summary>Do I need insurance?</summary><p>No, insurance is not required.</p></details>
+<details><summary>What states is Mondae available in?<span class="moved">Moved up</span></summary><p>Mondae is available in all 50 states.</p></details>
+<details><summary>Will I get charged if I don’t qualify for treatment?<span class="moved">Moved up</span></summary><p>No, you won’t be charged until a physician approves your treatment.</p></details>
+<details><summary>Can a provider change my dosage at any point during treatment?<span class="moved">Moved up</span></summary><p>Yes. Your provider can adjust your dosage if needed, depending on your medical history and how you respond to treatment.</p></details>
+<details><summary>What will my dosage be?<span class="moved">Moved up</span></summary><p>The precise dosage that you should take will be carefully assessed and determined by a qualified healthcare professional, ensuring it meets your specific health needs and conditions.</p></details></div>
+    </div>
+  </main>
+
+  <section class="section what">
+    <div class="wrap what-grid">
+      <div>
+        <span class="eyebrow">What is compounded tirzepatide?</span><span class="new-tag">New</span>
+        <h2>A once-weekly injection. <span class="accent">A provider decides if it fits.</span></h2>
+        <p class="lede">Compounded tirzepatide is made for one patient when a licensed provider prescribes it. Tirzepatide acts on two hormone receptors, GLP-1 and GIP.</p>
+        <p class="lede">FDA-approved medicines that contain tirzepatide are sold as Mounjaro and Zepbound. The compounded medication on this page is not approved by the FDA. It is not a generic, and it is not a substitute for those products.</p>
+        <a class="cta inline" href="https://intake.mondae.com/otp">Get started</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num"><span class="accent">Weekly</span></div><div class="lbl">One injection a week, if a provider prescribes it. Mondae does not publish a starting milligram on this page.</div></div>
+        <div class="stat"><div class="num"><span class="accent">GLP-1 + GIP</span></div><div class="lbl">A description of the ingredient. Not a promise that you will lose a certain amount of weight.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="timeline-head">
+        <div>
+          <span class="eyebrow">What to expect</span><span class="new-tag">New</span>
+          <h2>A care timeline, not a results timeline.</h2>
+          <p class="lede">Individual responses vary. Nothing below is a guarantee of weight loss.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="step"><div class="when">Today</div><div class="card">You complete an online questionnaire about your health history, medications, and goals.</div></div>
+        <div class="step"><div class="when">Review</div><div class="card">A U.S.-licensed provider reviews it and decides whether treatment may be appropriate.</div></div>
+        <div class="step"><div class="when">If prescribed</div><div class="card">Medication may ship from a licensed U.S. pharmacy. You are not charged if you are not prescribed.</div></div>
+        <div class="step"><div class="when">Early on</div><div class="card">You may notice a change in appetite, and you may have side effects. Message your provider if something feels off.</div></div>
+        <div class="step"><div class="when">Later</div><div class="card">Your provider may change the dose. On this plan, the monthly price does not go up when the dose does.</div></div>
+      </div>
+      <p class="fine">Compounded medications are not FDA-approved. The FDA does not review them for safety, effectiveness, or quality before they are dispensed. This is not medical advice.</p>
+      <a class="cta inline" href="https://intake.mondae.com/otp" style="margin-top:28px">Get started</a>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="wrap">
+      <span class="eyebrow">The two options</span><span class="new-tag">New</span>
+      <h2>Same kind of visit. <span class="accent">Different medication.</span></h2>
+      <p class="lede">This replaces the study section used on the NAD and Sermorelin mockups. It compares what each medication is. It does not compare weight-loss results.</p>
+      <table class="compare">
+        <thead>
+          <tr><th></th><th class="us">Compounded semaglutide</th><th class="us">Compounded tirzepatide</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>What it acts on</th><td class="sema">GLP-1</td><td class="tirz">GLP-1 and GIP</td></tr>
+          <tr><th>How it’s taken</th><td class="sema">Once-weekly injection, if prescribed</td><td class="tirz">Once-weekly injection, if prescribed</td></tr>
+          <tr><th>Price on Mondae</th><td class="sema">$87/month, or $75/month on a 3-month plan</td><td class="tirz">$126 for a 1-month supply</td></tr>
+          <tr><th>If the dose changes</th><td class="sema">The monthly price stays the same</td><td class="tirz">The monthly price stays the same</td></tr>
+          <tr><th>What it is not</th><td class="sema">Not FDA-approved. Not a substitute for Wegovy or Ozempic.</td><td class="tirz">Not FDA-approved. Not a substitute for Mounjaro or Zepbound.</td></tr>
+        </tbody>
+      </table>
+      <p class="cut-note">Not on this page: clinical-trial weight-loss percentages, “clinically proven,” and any claim that compounded semaglutide or tirzepatide matches an FDA-approved product. Those trials did not study these compounded medications.</p>
+    </div>
+  </section>
+
+  <div class="existing-wrap"><div class="wrap">
+    <div class="existing">
+      <p class="label">Existing — leave as-is</p>
+      <h3>What’s included</h3>
+      <p>One payment covers the clinical visit, medication, injection kit, shipping, and provider messaging — nothing tacked on later.</p>
+      <ul>
+        <li>Provider evaluation — online medical review and prescription decision by a licensed U.S. provider.</li>
+        <li>Compounded medication — dosing set by your provider.</li>
+        <li>Injection kit + free shipping — syringes, alcohol pads, and discreet delivery from licensed U.S. pharmacies.</li>
+        <li>Anytime provider messaging — side effects, dosing, or refills.</li>
+        <li>Dosing plan based on your history — your provider sets the starting dose and may adjust based on how you respond.</li>
+        <li>Education and guidance — what to expect, how to inject, and how to manage common side effects.</li>
+      </ul>
+    </div>
+    <div class="existing flag"><p class="label">Copy to fix</p><p>Flag: the live “Compounded medication” card says “Save more on longer plans.” This URL only shows a 1-month price ($126). Don’t imply a cheaper multi-month plan unless that price is on the page.</p></div>
+    <div class="existing">
+      <p class="label">Existing — leave as-is</p>
+      <h3>How it works</h3>
+      <ul>
+        <li>Quick assessment — a questionnaire about your health history.</li>
+        <li>Provider review — a medical consultation with a licensed care provider is required.</li>
+        <li>Shipped to your door — if prescribed, medication ships quickly and discreetly.</li>
+      </ul>
+    </div>
+    <div class="existing flag">
+      <p class="label">Existing section — copy to fix</p>
+      <h3>The price you start with is the price you keep for life</h3>
+      <p>Live line to fix: “your rate stays the same as long as your membership remains active.” The hero says there is no membership. Keep the flat-price chart, and rewrite that sentence so it doesn’t invent a membership. The chart disclaimer stays: it is a stylized example, not an actual treatment plan.</p>
+    </div>
+    </div></div>
+
+  <section class="closer">
+    <div class="wrap">
+      <h2>Ready when you are</h2>
+      <p>Start your online visit for this 1-month tirzepatide supply. You’re only charged if prescribed.</p>
+      <a class="cta" href="https://intake.mondae.com/otp">Get started</a>
+    </div>
+  </section>
+
+  <section class="know">
+    <div class="wrap">
+      <h2>Important to know</h2>
+      <p>There is no study list on this page. Trial results for FDA-approved semaglutide and tirzepatide were left off on purpose.</p>
+      <p>Mondae may facilitate access to compounded medications when prescribed by a licensed healthcare provider and dispensed by a licensed compounding pharmacy. Compounded medications are not approved by the U.S. Food and Drug Administration. They are not generic versions of, therapeutically equivalent to, or substitutes for Mounjaro, Zepbound, Wegovy, or Ozempic. Mondae does not manufacture medications or decide whether a medication is appropriate for you. Individual results vary. All medications carry risks, side effects, and contraindications.</p>
+    </div>
+  </section>
+  <footer><div class="wrap">© 2026 Mondae LLC. Mockup for internal review.</div></footer>
+</body>
+</html>
