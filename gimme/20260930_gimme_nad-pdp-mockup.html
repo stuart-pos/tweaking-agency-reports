@@ -107,8 +107,8 @@
     .stat { background: #fff; border-radius: 20px; padding: 26px 28px; border: 1px solid var(--line); }
     .stat .num { font-family: "Averia Serif Libre", serif; font-size: 54px; line-height: 1; letter-spacing: -0.04em; }
     .stat .lbl { margin-top: 8px; font-size: 15px; line-height: 1.45; color: #555; }
-    .stat .card-title { font-family: "Averia Serif Libre", serif; font-size: 24px; line-height: 1.15; letter-spacing: -0.03em; }
-    .stat .card-sub { margin-top: 4px; font-size: 13px; color: var(--muted); }
+    .card-title { font-family: "Averia Serif Libre", serif; font-size: 24px; line-height: 1.15; letter-spacing: -0.03em; }
+    .card-sub { margin-top: 4px; font-size: 13px; color: var(--muted); }
     .bars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; height: 190px; margin: 20px 0 14px; align-items: end; }
     .bar-col { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
     .bar-col .bar { width: 100%; max-width: 76px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #a2c5b1, #537769); min-height: 6px; }
@@ -122,6 +122,26 @@
     .benefit-list svg { flex: 0 0 auto; }
     .card-note { margin-top: 14px; font-size: 12px; color: var(--muted); }
     .what p + p { margin-top: 16px; }
+
+    /* price comparison */
+    .pc-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+    .pc-grid .lede + .lede { margin-top: 16px; }
+    .pc-grid .cta { margin-top: 30px; }
+    .pc-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 30px 30px 26px; }
+    .pc-row { margin-top: 24px; }
+    .pc-row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .pc-name { font-weight: 700; font-size: 15px; }
+    .pc-name span { font-weight: 500; color: var(--muted); font-size: 13px; margin-left: 6px; }
+    .pc-price { font-family: "Averia Serif Libre", serif; font-size: 26px; letter-spacing: -0.03em; white-space: nowrap; }
+    .pc-price small { font-family: Satoshi, Arial, sans-serif; font-size: 13px; color: var(--muted); letter-spacing: 0; }
+    .pc-track { height: 22px; border-radius: 11px; background: #ececec; overflow: hidden; }
+    .pc-fill { height: 100%; border-radius: 11px; }
+    .pc-fill.us { background: linear-gradient(90deg, #537769, #a2c5b1); }
+    .pc-fill.them { background: #cfcfcf; }
+    .pc-pill { display: inline-block; margin-top: 24px; background: #e6f1e9; color: #2f5446; font-weight: 700; font-size: 15px; padding: 9px 16px; border-radius: 999px; }
+    .pc-foot { margin-top: 16px; font-size: 12px; line-height: 1.5; color: var(--muted); }
+    .pc-card .benefit-list { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); gap: 8px; }
+    .pc-card .benefit-list li { font-size: 14px; }
     .what .cta { margin-top: 30px; }
 
     /* 2. Timeline */
@@ -198,6 +218,9 @@
       .wrap { padding: 0 20px; }
       .nav-links { display: none; }
       .what-grid { grid-template-columns: 1fr; gap: 28px; }
+      .pc-grid { grid-template-columns: 1fr; gap: 28px; }
+      .pc-card { padding: 24px 20px 22px; }
+      .pc-name span { display: block; margin-left: 0; margin-top: 2px; }
       .hero { display: flex; flex-direction: column; gap: 0; padding-top: 16px; }
       .hero-info { display: contents; }
       .buy { order: 1; }
@@ -239,7 +262,7 @@
     <div class="wrap">
       <strong>Mockup:</strong> gimme.care/treatments/nad &nbsp;·&nbsp;
       <strong>Hero changes:</strong> H1, subheadline, bullets (new energy bullet, 100mg/mL bullet moved into H1), sticky image on desktop, clickable FAQs, intake link &nbsp;·&nbsp;
-      <strong>New:</strong> 3 sections + References &nbsp;·&nbsp; <strong>Moved up:</strong> Reviews + Blog &nbsp;·&nbsp; Dashed blocks = existing sections
+      <strong>New:</strong> 4 sections (incl. price comparison) + References &nbsp;·&nbsp; <strong>Moved up:</strong> Reviews + Blog &nbsp;·&nbsp; Dashed blocks = existing sections
     </div>
   </div>
 
@@ -357,6 +380,44 @@
           </ul>
           <div class="card-note">Individual experiences, not guaranteed results. Results vary.</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: PRICE COMPARISON -->
+  <section class="section">
+    <div class="wrap pc-grid">
+      <div>
+        <span class="eyebrow">How we compare</span><span class="new-tag">New</span>
+        <h2>Real NAD+. <span class="accent">No membership&nbsp;fee.</span></h2>
+        <p class="lede">Many NAD+ programs advertise a low first month, then raise the price or add a monthly membership on top.</p>
+        <p class="lede">With Gimme, $99/month on the 3-month plan is the price. It includes your consultation, provider care, medication, supplies, and shipping.</p>
+        <a class="cta inline" href="https://intake.gimme.care/nad">Get started</a>
+      </div>
+      <div class="pc-card">
+        <div class="card-title">Ongoing monthly cost</div>
+        <div class="card-sub">Multi-month plans, after any intro offer, including required fees</div>
+        <div class="pc-row">
+          <div class="pc-row-head">
+            <div class="pc-name">Gimme <span>3-month plan</span></div>
+            <div class="pc-price">$99<small>/mo</small></div>
+          </div>
+          <div class="pc-track"><div class="pc-fill us" style="width: 66%"></div></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-row-head">
+            <div class="pc-name">Typical NAD+ telehealth <span>incl. membership</span></div>
+            <div class="pc-price">$149<small>/mo</small></div>
+          </div>
+          <div class="pc-track"><div class="pc-fill them" style="width: 100%"></div></div>
+        </div>
+        <div class="pc-pill">Save $50 every month</div>
+        <ul class="benefit-list">
+          <li><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>No membership fee</li>
+          <li><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Consultation and provider care included</li>
+          <li><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Homekit and shipping included</li>
+        </ul>
+        <p class="pc-foot">Typical price based on public pricing from two national NAD+ telehealth providers, Oct 2026: $149/mo after a $79 first month on a 3-month plan, and $74.50/mo on a 2-month plan plus a required $75/mo membership ($149.50). Prices may change.</p>
       </div>
     </div>
   </section>
