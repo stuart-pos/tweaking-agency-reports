@@ -212,17 +212,46 @@ footer p + p { margin-top: 10px; }
   .final h2 { font-size: 42px; }
   .faq-list summary { font-size: 16px; }
 }
+
+.reviews { background: #fff; }
+.review-rail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 22px; }
+.review-card { display: flex; flex-direction: column; background: var(--cream); border: 1px solid var(--line); border-radius: 22px; padding: 28px; }
+.review-card.featured { align-items: center; text-align: center; padding: 48px 52px; background: linear-gradient(150deg, #fff8dc 0%, var(--cream) 60%, #eef5f8 100%); border-color: #f0dc8f; }
+.review-card blockquote { flex: 1; font-family: "Hedvig Letters Serif", Georgia, serif; font-size: 20px; line-height: 1.42; letter-spacing: -0.01em; }
+.review-card.featured blockquote { flex: 0 0 auto; max-width: 860px; font-size: 32px; line-height: 1.3; letter-spacing: -0.02em; }
+.review-card.featured .review-meta { align-items: center; min-width: 280px; }
+.rail-dots { display: none; }
+.stars { color: var(--gold); font-size: 20px; letter-spacing: 4px; margin-bottom: 22px; }
+.result-tag { align-self: flex-start; background: var(--yellow); color: var(--ink); font-size: 13px; font-weight: 700; padding: 6px 12px; border-radius: 999px; margin-bottom: 16px; }
+.review-meta { display: flex; flex-direction: column; gap: 3px; margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(42, 36, 28, .1); }
+.review-who { font-size: 15px; font-weight: 600; }
+.review-src { font-size: 13px; color: var(--soft); }
+.reviews .fine { text-align: center; font-size: 13px; color: var(--soft); margin-top: 28px; }
+
+@media (max-width: 900px) {
+  .review-card { padding: 24px 22px; }
+  .review-card.featured { padding: 30px 24px; }
+  .review-card.featured blockquote { font-size: 24px; }
+  .review-card blockquote { font-size: 18px; }
+  .review-rail { display: flex; gap: 14px; margin: 16px -20px 0; padding: 0 20px 4px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .review-rail::-webkit-scrollbar { display: none; }
+  .review-rail .review-card { flex: 0 0 84%; scroll-snap-align: start; }
+  .rail-dots { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; }
+  .rail-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); transition: background .2s, width .2s; }
+  .rail-dot.on { width: 22px; border-radius: 999px; background: var(--ink); }
+  .rail-hint { margin-left: 10px; font-size: 13px; color: var(--soft); }
+}
 </style>
 </head>
 <body>
-  <div class="note-bar"><div class="wrap"><strong>Mockup notes only.</strong> Layout follows brightmeds.com/glp1 with Mondae branding and prices. <strong>Buttons:</strong> tirzepatide → intake.mondae.com/otp, semaglutide → intake.mondae.com/wl, page-level CTAs scroll to the product tiles. <strong>Removed:</strong> “As seen in” press slider, Trustpilot rating, “20,000+ customers” stat, reviews section (skipped for now). <strong>Product order:</strong> tirzepatide shows first by default and with <code>?p=tirz</code>; <code>?p=sema</code> puts semaglutide first (hero tiles, pricing cards, comparison tab, closing line). <strong>Comparison:</strong> typical telehealth = median 1-month cash price — tirzepatide $259 (seven providers), semaglutide $179 (nine providers), Sep 2026. Savings pills are 1-month vs 1-month ($259 − $126, $179 − $87).</div></div>
+  <div class="note-bar"><div class="wrap"><strong>Mockup notes only.</strong> Layout follows brightmeds.com/glp1 with Mondae branding and prices. <strong>Buttons:</strong> tirzepatide → intake.mondae.com/otp, semaglutide → intake.mondae.com/wl, page-level CTAs scroll to the product tiles. <strong>Removed:</strong> “As seen in” press slider, Trustpilot rating, “20,000+ customers” stat. <strong>Reviews:</strong> new section after Why Mondae (four reviews; the three smaller cards swipe sideways on mobile). Only the featured Trustpilot quote is public; the other three are messages to our care team and need customer permission before production. Confirm the exact “45 lbs” wording in Intercom before production. <strong>Product order:</strong> tirzepatide shows first by default and with <code>?p=tirz</code>; <code>?p=sema</code> puts semaglutide first (hero tiles, pricing cards, comparison tab, closing line). <strong>Comparison:</strong> typical telehealth = median 1-month cash price — tirzepatide $259 (seven providers), semaglutide $179 (nine providers), Sep 2026. Savings pills are 1-month vs 1-month ($259 − $126, $179 − $87).</div></div>
 
   <div class="announce"><strong>Fall Savings</strong> - biggest savings on GLP-1s are here. <em>Compounded GLP-1s at honest prices</em> — all autumn long.</div>
 
   <div class="nav-wrap">
     <header class="wrap nav">
       <a class="logo" href="https://mondae.com/" aria-label="Mondae home"><svg width="71" height="10" viewBox="0 0 71 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M63.6114 9.80829V0.191853H70.858V2.05487H65.7621V4.08226H70.4059V5.82199H65.7621V7.95898H70.9539V9.80829H63.6114Z" fill="currentColor"/><path d="M50.4701 9.80829L54.5934 0.150757H56.6208L60.7578 9.80829H58.429L57.5797 7.7672H53.5934L52.7441 9.80829H50.4701ZM54.2646 6.04117H56.9222L55.5934 2.6987L54.2646 6.04117Z" fill="currentColor"/><path d="M26.7319 9.80829V0.219249H28.773L33.321 6.21925V0.191853H35.4443V9.80829H33.5128L28.8689 3.6713V9.80829H26.7319Z" fill="currentColor"/><path d="M18.0872 10C17.3474 10 16.6671 9.87215 16.0461 9.61644C15.4342 9.3516 14.8954 8.99543 14.4296 8.54795C13.973 8.09132 13.6168 7.56164 13.3611 6.9589C13.1146 6.34703 12.9913 5.69406 12.9913 5C12.9913 4.31507 13.1191 3.67123 13.3748 3.06849C13.6305 2.46575 13.9867 1.93607 14.4433 1.47945C14.8999 1.0137 15.4388 0.652968 16.0598 0.39726C16.6899 0.13242 17.3748 0 18.1146 0C18.8452 0 19.521 0.13242 20.142 0.39726C20.763 0.652968 21.3018 1.00913 21.7584 1.46575C22.215 1.92237 22.5712 2.45205 22.8269 3.05479C23.0826 3.6484 23.2105 4.28767 23.2105 4.9726C23.2105 5.68493 23.078 6.34703 22.8132 6.9589C22.5575 7.56164 22.1922 8.09132 21.7173 8.54795C21.2515 9.00457 20.7082 9.36073 20.0872 9.61644C19.4753 9.87215 18.8086 10 18.0872 10ZM18.1009 8.05479C18.6762 8.05479 19.1785 7.91781 19.6077 7.64384C20.0461 7.36073 20.384 6.99087 20.6214 6.53425C20.868 6.06849 20.9913 5.56164 20.9913 5.0137C20.9913 4.60274 20.9228 4.21461 20.7858 3.84931C20.6488 3.47489 20.4479 3.15068 20.1831 2.87671C19.9273 2.59361 19.6214 2.36986 19.2652 2.20548C18.9182 2.0411 18.5255 1.9589 18.0872 1.9589C17.521 1.9589 17.0187 2.09589 16.5803 2.36986C16.142 2.6347 15.7995 3 15.5529 3.46575C15.3155 3.92237 15.1968 4.42466 15.1968 4.9726C15.1968 5.52968 15.32 6.04566 15.5666 6.52055C15.8132 6.9863 16.1557 7.36073 16.594 7.64384C17.0324 7.91781 17.5346 8.05479 18.1009 8.05479Z" fill="currentColor"/><path d="M0.000152588 9.80816V0.219116H2.24673L5.02755 4.61638L7.80837 0.219116H10.0549V9.80816H7.91796V3.56158L5.01385 7.94514L2.12344 3.57528V9.80816H0.000152588Z" fill="currentColor"/><path d="M42.7676 0.191853C43.8635 0.191853 44.8087 0.392734 45.6033 0.79456C46.3978 1.19639 47.0096 1.75808 47.4388 2.47954C47.8772 3.19185 48.0964 4.01831 48.0964 4.95893C48.0964 5.89043 47.8818 6.72158 47.4526 7.45217C47.0234 8.18274 46.4069 8.75803 45.6033 9.17811C44.7996 9.59821 43.8406 9.80829 42.7265 9.80829H39.2881V7.89028H41.4525V7.89052H42.7676C43.4068 7.89052 43.9594 7.77179 44.4252 7.53435C44.8909 7.29691 45.247 6.96356 45.4936 6.53437C45.7402 6.09602 45.8635 5.58449 45.8635 5.00001C45.8635 4.59821 45.7949 4.22379 45.658 3.87678C45.5301 3.52063 45.3384 3.21467 45.0827 2.95898C44.8361 2.69414 44.5347 2.48865 44.1785 2.34254C43.8315 2.19642 43.4342 2.12336 42.9867 2.12336H41.4525H39.2881V0.191853H42.7676Z" fill="currentColor"/></svg></a>
-      <nav class="nav-links"><a href="#pricing">Pricing</a><a href="#compare">Why so low</a><a href="#why">Why Mondae</a><a href="#faq">FAQ</a></nav>
+      <nav class="nav-links"><a href="#pricing">Pricing</a><a href="#compare">Why so low</a><a href="#why">Why Mondae</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></nav>
       <a class="btn" href="#top-tiles">Get started <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4v12m-5-5 5 5 5-5"/></svg></a>
     </header>
   </div>
@@ -380,6 +409,58 @@ footer p + p { margin-top: 10px; }
       <div class="features"><div class="feature"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><h3>Honest, upfront pricing</h3><p>From $75/mo semaglutide and $124/mo tirzepatide with 3 months — or $87 and $126 for a single month. No intro-rate bait and switch.</p></div><div class="feature"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M12 15v2a4 4 0 0 0 8 0v-1"/><circle cx="20" cy="14" r="2"/></svg></span><h3>Real medicine, real oversight</h3><p>Compounded by licensed U.S. pharmacies and prescribed by U.S.-licensed providers after a medical review — never an algorithm on its own.</p></div><div class="feature"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><h3>From sign-up to shipped, fast</h3><p>Complete a quick online intake today. If prescribed, your medication ships discreetly to your door — no waiting rooms, no pharmacy lines.</p></div><div class="feature"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h3>Private &amp; judgment-free</h3><p>Care from home with secure provider messaging and discreet, unbranded packaging.</p></div><div class="feature"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></span><h3>Care that adapts to you</h3><p>Your provider handles dose changes and side-effect questions as your plan evolves, at no extra cost.</p></div><div class="feature"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></span><h3>No surprises, ever</h3><p>One flat price covers your medication, visit and support — at any dose. No membership fees, no insurance needed.</p></div></div>
     </div>
   </section>
+
+  <section class="section reviews" id="reviews">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Reviews</span>
+        <h2>Real members. Real results.</h2>
+        <p>In their own words: what Mondae members have told us about their care, their results, and switching from other programs.</p>
+      </div>
+      <div class="review-grid">
+        <figure class="review-card featured">
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote>“I am so so happy I switched to Mondae. Everything has been transparent, efficient and professional. Finally I feel like I found a company who wants to help me find a dose that actually works.”</blockquote>
+          <figcaption class="review-meta"><span class="review-who">Mondae member · September 2026</span><span class="review-src">Trustpilot review</span></figcaption>
+        </figure>
+        <div class="review-rail" aria-label="More member reviews">
+        <figure class="review-card">
+          <span class="result-tag">Lost 45 lbs</span>
+          <blockquote>“I have met my goal weight and do not need the shots anymore.”</blockquote>
+          <figcaption class="review-meta"><span class="review-who">Mondae member · August 2026</span><span class="review-src">Message to our care team</span></figcaption>
+        </figure>
+        <figure class="review-card">
+          
+          <blockquote>“Everyone has been surprised at my results when they see me now.”</blockquote>
+          <figcaption class="review-meta"><span class="review-who">Mondae member · August 2026</span><span class="review-src">Message to our care team</span></figcaption>
+        </figure>
+        <figure class="review-card">
+          
+          <blockquote>“I’ve appreciated the consistent communication and have really felt like I had an ally working on my behalf.”</blockquote>
+          <figcaption class="review-meta"><span class="review-who">Mondae member · July 2026</span><span class="review-src">Message to our care team</span></figcaption>
+        </figure>
+        </div>
+        <div class="rail-dots" aria-hidden="true"><span class="rail-dot on"></span><span class="rail-dot"></span><span class="rail-dot"></span><span class="rail-hint">Swipe for more</span></div>
+      </div>
+      <p class="fine">Individual results vary. Reviews shared by Mondae members; some quotes lightly edited for length.</p>
+    </div>
+  </section>
+  <script>
+(function () {
+  var rail = document.querySelector(".review-rail");
+  var dots = document.querySelectorAll(".rail-dot");
+  if (!rail || !dots.length) return;
+  rail.addEventListener("scroll", function () {
+    var cards = rail.querySelectorAll(".review-card");
+    var i = 0, best = Infinity;
+    cards.forEach(function (c, n) {
+      var d = Math.abs(c.offsetLeft - rail.offsetLeft - rail.scrollLeft - 20);
+      if (d < best) { best = d; i = n; }
+    });
+    dots.forEach(function (dot, n) { dot.classList.toggle("on", n === i); });
+  }, { passive: true });
+})();
+</script>
 
   <section class="section badges">
     <div class="wrap">
