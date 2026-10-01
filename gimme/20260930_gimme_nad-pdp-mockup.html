@@ -107,6 +107,20 @@
     .stat { background: #fff; border-radius: 20px; padding: 26px 28px; border: 1px solid var(--line); }
     .stat .num { font-family: "Averia Serif Libre", serif; font-size: 54px; line-height: 1; letter-spacing: -0.04em; }
     .stat .lbl { margin-top: 8px; font-size: 15px; line-height: 1.45; color: #555; }
+    .stat .card-title { font-family: "Averia Serif Libre", serif; font-size: 24px; line-height: 1.15; letter-spacing: -0.03em; }
+    .stat .card-sub { margin-top: 4px; font-size: 13px; color: var(--muted); }
+    .bars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; height: 190px; margin: 20px 0 14px; align-items: end; }
+    .bar-col { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+    .bar-col .bar { width: 100%; max-width: 76px; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, #a2c5b1, #537769); min-height: 6px; }
+    .bar-col:nth-child(2) .bar { opacity: .8; }
+    .bar-col:nth-child(3) .bar { opacity: .6; }
+    .bar-val { font-family: "Averia Serif Libre", serif; font-size: 20px; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .bar-lbl { margin-top: 8px; font-size: 13px; font-weight: 500; color: #555; white-space: nowrap; }
+    .bars + .lbl { margin-top: 0; padding-top: 12px; border-top: 1px solid var(--line); }
+    .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+    .benefit-list li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: #444; }
+    .benefit-list svg { flex: 0 0 auto; }
+    .card-note { margin-top: 14px; font-size: 12px; color: var(--muted); }
     .what p + p { margin-top: 16px; }
     .what .cta { margin-top: 30px; }
 
@@ -323,12 +337,25 @@
       </div>
       <div class="stats">
         <div class="stat">
-          <div class="num"><span class="accent">20–87</span></div>
-          <div class="lbl">Plasma NAD+ declined significantly with age in healthy adults aged 20 to 87<sup class="cite"><a href="#ref-3">3</a></sup></div>
+          <div class="card-title">NAD+ levels by age</div>
+          <div class="card-sub">Median plasma NAD+ in healthy adults <span style="white-space: nowrap">(ages 20–40 = 100%)</span></div>
+          <div class="bars" role="img" aria-label="Bar chart: plasma NAD+ is 100% at ages 20 to 40, about 67% at ages 41 to 60, and about 13% at ages 60 and older.">
+            <div class="bar-col"><span class="bar-val">100%</span><div class="bar" style="height: 140px"></div><span class="bar-lbl">Ages 20–40</span></div>
+            <div class="bar-col"><span class="bar-val">67%</span><div class="bar" style="height: 94px"></div><span class="bar-lbl">41–60</span></div>
+            <div class="bar-col"><span class="bar-val">13%</span><div class="bar" style="height: 18px"></div><span class="bar-lbl">60+</span></div>
+          </div>
+          <div class="lbl">Adults 60+ had about 87% less plasma NAD+ than adults 20–40.<sup class="cite"><a href="#ref-3">3</a></sup></div>
         </div>
         <div class="stat">
-          <div class="num"><span class="accent">1,000mg</span></div>
-          <div class="lbl">Full-strength NAD+ in every vial (100mg/mL)</div>
+          <div class="card-title">What people commonly report</div>
+          <ul class="benefit-list">
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Steadier energy through the day</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Clearer focus, less mental fog</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Quicker recovery after workouts</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Support for a healthy metabolism</li>
+            <li><svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#4f7566" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 10.5 3.5 3.5 7.5-8"/></svg>Healthier-looking skin</li>
+          </ul>
+          <div class="card-note">Individual experiences, not guaranteed results. Results vary.</div>
         </div>
       </div>
     </div>
@@ -519,7 +546,7 @@
       <ol>
         <li id="ref-1"><span>Review of how NAD+ drives cellular energy metabolism and DNA repair, and how NAD+ imbalance contributes to aging, metabolic disease, and neurodegeneration. <a href="https://www.nature.com/articles/s41392-020-00311-7" target="_blank" rel="noopener">Signal Transduction and Targeted Therapy, 2020</a></span></li>
         <li id="ref-2"><span>Study of skin tissue from 49 people aged 0 to 77. NAD+ levels declined with age in both men and women, while DNA damage increased. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0042357" target="_blank" rel="noopener">PLoS One, 2012</a></span></li>
-        <li id="ref-3"><span>Study of plasma from healthy adults aged 20 to 87 showing a significant decline in NAD+ with age. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6482912/" target="_blank" rel="noopener">Rejuvenation Research, 2019</a></span></li>
+        <li id="ref-3"><span>Study of plasma from healthy adults aged 20 to 87 showing a significant decline in NAD+ with age. Median NAD+ was about 55 nmol/L at ages 20–40, 37 at 41–60, and 7 at 60+ (29 adults, read from Figure 2). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6482912/" target="_blank" rel="noopener">Rejuvenation Research, 2019</a></span></li>
         <li id="ref-4"><span>Review of NAD+ precursors in age-related disease. Precursors raise NAD+ levels in human studies, but clinical benefits have been limited so far, and oral forms interact with gut bacteria. <a href="https://www.sciencedirect.com/science/article/pii/S0006291X24001256" target="_blank" rel="noopener">Biochemical and Biophysical Research Communications, 2024</a></span></li>
         <li id="ref-5"><span>Review of NAD+ and mitochondria in aging. Oral precursors are metabolized by the liver and gut, while direct NAD+ has raised cellular NAD+ in small trials in healthy and older adults, with signs of improved cognitive function. <a href="https://www.nature.com/articles/s44324-025-00067-0" target="_blank" rel="noopener">npj Metabolic Health and Disease, 2025</a></span></li>
         <li id="ref-6"><span>First human study tracking directly administered NAD+. Infused NAD+ was rapidly and completely removed from the blood for the first 2 hours as the body took it up and metabolized it. <a href="https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2019.00257/full" target="_blank" rel="noopener">Frontiers in Aging Neuroscience, 2019</a></span></li>
