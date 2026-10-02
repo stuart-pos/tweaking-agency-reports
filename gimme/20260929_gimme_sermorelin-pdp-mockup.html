@@ -109,6 +109,35 @@
     .what p + p { margin-top: 16px; }
     .what .cta { margin-top: 30px; }
 
+    /* price comparison */
+    .pc-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    .pc-grid .lede + .lede { margin-top: 16px; }
+    .pc-grid .cta { margin-top: 30px; }
+    .pc-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 30px 30px 26px; }
+    .card-title { font-family: "Averia Serif Libre", serif; font-size: 24px; line-height: 1.15; letter-spacing: -0.03em; }
+    .card-sub { margin-top: 4px; font-size: 13px; color: var(--muted); }
+    .pc-row { margin-top: 20px; }
+    .pc-row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .pc-name { font-weight: 700; font-size: 15px; }
+    .pc-name span { font-weight: 500; color: var(--muted); font-size: 13px; margin-left: 6px; }
+    .pc-price { font-family: "Averia Serif Libre", serif; font-size: 26px; letter-spacing: -0.03em; white-space: nowrap; }
+    .pc-price small { font-family: Satoshi, Arial, sans-serif; font-size: 13px; color: var(--muted); letter-spacing: 0; }
+    .pc-track { height: 20px; border-radius: 10px; background: #ececec; overflow: hidden; }
+    .pc-fill { height: 100%; border-radius: 10px; }
+    .pc-fill.us { background: linear-gradient(90deg, #9761ac, #d49ac8); }
+    .pc-fill.them { background: #cfcfcf; }
+    .pc-pill { display: inline-block; margin-top: 24px; background: #f3e8f7; color: #6b3d7d; font-weight: 700; font-size: 15px; padding: 9px 16px; border-radius: 999px; }
+    .pc-table-wrap { margin-top: 48px; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; }
+    .pc-table { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 15px; }
+    .pc-table th, .pc-table td { text-align: left; padding: 15px 18px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.45; }
+    .pc-table thead th { background: var(--surface); font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .pc-table tbody th { font-weight: 700; white-space: nowrap; }
+    .pc-table tbody tr:last-child th, .pc-table tbody tr:last-child td { border-bottom: none; }
+    .pc-table tr.us th, .pc-table tr.us td { background: #faf5fc; }
+    .pc-table tr.us th { color: var(--purple); }
+    .pc-table .sub { display: block; font-size: 13px; color: var(--muted); }
+    .pc-disclaimer { margin-top: 18px; font-size: 12px; line-height: 1.6; color: var(--muted); max-width: 920px; }
+
     /* 2. Timeline */
     .timeline-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 44px; }
     .timeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; position: relative; }
@@ -182,6 +211,10 @@
       .wrap { padding: 0 20px; }
       .nav-links { display: none; }
       .what-grid { grid-template-columns: 1fr; gap: 28px; }
+      .pc-grid { grid-template-columns: 1fr; gap: 28px; }
+      .pc-card { padding: 24px 20px 22px; }
+      .pc-name span { display: block; margin-left: 0; margin-top: 2px; }
+      .pc-table-wrap { margin-top: 32px; }
       .hero { display: flex; flex-direction: column; gap: 0; padding-top: 16px; }
       .hero-info { display: contents; }
       .buy { order: 1; }
@@ -223,7 +256,7 @@
     <div class="wrap">
       <strong>Mockup:</strong> gimme.care/treatments/sermorelin &nbsp;·&nbsp;
       <strong>Hero changes:</strong> H1, subheadline, one 15mg table ($99 / $95), bullets (new muscle bullet, 5mg/mL bullet removed), larger vial, sticky image on desktop, ODT tile &nbsp;·&nbsp;
-      <strong>New:</strong> 3 sections + References &nbsp;·&nbsp; <strong>Moved up:</strong> Reviews + Blog &nbsp;·&nbsp; Dashed blocks = existing sections, unchanged
+      <strong>New:</strong> 4 sections (incl. price comparison) + References &nbsp;·&nbsp; <strong>Moved up:</strong> Reviews + Blog &nbsp;·&nbsp; Dashed blocks = existing sections, unchanged
     </div>
   </div>
 
@@ -334,6 +367,120 @@
           <div class="lbl">Up to 45% drop in growth hormone between ages 30 and 60<sup class="cite"><a href="#ref-8">8</a></sup></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- NEW: PRICE COMPARISON -->
+  <section class="section" id="compare">
+    <div class="wrap">
+      <div class="pc-grid">
+        <div>
+          <span class="eyebrow">How we compare</span><span class="new-tag">New</span>
+          <h2>$99 in month one. <span class="accent">$99 in month twelve.</span></h2>
+          <p class="lede">Many sermorelin providers advertise a discounted first month, then charge $149 to $225 a month after that.</p>
+          <p class="lede">With Gimme, $99 is the price every month for a 15mg vial. No 3&#8209;month prepay required. Consultation, provider care, medication, supplies, and shipping are included.</p>
+          <a class="cta inline" href="https://intake.gimme.care/sermorelin-g">Get started</a>
+        </div>
+        <div class="pc-card">
+          <div class="card-title">Monthly price after month one</div>
+          <div class="card-sub">Sermorelin injection, published prices as of Oct 2, 2026</div>
+          <div class="pc-row">
+            <div class="pc-row-head">
+              <div class="pc-name">Gimme <span>15mg vial</span></div>
+              <div class="pc-price">$99<small>/mo</small></div>
+            </div>
+            <div class="pc-track"><div class="pc-fill us" style="width: 44%"></div></div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-row-head">
+              <div class="pc-name">AgelessRx <span>3-month plan</span></div>
+              <div class="pc-price">$149<small>/mo</small></div>
+            </div>
+            <div class="pc-track"><div class="pc-fill them" style="width: 66%"></div></div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-row-head">
+              <div class="pc-name">MaleMD <span>10mg vial</span></div>
+              <div class="pc-price">$149<small>/mo</small></div>
+            </div>
+            <div class="pc-track"><div class="pc-fill them" style="width: 66%"></div></div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-row-head">
+              <div class="pc-name">Rugiet</div>
+              <div class="pc-price">$149<small>/mo</small></div>
+            </div>
+            <div class="pc-track"><div class="pc-fill them" style="width: 66%"></div></div>
+          </div>
+          <div class="pc-row">
+            <div class="pc-row-head">
+              <div class="pc-name">ReadyRx <span>10mg vial, monthly plan</span></div>
+              <div class="pc-price">$225<small>/mo</small></div>
+            </div>
+            <div class="pc-track"><div class="pc-fill them" style="width: 100%"></div></div>
+          </div>
+          <div class="pc-pill">Save $500 or more in your first year</div>
+        </div>
+      </div>
+
+      <div class="pc-table-wrap">
+        <table class="pc-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Vial size</th>
+              <th>First month</th>
+              <th>After month one</th>
+              <th>First 3 months</th>
+              <th>First year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="us">
+              <th>Gimme</th>
+              <td>15mg<span class="sub">3mg/mL, 5mL</span></td>
+              <td>$99<span class="sub">No prepay required</span></td>
+              <td>$99/mo<span class="sub">$95/mo on 3-month plan</span></td>
+              <td>$297<span class="sub">$285 on 3-month plan</span></td>
+              <td>$1,188<span class="sub">$1,140 on 3-month plans</span></td>
+            </tr>
+            <tr>
+              <th>AgelessRx</th>
+              <td>Not published</td>
+              <td>$99<span class="sub">Requires 3-month plan billed in full + first-order discount</span></td>
+              <td>$149/mo</td>
+              <td>$397<span class="sub">Billed up front</span></td>
+              <td>$1,738</td>
+            </tr>
+            <tr>
+              <th>MaleMD</th>
+              <td>10mg<span class="sub">2mg/mL, 5mL</span></td>
+              <td>$149<span class="sub">Listed as sale price</span></td>
+              <td>$149/mo</td>
+              <td>$447</td>
+              <td>$1,788</td>
+            </tr>
+            <tr>
+              <th>Rugiet</th>
+              <td>Not published</td>
+              <td>$49<span class="sub">With $100-off first-month offer</span></td>
+              <td>$149/mo</td>
+              <td>$347</td>
+              <td>$1,688</td>
+            </tr>
+            <tr>
+              <th>ReadyRx</th>
+              <td>10mg</td>
+              <td>$195<span class="sub">$155 on quarterly plan paid up front</span></td>
+              <td>$225/mo<span class="sub">$185/mo on quarterly plan</span></td>
+              <td>$645<span class="sub">Monthly plan</span></td>
+              <td>$2,670<span class="sub">$2,190 on quarterly plans</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="pc-disclaimer">Comparison made October 2, 2026, using sermorelin injection prices published on each provider's website and landing pages on that date. Totals are calculated from those published prices, before taxes, and assume the plan shown continues unchanged for the full period. Competitor prices, plans, and promotions change often and may differ from what you are offered; coupon codes and limited-time offers not shown on a provider's own pricing page are excluded. AgelessRx: $99 first month applies to its 3-month plan billed in full with a first-order discount, then $149/mo; monthly-plan pricing is not published. MaleMD: $149/mo is listed as a limited-time sale price. Rugiet: $49 first month reflects its advertised $100-off first-month offer; $149/mo is the resulting standard price. ReadyRx: prices shown for its 10mg vial; quarterly plan prices require quarterly payment up front. Vial sizes are as published by each provider; AgelessRx and Rugiet do not publish vial size. Gimme: 15mg vial (3mg/mL, 5mL), charged only if prescribed. All trademarks are the property of their respective owners. Gimme Care is not affiliated with or endorsed by these companies.</p>
     </div>
   </section>
 
