@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mockup — Tirzepatide price comparison section (Mondae)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans:opsz@12..24&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet" />
+<style>
+/* Page base (matches the BrightMeds-style GLP-1 mockup). Drop this block when pasting into the new page. */
+:root {
+  --ink: #171717; --muted: #5f5b55; --soft: #8a857d; --line: #ebe6dc; --cream: #fbf8f1;
+  --yellow: #fff1b5; --blue: #b0cddb; --blue-soft: #eef5f8; --gold: #c6a15a; --gold-dark: #8a6a32; --dark: #2a241c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Hedvig Letters Sans", Arial, sans-serif; color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: "Hedvig Letters Serif", Georgia, serif; font-weight: 400; letter-spacing: -0.03em; }
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+.section { padding: 104px 0; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 16px; }
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--gold); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--ink); color: #fff; font-size: 16px; font-weight: 500; padding: 14px 26px; border-radius: 999px; transition: transform .15s ease, box-shadow .15s ease; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(23, 23, 23, .18); }
+.preview-note { background: var(--dark); color: #f3ead8; font-size: 13px; line-height: 1.5; padding: 12px 0; }
+.preview-note b { color: #fff; }
+@media (max-width: 900px) { .wrap { padding: 0 20px; } .section { padding: 72px 0; } }
+
+/* ===== Price comparison section (paste from here) ===== */
+#compare { background: var(--cream); }
+#compare .pc-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: end; }
+#compare h2 { font-size: 46px; line-height: 1.08; }
+#compare h2 .accent { color: var(--gold-dark); font-style: italic; }
+#compare .lede { margin-top: 18px; font-size: 18px; line-height: 1.6; color: var(--muted); max-width: 560px; }
+#compare .pc-head-side { padding-bottom: 6px; }
+#compare .pc-claim { display: inline-block; background: var(--yellow); color: var(--dark); font-weight: 700; font-size: 16px; line-height: 1.35; padding: 12px 18px; border-radius: 14px; }
+#compare .pc-claim-sub { margin-top: 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+#compare .pc-head-side .btn { margin-top: 22px; }
+
+.pc-card { margin-top: 44px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 30px 32px 26px; }
+.pc-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.pc-card-title { font-family: "Hedvig Letters Serif", Georgia, serif; font-size: 26px; line-height: 1.15; letter-spacing: -0.02em; }
+.pc-card-sub { margin-top: 4px; font-size: 13px; color: var(--soft); }
+.pc-toggle { display: inline-flex; background: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.pc-toggle button { font: inherit; font-size: 14px; font-weight: 600; color: var(--muted); background: none; border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.pc-toggle button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+.pc-legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 18px; font-size: 13px; color: var(--muted); }
+.pc-legend span { display: inline-flex; align-items: center; gap: 8px; }
+.pc-legend i { width: 22px; height: 10px; border-radius: 5px; display: inline-block; }
+.pc-legend .sw-lo { background: #bdb6aa; }
+.pc-legend .sw-hi { background: repeating-linear-gradient(135deg, #e4ded3 0 4px, #f1ece4 4px 8px); }
+
+.pc-group { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--line); }
+.pc-group-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.pc-group-label span { font-weight: 500; letter-spacing: .02em; text-transform: none; color: var(--soft); margin-left: 8px; white-space: nowrap; }
+
+.pc-row { display: grid; grid-template-columns: 210px 1fr 150px; gap: 18px; align-items: center; padding: 9px 0; }
+.pc-name { font-weight: 700; font-size: 15px; line-height: 1.25; }
+.pc-name small { display: block; font-weight: 500; font-size: 12.5px; color: var(--soft); margin-top: 2px; }
+.pc-track { position: relative; height: 18px; border-radius: 9px; background: #f3f0ea; overflow: hidden; }
+.pc-lo, .pc-hi { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 9px; transition: width .45s ease; }
+.pc-lo { background: #bdb6aa; }
+.pc-hi { background: repeating-linear-gradient(135deg, #e4ded3 0 4px, #f1ece4 4px 8px); }
+.pc-hi.open { background: repeating-linear-gradient(135deg, #e4ded3 0 4px, #f1ece4 4px 8px); -webkit-mask-image: linear-gradient(90deg, #000 70%, transparent); mask-image: linear-gradient(90deg, #000 70%, transparent); }
+.pc-price { font-family: "Hedvig Letters Serif", Georgia, serif; font-size: 22px; letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.pc-price small { font-family: "Hedvig Letters Sans", Arial, sans-serif; font-size: 12.5px; color: var(--soft); letter-spacing: 0; }
+
+.pc-row.us { background: var(--yellow); border-radius: 14px; padding: 12px 14px; margin: 4px -14px; grid-template-columns: 210px 1fr 150px; }
+.pc-row.us .pc-lo { background: linear-gradient(90deg, var(--gold-dark), var(--gold)); }
+.pc-row.us .pc-track { background: #fff8d6; }
+.pc-row.us .pc-name { font-size: 17px; }
+.pc-row.us .pc-price { font-size: 26px; }
+
+#compare:not(.yr) .y, #compare.yr .m { display: none; }
+
+.pc-table-wrap { margin-top: 28px; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.pc-table { width: 100%; min-width: 920px; border-collapse: collapse; font-size: 14.5px; }
+.pc-table th, .pc-table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.45; }
+.pc-table thead th { background: var(--cream); font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.pc-table tbody th { font-weight: 700; white-space: nowrap; }
+.pc-table tr.grp td { background: #faf8f4; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); padding: 10px 16px; }
+.pc-table tr.us th, .pc-table tr.us td { background: #fffbe6; }
+.pc-table tr.us th { color: var(--gold-dark); }
+.pc-table .sub { display: block; font-size: 12.5px; color: var(--soft); }
+.pc-table tbody tr:last-child th, .pc-table tbody tr:last-child td { border-bottom: none; }
+.pc-disclaimer { margin-top: 18px; font-size: 12px; line-height: 1.65; color: var(--soft); }
+
+@media (max-width: 900px) {
+  #compare .pc-head { grid-template-columns: 1fr; gap: 26px; }
+  #compare h2 { font-size: 34px; }
+  #compare .lede { font-size: 16.5px; }
+  .pc-card { padding: 22px 18px 20px; border-radius: 18px; }
+  .pc-card-title { font-size: 22px; }
+  .pc-row, .pc-row.us { grid-template-columns: 1fr auto; gap: 6px 12px; }
+  .pc-row .pc-track { grid-column: 1 / -1; grid-row: 2; height: 14px; }
+  .pc-row .pc-price { grid-column: 2; grid-row: 1; font-size: 19px; }
+  .pc-row.us { margin: 4px -8px; padding: 12px 10px; }
+  .pc-row.us .pc-price { font-size: 22px; }
+}
+/* ===== end price comparison CSS ===== */
+</style>
+</head>
+<body>
+
+<div class="preview-note"><div class="wrap"><b>Section preview for the new GLP-1 page.</b> Placement: first section below the hero. All prices checked Oct 2, 2026 (sources in <code>context/competitor-ads/pricing/2026-10-02_tirzepatide/pricing.json</code>). Named competitors: get legal sign-off and refresh monthly. altRx sale ends Oct 5.</div></div>
+
+<!-- ===== Price comparison section (paste from here) ===== -->
+<section class="section" id="compare">
+  <div class="wrap">
+    <div class="pc-head">
+      <div>
+        <span class="eyebrow">How we compare</span>
+        <h2>$126 a month. <span class="accent">At every dose.</span></h2>
+        <p class="lede">Brand-name Zepbound&reg; programs charge a membership on top of the medication, so the monthly bill starts around $373&ndash;$448 and climbs as your dose goes up. Many compounded programs also raise the price with your dose.</p>
+        <p class="lede">With Mondae, $126 covers your provider visit, medication, injection kit and shipping. No membership, and the price stays the same as your dose changes. Or pay $124/mo on a 3&#8209;month plan.</p>
+      </div>
+      <div class="pc-head-side">
+        <div class="pc-claim">Save $2,900+ in your first year vs. brand-name Zepbound&reg; programs</div>
+        <p class="pc-claim-sub">And the lowest monthly price after month one of the 10 tirzepatide programs below.</p>
+        <a class="btn" href="https://intake.mondae.com/wl" data-otp-href="https://intake.mondae.com/otp">See if you qualify &rarr;</a>
+      </div>
+    </div>
+
+    <div class="pc-card">
+      <div class="pc-card-top">
+        <div>
+          <div class="pc-card-title"><span class="m">Monthly cost after month one</span><span class="y">Total cost, first 12 months</span></div>
+          <div class="pc-card-sub">Tirzepatide, membership + medication, published prices as of Oct 2, 2026</div>
+        </div>
+        <div class="pc-toggle" role="group" aria-label="Compare by">
+          <button type="button" data-view="m" aria-pressed="true">Per month</button>
+          <button type="button" data-view="y" aria-pressed="false">First year</button>
+        </div>
+      </div>
+      <div class="pc-legend">
+        <span><i class="sw-lo"></i>Starting dose</span>
+        <span><i class="sw-hi"></i>Higher doses, where price rises with dose</span>
+      </div>
+
+      <div class="pc-group">
+        <div class="pc-group-label">Compounded tirzepatide <span>Not FDA-approved</span></div>
+
+        <div class="pc-row us">
+          <div class="pc-name">Mondae <small>Any dose, no membership</small></div>
+          <div class="pc-track"><div class="pc-lo" data-m="21" data-y="21.6"></div></div>
+          <div class="pc-price"><span class="m">$126<small>/mo</small></span><span class="y">$1,512</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">altRx <small>Sale price, ends Oct 5</small></div>
+          <div class="pc-track"><div class="pc-lo" data-m="24.8" data-y="25.5"></div></div>
+          <div class="pc-price"><span class="m">$149<small>/mo</small></span><span class="y">$1,788</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">Brello <small>3&#8209;month minimum</small></div>
+          <div class="pc-track"><div class="pc-lo" data-m="27.7" data-y="28.5"></div></div>
+          <div class="pc-price"><span class="m">$166<small>/mo</small></span><span class="y">$1,992</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">Mochi Health <small>$79 membership + dose-priced meds</small></div>
+          <div class="pc-track"><div class="pc-hi" data-m="46.3" data-y="45"></div><div class="pc-lo" data-m="28.2" data-y="27.8"></div></div>
+          <div class="pc-price"><span class="m">$169&ndash;$278</span><span class="y">$1,949&ndash;$3,148</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">MEDVi <small>WebMD-exclusive offer</small></div>
+          <div class="pc-track"><div class="pc-lo" data-m="39.7" data-y="40.8"></div></div>
+          <div class="pc-price"><span class="m">$238<small>/mo</small></span><span class="y">$2,856</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">TrimRx <small>&ldquo;Starting at&rdquo; price</small></div>
+          <div class="pc-track"><div class="pc-lo" data-m="43.2" data-y="44.4"></div></div>
+          <div class="pc-price"><span class="m">$259<small>/mo</small></span><span class="y">$3,108</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">Remedy Meds <small>$279 first month</small></div>
+          <div class="pc-track"><div class="pc-lo" data-m="66.5" data-y="66.7"></div></div>
+          <div class="pc-price"><span class="m">$399<small>/mo</small></span><span class="y">$4,668</span></div>
+        </div>
+      </div>
+
+      <div class="pc-group">
+        <div class="pc-group-label">Brand-name Zepbound&reg; programs <span>FDA-approved tirzepatide</span></div>
+
+        <div class="pc-row">
+          <div class="pc-name">WW Med+ <small>12&#8209;month plan + Zepbound&reg;</small></div>
+          <div class="pc-track"><div class="pc-hi" data-m="87.2" data-y="86.8"></div><div class="pc-lo" data-m="62.2" data-y="63.2"></div></div>
+          <div class="pc-price"><span class="m">$373&ndash;$523</span><span class="y">$4,427&ndash;$6,077</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">Ro <small>Membership + Zepbound&reg;</small></div>
+          <div class="pc-track"><div class="pc-hi" data-m="99.7" data-y="98.8"></div><div class="pc-lo" data-m="74.7" data-y="75.2"></div></div>
+          <div class="pc-price"><span class="m">$448&ndash;$598</span><span class="y">$5,266&ndash;$6,916</span></div>
+        </div>
+        <div class="pc-row">
+          <div class="pc-name">Hims &amp; Hers <small>Membership + Zepbound&reg;</small></div>
+          <div class="pc-track"><div class="pc-hi open" data-m="90" data-y="90"></div><div class="pc-lo" data-m="74.7" data-y="75.2"></div></div>
+          <div class="pc-price"><span class="m">$448+<small>/mo</small></span><span class="y">$5,266+</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc-table-wrap">
+      <table class="pc-table">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>How it&rsquo;s priced</th>
+            <th>First month</th>
+            <th>After month one</th>
+            <th>Higher doses</th>
+            <th>First year<span class="sub" style="text-transform:none;letter-spacing:0;font-weight:500">at starting dose</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="grp"><td colspan="6">Compounded tirzepatide</td></tr>
+          <tr class="us">
+            <th>Mondae</th>
+            <td>One price, no membership<span class="sub">Visit, medication, kit and shipping included</span></td>
+            <td>$126<span class="sub">Only charged if prescribed</span></td>
+            <td>$126/mo<span class="sub">$124/mo on 3&#8209;month plan ($372 billed quarterly)</span></td>
+            <td>Same $126</td>
+            <td>$1,512<span class="sub">$1,488 on 3&#8209;month plan</span></td>
+          </tr>
+          <tr>
+            <th>altRx</th>
+            <td>No membership</td>
+            <td>$149<span class="sub">Fall sale price, ends Oct 5</span></td>
+            <td>$149/mo</td>
+            <td>Same price</td>
+            <td>$1,788</td>
+          </tr>
+          <tr>
+            <th>Brello</th>
+            <td>3&#8209;month minimum<span class="sub">$498 per supply, renews every 11 weeks</span></td>
+            <td>$166<span class="sub">$498 billed up front</span></td>
+            <td>$166/mo</td>
+            <td>Not published</td>
+            <td>$1,992<span class="sub">About $2,350 at the 11&#8209;week renewal cadence</span></td>
+          </tr>
+          <tr>
+            <th>Mochi Health</th>
+            <td>$79/mo membership + medication<span class="sub">Medication $90&ndash;$199 by dose</span></td>
+            <td>$90<span class="sub">Membership free first month</span></td>
+            <td>$169/mo<span class="sub">$139/mo with 12&#8209;month membership ($509 up front)</span></td>
+            <td>Up to $278/mo</td>
+            <td>$1,949<span class="sub">$1,589 with 12&#8209;month membership</span></td>
+          </tr>
+          <tr>
+            <th>MEDVi</th>
+            <td>No membership</td>
+            <td>$238<span class="sub">WebMD-exclusive offer; standard price not published</span></td>
+            <td>$238/mo</td>
+            <td>Same price</td>
+            <td>$2,856</td>
+          </tr>
+          <tr>
+            <th>TrimRx</th>
+            <td>No membership</td>
+            <td>$259<span class="sub">&ldquo;Starting at&rdquo; price</span></td>
+            <td>$259/mo</td>
+            <td>Same price</td>
+            <td>$3,108</td>
+          </tr>
+          <tr>
+            <th>Remedy Meds</th>
+            <td>No membership<span class="sub">4&#8209;week supply</span></td>
+            <td>$279<span class="sub">$120 off first month</span></td>
+            <td>$399/mo</td>
+            <td>Same price</td>
+            <td>$4,668<span class="sub">Billed every 28 days (13 fills a year)</span></td>
+          </tr>
+          <tr class="grp"><td colspan="6">Brand-name Zepbound&reg; programs</td></tr>
+          <tr>
+            <th>WW Med+</th>
+            <td>Membership + Zepbound&reg;<span class="sub">Medication via LillyDirect, billed separately</span></td>
+            <td>$324<span class="sub">12&#8209;month plan: $25 + $299</span></td>
+            <td>$373/mo<span class="sub">$448/mo month-to-month</span></td>
+            <td>Up to $523/mo</td>
+            <td>$4,427<span class="sub">12&#8209;month commitment</span></td>
+          </tr>
+          <tr>
+            <th>Ro</th>
+            <td>Membership + Zepbound&reg;<span class="sub">Medication billed separately</span></td>
+            <td>$338<span class="sub">$39 + $299</span></td>
+            <td>$448/mo<span class="sub">$373/mo with annual prepay</span></td>
+            <td>Up to $598/mo</td>
+            <td>$5,266<span class="sub">$4,441 with annual prepay</span></td>
+          </tr>
+          <tr>
+            <th>Hims &amp; Hers</th>
+            <td>Membership + Zepbound&reg;<span class="sub">Medication billed separately</span></td>
+            <td>$338<span class="sub">$39 + $299</span></td>
+            <td>$448/mo</td>
+            <td>Not published<span class="sub">&ldquo;Pricing may vary by dosage&rdquo;</span></td>
+            <td>$5,266</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="pc-disclaimer">Comparison made October 2, 2026, using tirzepatide prices published on each provider&rsquo;s website and offer pages on that date. Costs include any required membership plus medication, before taxes. &ldquo;After month one&rdquo; and first-year totals use the starting-dose price for every month and assume the plan shown continues unchanged; providers that price by dose will cost more as the dose increases, and higher-dose ranges reflect each provider&rsquo;s published dose pricing. Competitor prices, plans, and promotions change often and may differ from what you are offered; coupon codes and offers shown only on third-party sites are excluded. altRx&rsquo;s $149 is a sale price ending October 5, 2026. TrimRx shows a &ldquo;starting at&rdquo; price. MEDVi does not publish a standard tirzepatide price; the price shown is from MEDVi&rsquo;s WebMD-exclusive offer page. Mochi Health requires a membership ($79/mo, or $49/mo with $509 billed up front for 12 months) and prices medication by dose ($90&ndash;$199). Brello requires a 3&#8209;month minimum and renews every 11 weeks. Remedy Meds&rsquo; first-month discount applies to month-to-month plans only. Ro, Hims &amp; Hers, and WW Med+ prescribe brand-name Zepbound&reg; with a separate membership; Ro and WW Med+ higher-dose prices of $449/mo require refills within 45 days, and Hims &amp; Hers does not publish higher-dose prices. Ro&rsquo;s annual figure assumes its $39 first-month rate applies. Compounded tirzepatide is not approved by the FDA, is not reviewed by the FDA for safety, effectiveness, or quality, and is not the same as Zepbound&reg;. Mondae: $126 for a 1&#8209;month supply or $124/mo on a 3&#8209;month plan ($372 billed every 3 months), same price at any dose, charged only if prescribed; dosage is at the discretion of your licensed provider. Zepbound&reg; is a registered trademark of Eli Lilly and Company. All trademarks are the property of their respective owners. Mondae is not affiliated with or endorsed by these companies.</p>
+  </div>
+</section>
+<script>
+(function () {
+  var sec = document.getElementById("compare");
+  function render(view) {
+    sec.classList.toggle("yr", view === "y");
+    sec.querySelectorAll(".pc-lo, .pc-hi").forEach(function (b) { b.style.width = b.getAttribute("data-" + view) + "%"; });
+    sec.querySelectorAll(".pc-toggle button").forEach(function (btn) { btn.setAttribute("aria-pressed", btn.getAttribute("data-view") === view ? "true" : "false"); });
+  }
+  sec.querySelectorAll(".pc-toggle button").forEach(function (btn) {
+    btn.addEventListener("click", function () { render(btn.getAttribute("data-view")); });
+  });
+  render("m");
+  if (new URLSearchParams(location.search).get("b") === "otp") {
+    sec.querySelectorAll("[data-otp-href]").forEach(function (a) { a.href = a.getAttribute("data-otp-href"); });
+  }
+})();
+</script>
+<!-- ===== end price comparison section ===== -->
+</body>
+</html>
