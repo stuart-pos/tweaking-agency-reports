@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Noonie competitor research | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --border-radius: 8px;
+            --container-max: 1080px;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #fff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        main.container { padding-top: 32px; padding-bottom: 48px; }
+        h2 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--color-primary); margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: var(--color-primary); margin: 22px 0 8px; }
+        p { margin-bottom: 12px; }
+        ul { margin: 0 0 16px 22px; }
+        li { margin-bottom: 6px; }
+        strong { font-weight: 700; }
+        a { color: var(--color-primary); }
+        .scores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 20px 0 8px; }
+        .score-card { padding: 20px; border-radius: var(--border-radius); border: 1px solid var(--color-border); background: #fff; text-align: center; }
+        .score-card .label { font-size: 0.75rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+        .score-card .value { font-size: 1.75rem; font-weight: 800; font-family: var(--font-heading); color: var(--color-primary); }
+        .score-card .sub { font-size: 0.85rem; color: var(--color-text-light); margin-top: 6px; }
+        .callout { background: #fff1f2; border-left: 4px solid var(--color-accent); padding: 18px 22px; margin: 18px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.note { border-left-color: var(--color-primary); background: var(--color-bg-alt); }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .table-wrap { overflow-x: auto; margin: 14px 0 24px; border: 1px solid var(--color-border); border-radius: var(--border-radius); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
+        thead { background: var(--color-primary); color: #fff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .brand { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 18px 20px; margin: 0 0 16px; }
+        .brand h3 { margin-top: 0; }
+        .kicker { font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 28px 0; margin-top: 40px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #fff; }
+        .report-footer a { color: #fff; }
+        .sources { font-size: 0.9rem; }
+        .sources li { margin-bottom: 4px; }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <header class="report-header">
+        <div class="container">
+            <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+            <div>
+                <h1>Tweaking Agency</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>Noonie competitor research</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Noonie</strong></span>
+                <span>Date: <strong>2026-10-07</strong></span>
+                <span>Set: <strong>Midi · Winona · Joi · Blokes</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="callout">
+            <strong>Do not buy traffic yet.</strong> Every primary Get Started and Login link points at <code>app.noonie.com</code>. On October 7 that host had no DNS record, so a paid click dies before the quiz. Fix the path, then the offer.
+        </div>
+
+        <h2>Who is spending</h2>
+        <p>There is no public source for actual Google Ads spend. Midi has the slightly larger paid-search footprint. Winona has the larger media machine. They are in the same competitive band. That is not proof Midi spends more dollars.</p>
+
+        <div class="scores-grid">
+            <div class="score-card">
+                <div class="label">Midi paid-search visits</div>
+                <div class="value">6.5K</div>
+                <div class="sub">Semrush, August 2026</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Winona paid-search visits</div>
+                <div class="value">5.1K</div>
+                <div class="sub">Semrush, August 2026</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Winona monthly ads</div>
+                <div class="value">$1.5M</div>
+                <div class="sub">All channels, agency-reported, 3.2x ROAS</div>
+            </div>
+            <div class="score-card">
+                <div class="label">Active Meta ads</div>
+                <div class="value">2,887</div>
+                <div class="sub">Winona vs Midi 645. Creative count, not spend.</div>
+            </div>
+        </div>
+        <p>US Google Ads Transparency on October 7: Midi 28 creatives (14 shown in the prior 30 days), Winona 23 (10 in the prior 30 days), Blokes 6, and the shared joiandblokes.com domain 8. No separate Joi Women’s Wellness advertiser was found. Joi and Blokes had no usable public paid-search visit estimate.</p>
+
+        <h2>How they differ</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Brand</th>
+                        <th>Engine</th>
+                        <th>Wins the buyer who wants</th>
+                        <th>Loses them when</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Midi</td>
+                        <td>Insurance visit revenue</td>
+                        <td>A real visit and a pharmacy copay</td>
+                        <td>An in-network check becomes a $250 bill</td>
+                    </tr>
+                    <tr>
+                        <td>Winona</td>
+                        <td>Owned pharmacy, recurring meds</td>
+                        <td>No labs, one price, delivery</td>
+                        <td>They expected a doctor, or a renewal hits</td>
+                    </tr>
+                    <tr>
+                        <td>Joi</td>
+                        <td>Labs + care fee + meds</td>
+                        <td>A panel their doctor would not order</td>
+                        <td>Fees and pharmacy rules show up after payment</td>
+                    </tr>
+                    <tr>
+                        <td>Blokes</td>
+                        <td>Prepaid TRT bundle</td>
+                        <td>One male plan, not separate bills</td>
+                        <td>The commitment is longer than they thought</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Trustpilot at review time: Midi 4.0 from 1,617 reviews. Winona 4.6 from 6,139. Joi + Blokes 4.6 from 1,282, with profiles merged. The shared purchase trigger is not “I want hormones.” It is “my doctor dismissed this.”</p>
+
+        <h2>Midi</h2>
+        <div class="brand">
+            <p class="kicker">Insurance-covered virtual practice</p>
+            <p>Available in all 50 states. Revenue is the visit, not a medication subscription. No membership. Labs and prescriptions go to outside labs and local pharmacies. Self-pay is <strong>$250</strong> for the first visit and <strong>$150</strong> for follow-ups.</p>
+            <h3>Prices</h3>
+            <ul>
+                <li>Self-pay $250 first visit / $150 follow-up</li>
+                <li>Compounded GLP-1 from $164 per 4 weeks, shipping included</li>
+                <li>Microdosing advertised from $34/week</li>
+                <li>Brand GLP-1 sent to the patient’s pharmacy</li>
+            </ul>
+            <h3>Why they win</h3>
+            <ul>
+                <li>Specialist care, not a cash medication store</li>
+                <li>Midlife women’s health clinicians, local pharmacy, FDA-approved HRT</li>
+                <li>25,000+ patients a week, insurance reach above 45 million women, more than $250M raised, valued above $1B in February 2026</li>
+            </ul>
+            <p><strong>Praise.</strong> Felt heard after being dismissed. Fast HRT, insurance, pharmacy convenience.</p>
+            <p><strong>Where it breaks.</strong> Provider quality varies. Billing surprises. Hard to reschedule. Some visits feel scripted.</p>
+            <p><strong>Channels.</strong> Search, Meta, SEO, and employer or payer deals. Semrush estimated 692K organic visits and 6.51K paid-search visits in August 2026. A 2026 national campaign with Amy Schumer ran across TV, radio, out-of-home, and social.</p>
+        </div>
+
+        <h2>Winona</h2>
+        <div class="brand">
+            <p class="kicker">Cash-pay menopause subscription, ages 35–59</p>
+            <p>Care, messaging, and shipping sit inside the medication price. Owns two 503A compounding pharmacies. Does not prescribe testosterone, GLP-1, or pellets.</p>
+            <h3>Prices</h3>
+            <ul>
+                <li>Progesterone from $39/month</li>
+                <li>Estrogen tablets from $54/month</li>
+                <li>Estrogen cream, combo cream, and vaginal cream from $89/month</li>
+                <li>Estrogen patch from $149/month</li>
+                <li>DHEA $27 per three-month supply</li>
+            </ul>
+            <h3>Why they win</h3>
+            <ul>
+                <li>Questionnaire, review, ship. No required labs.</li>
+                <li>Care is included in the drug price</li>
+                <li>Owned pharmacy, compounded formulas, and a 23K+ Facebook group</li>
+            </ul>
+            <p><strong>Praise.</strong> Fast start, responsive messages, symptom relief, no separate doctor bill.</p>
+            <p><strong>Where it breaks.</strong> Compounded-drug trust. Cash can cost more than insured retail. Cancellation, renewals, and lost shipments. Care can feel transactional.</p>
+            <p><strong>Channels.</strong> Meta creates demand, Google captures it, email and SMS recover checkout. About 2,887 active Meta ads. Semrush: 5.07K paid-search visits and 29.6K organic visits in August 2026.</p>
+        </div>
+
+        <h2>Joi</h2>
+        <div class="brand">
+            <p class="kicker">Diagnostics-first cash platform</p>
+            <p>Labs, then a consult, then a care plan. Makes money on labs, a <strong>$50/month</strong> care fee billed quarterly, medication, supplements, and GLP-1. Shares the backend with Blokes. Medications are on top of the care fee.</p>
+            <h3>Prices</h3>
+            <ul>
+                <li>Care $50/month, billed quarterly</li>
+                <li>October 7 promo panels: 56 markers $74, 71 markers $140, 110 markers $245. Recheck at checkout.</li>
+                <li>Testosterone $59 injection or $69 cream</li>
+                <li>Estrogen $49 capsule, $69 cream, or $129 patch</li>
+                <li>Progesterone $54 capsule or $69 cream</li>
+            </ul>
+            <h3>Why they win</h3>
+            <ul>
+                <li>Labs first, then a plan</li>
+                <li>Live clinician visits, follow-up labs, and coaching</li>
+                <li>A wide catalog raises lifetime value</li>
+            </ul>
+            <p><strong>Praise.</strong> Thorough panels. Felt heard. Access to therapies local care would not offer.</p>
+            <p><strong>Where it breaks.</strong> Total cost gets messy. Delays, support turnover, pharmacy confusion, surprise fees, and aggressive cross-sell. The FDA issued a warning letter in June 2026 on compounded semaglutide and tirzepatide claims.</p>
+            <p><strong>Channels.</strong> Meta, Google, affiliates, podcasts, and CTV. The public Google footprint is much smaller than Midi or Winona and sits under the Blokes advertiser.</p>
+        </div>
+
+        <h2>Blokes</h2>
+        <div class="brand">
+            <p class="kicker">Men’s version of Joi</p>
+            <p>TRT, performance, longevity, and weight. Care, labs, coaching, and community sit inside the TRT plan.</p>
+            <h3>Prices</h3>
+            <ul>
+                <li>3 months: $149/month, $447 upfront</li>
+                <li>6 months: $129/month, $774 upfront</li>
+                <li>12 months: $99/month, $1,188 upfront</li>
+                <li>Hair and ED add-ons advertised at $1/month for active members</li>
+            </ul>
+            <p><strong>Where it breaks.</strong> Price and long commitments. Support and fulfillment complaints. Ratings are mixed with Joi, so they are less diagnostic.</p>
+            <p><strong>Channels.</strong> Podcasts, creators, affiliates, and CTV. 120 tracked YouTube videos, 106 of them on one show. Not a search leader.</p>
+        </div>
+
+        <h2>Where Noonie can fit</h2>
+        <div class="callout note">
+            <strong>A usable position.</strong> Clear hormone care for women who are done being dismissed: a real clinician visit, a written plan, a transparent total, and a person they can reach. The narrower wedge is symptom-led HRT with testosterone and no routine panel, between Winona’s no-lab simplicity and Joi’s lab-first model. Keep GLP-1 off the homepage pitch. Winona does not prescribe testosterone or GLP-1. That opening only works after Noonie says who it is for and what $99 includes.
+        </div>
+        <p>The current site is fast and shows $99/month, FSA/HSA, free shipping, and no required hormone testing. It does not yet give a buyer a reason to pick Noonie over brands with more proof and a clearer care model.</p>
+
+        <h2>Before any campaign</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fix</th>
+                        <th>Why it blocks ads</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Make app.noonie.com resolve</td>
+                        <td>Every CTA currently dead-ends</td>
+                    </tr>
+                    <tr>
+                        <td>One state list</td>
+                        <td>Homepage excludes AL, AR, CT, DE, GA, LA, MN, ND, and RI. Shipping says all 50 states.</td>
+                    </tr>
+                    <tr>
+                        <td>Say what $99 includes</td>
+                        <td>Winona starts at $39–$89 with care included. Noonie does not say whether $99 covers the consult, medication, refills, and fees.</td>
+                    </tr>
+                    <tr>
+                        <td>Name the care model</td>
+                        <td>Video or async, who the clinician is, response time, refill cadence</td>
+                    </tr>
+                    <tr>
+                        <td>Pick one customer</td>
+                        <td>Women 40–55, cash-pay, no lab delay is the cleanest start</td>
+                    </tr>
+                    <tr>
+                        <td>Kill the insurance contradiction</td>
+                        <td>Homepage says no insurance. Some product FAQs say coverage depends on the plan.</td>
+                    </tr>
+                    <tr>
+                        <td>Source the 86% claim</td>
+                        <td>“86% reported a better quality of life after 3 months” has no sample, method, or date</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="callout warning">
+            Then start with narrow Search: menopause care, HRT consult, estradiol and progesterone, and Winona alternatives. Measure paid members who are clinically eligible, not quiz starts. Split HRT and GLP-1. Use Meta only after there is proof to put in the ad.
+        </div>
+
+        <h2>Evidence limits</h2>
+        <ul>
+            <li>Prices come from official pages on October 7, 2026. Promo prices should be rechecked at checkout.</li>
+            <li>Semrush visits and social counts are directional, not invoices.</li>
+            <li>Google Ads Transparency shows creatives, not spend.</li>
+            <li>Winona’s $1.5M/month and 3.2x ROAS are agency-reported across channels, not Google-only, and not audited.</li>
+            <li>Reviews describe failure modes. They are not a measure of typical clinical quality.</li>
+        </ul>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+            <li><a href="https://www.joinmidi.com/pricing-insurance">Midi pricing and insurance</a></li>
+            <li><a href="https://www.businesswire.com/news/home/20260203432254/en/Midi-Health-Surpasses-%241B-Valuation-Igniting-a-New-Era-for-Womens-Health">Midi 2026 funding</a></li>
+            <li><a href="https://adstransparency.google.com/advertiser/AR17198653223469056001?region=US">Midi Google Ads Transparency</a></li>
+            <li><a href="https://bywinona.com/product">Winona product prices</a></li>
+            <li><a href="https://www.outliant.com/case-studies/winona">Winona growth and media case study</a></li>
+            <li><a href="https://adstransparency.google.com/advertiser/AR04032939347090079745?region=US">Winona Google Ads Transparency</a></li>
+            <li><a href="https://joiandblokes.com/bhrt/">Joi HRT pricing</a></li>
+            <li><a href="https://joiandblokes.com/product/testosterone-replacement-therapy/">Blokes TRT pricing</a></li>
+            <li><a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/joi-and-blokes-dba-joi-blokes-728283-06082026">Joi + Blokes FDA warning letter</a></li>
+            <li><a href="https://www.trustpilot.com/review/joinmidi.com">Midi Trustpilot</a></li>
+            <li><a href="https://www.trustpilot.com/review/bywinona.com">Winona Trustpilot</a></li>
+            <li><a href="https://www.trustpilot.com/review/joiandblokes.com">Joi + Blokes Trustpilot</a></li>
+            <li><a href="https://noonie.com/">Noonie homepage</a></li>
+        </ul>
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <div><span class="company-name">Tweaking Agency</span> · Noonie competitor research · 2026-10-07</div>
+            <div><a href="https://stuart-pos.github.io/tweaking-agency-reports/noonie/">All Noonie reports</a></div>
+        </div>
+    </footer>
+</body>
+</html>
