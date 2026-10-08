@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Noonie competitor research | Tweaking Agency</title>
+    <script>document.documentElement.classList.add('js');</script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -55,9 +56,21 @@
         th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
         td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
         tbody tr:nth-child(even) { background: var(--color-bg-alt); }
-        .brand { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 18px 20px; margin: 0 0 16px; }
-        .brand h3 { margin-top: 0; }
-        .kicker { font-size: 0.8rem; color: var(--color-text-light); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+        .brand-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+        .brand-tab { font: inherit; font-size: 0.95rem; font-weight: 600; padding: 7px 18px; border-radius: 999px; border: 1px solid var(--color-border); background: #fff; color: var(--color-primary); cursor: pointer; }
+        .brand-tab:hover { background: var(--color-bg-alt); }
+        .brand-tab.is-active { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
+        .brand-panel { border: 1px solid var(--color-border); border-radius: var(--border-radius); background: #fff; margin: 0 0 16px; }
+        .js .brand-panel { display: none; }
+        .js .brand-panel.is-active { display: block; }
+        .brand-panel-title { padding: 12px 20px; border-bottom: 1px solid var(--color-border); font-weight: 600; color: var(--color-primary); background: var(--color-bg-alt); border-radius: var(--border-radius) var(--border-radius) 0 0; }
+        .brand-panel-body { padding: 18px 20px; }
+        .brand-panel-body .who { font-weight: 700; font-size: 1.05rem; color: var(--color-primary); }
+        .brand-panel-body hr { border: 0; border-top: 1px solid var(--color-border); margin: 16px 0; }
+        .brand-panel-body h3 { margin-top: 0; }
+        .brand-panel-body ul { margin-left: 18px; font-size: 0.92rem; }
+        .brand-panel-body .channels { color: var(--color-text-light); font-size: 0.92rem; margin-bottom: 0; }
+        .brand-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 28px 0; margin-top: 40px; font-size: 0.85rem; }
         .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .report-footer .company-name { font-weight: 700; color: #fff; }
@@ -66,11 +79,14 @@
         .sources li { margin-bottom: 4px; }
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
+            .brand-cols { grid-template-columns: 1fr; gap: 8px; }
             table { font-size: 0.8rem; }
             th, td { padding: 8px; }
         }
         @media print {
             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .brand-tabs { display: none; }
+            .js .brand-panel { display: block; }
         }
     </style>
 </head>
@@ -168,101 +184,141 @@
         </div>
         <p>Trustpilot at review time: Midi 4.0 from 1,617 reviews. Winona 4.6 from 6,139. Joi + Blokes 4.6 from 1,282, with profiles merged. The shared purchase trigger is not “I want hormones.” It is “my doctor dismissed this.”</p>
 
-        <h2>Midi</h2>
-        <div class="brand">
-            <p class="kicker">Insurance-covered virtual practice</p>
-            <p><strong>The insured buyer who wants a video visit, FDA-approved medication, and a pharmacy copay.</strong></p>
-            <p>Available in all 50 states. Revenue is the visit, not a medication subscription. No membership. Labs and prescriptions go to outside labs and local pharmacies. Self-pay is <strong>$250</strong> for the first visit and <strong>$150</strong> for follow-ups.</p>
-            <h3>Prices</h3>
-            <ul>
-                <li>Self-pay $250 first visit / $150 follow-up</li>
-                <li>Compounded GLP-1 from $164 per 4 weeks, shipping included</li>
-                <li>Microdosing advertised from $34/week</li>
-                <li>Brand GLP-1 sent to the patient’s pharmacy</li>
-            </ul>
-            <h3>Why they win</h3>
-            <ul>
-                <li>Specialist care, not a cash medication store</li>
-                <li>Midlife women’s health clinicians</li>
-                <li>Local pharmacy and FDA-approved HRT</li>
-                <li>25,000+ patients a week, insurance reach above 45 million women, more than $250M raised, valued above $1B in February 2026</li>
-            </ul>
-            <p><strong>Praise.</strong> Felt heard after being dismissed. Fast HRT, insurance, pharmacy convenience.</p>
-            <p><strong>Where it breaks.</strong> Provider quality varies. Billing surprises. Hard to reschedule. Some visits feel scripted.</p>
-            <p><strong>Channels.</strong> Search, Meta, SEO, and employer or payer deals. Semrush estimated 692K organic visits and 6.51K paid-search visits in August 2026. A 2026 national campaign with Amy Schumer ran across TV, radio, out-of-home, and social.</p>
+        <h2>One brand at a time</h2>
+        <div class="brand-tabs" role="tablist" aria-label="Competitor">
+            <button type="button" class="brand-tab is-active" role="tab" id="tab-midi" aria-controls="brand-midi" aria-selected="true">Midi</button>
+            <button type="button" class="brand-tab" role="tab" id="tab-winona" aria-controls="brand-winona" aria-selected="false">Winona</button>
+            <button type="button" class="brand-tab" role="tab" id="tab-joi" aria-controls="brand-joi" aria-selected="false">Joi</button>
+            <button type="button" class="brand-tab" role="tab" id="tab-blokes" aria-controls="brand-blokes" aria-selected="false">Blokes</button>
         </div>
 
-        <h2>Winona</h2>
-        <div class="brand">
-            <p class="kicker">Cash-pay menopause subscription, ages 35–59</p>
-            <p><strong>The cash buyer who wants no labs, no video visit, one price, and delivery.</strong></p>
-            <p>Care, messaging, and shipping sit inside the medication price. Owns two 503A compounding pharmacies. Does not prescribe testosterone, GLP-1, or pellets.</p>
-            <h3>Prices</h3>
-            <ul>
-                <li>Progesterone from $39/month</li>
-                <li>Estrogen tablets from $54/month</li>
-                <li>Estrogen cream, combo cream, and vaginal cream from $89/month</li>
-                <li>Estrogen patch from $149/month</li>
-                <li>DHEA $27 per three-month supply</li>
-            </ul>
-            <h3>Why they win</h3>
-            <ul>
-                <li>Questionnaire, review, ship. No required labs.</li>
-                <li>Care is included in the drug price</li>
-                <li>Owned pharmacy and compounded formulas</li>
-                <li>23K+ Facebook group and a large review base</li>
-            </ul>
-            <p><strong>Praise.</strong> Fast start, responsive messages, symptom relief, no separate doctor bill.</p>
-            <p><strong>Where it breaks.</strong> Compounded-drug trust. Cash can cost more than insured retail. Cancellation, renewals, and lost shipments. Care can feel transactional.</p>
-            <p><strong>Channels.</strong> Meta creates demand, Google captures it, email and SMS recover checkout. Agency reports $1.5M/month across Meta, Google, Taboola, and Pinterest at 3.2x ROAS. About 2,887 active Meta ads. Semrush: 5.07K paid-search visits and 29.6K organic visits in August 2026.</p>
-        </div>
+        <section class="brand-panel is-active" role="tabpanel" id="brand-midi" aria-labelledby="tab-midi">
+            <div class="brand-panel-title">Midi</div>
+            <div class="brand-panel-body">
+                <p class="who">The insured buyer who wants a video visit, FDA-approved medication, and a pharmacy copay.</p>
+                <p>Insurance-covered virtual practice in all 50 states. Revenue is the visit, not a medication subscription. No membership. Labs and prescriptions go to outside labs and local pharmacies. Self-pay is $250 first visit, $150 follow-up.</p>
+                <hr>
+                <div class="brand-cols">
+                    <div>
+                        <h3>Prices on the site</h3>
+                        <ul>
+                            <li>Self-pay $250 first visit / $150 follow-up</li>
+                            <li>Compounded GLP-1 from $164 per 4 weeks, shipping included</li>
+                            <li>Microdosing advertised from $34/week</li>
+                            <li>Brand GLP-1 sent to the patient’s pharmacy</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Why they win</h3>
+                        <ul>
+                            <li>Specialist care, not a cash medication store</li>
+                            <li>Midlife women’s health clinicians</li>
+                            <li>Local pharmacy and FDA-approved HRT</li>
+                            <li>25k+ patients/week, 45M women covered by insurance, $250M+ raised, valued above $1B (Feb 2026)</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Praise.</strong> Felt heard after being dismissed. Fast HRT, insurance, pharmacy convenience.</p>
+                <p><strong>Where it breaks.</strong> Provider quality varies. Billing surprises. Hard to reschedule. Some visits feel scripted.</p>
+                <p class="channels">Search, Meta, SEO, and employer/payer deals. Semrush: 692K organic visits and 6.51K paid-search visits in Aug 2026. Amy Schumer national campaign in 2026 across TV, radio, out-of-home, and social.</p>
+            </div>
+        </section>
 
-        <h2>Joi</h2>
-        <div class="brand">
-            <p class="kicker">Diagnostics-first cash platform</p>
-            <p><strong>The buyer whose doctor would not order or read a broad hormone panel.</strong></p>
-            <p>Labs, then a consult, then a care plan. Makes money on labs, a <strong>$50/month</strong> care fee billed quarterly, medication, supplements, and GLP-1. Shares the backend with Blokes. Medications are on top of the care fee.</p>
-            <h3>Prices</h3>
-            <ul>
-                <li>Care $50/month, billed quarterly</li>
-                <li>October 7 promo panels: 56 markers $74, 71 markers $140, 110 markers $245. Recheck at checkout.</li>
-                <li>Testosterone $59 injection or $69 cream</li>
-                <li>Estrogen $49 capsule, $69 cream, or $129 patch</li>
-                <li>Progesterone $54 capsule or $69 cream</li>
-            </ul>
-            <h3>Why they win</h3>
-            <ul>
-                <li>Labs first, then a plan</li>
-                <li>Live clinician visits, follow-up labs, and coaching</li>
-                <li>A wide catalog raises lifetime value</li>
-            </ul>
-            <p><strong>Praise.</strong> Thorough panels. Felt heard. Access to therapies local care would not offer.</p>
-            <p><strong>Where it breaks.</strong> Total cost gets messy. Delays, support turnover, pharmacy confusion, surprise fees, and aggressive cross-sell. The FDA issued a warning letter in June 2026 on compounded semaglutide and tirzepatide claims.</p>
-            <p><strong>Channels.</strong> Meta, Google, affiliates, podcasts, and CTV. The public Google footprint is much smaller than Midi or Winona and sits under the Blokes advertiser. Creator spend is concentrated, not broad.</p>
-        </div>
+        <section class="brand-panel" role="tabpanel" id="brand-winona" aria-labelledby="tab-winona">
+            <div class="brand-panel-title">Winona</div>
+            <div class="brand-panel-body">
+                <p class="who">The cash buyer who wants no labs, no video visit, one price, and delivery.</p>
+                <p>Cash-pay menopause subscription for women 35–59. Care, messaging, and shipping are inside the medication price. Owns two 503A pharmacies. Does not prescribe testosterone, GLP-1, or pellets.</p>
+                <hr>
+                <div class="brand-cols">
+                    <div>
+                        <h3>Prices on the site</h3>
+                        <ul>
+                            <li>Progesterone from $39/mo</li>
+                            <li>Estrogen tablets from $54/mo</li>
+                            <li>Estrogen cream, combo cream, vaginal cream from $89/mo</li>
+                            <li>Estrogen patch from $149/mo</li>
+                            <li>DHEA $27 / 3 months</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Why they win</h3>
+                        <ul>
+                            <li>Questionnaire, review, ship. No required labs.</li>
+                            <li>Care is included in the drug price</li>
+                            <li>Owned pharmacy and compounded formulas</li>
+                            <li>23K+ Facebook group and a large review base</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Praise.</strong> Fast start, responsive messages, symptom relief, no separate doctor bill.</p>
+                <p><strong>Where it breaks.</strong> Compounded-drug trust. Cash can cost more than insured retail. Cancellation, renewals, and lost shipments. Care can feel transactional.</p>
+                <p class="channels">Meta creates demand, Google captures it, email/SMS recovers checkout. Agency reports $1.5M/month across Meta, Google, Taboola, and Pinterest at 3.2x ROAS. About 2,887 active Meta ads. Semrush: 5.07K paid-search visits and 29.6K organic visits in Aug 2026.</p>
+            </div>
+        </section>
 
-        <h2>Blokes</h2>
-        <div class="brand">
-            <p class="kicker">Men’s version of Joi</p>
-            <p><strong>Men buying performance and a bundled plan, not a pile of separate bills.</strong></p>
-            <p>TRT, performance, longevity, and weight. Care, labs, coaching, and community sit inside the TRT plan. Add-ons raise the order.</p>
-            <h3>Prices</h3>
-            <ul>
-                <li>3 months: $149/month, $447 upfront</li>
-                <li>6 months: $129/month, $774 upfront</li>
-                <li>12 months: $99/month, $1,188 upfront</li>
-                <li>Hair and ED add-ons advertised at $1/month for active members</li>
-            </ul>
-            <h3>Why they win</h3>
-            <ul>
-                <li>One TRT price instead of separate lab, care, and drug bills</li>
-                <li>Energy, muscle, libido, mood, sleep</li>
-                <li>Athlete and podcast endorsements</li>
-            </ul>
-            <p><strong>Praise.</strong> Bundled plan and a long consult. Ratings are mixed with Joi, so they are less diagnostic.</p>
-            <p><strong>Where it breaks.</strong> Price and long commitments. Support and fulfillment complaints.</p>
-            <p><strong>Channels.</strong> Podcasts, creators, affiliates, and CTV. 120 tracked YouTube videos, 106 of them on one show. Not a search leader.</p>
-        </div>
+        <section class="brand-panel" role="tabpanel" id="brand-joi" aria-labelledby="tab-joi">
+            <div class="brand-panel-title">Joi</div>
+            <div class="brand-panel-body">
+                <p class="who">The buyer whose doctor would not order or read a broad hormone panel.</p>
+                <p>Diagnostics-first cash platform. Labs, then a consult, then a care plan. Makes money on labs, a $50/month care fee billed quarterly, medication, supplements, and GLP-1. Shares the backend with Blokes. Medications are on top of the care fee.</p>
+                <hr>
+                <div class="brand-cols">
+                    <div>
+                        <h3>Prices on the site</h3>
+                        <ul>
+                            <li>Care $50/mo, billed quarterly</li>
+                            <li>Promo panels Oct 7: 56 markers $74, 71 markers $140, 110 markers $245. Recheck at checkout.</li>
+                            <li>Testosterone $59 injection or $69 cream</li>
+                            <li>Estrogen $49 capsule, $69 cream, $129 patch</li>
+                            <li>Progesterone $54 capsule or $69 cream</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Why they win</h3>
+                        <ul>
+                            <li>Labs first, then a plan</li>
+                            <li>Live clinician visits, follow-up labs, coaching</li>
+                            <li>Wide catalog raises lifetime value</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Praise.</strong> Thorough panels. Felt heard. Access to therapies local care would not offer.</p>
+                <p><strong>Where it breaks.</strong> Total cost gets messy. Delays, support turnover, pharmacy confusion, surprise fees, aggressive cross-sell. FDA warning letter in June 2026 on compounded semaglutide and tirzepatide claims.</p>
+                <p class="channels">Meta, Google, affiliates, podcasts, CTV. Public Google footprint is much smaller than Midi or Winona and sits under the Blokes advertiser. Creator spend is concentrated, not broad.</p>
+            </div>
+        </section>
+
+        <section class="brand-panel" role="tabpanel" id="brand-blokes" aria-labelledby="tab-blokes">
+            <div class="brand-panel-title">Blokes</div>
+            <div class="brand-panel-body">
+                <p class="who">Men buying performance and a bundled plan, not a pile of separate bills.</p>
+                <p>Men’s version of Joi: TRT, performance, longevity, weight. Care, labs, coaching, and community are inside the TRT plan. Add-ons raise the order.</p>
+                <hr>
+                <div class="brand-cols">
+                    <div>
+                        <h3>Prices on the site</h3>
+                        <ul>
+                            <li>3 months: $149/mo, $447 upfront</li>
+                            <li>6 months: $129/mo, $774 upfront</li>
+                            <li>12 months: $99/mo, $1,188 upfront</li>
+                            <li>Hair and ED add-ons advertised at $1/mo for active members</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Why they win</h3>
+                        <ul>
+                            <li>One TRT price instead of separate lab, care, and drug bills</li>
+                            <li>Energy, muscle, libido, mood, sleep</li>
+                            <li>Athlete and podcast endorsements</li>
+                        </ul>
+                    </div>
+                </div>
+                <p><strong>Praise.</strong> Bundled plan and a long consult. Ratings are mixed with Joi, so they are less diagnostic.</p>
+                <p><strong>Where it breaks.</strong> Price and long commitments. Support and fulfillment complaints.</p>
+                <p class="channels">Podcasts, creators, affiliates, CTV. 120 tracked YouTube videos, 106 of them on one show. Not a search leader.</p>
+            </div>
+        </section>
 
         <h2>Where Noonie can fit</h2>
         <div class="callout note">
@@ -348,5 +404,17 @@
             <div><a href="https://stuart-pos.github.io/tweaking-agency-reports/noonie/">All Noonie reports</a></div>
         </div>
     </footer>
+    <script>
+        document.querySelectorAll('.brand-tab').forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                document.querySelectorAll('.brand-tab').forEach(function (t) {
+                    var active = t === tab;
+                    t.classList.toggle('is-active', active);
+                    t.setAttribute('aria-selected', active ? 'true' : 'false');
+                    document.getElementById(t.getAttribute('aria-controls')).classList.toggle('is-active', active);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
