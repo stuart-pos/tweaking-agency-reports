@@ -56,6 +56,32 @@
         th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
         td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
         tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0 8px; }
+        .chart { border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 18px 20px; background: #fff; }
+        .chart h3 { margin-top: 0; }
+        .chart-caption { font-size: 0.8rem; color: var(--color-text-light); margin: 12px 0 0; }
+        [data-tip] { position: relative; cursor: default; outline: none; }
+        [data-tip]:hover::after, [data-tip]:focus::after { content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%); background: var(--color-primary); color: #fff; font-size: 0.78rem; font-weight: 600; padding: 5px 9px; border-radius: 6px; white-space: nowrap; z-index: 5; pointer-events: none; }
+        .vchart { display: grid; grid-template-columns: 44px 1fr; grid-template-rows: 180px auto; column-gap: 8px; }
+        .vchart-axis { display: flex; flex-direction: column; justify-content: space-between; font-size: 0.72rem; color: var(--color-text-light); text-align: right; transform: translateY(-0.5em); height: calc(100% + 1em); }
+        .vchart-plot { display: flex; align-items: flex-end; justify-content: space-around; gap: 24px; padding: 0 12%; border-bottom: 1px solid var(--color-border); background: repeating-linear-gradient(to top, transparent 0, transparent calc(25% - 1px), #eef0f3 calc(25% - 1px), #eef0f3 25%); }
+        .vchart-bar { flex: 1; max-width: 90px; background: var(--color-primary); border-radius: 4px 4px 0 0; display: flex; justify-content: center; }
+        .vchart-bar:hover, .hchart-bar:hover { opacity: 0.85; }
+        .vchart-bar .bar-value { font-size: 0.75rem; font-weight: 600; color: var(--color-primary); transform: translateY(-1.5em); }
+        .vchart-labels { display: flex; justify-content: space-around; padding: 6px 12% 0; font-size: 0.82rem; color: var(--color-text); }
+        .hchart { display: flex; flex-direction: column; gap: 12px; padding-top: 6px; }
+        .hchart-row { display: grid; grid-template-columns: 128px 1fr; align-items: center; gap: 10px; }
+        .hchart-label { font-size: 0.82rem; text-align: right; color: var(--color-text); }
+        .hchart-track { height: 26px; background: repeating-linear-gradient(to right, transparent 0, transparent calc(33.333% - 1px), #eef0f3 calc(33.333% - 1px), #eef0f3 33.333%); border-left: 1px solid var(--color-border); }
+        .hchart-bar { height: 100%; background: #3b82f6; border-radius: 0 4px 4px 0; display: flex; align-items: center; justify-content: flex-end; }
+        .hchart-bar .bar-value { font-size: 0.75rem; font-weight: 600; color: #fff; padding-right: 6px; }
+        .hchart-axis { gap: 10px; }
+        .hchart-ticks { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--color-text-light); }
+        .hchart-ticks span:first-child { transform: translateX(-50%); }
+        .hchart-ticks span:last-child { transform: translateX(50%); }
+        tr.tone-danger td:first-child { border-left: 4px solid var(--color-accent); }
+        tr.tone-warning td:first-child { border-left: 4px solid var(--color-warning); }
+        tr.tone-neutral td:first-child { border-left: 4px solid transparent; }
         .brand-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
         .brand-tab { font: inherit; font-size: 0.95rem; font-weight: 600; padding: 7px 18px; border-radius: 999px; border: 1px solid var(--color-border); background: #fff; color: var(--color-primary); cursor: pointer; }
         .brand-tab:hover { background: var(--color-bg-alt); }
@@ -80,6 +106,8 @@
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
             .brand-cols { grid-template-columns: 1fr; gap: 8px; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .hchart-row { grid-template-columns: 100px 1fr; }
             table { font-size: 0.8rem; }
             th, td { padding: 8px; }
         }
@@ -141,7 +169,49 @@
                 <div class="sub">Winona vs Midi 645. Creative count, not spend.</div>
             </div>
         </div>
-        <p>US Google Ads Transparency on October 7: Midi 28 creatives (14 shown in the prior 30 days), Winona 23 (10 in the prior 30 days), Blokes 6, and the shared joiandblokes.com domain 8. No separate Joi Women’s Wellness advertiser was found. Joi and Blokes had no usable public paid-search visit estimate.</p>
+        <div class="charts-grid">
+            <div class="chart">
+                <h3>Paid-search visits, August 2026</h3>
+                <div class="vchart">
+                    <div class="vchart-axis">
+                        <span>8,000</span><span>6,000</span><span>4,000</span><span>2,000</span><span>0</span>
+                    </div>
+                    <div class="vchart-plot">
+                        <div class="vchart-bar" style="height: 81.4%;" tabindex="0" data-tip="Midi · 6,510 paid-search visits"><span class="bar-value">6,510</span></div>
+                        <div class="vchart-bar" style="height: 63.4%;" tabindex="0" data-tip="Winona · 5,070 paid-search visits"><span class="bar-value">5,070</span></div>
+                    </div>
+                    <div></div>
+                    <div class="vchart-labels"><span>Midi</span><span>Winona</span></div>
+                </div>
+                <p class="chart-caption">Source: Semrush estimates, August 2026. Visits, not spend. Joi and Blokes had no usable public paid-search estimate.</p>
+            </div>
+            <div class="chart">
+                <h3>US Google creatives found Oct 7</h3>
+                <div class="hchart">
+                    <div class="hchart-row">
+                        <span class="hchart-label">Midi</span>
+                        <div class="hchart-track"><div class="hchart-bar" style="width: 93.3%;" tabindex="0" data-tip="Midi · 28 creatives"><span class="bar-value">28</span></div></div>
+                    </div>
+                    <div class="hchart-row">
+                        <span class="hchart-label">Winona</span>
+                        <div class="hchart-track"><div class="hchart-bar" style="width: 76.7%;" tabindex="0" data-tip="Winona · 23 creatives"><span class="bar-value">23</span></div></div>
+                    </div>
+                    <div class="hchart-row">
+                        <span class="hchart-label">Joi+Blokes domain</span>
+                        <div class="hchart-track"><div class="hchart-bar" style="width: 26.7%;" tabindex="0" data-tip="Joi+Blokes domain · 8 creatives"><span class="bar-value">8</span></div></div>
+                    </div>
+                    <div class="hchart-row">
+                        <span class="hchart-label">Blokes</span>
+                        <div class="hchart-track"><div class="hchart-bar" style="width: 20%;" tabindex="0" data-tip="Blokes · 6 creatives"><span class="bar-value">6</span></div></div>
+                    </div>
+                    <div class="hchart-row hchart-axis">
+                        <span class="hchart-label"></span>
+                        <div class="hchart-ticks"><span>0</span><span>10</span><span>20</span><span>30</span></div>
+                    </div>
+                </div>
+                <p class="chart-caption">Source: Google Ads Transparency, US, October 7, 2026. Creative count, not spend. Midi had 14 shown in the prior 30 days; Winona had 10. No separate Joi Women’s Wellness advertiser was found.</p>
+            </div>
+        </div>
 
         <h2>How they differ</h2>
         <div class="table-wrap">
@@ -336,31 +406,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="tone-danger">
                         <td>Make app.noonie.com resolve</td>
                         <td>Every CTA currently dead-ends</td>
                     </tr>
-                    <tr>
+                    <tr class="tone-warning">
                         <td>One state list</td>
                         <td>Homepage excludes AL, AR, CT, DE, GA, LA, MN, ND, and RI. Shipping says all 50 states.</td>
                     </tr>
-                    <tr>
+                    <tr class="tone-warning">
                         <td>Say what $99 includes</td>
                         <td>Winona starts at $39–$89 with care included. Noonie does not say whether $99 covers the consult, medication, refills, and fees.</td>
                     </tr>
-                    <tr>
+                    <tr class="tone-neutral">
                         <td>Name the care model</td>
                         <td>Video or async, who the clinician is, response time, refill cadence</td>
                     </tr>
-                    <tr>
+                    <tr class="tone-neutral">
                         <td>Pick one customer</td>
                         <td>Women 40–55, cash-pay, no lab delay is the cleanest start</td>
                     </tr>
-                    <tr>
+                    <tr class="tone-warning">
                         <td>Kill the insurance contradiction</td>
                         <td>Homepage says no insurance. Some product FAQs say coverage depends on the plan.</td>
                     </tr>
-                    <tr>
+                    <tr class="tone-neutral">
                         <td>Source the 86% claim</td>
                         <td>“86% reported a better quality of life after 3 months” has no sample, method, or date</td>
                     </tr>
