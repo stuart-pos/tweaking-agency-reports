@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Noonie team handoff | Tweaking Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a2e;
+            --color-accent: #e94560;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+            --color-warning: #f59e0b;
+            --border-radius: 8px;
+            --container-max: 1080px;
+            --font-heading: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 32px; }
+        .report-header { background: var(--color-primary); color: #fff; padding: 40px 0; }
+        .report-header .container { display: flex; align-items: center; gap: 24px; }
+        .report-logo { width: 64px; height: 64px; flex-shrink: 0; }
+        .report-header h1 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0; }
+        .report-meta { background: var(--color-bg-alt); border-bottom: 1px solid var(--color-border); padding: 20px 0; }
+        .report-meta .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-meta h2 { font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; color: var(--color-primary); margin: 0; }
+        .meta-details { display: flex; gap: 24px; font-size: 0.9rem; color: var(--color-text-light); flex-wrap: wrap; }
+        main.container { padding-top: 32px; padding-bottom: 48px; }
+        h2 { font-family: var(--font-heading); font-size: 1.35rem; font-weight: 700; color: var(--color-primary); margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--color-primary); }
+        h3 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 600; color: var(--color-primary); margin: 22px 0 8px; }
+        p { margin-bottom: 12px; }
+        ul, ol { margin: 0 0 16px 22px; }
+        li { margin-bottom: 6px; }
+        strong { font-weight: 700; }
+        a { color: var(--color-primary); }
+        code { font-size: 0.9em; background: var(--color-bg-alt); padding: 1px 5px; border-radius: 4px; }
+        .callout { background: #fff1f2; border-left: 4px solid var(--color-accent); padding: 18px 22px; margin: 18px 0; border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+        .callout.note { border-left-color: var(--color-primary); background: var(--color-bg-alt); }
+        .callout.warning { border-left-color: var(--color-warning); background: #fffbeb; }
+        .table-wrap { overflow-x: auto; margin: 14px 0 24px; border: 1px solid var(--color-border); border-radius: var(--border-radius); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 640px; }
+        thead { background: var(--color-primary); color: #fff; }
+        th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.4px; }
+        td { padding: 10px 12px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+        tbody tr:nth-child(even) { background: var(--color-bg-alt); }
+        .report-footer { background: var(--color-primary); color: rgba(255,255,255,0.8); padding: 28px 0; margin-top: 40px; font-size: 0.85rem; }
+        .report-footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .report-footer .company-name { font-weight: 700; color: #fff; }
+        .report-footer a { color: #fff; }
+        .sources { font-size: 0.9rem; }
+        .sources li { margin-bottom: 4px; }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="report-header">
+        <div class="container">
+            <svg class="report-logo" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 44 44"><rect width="44" height="44" rx="8" fill="#e94560"/><text x="22" y="30" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">T</text></svg>
+            <div>
+                <h1>Tweaking Agency</h1>
+            </div>
+        </div>
+    </header>
+
+    <div class="report-meta">
+        <div class="container">
+            <h2>Noonie team handoff</h2>
+            <div class="meta-details">
+                <span>Client: <strong>Noonie</strong></span>
+                <span>Date: <strong>2026-11-02</strong></span>
+                <span>Status: <strong>ads not live</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="callout">
+            <strong>Do not buy traffic yet.</strong> Tracking on noonie.com was broken when last checked on October 13: no tag manager or Google tag on the site, and the click ID drops when the visitor moves to the intake. Test a click with <code>?gclid=TEST</code> all the way to payment before any campaign goes live.
+        </div>
+
+        <h2>What Noonie is</h2>
+        <p>Noonie is a cash-pay women’s hormone therapy telehealth brand. It is a sister brand to Okes. The offer is one transparent monthly price per product. The clinician visit, messaging, and standard shipping are included, and the dose does not change the price. Testosterone cream is the only controlled product, so it is monthly only.</p>
+        <p>The live site still says “Starting at $99/mo.” That is not the price charged, and the settled prices below replace it.</p>
+
+        <h2>The buyer</h2>
+        <p>Women usually arrive because a doctor said no, or because the symptom has no clear fix yet. They leave when the price on the page is not the card charge, nobody answers, or a cream is compounded and they were never told. The comparison they build is the year-one total for estrogen plus progesterone, not the monthly sticker.</p>
+
+        <h2>Insurance model versus cash model</h2>
+        <p>These two models should not be copied from each other, because the brand is built on a different promise.</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Examples</th>
+                        <th>What the price is</th>
+                        <th>What it means for Noonie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Insurance visit</strong></td>
+                        <td>Midi, Gennev, Elektra</td>
+                        <td>The clinician visit. The drug goes to a pharmacy or an insurance bill.</td>
+                        <td>Midi’s valuation (Series D, February 3, 2026, reported above $1B) is covered visits at scale, with reported volume above 25,000 patients a week. Self-pay there is $250 first visit and $150 follow-ups. Noonie cannot say “covered by your insurance,” and a brand built like a clinic would add video visits and labs that the non-controlled offer does not need. Use Midi as proof that demand exists, and as the comparison only for testosterone.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cash medication</strong></td>
+                        <td>Winona, Womea, Evernow, Alloy</td>
+                        <td>One cash price for the medication, with care and shipping in it, or a separate care fee.</td>
+                        <td>Winona is the model to copy: one transparent price, care included, medication shipped. Alloy and Joi show the cash price problem: Alloy adds a $49 consult, and Joi adds a $50 monthly care fee and lab-first intake.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Winona’s products, and what Noonie starts with</h2>
+        <p>On October 13, Cutter sent the Winona starting-product list (Slack file IMG_6085.png in the Stuart DM). On October 19 he said the non-controlled products are based on Winona, and the controlled product is based on Midi.</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Winona product</th>
+                        <th>Winona start</th>
+                        <th>Noonie decision</th>
+                        <th>Why</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Estrogen body cream</td>
+                        <td>$89/mo</td>
+                        <td><strong>Start.</strong> Compounded estradiol body cream, $119/mo or $99/mo on the 3-month plan.</td>
+                        <td>Core systemic estrogen product for the cream buyer.</td>
+                    </tr>
+                    <tr>
+                        <td>Estrogen patch</td>
+                        <td>$149/mo</td>
+                        <td><strong>Start.</strong> $149/mo, or $129/mo on the 3-month plan.</td>
+                        <td>A named box. The one female HRT product that can work as a Shopping listing (see Search and Shopping below).</td>
+                    </tr>
+                    <tr>
+                        <td>Vaginal estrogen cream</td>
+                        <td>$89/mo</td>
+                        <td><strong>Start.</strong> $89 per tube, one charge (a tube lasts about 3 months).</td>
+                        <td>Low-dose local estrogen. Usually no progestogen needed.</td>
+                    </tr>
+                    <tr>
+                        <td>Progesterone capsules</td>
+                        <td>$39/mo</td>
+                        <td><strong>Start.</strong> Oral progesterone, $59/mo, or $49/mo on the 3-month plan.</td>
+                        <td>This is the uterine-protection product. The capsule is the one to sell, not the cream.</td>
+                    </tr>
+                    <tr>
+                        <td>Estrogen + progesterone plan</td>
+                        <td>Combined cream $89/mo</td>
+                        <td><strong>Start as a plan.</strong> Estradiol body cream + oral progesterone, $159/mo, or $129/mo on the 3-month plan.</td>
+                        <td>Noonie sells the cream and the capsule together. Winona’s single combined cream is not a Noonie product.</td>
+                    </tr>
+                    <tr>
+                        <td>Estrogen tablets</td>
+                        <td>$54/mo</td>
+                        <td>Available, not the lead.</td>
+                        <td>Stuart marked it lower priority on October 13.</td>
+                    </tr>
+                    <tr>
+                        <td>Progesterone body cream</td>
+                        <td>$89/mo</td>
+                        <td>Not started.</td>
+                        <td>Compounded topical progesterone is not proven for endometrial protection. Use the capsule.</td>
+                    </tr>
+                    <tr>
+                        <td>DHEA</td>
+                        <td>$27 per 3 months</td>
+                        <td>Not an offer on its own.</td>
+                        <td>It is an OTC supplement. It is not a testosterone substitute. If it is mixed into a formula, that formula needs labs and a virtual visit.</td>
+                    </tr>
+                    <tr>
+                        <td>Testosterone cream</td>
+                        <td>Not a Winona product</td>
+                        <td><strong>Controlled, monthly only.</strong> $159/mo before labs.</td>
+                        <td>The only controlled Noonie product. Labs and a virtual visit are required, the way Midi runs it.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Settled prices and the competition</h2>
+        <p>The settled prices come from the October 22 all-in price PDF (<code>noonie-all-in-price-competitiveness-2026-10-22.pdf</code>). That PDF prices the full first-year cost: medication, required care or membership, and required starter labs, divided by 12. The October 23 promoter table has the same cream and progesterone prices. Where the two disagree, the PDF wins. Dose does not change the price on any of these.</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Noonie monthly</th>
+                        <th>Noonie 3-month</th>
+                        <th>Competitor average (first-year, all-in)</th>
+                        <th>Where Noonie sits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Estradiol body cream</strong> (compounded)</td>
+                        <td>$119</td>
+                        <td>$99 ($297)</td>
+                        <td>$104.27. Musely $47.67, Winona $89 with labs included, Joi $131.42, Henry Meds $149.</td>
+                        <td><strong>Middle.</strong> $119 is 14.1% above the average. $99 is 5.1% below.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oral progesterone</strong></td>
+                        <td>$59</td>
+                        <td>$49 ($147)</td>
+                        <td>$66.36. Musely $21.67, Alloy $27.08, Winona $39, Evernow $55, Joi $116.42, Healthspan $139.</td>
+                        <td><strong>Competitive.</strong> $59 is 11.1% below the average. $49 is 26.2% below.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Testosterone cream</strong> (controlled)</td>
+                        <td>$159 before labs</td>
+                        <td>Not offered. Controlled, monthly only.</td>
+                        <td>$171.61. Joi $131.42, Healthspan $163, Hone $220.42. Midi excluded (self-pay is $250 first, $150 follow-up, and $100 per 90-day cream).</td>
+                        <td><strong>Conditional.</strong> 7.3% below the average only if year-one labs stay under about $151 (about $12.61/mo). Monitor conversion: one Reddit buyer wrote, “There’s no way I’d pay $100/month” for testosterone cream.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cream + oral progesterone</strong></td>
+                        <td>$159</td>
+                        <td>$129 ($387)</td>
+                        <td>FountainHRT kit is $150–$199 per 4 weeks, about $1,950/yr at the cheapest tier.</td>
+                        <td><strong>Competitive.</strong> $1,548/yr on the 3-month plan (12 × $129), from the October 23 promoter table.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cortisol support</strong></td>
+                        <td>From $99 (live)</td>
+                        <td>None</td>
+                        <td>No valid all-in comparison set.</td>
+                        <td>Keep off ads until priced. The October 23 table suggests $59 / $49, but that is not settled.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GLP-1 injections</strong></td>
+                        <td>No price set</td>
+                        <td>None</td>
+                        <td>Excluded from the PDF. Midi “from $34/dose”; Maximus tirzepatide $149.99/mo.</td>
+                        <td>Needs a price before it has ads. Keep it a separate funnel from the HRT brand.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Other formats: launch card from October 19</h3>
+        <p>Formats the PDF does not cover come from the October 19 launch card in the competitor report. Where that card disagrees with the settled estrogen and progesterone prices above, the settled prices win. The card’s oral-progesterone 3-month rate of $39 is replaced by $49, and its testosterone cell of $139 is replaced by $159 before labs.</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Monthly</th>
+                        <th>3-month</th>
+                        <th>Winona, care included</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Estradiol patch</td><td>$149</td><td>$129 ($387)</td><td>From $149 per 28 days</td></tr>
+                    <tr><td>Patch + oral progesterone</td><td>$189</td><td>$169 ($507)</td><td>$188 per 28 days at the floor</td></tr>
+                    <tr><td>Oral estradiol</td><td>$79</td><td>$59 ($177)</td><td>From $54 per 28 days</td></tr>
+                    <tr><td>Oral estradiol + progesterone</td><td>$139</td><td>$119 ($357)</td><td>$93 per 28 days at the floor</td></tr>
+                    <tr><td>Estradiol gel</td><td>$109</td><td>$89 ($267)</td><td>Not offered</td></tr>
+                    <tr><td>Vaginal estradiol cream</td><td>$89 per tube</td><td>$89 per tube</td><td>From $89; refill on request</td></tr>
+                    <tr><td>Vaginal estradiol tablets / inserts</td><td>$119, provisional</td><td>$99, provisional</td><td>Not offered</td></tr>
+                    <tr><td>Norethindrone</td><td>$59, or included</td><td>$39, or included</td><td>Not listed</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="callout warning">
+            <strong>Bundle math is not right yet.</strong> A bundle should sit at least $20 below the two products bought separately on the 3-month plan. Using the settled progesterone price of $49:
+            <ul>
+                <li><strong>Cream + oral progesterone:</strong> $19 below separate purchase monthly ($159 vs $178) and $19 below on 3-month ($129 vs $148). One dollar short of the $20 rule.</li>
+                <li><strong>Patch + oral progesterone:</strong> $19 below monthly ($189 vs $208), but only $9 below on 3-month ($169 vs $178). If progesterone were $39 instead, the bundle would cost $1 more than buying the two separately.</li>
+                <li><strong>Oral estradiol + progesterone:</strong> the bundle costs more than buying the two separately. Monthly $139 vs $138 ($79 + $59). On 3-month, $119 vs $108 ($59 + $49), $11 more.</li>
+            </ul>
+            Fix these before any bundle goes on the site. Do not change the price silently.
+        </div>
+
+        <h2>Search and Shopping</h2>
+        <p><strong>Search.</strong> Winona sells the symptom, not the product. Its ads land on <code>bywinona.com</code>, then a symptom quiz, then intake. Headlines name the symptom (night sweats, facial hair, painful intercourse, “Am I in perimenopause?”). None of them name a patch, a cream, or a price. Noonie should bid the same way: the woman who knows she has a symptom and does not yet know the fix. Examples: “online HRT clinic for women,” “menopause telehealth,” hot flashes, night sweats, brain fog. Send that click to the symptom and clinic page, not to a medication SKU.</p>
+        <p><strong>Shopping.</strong> Winona is not in Shopping. Its product data has no numeric price, only “From $149,” so Shopping cannot show it. Shopping is the later click, for a named box. The estradiol patch is the first candidate. Vaginal estradiol is second, and it is a small market. Oral progesterone, compounded body cream, testosterone, and cortisol are not Shopping businesses. Compounded semaglutide is the only dense telehealth Shopping auction, and it is a separate funnel from this brand.</p>
+
+        <h2>Before launch</h2>
+        <ol>
+            <li>Confirm the full path: an ad click, then the quiz, then the intake, then payment, with the click ID carried through. Check with a <code>?gclid=TEST</code> click.</li>
+            <li>Use the Cortland, Ohio legal address for Google verification. Do not use the West Palm Beach mail drop.</li>
+            <li>Fix the testosterone price in the competitor report launch card ($139 is still there; settled is $159 before labs).</li>
+            <li>Price GLP-1 and cortisol, or keep both out of the ads.</li>
+            <li>Fix the bundle math above.</li>
+            <li>Get real charges and pharmacy invoices. Cost-of-goods ratios stay blank until then.</li>
+        </ol>
+
+        <h2>What is not settled</h2>
+        <ul>
+            <li>Keyword Planner volume and CPC by state have not been pulled.</li>
+            <li>Reddit evidence comes from search excerpts. Full threads were not readable.</li>
+            <li>HRT Club’s LegitScript status was not finished.</li>
+            <li>Meta does not publish spend. The promoter ranking is by active ad volume (Meta Ad Library scans, October 19–20, 2026).</li>
+        </ul>
+
+        <h2>Sources</h2>
+        <ul class="sources">
+            <li>Noonie all-in price competitiveness, October 22, 2026 (PDF).</li>
+            <li>Noonie proposed pricing vs. biggest promoters, October 23, 2026 (Meta Ad Library scans, October 19–20).</li>
+            <li>Winona pricing help: <a href="https://help.bywinona.com/en/articles/5364396-what-factors-contribute-to-winona-s-pricing">what factors contribute to Winona’s pricing</a>; <a href="https://help.bywinona.com/en/articles/5434454-winona-s-compounding-pharmacies">compounding pharmacies</a>; <a href="https://help.bywinona.com/en/articles/5364460-hormone-testing-for-hrt">hormone testing</a>.</li>
+            <li>Reddit threads, via search excerpts: <a href="https://www.reddit.com/r/Menopause/comments/1p7infw/">self-pay year costs</a>; <a href="https://www.reddit.com/r/TRT_females/comments/1w2yqet/">$100 a month testosterone refusal</a>; <a href="https://www.reddit.com/r/Perimenopause/comments/1wh16mg/">compounded progesterone not proven for endometrial protection</a>.</li>
+            <li>Full competitor write-up: <a href="https://stuart-pos.github.io/tweaking-agency-reports/noonie/20261007_noonie_competitor-research.html">Noonie competitor research</a>.</li>
+        </ul>
+    </main>
+
+    <footer class="report-footer">
+        <div class="container">
+            <div><span class="company-name">Tweaking Agency</span> · Noonie team handoff · 2026-11-02</div>
+            <div><a href="https://stuart-pos.github.io/tweaking-agency-reports/noonie/">All Noonie reports</a></div>
+        </div>
+    </footer>
+</body>
+</html>
