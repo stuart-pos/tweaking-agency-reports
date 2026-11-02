@@ -291,6 +291,13 @@
             Fix these before any bundle goes on the site. Do not change the price silently.
         </div>
 
+        <h2>Purchase is not the order</h2>
+        <p>Any controlled product needs labs and a doctor visit before the pharmacy can fill it. Testosterone cream is the only controlled Noonie product. The same delay applies when DHEA is mixed into a formula, because that formula also needs labs and a visit. Estrogen, progesterone, the patch, and vaginal estradiol do not. Those ship after the questionnaire and a clinician review.</p>
+        <p>The Google Ads purchase event fires when the card is charged. The customer is not an order yet. On a controlled product she still has to complete labs and the visit, and the clinician still has to approve the prescription. People drop out at each of those steps, so the gap from purchase to a real order, and to a new customer, will be wider than a normal ecommerce account where payment and the order are the same moment.</p>
+        <div class="callout note">
+            <strong>Watch it with a secondary conversion, not by changing the bid event.</strong> Keep purchase as the primary conversion so bidding has volume. Add the order, or new customer, as a secondary conversion set to observation, so it is recorded and does not enter the bid. Then add a column on the campaigns view for that secondary action, next to Purchases. A second custom column, secondary orders divided by purchases, is the purchase-to-order rate. Read cost per new customer off that column. The purchase CPA will look better than the cost of a customer who actually gets the medication, and the gap will be largest on testosterone.
+        </div>
+
         <h2>Search and Shopping</h2>
         <p><strong>Search.</strong> Winona sells the symptom, not the product. Its ads land on <code>bywinona.com</code>, then a symptom quiz, then intake. Headlines name the symptom (night sweats, facial hair, painful intercourse, “Am I in perimenopause?”). None of them name a patch, a cream, or a price. Noonie should bid the same way: the woman who knows she has a symptom and does not yet know the fix. Examples: “online HRT clinic for women,” “menopause telehealth,” hot flashes, night sweats, brain fog. Send that click to the symptom and clinic page, not to a medication SKU.</p>
         <p><strong>Shopping.</strong> Winona is not in Shopping. Its product data has no numeric price, only “From $149,” so Shopping cannot show it. Shopping is the later click, for a named box. The estradiol patch is the first candidate. Vaginal estradiol is second, and it is a small market. Oral progesterone, compounded body cream, testosterone, and cortisol are not Shopping businesses. Compounded semaglutide is the only dense telehealth Shopping auction, and it is a separate funnel from this brand.</p>
@@ -298,6 +305,7 @@
         <h2>Before launch</h2>
         <ol>
             <li>Confirm the full path: an ad click, then the quiz, then the intake, then payment, with the click ID carried through. Check with a <code>?gclid=TEST</code> click.</li>
+            <li>Fire purchase on the card charge, as the primary conversion. Fire order or new customer later, after the prescription is approved, as a secondary observation conversion. Add a column for that secondary event, and a purchase-to-order rate column, before judging CPA. The drop from purchase to order will be wider than normal on controlled products.</li>
             <li>Use the Cortland, Ohio legal address for Google verification. Do not use the West Palm Beach mail drop.</li>
             <li>Fix the testosterone price in the competitor report launch card ($139 is still there; settled is $159 before labs).</li>
             <li>Price GLP-1 and cortisol, or keep both out of the ads.</li>
