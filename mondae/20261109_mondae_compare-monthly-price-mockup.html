@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Mockup — Compare prices, 1-month (Mondae)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans:opsz,wght@12..24,400&family=Hedvig+Letters+Serif:opsz@12..24&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #171717;
+    --muted: #737373;
+    --soft: #525252;
+    --line: #f5f5f5;
+    --gold: #c6a15a;
+    --gold-end: #e8cf8f;
+    --gold-dark: #8a6a32;
+    --blue: #9fbccb;
+    --blue-end: #cfe0e8;
+    --wash: #e8f1f5;
+    --sans: "Hedvig Letters Sans", Arial, sans-serif;
+    --serif: "Hedvig Letters Serif", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .note { background: #171717; color: #f5f5f4; font-size: 14px; line-height: 1.5; text-align: center; padding: 12px 20px; }
+  .note strong { font-weight: 400; color: #fff; }
+  .note code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+  #compare { background: var(--wash); padding: 80px 24px; }
+  .inner { max-width: 760px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    margin: 0 0 16px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dark);
+  }
+  .eyebrow::before { content: ""; width: 20px; height: 2px; background: var(--gold); }
+  header { text-align: center; }
+  h2 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.03em; }
+  .lede { margin: 20px auto 0; max-width: 60ch; font-size: 18px; line-height: 1.6; color: var(--soft); }
+
+  .card {
+    margin-top: 40px; background: #fff; border-radius: 24px;
+    padding: 32px 24px 28px;
+    box-shadow: 0 16px 40px rgba(26, 54, 70, 0.08);
+  }
+  @media (min-width: 640px) { .card { padding: 40px 40px 32px; } }
+
+  .tabs {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;
+    width: 100%; max-width: 100%; margin: 0 auto 12px; padding: 4px;
+    background: #f5f5f5; border-radius: 24px;
+  }
+  @media (min-width: 640px) { .tabs { width: max-content; flex-wrap: nowrap; border-radius: 999px; } }
+  .tabs button {
+    flex: 1; border: 0; background: transparent; cursor: pointer;
+    border-radius: 999px; padding: 12px 20px;
+    font-family: inherit; font-size: 16px; line-height: 1.2; color: var(--soft);
+  }
+  .tabs button[aria-selected="true"] { background: #171717; color: #fafaf9; }
+
+  .row {
+    display: grid; grid-template-columns: 1fr auto; align-items: center;
+    column-gap: 16px; row-gap: 12px; padding: 20px 0;
+  }
+  .row + .row { border-top: 1px solid var(--line); }
+  .who { margin: 0; grid-column: 1; grid-row: 1; }
+  .who strong { display: block; font-weight: 400; font-size: 16px; }
+  .who span { display: block; font-size: 14px; color: var(--muted); }
+  .who span em { font-style: normal; white-space: nowrap; }
+  .price { margin: 0; grid-column: 2; grid-row: 1; text-align: right; }
+  .price strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 40px; line-height: 1; }
+  .price.ours strong { color: var(--gold-dark); }
+  .price span { font-size: 12px; color: var(--muted); }
+  .track { grid-column: 1 / -1; grid-row: 2; height: 24px; border-radius: 999px; background: #f5f5f5; overflow: hidden; }
+  .fill { height: 100%; border-radius: 999px; }
+  .fill.ours { background: linear-gradient(90deg, var(--gold), var(--gold-end)); }
+  .fill.theirs { width: 100%; background: linear-gradient(90deg, var(--blue), var(--blue-end)); }
+  @media (min-width: 640px) {
+    .row { grid-template-columns: 11rem 1fr 6rem; column-gap: 24px; }
+    .track { grid-column: 2; grid-row: 1; }
+    .price { grid-column: 3; }
+  }
+
+  .cta-wrap { display: flex; justify-content: center; margin-top: 12px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #0a0a0a; color: #fafaf9; text-decoration: none;
+    border-radius: 999px; padding: 12px 20px; font-size: 14px;
+  }
+  .cta:hover { background: #262626; }
+  .cta svg { width: 16px; height: 16px; }
+
+  .fine {
+    margin: 20px 0 0; text-align: center; font-size: 13px; line-height: 1.55; color: var(--muted);
+  }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+  <p class="note">Mockup of the V3 compare section, for the price-lock pages. Mondae’s bar is the <strong>1-month price</strong> ($126 compounded tirzepatide, $87 compounded semaglutide), set against the competitor 1-month median ($259 and $179). Live V3 shows the 3-month price ($124 and $75). Place this under Choose your treatment. Buttons go to <code>/wl</code>. On <code>price-lock-v2</code> they stay on <code>/otp</code>.</p>
+
+  <section id="compare" aria-labelledby="compare-title">
+    <div class="inner">
+      <header>
+        <p class="eyebrow">How we compare</p>
+        <h2 id="compare-title">Save 50% or more compared to many GLP-1 providers</h2>
+        <p class="lede">Compounded tirzepatide and compounded semaglutide, prescribed by U.S.-licensed providers, at a fraction of typical market prices. Here’s how Mondae stacks up.</p>
+      </header>
+
+      <div class="card">
+        <div class="tabs" role="tablist" aria-label="Compare by medication">
+          <button type="button" role="tab" id="tab-tirz" aria-controls="panel-tirz" aria-selected="true">Compounded Tirzepatide</button>
+          <button type="button" role="tab" id="tab-sema" aria-controls="panel-sema" aria-selected="false">Compounded Semaglutide</button>
+        </div>
+
+        <div id="panel-tirz" role="tabpanel" aria-labelledby="tab-tirz">
+          <div class="row">
+            <p class="who"><strong>Mondae</strong><span>Compounded tirzepatide, <em>1-month supply</em></span></p>
+            <div class="track"><div class="fill ours" style="width: 49%"></div></div>
+            <p class="price ours"><strong>$126</strong><span>per month</span></p>
+          </div>
+          <div class="row">
+            <p class="who"><strong>Typical telehealth</strong><span>Other compounding programs</span></p>
+            <div class="track"><div class="fill theirs"></div></div>
+            <p class="price"><strong>$259</strong><span>per month</span></p>
+          </div>
+          <div class="cta-wrap"><a class="cta" href="https://intake.mondae.com/wl">Save $133 every month<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a></div>
+        </div>
+
+        <div id="panel-sema" role="tabpanel" aria-labelledby="tab-sema" hidden>
+          <div class="row">
+            <p class="who"><strong>Mondae</strong><span>Compounded semaglutide, <em>1-month supply</em></span></p>
+            <div class="track"><div class="fill ours" style="width: 49%"></div></div>
+            <p class="price ours"><strong>$87</strong><span>per month</span></p>
+          </div>
+          <div class="row">
+            <p class="who"><strong>Typical telehealth</strong><span>Other compounding programs</span></p>
+            <div class="track"><div class="fill theirs"></div></div>
+            <p class="price"><strong>$179</strong><span>per month</span></p>
+          </div>
+          <div class="cta-wrap"><a class="cta" href="https://intake.mondae.com/wl">Save $92 every month<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a></div>
+        </div>
+
+        <p class="fine">Typical telehealth: median 1-month cash price across large and mid-size U.S. telehealth providers, public prices checked September 2026, injectable compounded tirzepatide (seven providers) and compounded semaglutide (nine providers). Bars compare 1-month to 1-month. Longer Mondae plans are $124 and $75 per month with 3 months, or $114 and $69 per month with 6 months.</p>
+      </div>
+    </div>
+  </section>
+<script>
+  const tabs = [...document.querySelectorAll('[role="tab"]')];
+  const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.setAttribute("aria-selected", String(t === tab)));
+      panels.forEach((p) => { p.hidden = p.id !== tab.getAttribute("aria-controls"); });
+    });
+  });
+</script>
+</body>
+</html>
