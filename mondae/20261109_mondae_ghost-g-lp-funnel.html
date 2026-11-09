@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mondae Ghost — g.mondae.com funnel by landing page</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #1a1a2e; --muted: #5c6570; --line: #e4e7eb; --bg: #f6f7f9; --card: #fff; --accent: #1a1a2e; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.45; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 36px 24px 64px; }
+  h1 { font-size: 1.45rem; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 18px; }
+  .filters { display: flex; gap: 8px; margin: 0 0 16px; }
+  button {
+    font: inherit; font-weight: 600; font-size: 0.9rem;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  }
+  button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+  th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
+  th.l, td.l { text-align: left; }
+  td.l { font-weight: 500; }
+  tr.total td { font-weight: 700; background: #f3f5f8; border-bottom: 0; }
+  .pct { font-weight: 600; }
+  .n { display: block; font-size: 0.75rem; font-weight: 400; color: var(--muted); }
+  .notes { margin-top: 18px; color: var(--muted); font-size: 0.85rem; }
+  .notes p { margin: 0 0 8px; }
+  code { font-size: 0.85em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Ghost Google Ads funnel by landing page</h1>
+  <p class="meta">g.mondae.com only · Google Ads campaign IDs from the saved PostHog LP funnel · Pulled Nov 9, 2026 · Each percentage is the share of that page’s visitors who reached the step.</p>
+  <div class="filters" role="group" aria-label="Date range">
+    <button type="button" data-days="7" aria-pressed="true">Last 7 days</button>
+    <button type="button" data-days="14" aria-pressed="false">Last 14 days</button>
+    <button type="button" data-days="30" aria-pressed="false">Last 30 days</button>
+  </div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th class="l">Landing page</th>
+          <th>Visitors</th>
+          <th>Intake started</th>
+          <th>Eligibility</th>
+          <th>Plan selected</th>
+          <th>Checkout</th>
+          <th>Purchase</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <div class="notes">
+    <p id="window-note"></p>
+    <p>A visitor is counted on the first Google Ads page they hit on <code>g.mondae.com</code> inside the selected window. Later steps can happen on any host, including intake. A person has 7 days after that first pageview to move through the steps. Pages with fewer than 20 visitors are grouped as Other.</p>
+    <p>Steps: landing page view → <code>form_started</code> → <code>sign_up</code> (eligibility) → <code>plan_selected</code> → <code>checkout_started</code> → <code>plan_purchased</code>. Source insight: Google Ads LP funnel, by landing page.</p>
+  </div>
+</div>
+<script>
+const DATA = {"7": [["g.mondae.com/lp/price-lock-6", 2711, 1574, 1256, 1121, 748, 309], ["g.mondae.com/lp/price-lock", 653, 332, 246, 222, 167, 93], ["g.mondae.com/lp/price-lock-tirz", 258, 164, 117, 111, 85, 47], ["g.mondae.com/lp/price-lock-sema", 208, 146, 112, 100, 75, 50], ["g.mondae.com/shop/glp-1-gip", 42, 12, 7, 7, 6, 3], ["g.mondae.com/lp/glp-1-gip-wl", 30, 10, 8, 8, 7, 5], ["g.mondae.com/shop/glp-1", 28, 6, 4, 4, 4, 3], ["g.mondae.com/lp/tirzepatide/", 21, 8, 7, 7, 6, 3], ["Other pages (under 20 people each)", 9, 4, 3, 2, 1, 0]], "14": [["g.mondae.com/lp/price-lock-6", 4529, 2640, 2104, 1865, 1268, 565], ["g.mondae.com/lp/price-lock", 2432, 1249, 942, 859, 650, 332], ["g.mondae.com/lp/price-lock-tirz", 417, 252, 183, 176, 138, 76], ["g.mondae.com/lp/price-lock-sema", 280, 197, 156, 135, 103, 64], ["g.mondae.com/shop/glp-1-gip", 76, 24, 15, 13, 11, 6], ["g.mondae.com/shop/glp-1", 42, 12, 10, 8, 6, 5], ["g.mondae.com/lp/glp-1-gip-wl", 35, 13, 9, 8, 7, 5], ["g.mondae.com/lp/tirzepatide/", 21, 8, 7, 7, 6, 3], ["Other pages (under 20 people each)", 9, 4, 3, 2, 1, 0]], "30": [["g.mondae.com/lp/price-lock", 14102, 5488, 3830, 3327, 2331, 1157], ["g.mondae.com/lp/price-lock-6", 4494, 2615, 2084, 1851, 1257, 557], ["g.mondae.com/lp/price-lock-tirz", 417, 252, 183, 176, 138, 76], ["g.mondae.com/lp/price-lock-sema", 280, 197, 156, 135, 103, 64], ["g.mondae.com/shop/glp-1-gip", 133, 39, 29, 23, 19, 8], ["g.mondae.com/shop/glp-1", 88, 28, 21, 18, 15, 11], ["g.mondae.com/lp/glp-1-gip-wl", 49, 18, 12, 11, 10, 7], ["g.mondae.com/lp/tirzepatide/", 21, 8, 7, 7, 6, 3], ["Other pages (under 20 people each)", 21, 12, 9, 7, 4, 2]]};
+const WINDOWS = {
+  "7": "Nov 2–9, 2026 (rolling 7 days ending at the pull).",
+  "14": "Oct 26–Nov 9, 2026 (rolling 14 days ending at the pull).",
+  "30": "Oct 10–Nov 9, 2026 (rolling 30 days ending at the pull)."
+};
+
+function pct(n, d) {
+  if (!d) return "–";
+  return (100 * n / d).toFixed(1) + "%";
+}
+
+function stepCell(n, d) {
+  return `<td><span class="pct">${pct(n, d)}</span><span class="n">${n.toLocaleString()} people</span></td>`;
+}
+
+function render(days) {
+  const rows = DATA[days];
+  const totals = rows.reduce((a, r) => r.slice(1).map((v, i) => a[i] + v), [0, 0, 0, 0, 0, 0]);
+  const body = rows.map((r) => {
+    const label = r[0].replace(/^g\.mondae\.com/, "") || r[0];
+    return `<tr><td class="l">${label}</td><td>${r[1].toLocaleString()}</td>${stepCell(r[2], r[1])}${stepCell(r[3], r[1])}${stepCell(r[4], r[1])}${stepCell(r[5], r[1])}${stepCell(r[6], r[1])}</tr>`;
+  }).join("");
+  const t = totals;
+  document.getElementById("rows").innerHTML = body +
+    `<tr class="total"><td class="l">All pages</td><td>${t[0].toLocaleString()}</td>${stepCell(t[1], t[0])}${stepCell(t[2], t[0])}${stepCell(t[3], t[0])}${stepCell(t[4], t[0])}${stepCell(t[5], t[0])}</tr>`;
+  document.getElementById("window-note").textContent = WINDOWS[days];
+}
+
+document.querySelectorAll(".filters button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filters button").forEach((b) => b.setAttribute("aria-pressed", "false"));
+    btn.setAttribute("aria-pressed", "true");
+    render(btn.dataset.days);
+  });
+});
+render("7");
+</script>
+</body>
+</html>
