@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mondae — Pearson r, CPA, and nCAC</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #1a1a2e; --muted: #5c6570; --line: #e4e7eb; --bg: #f6f7f9; --card: #fff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 36px 24px 72px; }
+  a { color: var(--ink); }
+  .back { font-size: 0.85rem; color: var(--muted); margin: 0 0 18px; }
+  h1 { font-size: 1.55rem; letter-spacing: -0.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.05rem; margin: 28px 0 8px; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin: 0 0 20px; }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 1.2rem; }
+  li { margin: 0 0 6px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0 8px; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .stat span { color: var(--muted); font-size: 0.75rem; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: auto; margin: 12px 0 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: right; }
+  th { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
+  th.l, td.l { text-align: left; }
+  tr:last-child td { border-bottom: 0; }
+  .note { color: var(--muted); font-size: 0.82rem; }
+  @media (max-width: 640px) { .stats { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="back"><a href="https://stuart-pos.github.io/tweaking-agency-reports/mondae/">← Mondae reports</a></p>
+  <h1>Pearson r for CPA and nCAC</h1>
+  <p class="meta">Mondae · Nov 11, 2026 · Ghost Google account vs ghost nCAC, and how we will use the same score as the mix changes.</p>
+
+  <h2>Pearson r</h2>
+  <p>Pearson r is a score from −1 to +1 for how closely two series move together in size. +1 means they rise and fall by matching amounts. 0 means no straight-line relationship. It is not a count of how often they point the same way, and it is not a measure of how close the two levels are. A $3 move and a $60 move do not count the same.</p>
+  <p>R-squared is r squared. It runs from 0 to 1 and drops the direction. At r = 0.92, R-squared is about 0.85: about 85% of the day-to-day swing in one number lined up with the swing in the other.</p>
+
+  <h2>How we want to use it</h2>
+  <p>We want r, read next to the average gap, as the check on whether a platform CPA is still a usable read of nCAC. The level of either number can move because of a lull, a budget cut, or a CPC jump. r ignores that average. It only asks whether the days with a higher reported CPA were also the days with a higher nCAC, and by a similar amount.</p>
+  <p>Three numbers, used together:</p>
+  <ul>
+    <li><b>r</b> — did the size of the moves line up.</li>
+    <li><b>Direction</b> — how many days both rose or both fell. A plain-language read. A small move counts the same as a large one.</li>
+    <li><b>Gap</b> — how far the platform CPA sits from nCAC. This is the accuracy. r does not contain it. A platform can run $35 low every day and still have r = 0.92.</li>
+  </ul>
+
+  <h2>Ghost, Google only</h2>
+  <p>Oct 22–Nov 4, the 14 days before Meta went live on Nov 5. Mondae New Google Purchase CPA versus ghost last-click nCAC in #mondae-reporting. Ghost spend in that window matched Mondae New’s Google cost.</p>
+  <div class="stats">
+    <div class="stat"><b>0.92</b><span>Pearson r, last-click</span></div>
+    <div class="stat"><b>11 / 13</b><span>Days that moved together</span></div>
+    <div class="stat"><b>$35</b><span>Google below nCAC, typical day</span></div>
+    <div class="stat"><b>$234</b><span>Weighted Google CPA</span></div>
+  </div>
+  <p>Weighted CPA is total Google spend divided by total Google purchases, not the average of the daily CPAs. On a typical day Google was about $232 and last-click nCAC was about $266. Google was below nCAC on 13 of 14 days. The two split days were Oct 27 and Nov 3.</p>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th class="l">Date</th>
+          <th>Google CPA</th>
+          <th>Ghost nCAC</th>
+          <th>Day move</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="l">Thu Oct 22</td><td>$176</td><td>$232</td><td>—</td></tr>
+        <tr><td class="l">Fri Oct 23</td><td>$174</td><td>$206</td><td>Same</td></tr>
+        <tr><td class="l">Sat Oct 24</td><td>$151</td><td>$185</td><td>Same</td></tr>
+        <tr><td class="l">Sun Oct 25</td><td>$210</td><td>$265</td><td>Same</td></tr>
+        <tr><td class="l">Mon Oct 26</td><td>$251</td><td>$315</td><td>Same</td></tr>
+        <tr><td class="l">Tue Oct 27</td><td>$263</td><td>$299</td><td>Split</td></tr>
+        <tr><td class="l">Wed Oct 28</td><td>$243</td><td>$271</td><td>Same</td></tr>
+        <tr><td class="l">Thu Oct 29</td><td>$307</td><td>$319</td><td>Same</td></tr>
+        <tr><td class="l">Fri Oct 30</td><td>$232</td><td>$262</td><td>Same</td></tr>
+        <tr><td class="l">Sat Oct 31</td><td>$291</td><td>$335</td><td>Same</td></tr>
+        <tr><td class="l">Sun Nov 1</td><td>$285</td><td>$307</td><td>Same</td></tr>
+        <tr><td class="l">Mon Nov 2</td><td>$208</td><td>$257</td><td>Same</td></tr>
+        <tr><td class="l">Tue Nov 3</td><td>$214</td><td>$206</td><td>Split</td></tr>
+        <tr><td class="l">Wed Nov 4</td><td>$236</td><td>$269</td><td>Same</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Ghost nCAC is last-click. Google CPA is rounded to the dollar.</p>
+
+  <h2>From today through November 17</h2>
+  <p>Nov 11–17, seven days. We score the same relationship once Meta spend is in Ghost. We are not matching a 14-day window to a 14-day window.</p>
+  <p>If both CPA and nCAC move from $230 to $350, the averages changed and the question did not. On the days reported CPA was higher, was nCAC higher with it? If r stays near 0.92, Meta’s CPA is still a usable read of Ghost’s cost. If r falls, Meta can look cheap in-platform and still be a bad read of nCAC.</p>
+  <p>Seven days is a directional check, noisier than 0.92. We read a clear hold or a clear drop, and we put Meta’s share of Ghost spend next to r. A larger Meta share pushes r up on its own, because Meta’s CPA is then part of nCAC.</p>
+
+  <h2>Planned internal tests</h2>
+  <p>The question is whether channel and campaign mix change how closely platform CPA tracks nCAC.</p>
+  <ul>
+    <li><b>Now: Meta + Shopping + Brand.</b> Google non-brand is off. This arm runs only while nCAC stays under $250. On Nov 10 the 7-day last-click nCAC was $307.</li>
+    <li><b>Next: Meta + Brand.</b> Shopping off, for a short period. Same comparison: platform CPA against nCAC.</li>
+  </ul>
+
+  <h2>Why the score is valuable</h2>
+  <p>A $250 nCAC gate tells us whether the week was cheap enough to keep spending. It does not tell us whether the number in the ad platform still describes that cost. r does. It stays comparable when the auction, the budget, or the season moves both series up or down together.</p>
+  <p>The Ghost result is the proof that the score can be high while the platform number is still biased. r = 0.92 and Google ran about $35 low. We can use Google’s CPA as a day-to-day guide for Ghost, and we still add about $35 if we want the nCAC. If a new mix keeps a high r and a stable gap, we can manage off the platform CPA. If r falls, we stop treating that CPA as the cost of a customer.</p>
+
+  <h2>How we plan to use it</h2>
+  <ol>
+    <li>Keep Oct 22–Nov 4 as the Google-only baseline: r = 0.92, about a $35 gap, last-click nCAC.</li>
+    <li>Score Nov 11–17 the same way, with Meta’s share of Ghost spend written next to r.</li>
+    <li>Hold the current mix (Meta + Shopping + Brand) only while nCAC is under $250.</li>
+    <li>Run Meta + Brand for a short window and score r and the gap again.</li>
+    <li>A high r with a stable gap means the platform CPA is a fair stand-in. A lower r means the mix broke that stand-in, even if the in-platform CPA looks better.</li>
+  </ol>
+
+  <h2>Definitions</h2>
+  <ul>
+    <li><b>nCAC.</b> Customers from the g. subdomain divided by Ghost spend. Ghost spend is Mondae New Google (987-594-0392) plus the Ghost Meta account. The order count in Slack is last-click. The $250 gate uses this number.</li>
+    <li><b>Attribution.</b> Every purchase that comes through the g. subdomain, including direct and organic.</li>
+    <li><b>Google CPA.</b> Mondae New’s platform-reported Purchase CPA. The $234 figure is total spend divided by total purchases for Oct 22–Nov 4.</li>
+    <li><b>Meta CPA.</b> The Ghost Meta account’s platform-reported cost per purchase.</li>
+    <li><b>Pearson r.</b> Co-movement in size, from −1 to +1. R-squared is r squared and does not show direction.</li>
+  </ul>
+</div>
+</body>
+</html>
